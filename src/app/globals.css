@@ -1,0 +1,323 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #010a0b;
+  --color-editorial-white: #feffff;
+  --color-gold-accent: #d4af37;
+  --color-gold-light: #edd899;
+  --color-gold-mid: #dfb15b;
+  --color-gold-dark: #997328;
+
+  --font-display: var(--font-comfortaa), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  --background: #010a0b;
+  --foreground: #feffff;
+  --accent: #d4af37;
+  --accent-rgb: 212, 175, 55;
+  --accent-light: #edd899;
+  --accent-mid: #dfb15b;
+  --accent-dark: #997328;
+  --bg-rgb: 1, 10, 11;
+  --white-rgb: 254, 255, 255;
+  --border-muted: rgba(254, 255, 255, 0.08);
+  --border-active: rgba(212, 175, 55, 0.45);
+}
+
+/* ==========================================================================
+   Metallic Gold Material Primitives
+   ========================================================================== */
+.text-metallic-gold {
+  background: linear-gradient(180deg, #fff8e1 0%, #dfb15b 45%, #a67c1e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-metallic-gold-subtle {
+  background: linear-gradient(180deg, #fffaed 0%, #c5a059 50%, #9e782f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.bg-metallic-gold {
+  background: linear-gradient(135deg, #c5a059 0%, #fdf0cd 35%, #d4af37 65%, #997328 100%);
+  color: #010a0b;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(253, 240, 205, 0.4);
+}
+
+.bg-metallic-gold:hover {
+  background: linear-gradient(135deg, #d4af37 0%, #ffffff 35%, #e5c158 65%, #ab822e 100%);
+  box-shadow: 0 0 24px rgba(212, 175, 55, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* ==========================================================================
+   Smooth Scrolling (Lenis + Native fallback)
+   ========================================================================== */
+html {
+  background-color: #010a0b;
+  color: #feffff;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  background-color: #010a0b;
+  color: #feffff;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Technical Blueprint Grids & Overlays
+   ========================================================================== */
+.technical-grid-canvas {
+  background-image:
+    linear-gradient(to right, rgba(254, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(254, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to right, rgba(254, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(254, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+  background-position: -1px -1px;
+}
+
+.grid-mask-radial {
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 65%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 65%, transparent 100%);
+}
+
+/* Dot matrix pattern */
+.dot-matrix {
+  background-image: radial-gradient(rgba(254, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ==========================================================================
+   Glassmorphism & Technical Panel Primitives
+   ========================================================================== */
+.glass-panel {
+  background: rgba(1, 10, 11, 0.72);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(254, 255, 255, 0.09);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 0 rgba(254, 255, 255, 0.12);
+}
+
+.glass-panel-hover {
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7),
+              0 0 20px rgba(212, 175, 55, 0.12),
+              inset 0 1px 0 0 rgba(212, 175, 55, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Interactive Cursor Spotlight & Glow
+   ========================================================================== */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(212, 175, 55, 0.1),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Technical Corner Brackets & Cad Elements
+   ========================================================================== */
+.corner-brackets {
+  position: relative;
+}
+
+.corner-brackets::before,
+.corner-brackets::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  pointer-events: none;
+  border-color: rgba(212, 175, 55, 0.65);
+  z-index: 2;
+}
+
+.corner-brackets::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+
+.corner-brackets::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+/* ==========================================================================
+   Typography & Number Alignment
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Text Selection in Metallic Gold */
+::selection {
+  background-color: #d4af37;
+  color: #010a0b;
+}
+
+/* ==========================================================================
+   Custom Minimalist Scrollbar
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #010a0b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(254, 255, 255, 0.15);
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* ==========================================================================
+   Animations: Pulsing Radar & Shimmer
+   ========================================================================== */
+@keyframes radar-ping {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.radar-dot {
+  position: relative;
+}
+
+.radar-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-color: #d4af37;
+  animation: radar-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Metallic specular light sweep across headings */
+@keyframes metallic-text-sweep {
+  0% {
+    background-position: -150% 0;
+  }
+  50% {
+    background-position: 150% 0;
+  }
+  100% {
+    background-position: 150% 0;
+  }
+}
+
+.metallic-text-sweep {
+  background: linear-gradient(
+    90deg,
+    #feffff 0%,
+    #feffff 35%,
+    #fdf0cd 46%,
+    #d4af37 50%,
+    #edd899 54%,
+    #feffff 65%,
+    #feffff 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: metallic-text-sweep 6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .radar-dot::after {
+    animation: none;
+  }
+}
