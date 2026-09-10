@@ -1,0 +1,127 @@
+/* ==========================================================================
+   ByteLogic Technical Design System & Styling
+   Authoritative Colors:
+   Background: #05070A | Secondary: #0A0F14 | Surface: #0E151B | Elevated: #131C24
+   Primary Text: #F3F6F7 | Secondary: #A8B3BA | Muted: #68747D
+   Byte Blue: #132279 | Logic Cyan: #019AA2 | Border: #1C2830
+   ========================================================================== */
+
+/* Subtle Cartesian Coordinate Drafting Grid */
+.bl-cartesian-grid {
+  background-image:
+    linear-gradient(to right, rgba(1, 154, 162, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(1, 154, 162, 0.04) 1px, transparent 1px),
+    linear-gradient(to right, rgba(243, 246, 247, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(243, 246, 247, 0.015) 1px, transparent 1px);
+  background-size: 64px 64px, 64px 64px, 16px 16px, 16px 16px;
+  background-position: -1px -1px;
+}
+
+/* Subtle Technical Drafting Paper Mask */
+.bl-grid-mask {
+  mask-image: radial-gradient(ellipse 95% 85% at 50% 0%, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 0%, #000 60%, transparent 100%);
+}
+
+/* Technical Instrumentation Surface */
+.bl-surface {
+  background-color: #0E151B;
+  border: 1px solid #1C2830;
+}
+
+.bl-surface-elevated {
+  background-color: #131C24;
+  border: 1px solid #1C2830;
+}
+
+/* Controlled Technical Card Hover */
+.bl-card-interactive {
+  background-color: #0E151B;
+  border: 1px solid #1C2830;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bl-card-interactive:hover {
+  border-color: rgba(1, 154, 162, 0.45);
+  background-color: #111A22;
+  transform: translateY(-2px);
+}
+
+/* Micro Technical Marks / Corner Ticks */
+.bl-tick-box {
+  position: relative;
+}
+
+.bl-tick-box::before,
+.bl-tick-box::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  pointer-events: none;
+  border-color: rgba(1, 154, 162, 0.5);
+  z-index: 2;
+}
+
+.bl-tick-box::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+
+.bl-tick-box::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+/* ByteLogic Custom Minimal Scrollbar */
+.bl-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.bl-scrollbar::-webkit-scrollbar-track {
+  background: #05070A;
+}
+
+.bl-scrollbar::-webkit-scrollbar-thumb {
+  background: #1C2830;
+  border-radius: 2px;
+}
+
+.bl-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #019AA2;
+}
+
+/* KaTeX Math Formatting Overrides */
+.katex {
+  font-size: 1.05em !important;
+  color: #F3F6F7;
+}
+
+.katex-display {
+  margin: 0.75em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5em 0;
+}
+
+/* Code Display Details */
+.bl-code-block {
+  font-family: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.6;
+}
+
+/* Accessible reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bl-card-interactive {
+    transition: none !important;
+    transform: none !important;
+  }
+}

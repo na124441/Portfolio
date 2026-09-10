@@ -23,6 +23,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { label: 'Now', href: '/#now' },
     { label: 'Projects', href: '/#projects' },
+    { label: 'ByteLogic', href: '/bytelogic' },
     { label: 'Philosophy', href: '/#philosophy' },
     { label: 'Journey', href: '/#journey' },
     { label: 'About', href: '/#about' },
