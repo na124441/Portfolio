@@ -375,15 +375,15 @@ export const EnergyField: React.FC<EnergyFieldProps> = ({
         style={{ width: '100%', height: '100%' }}
       />
 
-      {/* 3. System Diagnostic Telemetry HUD (Minimalist low-contrast readout) */}
+      {/* 3. System Diagnostic Telemetry HUD (Minimalist low-contrast readout - hidden on mobile/tablet to avoid edge clipping) */}
       <div
-        className="absolute bottom-1 right-1 sm:bottom-3 sm:right-3 z-20 font-mono text-[8px] sm:text-[9px] text-white/30 tracking-widest flex flex-col items-end space-y-0.5 pointer-events-none"
+        className="absolute bottom-1 right-1 sm:bottom-3 sm:right-3 z-20 font-mono text-[8px] sm:text-[9px] text-white/30 tracking-widest hidden md:flex flex-col items-end space-y-0.5 pointer-events-none"
         aria-hidden="true"
       >
         <span className="text-[#f6d009]/60 font-semibold">N-01 // ENERGY FIELD</span>
         <span>STATE: ACTIVE [87.4%]</span>
-        <span className="hidden sm:inline">FLUX: T-GRAPH_04</span>
-        <span className="hidden sm:inline">ROT: 0.18 RAD/S</span>
+        <span className="hidden lg:inline">FLUX: T-GRAPH_04</span>
+        <span className="hidden lg:inline">ROT: 0.18 RAD/S</span>
       </div>
     </div>
   );
