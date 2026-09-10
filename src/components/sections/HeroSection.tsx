@@ -23,7 +23,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       id="top"
-      className="min-h-screen min-h-[100dvh] flex flex-col justify-between bg-[#010a0b] text-[#feffff] border-b border-white/[0.08] relative overflow-hidden pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-12"
+      className="min-h-screen min-h-[100dvh] flex flex-col justify-between bg-[#010a0b] text-[#feffff] border-b border-white/[0.08] relative overflow-hidden pt-24 sm:pt-28 pb-8 sm:pb-12 px-6 sm:px-10 lg:px-12 xl:px-16 2xl:px-20"
     >
       {/* 
         ========================================================================
@@ -32,13 +32,13 @@ export const HeroSection: React.FC = () => {
       */}
       <div className="absolute inset-y-0 left-0 w-full pointer-events-none z-0 overflow-hidden">
         <AsciiDonutBackground
-          widthFraction={0.48}
+          widthFraction={0.52}
           opacity={0.32}
           className="z-0"
         />
       </div>
 
-      <div className="absolute top-24 right-6 hidden 2xl:flex flex-col items-end font-mono text-[10px] text-white/20 select-none tracking-widest pointer-events-none">
+      <div className="absolute top-24 right-6 sm:right-10 lg:right-12 xl:right-16 2xl:right-20 hidden 2xl:flex flex-col items-end font-mono text-[10px] text-white/20 select-none tracking-widest pointer-events-none">
         <span>LOC: 12.9716° N, 77.5946° E</span>
         <span>SYS: NEURAL_REASONING // v0.1</span>
       </div>
@@ -55,8 +55,8 @@ export const HeroSection: React.FC = () => {
           6. Balanced Photo with subtle gold radial glow backdrop
         ======================================================================== 
       */}
-      <div className="w-full max-w-6xl mx-auto my-auto py-6 sm:py-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      <div className="w-full mx-auto my-auto py-6 sm:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-16 items-center w-full">
           
           {/* LEFT COLUMN: Editorial Text Stack (Top-to-Bottom Flow) */}
           <div className="lg:col-span-7 flex flex-col items-center text-center space-y-6 sm:space-y-7 z-10">
@@ -108,7 +108,7 @@ export const HeroSection: React.FC = () => {
               initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-              className="font-sans text-sm sm:text-base text-white/70 font-normal leading-relaxed max-w-xl text-center mx-auto"
+              className="font-sans text-sm sm:text-base text-white/70 font-normal leading-relaxed max-w-2xl text-center mx-auto"
             >
               {PORTFOLIO_METADATA.thesis}
             </motion.p>
@@ -168,7 +168,7 @@ export const HeroSection: React.FC = () => {
         BOTTOM: Technical Domains & Architecture Pillars Bar (Editorial Trust Bar)
         ======================================================================== 
       */}
-      <div className="w-full max-w-6xl mx-auto pt-6 sm:pt-8 border-t border-white/[0.08]">
+      <div className="w-full mx-auto pt-6 sm:pt-8 border-t border-white/[0.08]">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <span className="font-mono text-[10px] uppercase tracking-widest text-white/35 flex-shrink-0">
             Research &amp; Engineering Focus:
@@ -200,7 +200,7 @@ const PortraitPhotoBlock: React.FC<{ shouldReduceMotion: boolean | null }> = ({
       initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-      className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] xl:w-[25rem] xl:h-[25rem] flex items-center justify-center mx-auto"
+      className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] xl:w-[26rem] xl:h-[26rem] 2xl:w-[30rem] 2xl:h-[30rem] flex items-center justify-center mx-auto"
     >
       {/* 
         Soft Gold Radial Glow Backdrop (5-8% opacity, large blur radius)

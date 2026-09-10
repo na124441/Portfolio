@@ -7,7 +7,7 @@ import { GithubIcon, LinkedinIcon } from '@/components/ui/Icons';
 export const Footer: React.FC = () => {
   return (
     <footer className="border-t border-white/10 bg-[#010a0b] py-12 sm:py-16 text-white/60">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="w-full px-6 sm:px-10 lg:px-12 xl:px-16 2xl:px-20 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/5">
           {/* Identity column */}
           <div className="md:col-span-6 space-y-3">

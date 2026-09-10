@@ -38,7 +38,7 @@ export const Navbar: React.FC = () => {
           : 'bg-[#010a0b]/80 backdrop-blur-md border-white/10 py-4'
       )}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <div className="w-full px-6 sm:px-10 lg:px-12 xl:px-16 2xl:px-20 mx-auto flex items-center justify-between">
         {/* Monogram / Title */}
         <Link
           href="/"
