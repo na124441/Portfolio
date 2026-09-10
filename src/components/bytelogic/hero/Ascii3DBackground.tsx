@@ -90,12 +90,22 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
       const cosB = Math.cos(B);
       const sinB = Math.sin(B);
 
+      // Aspect ratio correction factor for monospace font (charHeight / charWidth)
+      const charAspect = charHeight / charWidth;
+
+      // Calculate maximum allowable radius so the 3D shape is guaranteed to fit
+      // inside BOTH the available width and height of the screen without clipping.
+      const maxSpanCols = cols * 0.35;
+      const maxSpanRowsInCols = rows * 0.38 * charAspect;
+      const maxSpan = Math.min(maxSpanCols, maxSpanRowsInCols);
+
       // RENDER SHAPE: TORUS
       if (currentShape === 'torus') {
-        const R1 = 1.2; // circle radius
-        const R2 = 2.4; // distance from donut center
+        const R1 = 1.1; // circle radius
+        const R2 = 2.2; // distance from donut center
         const K2 = 5.0; // camera distance
-        const K1 = cols * K2 * 0.45;
+        const maxExtent = R1 + R2; // 3.3
+        const K1 = (maxSpan / maxExtent) * K2;
 
         for (let theta = 0; theta < 6.28; theta += 0.08) {
           const costheta = Math.cos(theta);
@@ -114,9 +124,9 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
             const z = K2 + cosA * circlex * sinphi + circley * sinA;
             const ooz = 1 / z; // one over z
 
-            // 2D projection
+            // 2D projection with aspect ratio compensation
             const xp = Math.floor(cols / 2 + K1 * ooz * x);
-            const yp = Math.floor(rows / 2 - (K1 * ooz * y * 0.55)); // adjust for font aspect ratio
+            const yp = Math.floor(rows / 2 - (K1 * ooz * y) / charAspect);
 
             // Luminance calculation
             const L =
@@ -150,9 +160,10 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
 
       // RENDER SHAPE: TESSERACT / HYPERCUBE
       else if (currentShape === 'tesseract') {
-        const size = 1.8;
+        const size = 1.6;
         const K2 = 4.8;
-        const K1 = cols * K2 * 0.48;
+        const maxExtent = size * 1.75;
+        const K1 = (maxSpan / maxExtent) * K2;
 
         // Vertices of two concentric 3D cubes connected
         const cubePoints: { x: number; y: number; z: number }[] = [];
@@ -177,7 +188,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
           const ooz = 1 / z;
 
           const xp = Math.floor(cols / 2 + K1 * ooz * x);
-          const yp = Math.floor(rows / 2 - K1 * ooz * y * 0.55);
+          const yp = Math.floor(rows / 2 - (K1 * ooz * y) / charAspect);
 
           if (yp >= 0 && yp < rows && xp >= 0 && xp < cols) {
             const idx = xp + yp * cols;
@@ -194,13 +205,14 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
       // RENDER SHAPE: SADDLE SURFACE (Hyperbolic Paraboloid z = x^2 - y^2)
       else if (currentShape === 'saddle') {
         const K2 = 5.0;
-        const K1 = cols * K2 * 0.5;
+        const maxExtent = 2.8;
+        const K1 = (maxSpan / maxExtent) * K2;
 
-        for (let u = -1.6; u <= 1.6; u += 0.08) {
-          for (let v = -1.6; v <= 1.6; v += 0.08) {
-            const rawX = u * 1.5;
-            const rawY = v * 1.5;
-            const rawZ = (u * u - v * v) * 0.6; // Saddle function
+        for (let u = -1.5; u <= 1.5; u += 0.08) {
+          for (let v = -1.5; v <= 1.5; v += 0.08) {
+            const rawX = u * 1.4;
+            const rawY = v * 1.4;
+            const rawZ = (u * u - v * v) * 0.55; // Saddle function
 
             const x = rawX * cosB - rawY * sinB;
             const y = (rawX * sinB + rawY * cosB) * cosA - rawZ * sinA;
@@ -208,7 +220,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
             const ooz = 1 / z;
 
             const xp = Math.floor(cols / 2 + K1 * ooz * x);
-            const yp = Math.floor(rows / 2 - K1 * ooz * y * 0.55);
+            const yp = Math.floor(rows / 2 - (K1 * ooz * y) / charAspect);
 
             if (yp >= 0 && yp < rows && xp >= 0 && xp < cols) {
               const idx = xp + yp * cols;
@@ -227,7 +239,8 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
       else {
         const radius = 2.0;
         const K2 = 5.0;
-        const K1 = cols * K2 * 0.48;
+        const maxExtent = radius * 1.1;
+        const K1 = (maxSpan / maxExtent) * K2;
 
         for (let lat = -Math.PI / 2; lat <= Math.PI / 2; lat += 0.12) {
           for (let lon = 0; lon < 2 * Math.PI; lon += 0.1) {
@@ -241,7 +254,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
             const ooz = 1 / z;
 
             const xp = Math.floor(cols / 2 + K1 * ooz * x);
-            const yp = Math.floor(rows / 2 - K1 * ooz * y * 0.55);
+            const yp = Math.floor(rows / 2 - (K1 * ooz * y) / charAspect);
 
             if (yp >= 0 && yp < rows && xp >= 0 && xp < cols) {
               const idx = xp + yp * cols;
