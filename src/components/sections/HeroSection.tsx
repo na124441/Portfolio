@@ -72,15 +72,15 @@ export const HeroSection: React.FC = () => {
               <span className="text-[#feffff] font-medium">{PORTFOLIO_METADATA.statusBadge}</span>
             </motion.div>
 
-            {/* 2. Dominant Headline (Fluid-sized, guaranteed never to clip) */}
+            {/* 2. Dominant Headline (Huge high-contrast visual anchor) */}
             <motion.h1
               initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-bold tracking-tight text-[#feffff] uppercase select-none text-[clamp(2.1rem,5.5vw,4.5rem)] leading-[1.06] text-center"
+              className="font-display font-black tracking-[-0.03em] text-[#feffff] uppercase select-none text-[clamp(2.8rem,7.5vw,6.5rem)] leading-[0.98] text-center drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)]"
             >
               <span className="inline-block whitespace-nowrap">NAYANT</span>{' '}
-              <span className="inline-block whitespace-nowrap">SRIVASTAVA</span>
+              <span className="inline-block whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/70">SRIVASTAVA</span>
             </motion.h1>
 
             {/* 3. Role Subtitle (Letter-spaced, balanced scale) */}
