@@ -310,13 +310,6 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
       {/* Radial Gradient Contrast Mask: Darkens the center so foreground typography has elite legibility */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(5,7,10,0.85)_0%,rgba(5,7,10,0.45)_60%,transparent_100%)]" />
 
-      {/* Top Left Coordinates Telemetry */}
-      <div className="absolute top-4 left-4 z-10 text-[10px] font-mono text-[#68747D]/70 space-y-0.5 hidden sm:block pointer-events-none">
-        <div>SYS_MATRIX: 3D ASCII ENGINE</div>
-        <div>TOPOLOGY: {currentShape.toUpperCase()}</div>
-        <div>PRECISION: FLOAT32 Z-BUFFER</div>
-      </div>
-
       {/* Interactive Controls Bar: Centered or Top Right */}
       <div className="absolute top-4 right-4 z-20 flex items-center gap-2 text-xs font-mono">
         {/* Shape Switcher Pills */}

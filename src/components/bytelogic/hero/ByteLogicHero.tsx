@@ -1,19 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { ByteLogicButton } from '@/components/bytelogic/ui/ByteLogicButton';
-import { Ascii3DBackground, AsciiShape } from '@/components/bytelogic/hero/Ascii3DBackground';
-import { Terminal, Sparkles, ArrowRight, Activity, Binary } from 'lucide-react';
+import { Ascii3DBackground } from '@/components/bytelogic/hero/Ascii3DBackground';
+import { Terminal } from 'lucide-react';
 
 export const ByteLogicHero: React.FC = () => {
-  const [activeTopology, setActiveTopology] = useState<AsciiShape>('torus');
-
   return (
     <section className="relative w-full overflow-hidden border-b border-[#1C2830]">
       {/* 3D ASCII Animation Canvas in the Background */}
       <div className="absolute inset-0 z-0">
-        <Ascii3DBackground onShapeChange={(shape) => setActiveTopology(shape)} />
+        <Ascii3DBackground />
       </div>
 
       {/* Hero Foreground Content - Centered Layout */}
@@ -93,24 +91,6 @@ export const ByteLogicHero: React.FC = () => {
           >
             Enter Lab
           </ByteLogicButton>
-        </div>
-
-        {/* Bottom Technical Telemetry Indicator */}
-        <div className="mt-14 pt-6 border-t border-[#1C2830]/80 w-full flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#68747D]">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#019AA2]" />
-            <span>3D ASCII ENGINE: ACTIVE</span>
-            <span>•</span>
-            <span className="text-[#A8B3BA] uppercase">TOPOLOGY: {activeTopology}</span>
-          </div>
-
-          <div className="flex items-center gap-4 text-[11px]">
-            <span>7 CORE DOMAINS</span>
-            <span>•</span>
-            <span>OPEN KERNEL</span>
-            <span>•</span>
-            <span className="text-[#019AA2]">V0.1-STABLE</span>
-          </div>
         </div>
       </div>
     </section>
