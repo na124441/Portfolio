@@ -4,22 +4,25 @@ import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { PORTFOLIO_METADATA } from '@/data/portfolio';
 import { ArrowDown, ArrowRight, Terminal } from 'lucide-react';
-import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
 import { AsciiDonutBackground } from '@/components/ui/AsciiDonutBackground';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export const HeroSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const shouldReduceMotion = useReducedMotion();
-  const [isDesktop, setIsDesktop] = useState(true);
+  const stageRef = useRef<HTMLElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
+  const portraitContainerRef = useRef<HTMLDivElement | null>(null);
+  const portraitLayerRef = useRef<HTMLDivElement | null>(null);
+  const portraitMaskRef = useRef<HTMLDivElement | null>(null);
+  const haloRef = useRef<HTMLDivElement | null>(null);
+  const lightSweepRef = useRef<HTMLDivElement | null>(null);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+  const scrollIndicatorRef = useRef<HTMLDivElement | null>(null);
+  const bottomBarRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const updateMedia = () => {
-      setIsDesktop(window.innerWidth >= 1024);
-    };
-    updateMedia();
-    window.addEventListener('resize', updateMedia);
-    return () => window.removeEventListener('resize', updateMedia);
-  }, []);
+  const [isDesktop, setIsDesktop] = useState(true);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   // Technical pillars for the editorial domain focus bar
   const technicalPillars = [
@@ -29,47 +32,332 @@ export const HeroSection: React.FC = () => {
     'Quantized Edge Execution',
   ];
 
-  // 1. Scroll-driven progress tracking across the 200vh pinned track
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
-  // Smooth spring interpolation to eliminate any micro-stutters
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 24,
-    restDelta: 0.001,
-  });
+  useEffect(() => {
+    const checkWidth = () => setIsDesktop(window.innerWidth >= 1024);
+    checkWidth();
+    window.addEventListener('resize', checkWidth);
+    return () => window.removeEventListener('resize', checkWidth);
+  }, []);
 
-  // 2. Motion Transforms for Identity -> Reveal Transition (Progress 0.0 -> 1.0)
-  // On desktop: Text translates leftwards. On mobile: translates subtly upwards.
-  const textTranslateX = useTransform(smoothProgress, [0, 0.75], ['0%', isDesktop ? '-27%' : '0%']);
-  const textTranslateY = useTransform(smoothProgress, [0, 0.75], ['0%', isDesktop ? '0%' : '-8%']);
-  const textScale = useTransform(smoothProgress, [0, 0.75], [1, isDesktop ? 0.94 : 0.92]);
+  // =========================================================================
+  // GSAP + ScrollTrigger Master Scrub Choreography & Mouse Micro-Interaction
+  // =========================================================================
+  useEffect(() => {
+    if (typeof window === 'undefined' || prefersReducedMotion) return;
 
-  // Portrait emerges: On desktop translates rightwards. On mobile emerges centered below.
-  const photoTranslateX = useTransform(smoothProgress, [0, 0.75], ['0%', isDesktop ? '28%' : '0%']);
-  const photoTranslateY = useTransform(smoothProgress, [0, 0.75], ['0%', isDesktop ? '0%' : '18%']);
-  const photoOpacity = useTransform(smoothProgress, [0.05, 0.65], [0.03, 1]);
-  const photoScale = useTransform(smoothProgress, [0, 0.75], [1.12, 1]);
-  const haloOpacity = useTransform(smoothProgress, [0.1, 0.7], [0, 1]);
-  const photoFilter = useTransform(
-    smoothProgress,
-    [0.05, 0.7],
-    ['grayscale(95%) brightness(0.25) contrast(0.85)', 'grayscale(0%) brightness(1) contrast(1)']
-  );
+    gsap.registerPlugin(ScrollTrigger);
 
-  // Scroll indicator quickly dissolves on initial scroll
-  const scrollIndicatorOpacity = useTransform(smoothProgress, [0, 0.12], [1, 0]);
-  const scrollIndicatorY = useTransform(smoothProgress, [0, 0.12], [0, 15]);
+    const ctx = gsap.context(() => {
+      // ---------------------------------------------------------------------
+      // Initial State: Portrait shrouded in deep shadow, masked, blurred
+      // ---------------------------------------------------------------------
+      gsap.set(portraitLayerRef.current, {
+        opacity: 0,
+        scale: 1.12,
+        y: 40,
+        x: isDesktop ? 80 : 0,
+        filter: 'brightness(0.25) contrast(0.8) blur(8px)',
+        transformOrigin: 'center center',
+      });
 
-  // Bottom focus ticker emerges toward the end of the hero pinned sequence
-  const bottomBarOpacity = useTransform(smoothProgress, [0.65, 0.95], [0, 1]);
-  const bottomBarY = useTransform(smoothProgress, [0.65, 0.95], [20, 0]);
+      gsap.set(portraitMaskRef.current, {
+        clipPath: 'circle(12% at 65% 45%)',
+        WebkitClipPath: 'circle(12% at 65% 45%)',
+      });
 
-  // Fallback for users requesting reduced motion (skip scroll pinning)
-  if (shouldReduceMotion) {
+      gsap.set(haloRef.current, {
+        opacity: 0,
+        scale: 0.7,
+        rotation: -8,
+        transformOrigin: 'center center',
+      });
+
+      gsap.set(lightSweepRef.current, {
+        xPercent: -130,
+        opacity: 0,
+      });
+
+      gsap.set(textRef.current, {
+        xPercent: 0,
+        yPercent: 0,
+        scale: 1,
+        transformOrigin: 'center center',
+      });
+
+      gsap.set(scrollIndicatorRef.current, {
+        opacity: 1,
+        y: 0,
+      });
+
+      gsap.set(bottomBarRef.current, {
+        opacity: 0,
+        y: 24,
+      });
+
+      // ---------------------------------------------------------------------
+      // Master ScrollTrigger Timeline: 180vh-210vh Pinned Scrub
+      // ---------------------------------------------------------------------
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1.2,
+        },
+      });
+
+      // PHASE 1: Hidden Entity (0% -> 15%)
+      tl.to(
+        portraitLayerRef.current,
+        {
+          opacity: 0.12,
+          scale: 1.08,
+          y: 25,
+          x: isDesktop ? 55 : 0,
+          filter: 'brightness(0.25) contrast(0.8) blur(8px)',
+          ease: 'power1.inOut',
+          duration: 0.15,
+        },
+        0
+      )
+        .to(
+          portraitMaskRef.current,
+          {
+            clipPath: 'circle(18% at 62% 46%)',
+            WebkitClipPath: 'circle(18% at 62% 46%)',
+            ease: 'power1.inOut',
+            duration: 0.15,
+          },
+          0
+        )
+        .to(
+          haloRef.current,
+          {
+            opacity: 0.15,
+            scale: 0.78,
+            rotation: -6,
+            ease: 'power1.inOut',
+            duration: 0.15,
+          },
+          0
+        )
+        .to(
+          scrollIndicatorRef.current,
+          {
+            opacity: 0,
+            y: 16,
+            ease: 'power2.out',
+            duration: 0.1,
+          },
+          0
+        );
+
+      // PHASE 2: Emergence (15% -> 45%)
+      tl.to(
+        portraitLayerRef.current,
+        {
+          opacity: 0.65,
+          scale: 1.02,
+          x: isDesktop ? 20 : 0,
+          y: 0,
+          filter: 'brightness(0.75) contrast(0.9) blur(2px)',
+          ease: 'power2.out',
+          duration: 0.3,
+        },
+        0.15
+      )
+        .to(
+          portraitMaskRef.current,
+          {
+            clipPath: 'circle(56% at 55% 50%)',
+            WebkitClipPath: 'circle(56% at 55% 50%)',
+            ease: 'power2.inOut',
+            duration: 0.3,
+          },
+          0.15
+        )
+        .to(
+          haloRef.current,
+          {
+            opacity: 0.5,
+            scale: 1.0,
+            rotation: 0,
+            ease: 'power2.out',
+            duration: 0.3,
+          },
+          0.15
+        )
+        .to(
+          textRef.current,
+          {
+            xPercent: isDesktop ? -14 : 0,
+            yPercent: isDesktop ? 0 : -4,
+            scale: 0.97,
+            ease: 'power1.out',
+            duration: 0.3,
+          },
+          0.15
+        )
+        // One-time dynamic light sweep across the portrait during reveal
+        .fromTo(
+          lightSweepRef.current,
+          { xPercent: -130, opacity: 0 },
+          { xPercent: 140, opacity: 0.75, ease: 'power2.inOut', duration: 0.25 },
+          0.2
+        );
+
+      // PHASE 3: Hero Moment (45% -> 70%)
+      tl.to(
+        portraitLayerRef.current,
+        {
+          opacity: 1,
+          scale: 0.985,
+          x: 0,
+          y: -5,
+          filter: 'brightness(1.0) contrast(1.05) blur(0px)',
+          ease: 'power3.out',
+          duration: 0.2,
+        },
+        0.45
+      )
+        .to(
+          portraitLayerRef.current,
+          {
+            scale: 1,
+            ease: 'power2.out',
+            duration: 0.05,
+          },
+          0.65
+        )
+        .to(
+          portraitMaskRef.current,
+          {
+            clipPath: 'circle(120% at 50% 50%)',
+            WebkitClipPath: 'circle(120% at 50% 50%)',
+            ease: 'expo.out',
+            duration: 0.25,
+          },
+          0.45
+        )
+        .to(
+          haloRef.current,
+          {
+            opacity: 0.65,
+            ease: 'power2.out',
+            duration: 0.25,
+          },
+          0.45
+        )
+        .to(
+          textRef.current,
+          {
+            xPercent: isDesktop ? -27 : 0,
+            yPercent: isDesktop ? 0 : -8,
+            scale: isDesktop ? 0.94 : 0.92,
+            ease: 'power3.out',
+            duration: 0.25,
+          },
+          0.45
+        );
+
+      // PHASE 4: Cinematic Lock (70% -> 100%)
+      tl.to(
+        portraitLayerRef.current,
+        {
+          y: -20,
+          scale: 1.015,
+          ease: 'none',
+          duration: 0.3,
+        },
+        0.7
+      ).to(
+        bottomBarRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          ease: 'power2.out',
+          duration: 0.25,
+        },
+        0.75
+      );
+
+      // ---------------------------------------------------------------------
+      // Micro-Interaction: Multi-Plane Mouse Depth Parallax via gsap.quickTo
+      // ---------------------------------------------------------------------
+      if (portraitLayerRef.current && haloRef.current && overlayRef.current) {
+        const quickPortraitX = gsap.quickTo(portraitLayerRef.current, 'x', {
+          duration: 0.6,
+          ease: 'power3.out',
+        });
+        const quickPortraitY = gsap.quickTo(portraitLayerRef.current, 'y', {
+          duration: 0.6,
+          ease: 'power3.out',
+        });
+        const quickHaloX = gsap.quickTo(haloRef.current, 'x', {
+          duration: 0.9,
+          ease: 'power3.out',
+        });
+        const quickHaloY = gsap.quickTo(haloRef.current, 'y', {
+          duration: 0.9,
+          ease: 'power3.out',
+        });
+        const quickOverlayX = gsap.quickTo(overlayRef.current, 'x', {
+          duration: 0.45,
+          ease: 'power3.out',
+        });
+        const quickOverlayY = gsap.quickTo(overlayRef.current, 'y', {
+          duration: 0.45,
+          ease: 'power3.out',
+        });
+
+        const handleMouseMove = (e: MouseEvent) => {
+          if (!window.matchMedia('(pointer: fine)').matches) return;
+          const progress = tl.scrollTrigger ? tl.scrollTrigger.progress : 0;
+          if (progress < 0.35) return;
+
+          const factor = Math.min(1, (progress - 0.35) / 0.35);
+          const normX = (e.clientX / window.innerWidth - 0.5) * 2;
+          const normY = (e.clientY / window.innerHeight - 0.5) * 2;
+
+          quickPortraitX(normX * 8 * factor);
+          quickPortraitY(normY * 5 * factor - 5 - (progress > 0.7 ? ((progress - 0.7) / 0.3) * 15 : 0));
+          quickHaloX(normX * 15 * factor);
+          quickHaloY(normY * 10 * factor);
+          quickOverlayX(normX * 4 * factor);
+          quickOverlayY(normY * 3 * factor);
+        };
+
+        const handleMouseLeave = () => {
+          quickPortraitX(0);
+          quickHaloX(0);
+          quickHaloY(0);
+          quickOverlayX(0);
+          quickOverlayY(0);
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mouseleave', handleMouseLeave);
+
+        return () => {
+          window.removeEventListener('mousemove', handleMouseMove);
+          window.removeEventListener('mouseleave', handleMouseLeave);
+        };
+      }
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [isDesktop, prefersReducedMotion]);
+
+  // Reduced motion accessible fallback
+  if (prefersReducedMotion) {
     return (
       <section
         id="top"
@@ -115,7 +403,19 @@ export const HeroSection: React.FC = () => {
             </div>
 
             <div className="lg:col-span-5 flex items-center justify-center relative">
-              <PortraitFrame haloOpacity={1} />
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] xl:w-[26rem] xl:h-[26rem] 2xl:w-[29rem] 2xl:h-[29rem] flex items-center justify-center">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%] rounded-full bg-[radial-gradient(circle,rgba(246,208,9,0.16)_0%,rgba(246,208,9,0.04)_45%,transparent_70%)] blur-3xl pointer-events-none z-0" />
+                <div className="relative w-full h-full z-10">
+                  <Image
+                    src="/nayant-portrait-clean.png"
+                    alt="Nayant Srivastava — AI / ML Engineer"
+                    fill
+                    priority
+                    sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 460px"
+                    className="object-contain object-center select-none pointer-events-none drop-shadow-[0_12px_36px_rgba(0,0,0,0.85)]"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -140,7 +440,7 @@ export const HeroSection: React.FC = () => {
   }
 
   return (
-    <div ref={containerRef} className="relative h-[190vh] md:h-[210vh] bg-[#010a0b]">
+    <div ref={containerRef} className="relative h-[190vh] md:h-[215vh] bg-[#010a0b]">
       {/* 
         ========================================================================
         STICKY VIEWPORT STAGE (Pinned 100vh stage for the Identity -> Reveal)
@@ -148,12 +448,12 @@ export const HeroSection: React.FC = () => {
       */}
       <section
         id="top"
+        ref={stageRef}
         className="sticky top-0 h-screen h-[100dvh] w-full flex flex-col justify-between bg-[#010a0b] text-[#feffff] border-b border-white/[0.08] overflow-hidden pt-24 sm:pt-28 pb-6 sm:pb-8 px-6 sm:px-10 lg:px-12 xl:px-16 2xl:px-20 z-10 select-none"
       >
         {/* Atmospheric Background Layer: Animated ASCII Donut with Radial Focus Falloff */}
         <div className="absolute inset-y-0 left-0 w-full pointer-events-none z-0 overflow-hidden">
           <AsciiDonutBackground widthFraction={0.65} opacity={0.28} className="z-0" />
-          {/* Subtle center vignette to keep central typography completely crisp */}
           <div
             className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(1,10,11,0.85)_0%,rgba(1,10,11,0.5)_45%,transparent_85%)] pointer-events-none"
             aria-hidden="true"
@@ -177,28 +477,90 @@ export const HeroSection: React.FC = () => {
           {/* 
             LAYER A: PORTRAIT ENTITY (Centered/Behind at Progress 0 -> Right Column at Progress 1)
           */}
-          <motion.div
+          <div
+            ref={portraitContainerRef}
+            className="absolute z-10 pointer-events-none flex items-center justify-center will-change-transform"
             style={{
-              x: photoTranslateX,
-              y: photoTranslateY,
-              opacity: photoOpacity,
-              scale: photoScale,
-              filter: photoFilter,
+              transform: isDesktop ? 'translateX(28%)' : 'translateY(22%)',
             }}
-            className="absolute z-10 pointer-events-none flex items-center justify-center"
           >
-            <PortraitFrame haloOpacity={haloOpacity} />
-          </motion.div>
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] xl:w-[26rem] xl:h-[26rem] 2xl:w-[29rem] 2xl:h-[29rem] flex items-center justify-center">
+              
+              {/* 1. Atmospheric Ambient Glow */}
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[125%] h-[125%] rounded-full bg-[radial-gradient(circle,rgba(246,208,9,0.06)_0%,rgba(246,208,9,0.015)_50%,transparent_70%)] blur-3xl pointer-events-none z-0"
+                aria-hidden="true"
+              />
+
+              {/* 2. Dynamic Gold Radial Halo */}
+              <div
+                ref={haloRef}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%] rounded-full bg-[radial-gradient(circle,rgba(246,208,9,0.18)_0%,rgba(246,208,9,0.05)_45%,transparent_70%)] blur-2xl pointer-events-none z-10 will-change-transform"
+                aria-hidden="true"
+              />
+
+              {/* 3. Masked Portrait Container with Light Sweep */}
+              <div
+                ref={portraitMaskRef}
+                className="relative w-full h-full z-20 overflow-hidden flex items-center justify-center"
+                style={{
+                  clipPath: 'circle(12% at 65% 45%)',
+                  WebkitClipPath: 'circle(12% at 65% 45%)',
+                }}
+              >
+                <div ref={portraitLayerRef} className="relative w-full h-full will-change-transform">
+                  <Image
+                    src="/nayant-portrait-clean.png"
+                    alt="Nayant Srivastava — AI / ML Engineer"
+                    fill
+                    priority
+                    sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 460px"
+                    className="object-contain object-center select-none pointer-events-none drop-shadow-[0_12px_36px_rgba(0,0,0,0.85)]"
+                  />
+
+                  {/* 4. Diagonal Light Sweep Sheen */}
+                  <div
+                    ref={lightSweepRef}
+                    className="absolute inset-0 pointer-events-none z-30 opacity-0 will-change-transform"
+                    style={{
+                      background:
+                        'linear-gradient(108deg, transparent 25%, rgba(255,255,255,0.45) 48%, rgba(246,208,9,0.55) 54%, transparent 72%)',
+                      mixBlendMode: 'overlay',
+                    }}
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+
+              {/* 5. Technical Reticle Overlay */}
+              <div
+                ref={overlayRef}
+                className="absolute inset-[-10px] pointer-events-none z-30 flex flex-col justify-between p-1 font-mono text-[9px] text-[#f6d009]/40 select-none tracking-widest will-change-transform"
+                aria-hidden="true"
+              >
+                <div className="flex justify-between items-start">
+                  <span>+ [ REC:01</span>
+                  <span>SYS:NEURAL ] +</span>
+                </div>
+                <div className="flex justify-between items-end">
+                  <span>+ [ 12.97°N</span>
+                  <span>77.59°E ] +</span>
+                </div>
+              </div>
+
+              {/* 6. Subtle Atmospheric Grain Layer */}
+              <div
+                className="absolute inset-0 pointer-events-none z-40 rounded-full opacity-[0.035] mix-blend-overlay bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:8px_8px]"
+                aria-hidden="true"
+              />
+            </div>
+          </div>
 
           {/* 
             LAYER B: TYPOGRAPHY & EDITORIAL CONTENT (Centered at Progress 0 -> Left Column at Progress 1)
           */}
-          <motion.div
-            style={{
-              x: textTranslateX,
-              y: textTranslateY,
-              scale: textScale,
-            }}
+          <div
+            ref={textRef}
             className="relative z-20 flex flex-col items-center text-center max-w-3xl px-4 will-change-transform"
           >
             {/* Status Pill */}
@@ -254,7 +616,7 @@ export const HeroSection: React.FC = () => {
                 <ArrowDown className="w-3.5 h-3.5 stroke-[2.5]" />
               </a>
             </div>
-          </motion.div>
+          </div>
 
         </div>
 
@@ -263,29 +625,23 @@ export const HeroSection: React.FC = () => {
           SCROLL INDICATOR AFFORDANCE (Fades out seamlessly upon scroll)
           ======================================================================
         */}
-        <motion.div
-          style={{
-            opacity: scrollIndicatorOpacity,
-            y: scrollIndicatorY,
-          }}
-          className="absolute bottom-16 sm:bottom-20 right-8 sm:right-12 hidden md:flex flex-col items-center gap-2 font-mono text-[10px] tracking-[0.2em] text-white/40 pointer-events-none select-none"
+        <div
+          ref={scrollIndicatorRef}
+          className="absolute bottom-16 sm:bottom-20 right-8 sm:right-12 hidden md:flex flex-col items-center gap-2 font-mono text-[10px] tracking-[0.2em] text-white/40 pointer-events-none select-none will-change-transform"
         >
           <span className="uppercase">Scroll</span>
           <div className="w-[1px] h-7 bg-gradient-to-b from-[#f6d009] to-transparent animate-pulse" />
           <ArrowDown className="w-3 h-3 text-[#f6d009]" />
-        </motion.div>
+        </div>
 
         {/* 
           ======================================================================
           BOTTOM: Technical Domains & Architecture Pillars Bar (Exit Transition)
           ======================================================================
         */}
-        <motion.div
-          style={{
-            opacity: bottomBarOpacity,
-            y: bottomBarY,
-          }}
-          className="w-full pt-4 sm:pt-6 border-t border-white/[0.08] z-20"
+        <div
+          ref={bottomBarRef}
+          className="w-full pt-4 sm:pt-6 border-t border-white/[0.08] z-20 will-change-transform"
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
             <span className="font-mono text-[10px] uppercase tracking-widest text-white/35 flex-shrink-0">
@@ -300,40 +656,8 @@ export const HeroSection: React.FC = () => {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       </section>
-    </div>
-  );
-};
-
-/**
- * Reusable clean portrait photo frame with layered atmospheric gold halo.
- */
-interface PortraitFrameProps {
-  haloOpacity: any;
-}
-
-const PortraitFrame: React.FC<PortraitFrameProps> = ({ haloOpacity }) => {
-  return (
-    <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] xl:w-[26rem] xl:h-[26rem] 2xl:w-[29rem] 2xl:h-[29rem] flex items-center justify-center">
-      {/* Dynamic atmospheric gold halo light emerging behind the headshot */}
-      <motion.div
-        style={{ opacity: haloOpacity }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%] rounded-full bg-[radial-gradient(circle,rgba(246,208,9,0.16)_0%,rgba(246,208,9,0.04)_45%,transparent_70%)] blur-3xl pointer-events-none z-0"
-        aria-hidden="true"
-      />
-
-      {/* Clean portrait render */}
-      <div className="relative w-full h-full z-10">
-        <Image
-          src="/nayant-portrait-clean.png"
-          alt="Nayant Srivastava — AI / ML Engineer"
-          fill
-          priority
-          sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 460px"
-          className="object-contain object-center select-none pointer-events-none drop-shadow-[0_12px_36px_rgba(0,0,0,0.85)]"
-        />
-      </div>
     </div>
   );
 };
