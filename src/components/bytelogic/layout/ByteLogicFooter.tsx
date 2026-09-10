@@ -10,23 +10,23 @@ export const ByteLogicFooter: React.FC = () => {
     <footer className="w-full bg-[#05070A] border-t border-[#1C2830] pt-16 pb-12 text-xs font-mono relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 pb-12 border-b border-[#1C2830]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 pb-12 border-b border-[#1C2830]">
           {/* Brand Info */}
-          <div className="md:col-span-2 space-y-4">
+          <div className="sm:col-span-2 lg:col-span-2 space-y-4">
             <Link href="/bytelogic" className="inline-block">
               <Image
                 src="/images/bytelogic/bytelogic-logo.png"
                 alt="ByteLogic"
                 width={150}
                 height={50}
-                className="h-7 w-auto object-contain"
+                className="h-6 sm:h-7 w-auto object-contain"
               />
             </Link>
             <p className="text-[#A8B3BA] font-sans text-xs leading-relaxed max-w-sm">
               An independent technical learning and computational knowledge platform. Investigating algorithms, mathematics, neural systems, and computational theory from first principles.
             </p>
             <div className="pt-2 flex items-center gap-2 text-[#019AA2] text-[11px] font-mono">
-              <span className="w-2 h-2 rounded-full bg-[#019AA2] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#019AA2] animate-pulse shrink-0" />
               <span>UNDERSTAND → VISUALIZE → IMPLEMENT → EXPERIMENT</span>
             </div>
           </div>
@@ -39,27 +39,27 @@ export const ByteLogicFooter: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-[#A8B3BA]">
               <li>
-                <Link href="/bytelogic#paths" className="hover:text-[#019AA2] transition-colors">
+                <Link href="/bytelogic#paths" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
                   01 / Learn Paths
                 </Link>
               </li>
               <li>
-                <Link href="/bytelogic#content" className="hover:text-[#019AA2] transition-colors">
+                <Link href="/bytelogic#content" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
                   02 / Video Lectures
                 </Link>
               </li>
               <li>
-                <Link href="/bytelogic/concepts/k-means#read" className="hover:text-[#019AA2] transition-colors">
+                <Link href="/bytelogic/concepts/k-means#read" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
                   03 / Written Articles
                 </Link>
               </li>
               <li>
-                <Link href="/bytelogic#lab" className="hover:text-[#019AA2] transition-colors">
+                <Link href="/bytelogic#lab" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
                   04 / Computational Lab
                 </Link>
               </li>
               <li>
-                <Link href="/bytelogic#philosophy" className="hover:text-[#019AA2] transition-colors">
+                <Link href="/bytelogic#philosophy" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
                   05 / Philosophy
                 </Link>
               </li>
@@ -74,27 +74,27 @@ export const ByteLogicFooter: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-[#A8B3BA]">
               <li>
-                <Link href="/bytelogic/concepts/k-means" className="hover:text-[#019AA2] transition-colors">
+                <Link href="/bytelogic/concepts/k-means" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
                   Machine Learning
                 </Link>
               </li>
               <li>
-                <Link href="/bytelogic#paths" className="hover:text-[#019AA2] transition-colors">
+                <Link href="/bytelogic#paths" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
                   Deep Learning
                 </Link>
               </li>
               <li>
-                <Link href="/bytelogic#paths" className="hover:text-[#019AA2] transition-colors">
+                <Link href="/bytelogic#paths" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
                   Mathematics & Optimization
                 </Link>
               </li>
               <li>
-                <Link href="/bytelogic#paths" className="hover:text-[#019AA2] transition-colors">
+                <Link href="/bytelogic#paths" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
                   Reinforcement Learning
                 </Link>
               </li>
               <li>
-                <Link href="/bytelogic#paths" className="hover:text-[#019AA2] transition-colors">
+                <Link href="/bytelogic#paths" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
                   Systems & Architecture
                 </Link>
               </li>
@@ -113,7 +113,7 @@ export const ByteLogicFooter: React.FC = () => {
                   href="https://github.com/na124441"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#019AA2] transition-colors flex items-center gap-1"
+                  className="hover:text-[#019AA2] transition-colors flex items-center gap-1 py-0.5 inline-flex"
                 >
                   <span>GitHub Source</span>
                   <ArrowUpRight className="w-3 h-3 text-[#68747D]" />
@@ -124,7 +124,7 @@ export const ByteLogicFooter: React.FC = () => {
                   href="https://youtube.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#019AA2] transition-colors flex items-center gap-1"
+                  className="hover:text-[#019AA2] transition-colors flex items-center gap-1 py-0.5 inline-flex"
                 >
                   <span>YouTube Channel</span>
                   <ArrowUpRight className="w-3 h-3 text-[#68747D]" />
@@ -135,7 +135,7 @@ export const ByteLogicFooter: React.FC = () => {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#019AA2] transition-colors flex items-center gap-1"
+                  className="hover:text-[#019AA2] transition-colors flex items-center gap-1 py-0.5 inline-flex"
                 >
                   <span>Research & LinkedIn</span>
                   <ArrowUpRight className="w-3 h-3 text-[#68747D]" />
@@ -144,7 +144,7 @@ export const ByteLogicFooter: React.FC = () => {
               <li>
                 <Link
                   href="/"
-                  className="hover:text-[#019AA2] transition-colors flex items-center gap-1 pt-1 text-[#F3F6F7]"
+                  className="hover:text-[#019AA2] transition-colors flex items-center gap-1 pt-1 text-[#F3F6F7] inline-flex"
                 >
                   <span>Engineer Portfolio</span>
                   <ArrowUpRight className="w-3 h-3 text-[#019AA2]" />
@@ -155,10 +155,10 @@ export const ByteLogicFooter: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[#68747D] text-[11px]">
-          <div className="flex items-center gap-3">
+        <div className="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[#68747D] text-[11px]">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <span>© {new Date().getFullYear()} BYTELOGIC. All rights reserved.</span>
-            <span>•</span>
+            <span className="hidden sm:inline">•</span>
             <span>Independent Engineering Publication</span>
           </div>
 

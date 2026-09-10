@@ -8,21 +8,21 @@ import { EquationBlock } from '@/components/bytelogic/ui/EquationBlock';
 
 export const LearningPathsSection: React.FC = () => {
   return (
-    <section id="paths" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-[#1C2830]">
+    <section id="paths" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 border-t border-[#1C2830]">
       {/* Section Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-10 border-b border-[#1C2830] text-xs font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-8 sm:mb-10 border-b border-[#1C2830] text-xs font-mono">
         <div className="flex items-center gap-2 text-[#019AA2]">
           <span className="font-semibold">03 / CURATED LEARNING PATHS</span>
         </div>
-        <div className="text-[#68747D] text-[11px] flex items-center gap-3">
+        <div className="text-[#68747D] text-[11px] flex flex-wrap items-center gap-2 sm:gap-3">
           <span>7 STRUCTURED DOMAINS</span>
-          <span>•</span>
+          <span className="hidden sm:inline">•</span>
           <span>FIRST PRINCIPLES TO SYSTEMS</span>
         </div>
       </div>
 
       {/* Intro Header */}
-      <div className="max-w-3xl mb-12">
+      <div className="max-w-3xl mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl font-bold font-sans tracking-tight text-[#F3F6F7]">
           Rigorous Technical Domains
         </h2>
@@ -32,11 +32,11 @@ export const LearningPathsSection: React.FC = () => {
       </div>
 
       {/* Paths Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {LEARNING_PATHS.map((path) => (
           <div
             key={path.id}
-            className="group flex flex-col justify-between p-6 rounded-[6px] bl-card-interactive bl-tick-box relative"
+            className="group flex flex-col justify-between p-4 sm:p-6 rounded-[6px] bl-card-interactive bl-tick-box relative min-w-0"
           >
             <div>
               {/* Path Code & Difficulty */}

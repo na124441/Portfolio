@@ -34,7 +34,7 @@ export const ConceptCard: React.FC<ConceptCardProps> = ({ item, className }) => 
     <Link
       href={item.slug}
       className={cn(
-        'group flex flex-col justify-between p-5 sm:p-6 rounded-[6px] bl-card-interactive bl-tick-box relative focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#019AA2]',
+        'group flex flex-col justify-between p-4 sm:p-6 rounded-[6px] bl-card-interactive bl-tick-box relative min-w-0 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#019AA2]',
         className
       )}
     >
@@ -72,9 +72,9 @@ export const ConceptCard: React.FC<ConceptCardProps> = ({ item, className }) => 
       </div>
 
       {/* Bottom Metadata & Action */}
-      <div className="mt-5 pt-4 border-t border-[#1C2830] flex items-center justify-between text-xs font-mono">
+      <div className="mt-5 pt-4 border-t border-[#1C2830] flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
         <div className="flex flex-col">
-          <span className="text-[11px] text-[#68747D] uppercase tracking-wider truncate max-w-[200px]">
+          <span className="text-[11px] text-[#68747D] uppercase tracking-wider truncate max-w-[180px] sm:max-w-[200px]">
             {item.domain}
           </span>
           <span className="text-[10px] text-[#A8B3BA]/70">

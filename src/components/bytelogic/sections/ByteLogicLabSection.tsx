@@ -224,16 +224,16 @@ export const ByteLogicLabSection: React.FC = () => {
   }, [isRunning, status, points, centroids]);
 
   return (
-    <section id="lab" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-[#1C2830]">
+    <section id="lab" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 border-t border-[#1C2830]">
       {/* Section Header */}
       <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-8 border-b border-[#1C2830] text-xs font-mono">
         <div className="flex items-center gap-2 text-[#019AA2]">
           <Terminal className="w-4 h-4" />
           <span className="font-semibold">05 / BYTELOGIC LAB · INSTRUMENTATION</span>
         </div>
-        <div className="flex items-center gap-3 text-[#68747D]">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[#68747D]">
           <span>EXPERIMENT 023</span>
-          <span>•</span>
+          <span className="hidden sm:inline">•</span>
           <span className="text-[#019AA2]">INTERACTIVE ALGORITHM PLAYGROUND</span>
         </div>
       </div>
@@ -241,14 +241,14 @@ export const ByteLogicLabSection: React.FC = () => {
       {/* Main Lab Instrument Chassis */}
       <div className="rounded-[6px] bg-[#0A0F14] border border-[#1C2830] overflow-hidden bl-tick-box shadow-2xl">
         {/* Instrument Title Bar */}
-        <div className="px-5 py-3.5 bg-[#0E151B] border-b border-[#1C2830] flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
-          <div className="flex items-center gap-3">
+        <div className="p-4 sm:px-5 sm:py-3.5 bg-[#0E151B] border-b border-[#1C2830] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <span className="text-[#019AA2] font-bold tracking-wider">LAB // 023</span>
             <span className="text-[#68747D]">|</span>
-            <span className="text-[#F3F6F7] font-medium">K-MEANS++ CONVERGENCE BENCHMARK</span>
+            <span className="text-[#F3F6F7] font-medium text-[11px] sm:text-xs">K-MEANS++ CONVERGENCE BENCHMARK</span>
           </div>
 
-          <div className="flex items-center gap-4 text-[11px]">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-[11px]">
             <div className="flex items-center gap-1.5">
               <span className="text-[#68747D]">STATUS:</span>
               <span
@@ -278,7 +278,7 @@ export const ByteLogicLabSection: React.FC = () => {
         {/* Instrument Body: Left Controls, Center Canvas, Right Metrics */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border-b border-[#1C2830]">
           {/* Left Parameter Panel (4 cols) */}
-          <div className="lg:col-span-4 p-5 sm:p-6 bg-[#0E151B] border-r border-[#1C2830] space-y-5 text-xs font-mono">
+          <div className="lg:col-span-4 p-4 sm:p-6 bg-[#0E151B] border-b lg:border-b-0 lg:border-r border-[#1C2830] space-y-5 text-xs font-mono">
             <div>
               <label className="text-[#68747D] uppercase tracking-wider block mb-2 font-semibold">
                 01 / Dataset Topology
@@ -294,7 +294,7 @@ export const ByteLogicLabSection: React.FC = () => {
                     key={d.id}
                     onClick={() => setDataset(d.id as any)}
                     className={cn(
-                      'p-2 rounded-[4px] border text-left text-[11px] transition-all cursor-pointer',
+                      'p-2 sm:p-2.5 rounded-[4px] border text-left text-[11px] transition-all cursor-pointer min-h-[38px]',
                       dataset === d.id
                         ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2] font-semibold'
                         : 'border-[#1C2830] bg-[#0A0F14] text-[#A8B3BA] hover:text-[#F3F6F7]'
@@ -313,13 +313,13 @@ export const ByteLogicLabSection: React.FC = () => {
                 </label>
                 <span className="text-[#019AA2] font-bold text-sm tabular-nums">{k}</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 {[2, 3, 4, 5, 6].map((num) => (
                   <button
                     key={num}
                     onClick={() => setK(num)}
                     className={cn(
-                      'flex-1 py-1.5 rounded-[4px] border text-center text-xs font-mono transition-all cursor-pointer',
+                      'flex-1 py-2 sm:py-1.5 rounded-[4px] border text-center text-xs font-mono transition-all cursor-pointer min-h-[38px] sm:min-h-0 flex items-center justify-center',
                       k === num
                         ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2] font-bold'
                         : 'border-[#1C2830] bg-[#0A0F14] text-[#A8B3BA] hover:text-[#F3F6F7]'
@@ -335,7 +335,7 @@ export const ByteLogicLabSection: React.FC = () => {
               <label className="text-[#68747D] uppercase tracking-wider block mb-2 font-semibold">
                 03 / Initializer Strategy
               </label>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {[
                   { id: 'kmeans++', label: 'K-Means++ (D²)', desc: 'Optimized dispersion' },
                   { id: 'random', label: 'Random (Lloyd)', desc: 'Standard uniform' },
@@ -344,7 +344,7 @@ export const ByteLogicLabSection: React.FC = () => {
                     key={init.id}
                     onClick={() => setInitMethod(init.id as any)}
                     className={cn(
-                      'p-2 rounded-[4px] border text-left transition-all cursor-pointer',
+                      'p-2.5 rounded-[4px] border text-left transition-all cursor-pointer min-h-[44px]',
                       initMethod === init.id
                         ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2]'
                         : 'border-[#1C2830] bg-[#0A0F14] text-[#A8B3BA] hover:text-[#F3F6F7]'
@@ -366,7 +366,7 @@ export const ByteLogicLabSection: React.FC = () => {
                 <button
                   onClick={() => setIsRunning(!isRunning)}
                   disabled={status === 'CONVERGED'}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-[4px] bg-[#019AA2] text-[#05070A] font-semibold text-xs hover:bg-[#02b3bc] transition-colors disabled:opacity-40 cursor-pointer"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 min-h-[44px] rounded-[4px] bg-[#019AA2] text-[#05070A] font-semibold text-xs hover:bg-[#02b3bc] transition-colors disabled:opacity-40 cursor-pointer"
                 >
                   {isRunning ? (
                     <>
@@ -383,7 +383,7 @@ export const ByteLogicLabSection: React.FC = () => {
                 <button
                   onClick={performStep}
                   disabled={status === 'CONVERGED' || isRunning}
-                  className="flex items-center justify-center p-2 rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#A8B3BA] hover:text-[#019AA2] hover:border-[#019AA2] transition-colors disabled:opacity-40 cursor-pointer"
+                  className="flex items-center justify-center p-2.5 min-h-[44px] min-w-[44px] rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#A8B3BA] hover:text-[#019AA2] hover:border-[#019AA2] transition-colors disabled:opacity-40 cursor-pointer"
                   title="Step 1 Iteration"
                   aria-label="Step 1 Iteration"
                 >
@@ -391,7 +391,7 @@ export const ByteLogicLabSection: React.FC = () => {
                 </button>
                 <button
                   onClick={resetExperiment}
-                  className="flex items-center justify-center p-2 rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] hover:border-[#A8B3BA] transition-colors cursor-pointer"
+                  className="flex items-center justify-center p-2.5 min-h-[44px] min-w-[44px] rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] hover:border-[#A8B3BA] transition-colors cursor-pointer"
                   title="Reset Points & Centroids"
                   aria-label="Reset Points & Centroids"
                 >
@@ -402,12 +402,12 @@ export const ByteLogicLabSection: React.FC = () => {
           </div>
 
           {/* Center 2D Coordinate Plane Visualization (8 cols) */}
-          <div className="lg:col-span-8 p-6 bg-[#05070A] flex flex-col justify-between relative min-h-[380px]">
+          <div className="lg:col-span-8 p-4 sm:p-6 bg-[#05070A] flex flex-col justify-between relative min-h-[300px] sm:min-h-[380px] overflow-hidden">
             {/* Coordinate Grid Canvas */}
             <div className="absolute inset-0 bl-cartesian-grid opacity-60 pointer-events-none" />
 
             {/* SVG Plot */}
-            <div className="relative z-10 w-full h-[320px] flex items-center justify-center">
+            <div className="relative z-10 w-full h-[260px] sm:h-[320px] flex items-center justify-center">
               <svg className="w-full h-full max-w-[500px]" viewBox="0 0 320 260">
                 {/* Voronoi Assignment Rays */}
                 {points.map((pt, idx) => {
@@ -505,14 +505,14 @@ export const ByteLogicLabSection: React.FC = () => {
             </div>
 
             {/* Bottom Real-time Telemetry Bar */}
-            <div className="relative z-10 pt-4 border-t border-[#1C2830] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#68747D]">
+            <div className="relative z-10 pt-4 border-t border-[#1C2830] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 text-[11px] sm:text-xs font-mono text-[#68747D]">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#019AA2]" />
                 <span>OBSERVATIONS: N = {points.length}</span>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                 <span>CONVERGENCE CRITERION: Δμ &lt; 0.5px</span>
-                <span>•</span>
+                <span className="hidden sm:inline">•</span>
                 <span className="text-[#A8B3BA]">MANIFOLD: 2D EUCLIDEAN</span>
               </div>
             </div>
@@ -520,8 +520,8 @@ export const ByteLogicLabSection: React.FC = () => {
         </div>
 
         {/* Experiment Benchmark Results Table */}
-        <div className="p-5 sm:p-6 bg-[#0E151B] text-xs font-mono">
-          <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#1C2830]">
+        <div className="p-4 sm:p-6 bg-[#0E151B] text-xs font-mono">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-[#1C2830]">
             <span className="text-[#A8B3BA] uppercase tracking-wider font-semibold flex items-center gap-2">
               <Activity className="w-3.5 h-3.5 text-[#019AA2]" />
               Comparative Empirical Benchmark
@@ -529,8 +529,8 @@ export const ByteLogicLabSection: React.FC = () => {
             <span className="text-[#68747D] text-[11px]">N = 100 Runs Monte-Carlo</span>
           </div>
 
-          <div className="overflow-x-auto bl-scrollbar">
-            <table className="w-full text-left">
+          <div className="w-full overflow-x-auto bl-scrollbar">
+            <table className="w-full min-w-[560px] text-left">
               <thead>
                 <tr className="text-[#68747D] border-b border-[#1C2830] text-[11px]">
                   <th className="pb-2 font-medium">STRATEGY</th>

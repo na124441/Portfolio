@@ -61,9 +61,10 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
 
       ctx.clearRect(0, 0, width, height);
 
-      // Monospace grid cell size in pixels
-      const charWidth = 10;
-      const charHeight = 14;
+      // Adaptive grid cell size in pixels for mobile vs desktop
+      const isMobile = width < 640;
+      const charWidth = isMobile ? 8 : 10;
+      const charHeight = isMobile ? 12 : 14;
 
       const cols = Math.floor(width / charWidth);
       const rows = Math.floor(height / charHeight);
@@ -254,7 +255,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
       }
 
       // Draw text buffer onto canvas
-      ctx.font = '10px "JetBrains Mono", monospace';
+      ctx.font = `${isMobile ? '8px' : '10px'} "JetBrains Mono", monospace`;
       ctx.textBaseline = 'top';
 
       for (let r = 0; r < rows; r++) {
@@ -311,7 +312,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(5,7,10,0.85)_0%,rgba(5,7,10,0.45)_60%,transparent_100%)]" />
 
       {/* Interactive Controls Bar: Centered or Top Right */}
-      <div className="absolute top-4 right-4 z-20 flex items-center gap-2 text-xs font-mono">
+      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex items-center gap-1.5 sm:gap-2 text-xs font-mono max-w-[calc(100vw-24px)]">
         {/* Shape Switcher Pills */}
         <div className="flex items-center gap-1 p-1 rounded-[4px] bg-[#0E151B]/80 backdrop-blur-sm border border-[#1C2830]">
           {shapes.map((s) => (
@@ -319,7 +320,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
               key={s.id}
               onClick={() => handleSelectShape(s.id)}
               className={cn(
-                'px-2 py-1 rounded-[3px] text-[10px] tracking-wider uppercase transition-colors cursor-pointer flex items-center gap-1',
+                'min-h-[30px] sm:min-h-[26px] px-2 py-1 rounded-[3px] text-[10px] tracking-wider uppercase transition-colors cursor-pointer flex items-center gap-1',
                 currentShape === s.id
                   ? 'bg-[#019AA2] text-[#05070A] font-bold'
                   : 'text-[#68747D] hover:text-[#A8B3BA]'
@@ -335,7 +336,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
         <button
           onClick={() => setIsPlaying(!isPlaying)}
           aria-label={isPlaying ? 'Pause 3D ASCII animation' : 'Play 3D ASCII animation'}
-          className="p-1.5 rounded-[4px] bg-[#0E151B]/80 backdrop-blur-sm border border-[#1C2830] text-[#A8B3BA] hover:text-[#019AA2] transition-colors cursor-pointer"
+          className="min-h-[32px] min-w-[32px] sm:min-h-0 sm:min-w-0 p-1.5 rounded-[4px] bg-[#0E151B]/80 backdrop-blur-sm border border-[#1C2830] text-[#A8B3BA] hover:text-[#019AA2] transition-colors cursor-pointer flex items-center justify-center"
         >
           {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
         </button>
@@ -347,7 +348,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
             angleBRef.current = 0;
           }}
           aria-label="Reset 3D ASCII orientation"
-          className="p-1.5 rounded-[4px] bg-[#0E151B]/80 backdrop-blur-sm border border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] transition-colors cursor-pointer hidden sm:block"
+          className="min-h-[32px] min-w-[32px] sm:min-h-0 sm:min-w-0 p-1.5 rounded-[4px] bg-[#0E151B]/80 backdrop-blur-sm border border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] transition-colors cursor-pointer hidden sm:flex items-center justify-center"
         >
           <RotateCcw className="w-3.5 h-3.5" />
         </button>

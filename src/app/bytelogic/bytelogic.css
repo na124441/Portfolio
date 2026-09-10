@@ -1,10 +1,29 @@
 /* ==========================================================================
-   ByteLogic Technical Design System & Styling
+   ByteLogic Technical Design System & Styling (Responsive V0.1)
    Authoritative Colors:
    Background: #05070A | Secondary: #0A0F14 | Surface: #0E151B | Elevated: #131C24
    Primary Text: #F3F6F7 | Secondary: #A8B3BA | Muted: #68747D
    Byte Blue: #132279 | Logic Cyan: #019AA2 | Border: #1C2830
    ========================================================================== */
+
+/* Strict Document & Viewport Overflow Containment */
+html.bl-html,
+body.bl-body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Fluid Responsive Headline */
+.bl-hero-title {
+  font-size: clamp(2rem, 5.5vw + 0.5rem, 4.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
 
 /* Subtle Cartesian Coordinate Drafting Grid */
 .bl-cartesian-grid {
@@ -34,19 +53,28 @@
   border: 1px solid #1C2830;
 }
 
-/* Controlled Technical Card Hover */
+/* Controlled Technical Card Hover & Touch Response */
 .bl-card-interactive {
   background-color: #0E151B;
   border: 1px solid #1C2830;
   transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 0;
+  width: 100%;
 }
 
-.bl-card-interactive:hover {
-  border-color: rgba(1, 154, 162, 0.45);
+@media (hover: hover) and (pointer: fine) {
+  .bl-card-interactive:hover {
+    border-color: rgba(1, 154, 162, 0.45);
+    background-color: #111A22;
+    transform: translateY(-2px);
+  }
+}
+
+.bl-card-interactive:active {
+  border-color: rgba(1, 154, 162, 0.6);
   background-color: #111A22;
-  transform: translateY(-2px);
 }
 
 /* Micro Technical Marks / Corner Ticks */
@@ -79,7 +107,11 @@
   border-right: 1.5px solid;
 }
 
-/* ByteLogic Custom Minimal Scrollbar */
+/* ByteLogic Custom Minimal Scrollbar with Momentum Touch */
+.bl-scrollbar {
+  -webkit-overflow-scrolling: touch;
+}
+
 .bl-scrollbar::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -98,17 +130,32 @@
   background: #019AA2;
 }
 
-/* KaTeX Math Formatting Overrides */
+/* KaTeX Math Formatting Overrides & Smooth Responsive Scrolling */
 .katex {
   font-size: 1.05em !important;
   color: #F3F6F7;
 }
 
 .katex-display {
-  margin: 0.75em 0 !important;
+  margin: 0.5em 0 !important;
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0.5em 0;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex-display::-webkit-scrollbar {
+  height: 4px;
+}
+
+.katex-display::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.katex-display::-webkit-scrollbar-thumb {
+  background: #1C2830;
+  border-radius: 2px;
 }
 
 /* Code Display Details */
@@ -116,6 +163,15 @@
   font-family: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-variant-numeric: tabular-nums;
   line-height: 1.6;
+}
+
+/* Touch targets */
+.bl-touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Accessible reduced motion */

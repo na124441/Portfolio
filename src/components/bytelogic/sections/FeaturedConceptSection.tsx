@@ -61,9 +61,9 @@ export const FeaturedConceptSection: React.FC = () => {
   }, [isAutoRunning]);
 
   return (
-    <section id="featured" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-[#1C2830]">
+    <section id="featured" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 border-t border-[#1C2830]">
       {/* Section Header */}
-      <div className="flex items-center justify-between pb-4 mb-8 border-b border-[#1C2830] text-xs font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-8 border-b border-[#1C2830] text-xs font-mono">
         <div className="flex items-center gap-2 text-[#019AA2]">
           <span className="font-semibold">02 / FEATURED CONCEPT</span>
         </div>
@@ -71,17 +71,17 @@ export const FeaturedConceptSection: React.FC = () => {
       </div>
 
       {/* Featured Card Wrapper */}
-      <div className="rounded-[6px] bg-[#0E151B] border border-[#1C2830] p-6 sm:p-8 lg:p-10 bl-tick-box">
+      <div className="rounded-[6px] bg-[#0E151B] border border-[#1C2830] p-4 sm:p-8 lg:p-10 bl-tick-box">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left: Metadata & Narrative */}
           <div className="lg:col-span-6 space-y-5">
-            <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
               <span className="px-2.5 py-1 rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#019AA2] font-semibold">
                 MACHINE LEARNING · CLUSTERING
               </span>
-              <span className="text-[#68747D]">•</span>
+              <span className="text-[#68747D] hidden sm:inline">•</span>
               <span className="text-[#A8B3BA]">INTERMEDIATE</span>
-              <span className="text-[#68747D]">•</span>
+              <span className="text-[#68747D] hidden sm:inline">•</span>
               <span className="text-[#68747D]">12 MIN DEEP DIVE</span>
             </div>
 
@@ -94,7 +94,7 @@ export const FeaturedConceptSection: React.FC = () => {
             </p>
 
             {/* LaTeX Equation Preview */}
-            <div className="my-2">
+            <div className="my-2 min-w-0">
               <EquationBlock
                 math="J = \sum_{j=1}^k \sum_{x_i \in S_j} \|x_i - \mu_j\|^2"
                 label="WCSS"
@@ -104,21 +104,21 @@ export const FeaturedConceptSection: React.FC = () => {
             </div>
 
             {/* Features list */}
-            <div className="grid grid-cols-2 gap-3 text-xs font-mono text-[#A8B3BA]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs font-mono text-[#A8B3BA]">
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+                <span className="w-1.5 h-1.5 bg-[#019AA2] shrink-0" />
                 <span>Voronoi Partitions</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+                <span className="w-1.5 h-1.5 bg-[#019AA2] shrink-0" />
                 <span>Monotonic Proof</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+                <span className="w-1.5 h-1.5 bg-[#019AA2] shrink-0" />
                 <span>NumPy from Scratch</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+                <span className="w-1.5 h-1.5 bg-[#019AA2] shrink-0" />
                 <span>Interactive Playground</span>
               </div>
             </div>
@@ -130,6 +130,7 @@ export const FeaturedConceptSection: React.FC = () => {
                 variant="primary"
                 size="md"
                 showArrow
+                className="w-full sm:w-auto"
               >
                 Explore Concept
               </ByteLogicButton>
@@ -137,15 +138,15 @@ export const FeaturedConceptSection: React.FC = () => {
           </div>
 
           {/* Right: Live Interactive Canvas Preview */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6 min-w-0">
             <div className="rounded-[6px] bg-[#070B0E] border border-[#1C2830] overflow-hidden bl-tick-box">
               {/* Toolbar */}
-              <div className="flex items-center justify-between px-4 py-2.5 bg-[#0A0F14] border-b border-[#1C2830] text-xs font-mono">
+              <div className="flex flex-wrap items-center justify-between gap-2 px-3.5 sm:px-4 py-2.5 bg-[#0A0F14] border-b border-[#1C2830] text-xs font-mono">
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#019AA2]" />
                   <span className="text-[#F3F6F7] font-medium">CENTROID RELOCATION</span>
                 </div>
-                <div className="flex items-center gap-3 text-[#68747D]">
+                <div className="flex items-center gap-3 text-[#68747D] text-[11px]">
                   <span>STEP: {iteration} / 2</span>
                   <span className={iteration === 2 ? 'text-[#019AA2]' : 'text-[#68747D]'}>
                     {iteration === 2 ? 'CONVERGED' : 'OPTIMIZING'}
@@ -154,7 +155,7 @@ export const FeaturedConceptSection: React.FC = () => {
               </div>
 
               {/* Coordinate Plane Preview */}
-              <div className="relative h-[280px] w-full p-4 flex items-center justify-center">
+              <div className="relative h-[220px] sm:h-[280px] w-full p-4 flex items-center justify-center">
                 <div className="absolute inset-0 bl-cartesian-grid opacity-40" />
 
                 <svg className="w-full h-full" viewBox="0 0 320 260">
@@ -239,25 +240,25 @@ export const FeaturedConceptSection: React.FC = () => {
               </div>
 
               {/* Bottom Interactive Controls */}
-              <div className="flex items-center justify-between px-4 py-2.5 bg-[#0A0F14] border-t border-[#1C2830] text-xs font-mono">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 px-3.5 sm:px-4 py-2.5 bg-[#0A0F14] border-t border-[#1C2830] text-xs font-mono">
                 <span className="text-[#68747D] text-[11px]">
                   {iteration === 0 && 'Initial random centroid placement'}
                   {iteration === 1 && 'Points assigned, recalculating mean vectors'}
                   {iteration === 2 && 'Optimal centroid positions converged'}
                 </span>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 self-end sm:self-auto">
                   <button
                     onClick={stepForward}
-                    className="px-2.5 py-1 rounded-[4px] bg-[#131C24] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] text-[11px] transition-colors cursor-pointer"
+                    className="min-h-[36px] sm:min-h-0 px-3 py-1.5 sm:py-1 rounded-[4px] bg-[#131C24] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] text-[11px] transition-colors cursor-pointer"
                   >
                     Step Iteration
                   </button>
                   <button
                     onClick={() => setIsAutoRunning(!isAutoRunning)}
-                    className="p-1.5 rounded-[4px] bg-[#131C24] border border-[#1C2830] hover:border-[#019AA2] text-[#019AA2] cursor-pointer"
+                    className="min-h-[36px] min-w-[36px] sm:min-h-0 sm:min-w-0 p-2 sm:p-1.5 rounded-[4px] bg-[#131C24] border border-[#1C2830] hover:border-[#019AA2] text-[#019AA2] cursor-pointer flex items-center justify-center"
                     aria-label={isAutoRunning ? 'Pause auto-run' : 'Auto run iterations'}
                   >
-                    {isAutoRunning ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+                    {isAutoRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
                   </button>
                 </div>
               </div>

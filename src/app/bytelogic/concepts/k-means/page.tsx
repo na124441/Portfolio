@@ -246,12 +246,12 @@ class KMeans:
         return self`;
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
       {/* Back to Concepts / Home Link */}
-      <div className="flex items-center justify-between pb-6 mb-8 border-b border-[#1C2830] text-xs font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-2 pb-4 sm:pb-6 mb-6 sm:mb-8 border-b border-[#1C2830] text-xs font-mono">
         <Link
           href="/bytelogic"
-          className="flex items-center gap-2 text-[#A8B3BA] hover:text-[#019AA2] transition-colors"
+          className="flex items-center gap-2 text-[#A8B3BA] hover:text-[#019AA2] transition-colors py-1 inline-flex"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>BACK TO BYTELOGIC PLATFORM</span>
@@ -260,44 +260,44 @@ class KMeans:
       </div>
 
       {/* Hero Header */}
-      <div className="space-y-4 mb-10">
+      <div className="space-y-4 mb-8 sm:mb-10">
         <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
           <span className="px-2.5 py-1 rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#019AA2] font-semibold">
             MACHINE LEARNING · CLUSTERING
           </span>
-          <span className="text-[#68747D]">•</span>
+          <span className="text-[#68747D] hidden sm:inline">•</span>
           <span className="text-[#A8B3BA]">INTERMEDIATE</span>
-          <span className="text-[#68747D]">•</span>
+          <span className="text-[#68747D] hidden sm:inline">•</span>
           <span className="text-[#68747D]">LLOYD&apos;S ALGORITHM</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-sans tracking-tight text-[#F3F6F7]">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold font-sans tracking-tight text-[#F3F6F7]">
           K-Means Clustering
         </h1>
 
-        <p className="text-base sm:text-lg text-[#A8B3BA] leading-relaxed font-sans max-w-3xl">
+        <p className="text-sm sm:text-base md:text-lg text-[#A8B3BA] leading-relaxed font-sans max-w-3xl">
           A visual and mathematical explanation of clustering through iterative expectation-maximization, Voronoi partitioning, and centroid displacement.
         </p>
 
         {/* Quick Format Action Links */}
-        <div className="pt-2 flex flex-wrap items-center gap-3 text-xs font-mono">
+        <div className="pt-2 flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs font-mono">
           <a
             href="#mathematics"
-            className="px-3 py-1.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] flex items-center gap-1.5 transition-colors"
+            className="px-3 py-1.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] flex items-center gap-1.5 transition-colors min-h-[36px] sm:min-h-0"
           >
             <BookOpen className="w-3.5 h-3.5 text-[#019AA2]" />
             <span>03 Derivation</span>
           </a>
           <a
             href="#visualization"
-            className="px-3 py-1.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] flex items-center gap-1.5 transition-colors"
+            className="px-3 py-1.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] flex items-center gap-1.5 transition-colors min-h-[36px] sm:min-h-0"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#019AA2]" />
             <span>05 Interactive Lab</span>
           </a>
           <a
             href="#implementation"
-            className="px-3 py-1.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] flex items-center gap-1.5 transition-colors"
+            className="px-3 py-1.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] flex items-center gap-1.5 transition-colors min-h-[36px] sm:min-h-0"
           >
             <Code className="w-3.5 h-3.5 text-[#019AA2]" />
             <span>06 NumPy Implementation</span>
@@ -306,15 +306,15 @@ class KMeans:
       </div>
 
       {/* Sticky Table of Contents Subnav */}
-      <nav aria-label="Section navigation" className="sticky top-16 sm:top-20 z-30 py-2.5 my-8 bg-[#05070A]/90 backdrop-blur-md border-y border-[#1C2830] overflow-x-auto bl-scrollbar">
-        <div className="flex items-center gap-2 text-xs font-mono whitespace-nowrap">
+      <nav aria-label="Section navigation" className="sticky top-14 sm:top-20 z-30 py-2 sm:py-2.5 my-6 sm:my-8 bg-[#05070A]/95 backdrop-blur-md border-y border-[#1C2830] max-w-full overflow-x-auto bl-scrollbar [touch-action:pan-x]">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-xs font-mono whitespace-nowrap px-1">
           {navSections.map((sec) => (
             <a
               key={sec.id}
               href={`#${sec.id}`}
               onClick={() => setActiveSection(sec.id)}
               className={cn(
-                'px-2.5 py-1 rounded-[4px] transition-colors',
+                'px-2.5 py-1.5 rounded-[4px] transition-colors min-h-[34px] sm:min-h-0 flex items-center',
                 activeSection === sec.id
                   ? 'bg-[#019AA2]/15 border border-[#019AA2] text-[#019AA2] font-semibold'
                   : 'text-[#68747D] hover:text-[#F3F6F7]'
@@ -464,7 +464,7 @@ class KMeans:
             The 5-Step Execution Cycle
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs font-mono">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs font-mono">
             {[
               { num: '01', title: 'INITIALIZE', desc: 'Select k initial centroids (Random or K-Means++ D²)' },
               { num: '02', title: 'DISTANCES', desc: 'Compute pairwise L2 distances from all N points to k centroids' },
@@ -474,7 +474,7 @@ class KMeans:
             ].map((step, idx) => (
               <div
                 key={step.num}
-                className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] flex flex-col justify-between bl-tick-box"
+                className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] flex flex-col justify-between bl-tick-box min-w-0"
               >
                 <div>
                   <div className="flex items-center justify-between text-[#019AA2] font-bold mb-2">
@@ -485,7 +485,7 @@ class KMeans:
                   <p className="text-[11px] font-sans text-[#A8B3BA] leading-relaxed">{step.desc}</p>
                 </div>
                 {idx < 4 && (
-                  <div className="mt-4 text-[#68747D] text-center hidden md:block">→</div>
+                  <div className="mt-4 text-[#68747D] text-center hidden lg:block">→</div>
                 )}
               </div>
             ))}
@@ -513,27 +513,27 @@ class KMeans:
           </p>
 
           {/* Canvas Box */}
-          <div className="rounded-[6px] bg-[#070B0E] border border-[#1C2830] overflow-hidden bl-tick-box shadow-2xl">
+          <div className="rounded-[6px] bg-[#070B0E] border border-[#1C2830] overflow-hidden bl-tick-box shadow-2xl min-w-0">
             {/* Top Toolbar */}
-            <div className="px-4 py-3 bg-[#0E151B] border-b border-[#1C2830] flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
-              <div className="flex items-center gap-3">
+            <div className="px-3.5 sm:px-4 py-2.5 sm:py-3 bg-[#0E151B] border-b border-[#1C2830] flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs font-mono">
+              <div className="flex items-center gap-2 sm:gap-3">
                 <span className="text-[#019AA2] font-semibold">STATE:</span>
                 <span className="px-2 py-0.5 rounded-[3px] bg-[#131C24] border border-[#1C2830] text-[#F3F6F7]">
                   {visStatus}
                 </span>
                 <span className="text-[#68747D]">|</span>
-                <span className="text-[#68747D]">ITERATION: {visIteration}</span>
+                <span className="text-[#68747D]">ITER: {visIteration}</span>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1.5 text-[#A8B3BA]">
-                  <span>LOSS (WCSS):</span>
+              <div className="flex items-center gap-3 sm:gap-4">
+                <div className="flex items-center gap-1.5 text-[#A8B3BA] text-[11px] sm:text-xs">
+                  <span>LOSS:</span>
                   <span className="text-[#019AA2] font-semibold tabular-nums">{visLoss.toLocaleString()}</span>
                 </div>
                 <button
                   onClick={() => setShowVoronoi(!showVoronoi)}
                   className={cn(
-                    'px-2.5 py-1 rounded-[4px] border text-[11px] transition-colors cursor-pointer',
+                    'px-2.5 py-1 rounded-[4px] border text-[11px] transition-colors cursor-pointer min-h-[32px] sm:min-h-0 flex items-center',
                     showVoronoi
                       ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2]'
                       : 'border-[#1C2830] bg-[#131C24] text-[#68747D]'
@@ -545,7 +545,7 @@ class KMeans:
             </div>
 
             {/* Canvas Area */}
-            <div className="relative h-[340px] w-full p-4 flex items-center justify-center">
+            <div className="relative h-[260px] sm:h-[340px] w-full p-4 flex items-center justify-center">
               <div className="absolute inset-0 bl-cartesian-grid opacity-50 pointer-events-none" />
 
               <svg className="w-full h-full max-w-[500px]" viewBox="0 0 320 260">
@@ -624,7 +624,7 @@ class KMeans:
             </div>
 
             {/* Bottom Controls */}
-            <div className="px-4 py-3 bg-[#0A0F14] border-t border-[#1C2830] flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+            <div className="px-3.5 sm:px-4 py-3 bg-[#0A0F14] border-t border-[#1C2830] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
               {/* K count selection */}
               <div className="flex items-center gap-2">
                 <span className="text-[#68747D]">K Clusters:</span>
@@ -633,7 +633,7 @@ class KMeans:
                     key={num}
                     onClick={() => setK(num)}
                     className={cn(
-                      'px-2 py-0.5 rounded-[3px] border transition-colors cursor-pointer',
+                      'px-2.5 py-1 sm:py-0.5 rounded-[3px] border transition-colors cursor-pointer min-h-[34px] sm:min-h-0 flex items-center justify-center',
                       k === num
                         ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2] font-bold'
                         : 'border-[#1C2830] bg-[#131C24] text-[#A8B3BA]'
@@ -645,25 +645,25 @@ class KMeans:
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 self-end sm:self-auto">
                 <button
                   onClick={stepVis}
                   disabled={visStatus === 'CONVERGED' || isAutoPlaying}
-                  className="px-3 py-1.5 rounded-[4px] bg-[#131C24] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] transition-colors disabled:opacity-40 cursor-pointer"
+                  className="px-3 py-1.5 rounded-[4px] bg-[#131C24] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] transition-colors disabled:opacity-40 cursor-pointer min-h-[38px] sm:min-h-0"
                 >
-                  Step (Next Phase)
+                  Step
                 </button>
                 <button
                   onClick={() => setIsAutoPlaying(!isAutoPlaying)}
                   disabled={visStatus === 'CONVERGED'}
-                  className="px-3 py-1.5 rounded-[4px] bg-[#019AA2] text-[#05070A] font-semibold hover:bg-[#02b3bc] transition-colors disabled:opacity-40 flex items-center gap-1.5 cursor-pointer"
+                  className="px-3 py-1.5 rounded-[4px] bg-[#019AA2] text-[#05070A] font-semibold hover:bg-[#02b3bc] transition-colors disabled:opacity-40 flex items-center gap-1.5 cursor-pointer min-h-[38px] sm:min-h-0"
                 >
                   {isAutoPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
                   <span>{isAutoPlaying ? 'Pause' : 'Auto Run'}</span>
                 </button>
                 <button
                   onClick={resetVis}
-                  className="p-1.5 rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] transition-colors cursor-pointer"
+                  className="p-2 sm:p-1.5 rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] transition-colors cursor-pointer min-h-[38px] min-w-[38px] sm:min-h-0 sm:min-w-0 flex items-center justify-center"
                   title="Reset Simulation"
                   aria-label="Reset Simulation"
                 >
@@ -717,8 +717,8 @@ class KMeans:
             Standard Lloyd initialization randomly selects $k$ observations uniformly, which frequently places two centroids within the same true cluster. Arthur &amp; Vassilvitskii (2007) introduced K-Means++, choosing subsequent centroids with probability proportional to their squared distance $D(x)^2$ from already chosen centroids, guaranteeing an $O(\log k)$ competitive ratio.
           </p>
 
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] text-xs font-mono overflow-x-auto bl-scrollbar">
-            <table className="w-full text-left">
+          <div className="p-3.5 sm:p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] text-xs font-mono overflow-x-auto bl-scrollbar w-full max-w-full">
+            <table className="w-full min-w-[540px] text-left">
               <thead>
                 <tr className="border-b border-[#1C2830] text-[#68747D]">
                   <th className="pb-2 font-medium">METHOD</th>
@@ -758,10 +758,10 @@ class KMeans:
             When K-Means Fails
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+            <div className="p-4 sm:p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box min-w-0">
               <div className="flex items-center gap-2 text-[#f59e0b] text-xs font-mono font-semibold">
-                <AlertTriangle className="w-3.5 h-3.5" />
+                <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                 <span>Non-Spherical Geometry</span>
               </div>
               <p className="text-xs sm:text-sm text-[#A8B3BA] leading-relaxed font-sans">
@@ -769,9 +769,9 @@ class KMeans:
               </p>
             </div>
 
-            <div className="p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box">
+            <div className="p-4 sm:p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box min-w-0">
               <div className="flex items-center gap-2 text-[#f59e0b] text-xs font-mono font-semibold">
-                <AlertTriangle className="w-3.5 h-3.5" />
+                <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                 <span>Varying Cluster Densities &amp; Sizes</span>
               </div>
               <p className="text-xs sm:text-sm text-[#A8B3BA] leading-relaxed font-sans">
@@ -779,9 +779,9 @@ class KMeans:
               </p>
             </div>
 
-            <div className="p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box">
+            <div className="p-4 sm:p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box min-w-0">
               <div className="flex items-center gap-2 text-[#f59e0b] text-xs font-mono font-semibold">
-                <AlertTriangle className="w-3.5 h-3.5" />
+                <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                 <span>Scale Sensitivity</span>
               </div>
               <p className="text-xs sm:text-sm text-[#A8B3BA] leading-relaxed font-sans">
@@ -789,9 +789,9 @@ class KMeans:
               </p>
             </div>
 
-            <div className="p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box">
+            <div className="p-4 sm:p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box min-w-0">
               <div className="flex items-center gap-2 text-[#f59e0b] text-xs font-mono font-semibold">
-                <AlertTriangle className="w-3.5 h-3.5" />
+                <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                 <span>Sensitivity to Extreme Outliers</span>
               </div>
               <p className="text-xs sm:text-sm text-[#A8B3BA] leading-relaxed font-sans">
@@ -818,7 +818,7 @@ class KMeans:
             In ByteLogic, no concept lives in isolation. Explore the theoretical connections from K-Means to general latent variable models:
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 font-mono text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 font-mono text-xs">
             {[
               {
                 title: 'Gaussian Mixture Models (GMM)',
@@ -842,7 +842,7 @@ class KMeans:
               <Link
                 key={idx}
                 href={item.href}
-                className="group p-5 rounded-[6px] bl-card-interactive bl-tick-box flex flex-col justify-between"
+                className="group p-4 sm:p-5 rounded-[6px] bl-card-interactive bl-tick-box flex flex-col justify-between min-w-0"
               >
                 <div>
                   <span className="text-[10px] text-[#019AA2] uppercase tracking-wider block mb-1">

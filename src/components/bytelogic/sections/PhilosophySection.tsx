@@ -56,9 +56,9 @@ export const PhilosophySection: React.FC = () => {
   ];
 
   return (
-    <section id="philosophy" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-[#1C2830]">
+    <section id="philosophy" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 border-t border-[#1C2830]">
       {/* Section Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-10 border-b border-[#1C2830] text-xs font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-8 sm:mb-10 border-b border-[#1C2830] text-xs font-mono">
         <div className="flex items-center gap-2 text-[#019AA2]">
           <span className="font-semibold">06 / PEDAGOGICAL PHILOSOPHY</span>
         </div>
@@ -66,7 +66,7 @@ export const PhilosophySection: React.FC = () => {
       </div>
 
       {/* Narrative Headline */}
-      <div className="max-w-3xl mb-12">
+      <div className="max-w-3xl mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl font-bold font-sans tracking-tight text-[#F3F6F7]">
           The First-Principles Knowledge Loop
         </h2>
@@ -76,7 +76,7 @@ export const PhilosophySection: React.FC = () => {
       </div>
 
       {/* 5-Stage Interactive Tabs & Display */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
         {/* Left Column: Stage Selector List (5 cols) */}
         <div className="lg:col-span-5 space-y-2 font-mono">
           {steps.map((step, idx) => {
@@ -86,7 +86,7 @@ export const PhilosophySection: React.FC = () => {
                 key={step.code}
                 onClick={() => setActiveStep(idx)}
                 className={cn(
-                  'w-full text-left p-4 rounded-[6px] border transition-all duration-200 cursor-pointer flex items-center justify-between group',
+                  'w-full text-left p-3.5 sm:p-4 min-h-[52px] rounded-[6px] border transition-all duration-200 cursor-pointer flex items-center justify-between group',
                   isSelected
                     ? 'bg-[#0E151B] border-[#019AA2] text-[#F3F6F7] shadow-lg'
                     : 'bg-[#0A0F14] border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] hover:border-[#1C2830]/80'
@@ -95,7 +95,7 @@ export const PhilosophySection: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <span
                     className={cn(
-                      'text-xs font-bold px-2 py-0.5 rounded-[3px] border',
+                      'text-xs font-bold px-2 py-0.5 rounded-[3px] border shrink-0',
                       isSelected
                         ? 'border-[#019AA2] text-[#019AA2] bg-[#019AA2]/15'
                         : 'border-[#1C2830] text-[#68747D] bg-[#131C24]'
@@ -127,13 +127,13 @@ export const PhilosophySection: React.FC = () => {
         </div>
 
         {/* Right Column: Detailed Stage Dossier (7 cols) */}
-        <div className="lg:col-span-7 rounded-[6px] bg-[#0E151B] border border-[#1C2830] p-6 sm:p-8 bl-tick-box">
-          <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#1C2830] text-xs font-mono">
+        <div className="lg:col-span-7 rounded-[6px] bg-[#0E151B] border border-[#1C2830] p-4 sm:p-6 lg:p-8 bl-tick-box min-w-0">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 sm:pb-4 mb-4 sm:mb-6 border-b border-[#1C2830] text-xs font-mono">
             <div className="flex items-center gap-2">
               <span className="text-[#019AA2] font-semibold">STAGE {steps[activeStep].code} /</span>
               <span className="text-[#F3F6F7] font-bold uppercase">{steps[activeStep].title}</span>
             </div>
-            <span className="text-[#68747D]">{steps[activeStep].subtitle}</span>
+            <span className="text-[#68747D] text-[11px] sm:text-xs">{steps[activeStep].subtitle}</span>
           </div>
 
           <p className="text-sm sm:text-base text-[#F3F6F7] leading-relaxed font-sans mb-4">
@@ -146,11 +146,11 @@ export const PhilosophySection: React.FC = () => {
           </div>
 
           {/* Mathematical / Vector / Code Artifact */}
-          <div>
+          <div className="min-w-0">
             <span className="text-xs font-mono text-[#68747D] uppercase tracking-wider block mb-2">
               Formal Expression / Syntax:
             </span>
-            <div className="p-4 rounded-[4px] bg-[#05070A] border border-[#1C2830] font-mono text-xs sm:text-sm text-[#019AA2] overflow-x-auto bl-scrollbar">
+            <div className="p-3 sm:p-4 rounded-[4px] bg-[#05070A] border border-[#1C2830] font-mono text-xs sm:text-sm text-[#019AA2] overflow-x-auto bl-scrollbar">
               <code>{steps[activeStep].mathOrCode}</code>
             </div>
           </div>
