@@ -59,7 +59,7 @@ export const HeroSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* LEFT COLUMN: Editorial Text Stack (Top-to-Bottom Flow) */}
-          <div className="lg:col-span-7 flex flex-col space-y-6 sm:space-y-7 z-10 text-left">
+          <div className="lg:col-span-7 flex flex-col items-center text-center space-y-6 sm:space-y-7 z-10">
             
             {/* 1. Status Badge (Consolidated single source of truth) */}
             <motion.div
@@ -77,7 +77,7 @@ export const HeroSection: React.FC = () => {
               initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display font-bold tracking-tight text-[#feffff] uppercase select-none text-[clamp(2.1rem,5.5vw,4.5rem)] leading-[1.06] text-left"
+              className="font-display font-bold tracking-tight text-[#feffff] uppercase select-none text-[clamp(2.1rem,5.5vw,4.5rem)] leading-[1.06] text-center"
             >
               <span className="inline-block whitespace-nowrap">NAYANT</span>{' '}
               <span className="inline-block whitespace-nowrap">SRIVASTAVA</span>
@@ -88,7 +88,7 @@ export const HeroSection: React.FC = () => {
               initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-              className="space-y-1"
+              className="space-y-1 text-center"
             >
               <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.22em] text-[#f6d009] font-semibold">
                 AI / ML Engineer
@@ -108,7 +108,7 @@ export const HeroSection: React.FC = () => {
               initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-              className="font-sans text-sm sm:text-base text-white/70 font-normal leading-relaxed max-w-xl"
+              className="font-sans text-sm sm:text-base text-white/70 font-normal leading-relaxed max-w-xl text-center mx-auto"
             >
               {PORTFOLIO_METADATA.thesis}
             </motion.p>
@@ -118,7 +118,7 @@ export const HeroSection: React.FC = () => {
               initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-2 text-xs font-mono text-white/45"
+              className="flex items-center justify-center gap-2 text-xs font-mono text-white/45"
             >
               <Terminal className="w-3.5 h-3.5 text-[#f6d009] flex-shrink-0" />
               <span>Foundations in {PORTFOLIO_METADATA.foundations}</span>
@@ -129,7 +129,7 @@ export const HeroSection: React.FC = () => {
               initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="pt-2 flex flex-wrap items-center gap-4"
+              className="pt-2 flex flex-wrap items-center justify-center gap-4"
             >
               <Button href="#projects" variant="primary" size="md">
                 View Projects
