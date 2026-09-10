@@ -132,13 +132,15 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
                 const luminanceIndex = Math.max(0, Math.min(CHAR_RAMP.length - 1, Math.floor((L + 1.2) * 3)));
                 charBuffer[idx] = CHAR_RAMP[luminanceIndex];
 
-                // Color based on luminance & depth
+                // Vibrant, high-visibility color ramp based on luminance & depth
                 if (luminanceIndex >= 8) {
-                  colorBuffer[idx] = '#019AA2'; // Logic Cyan highlight
+                  colorBuffer[idx] = '#00E5FF'; // High-voltage Cyan highlight
                 } else if (luminanceIndex >= 5) {
-                  colorBuffer[idx] = '#132279'; // Byte Blue structural
+                  colorBuffer[idx] = '#01CAD6'; // Logic Cyan primary
+                } else if (luminanceIndex >= 3) {
+                  colorBuffer[idx] = '#3874FF'; // Luminous Byte Blue
                 } else {
-                  colorBuffer[idx] = 'rgba(104, 116, 125, 0.45)'; // Muted gray
+                  colorBuffer[idx] = 'rgba(148, 163, 184, 0.75)'; // Bright structural silver
                 }
               }
             }
@@ -183,7 +185,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
               zBuffer[idx] = ooz;
               const isOuter = i < cubePoints.length / 2;
               charBuffer[idx] = isOuter ? (i % 2 === 0 ? '0' : '1') : '+';
-              colorBuffer[idx] = isOuter ? '#019AA2' : '#132279';
+              colorBuffer[idx] = isOuter ? '#00E5FF' : '#3874FF';
             }
           }
         });
@@ -214,7 +216,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
                 zBuffer[idx] = ooz;
                 const isStationary = Math.abs(u) < 0.25 && Math.abs(v) < 0.25;
                 charBuffer[idx] = isStationary ? '0' : (u * v > 0 ? '·' : ':');
-                colorBuffer[idx] = isStationary ? '#019AA2' : 'rgba(168, 179, 186, 0.4)';
+                colorBuffer[idx] = isStationary ? '#00E5FF' : (u * v > 0 ? '#3874FF' : '#94A3B8');
               }
             }
           }
@@ -247,7 +249,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
                 zBuffer[idx] = ooz;
                 const isEquator = Math.abs(lat) < 0.15;
                 charBuffer[idx] = isEquator ? '0' : (Math.sin(lon * 4) > 0 ? '1' : '·');
-                colorBuffer[idx] = isEquator ? '#019AA2' : 'rgba(19, 34, 121, 0.6)';
+                colorBuffer[idx] = isEquator ? '#00E5FF' : (Math.sin(lon * 4) > 0 ? '#3874FF' : 'rgba(148, 163, 184, 0.75)');
               }
             }
           }
@@ -302,14 +304,14 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
       ref={containerRef}
       className={cn('relative w-full h-full select-none overflow-hidden', className)}
     >
-      {/* 3D ASCII Canvas Background */}
+      {/* 3D ASCII Canvas Background - High Brightness & Clarity */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-45"
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-85 sm:opacity-90"
       />
 
-      {/* Radial Gradient Contrast Mask: Darkens the center so foreground typography has elite legibility */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(5,7,10,0.85)_0%,rgba(5,7,10,0.45)_60%,transparent_100%)]" />
+      {/* Subtle Contrast Vignette: Preserves bright center illumination while softly blending the perimeter */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_85%_75%_at_50%_50%,rgba(5,7,10,0.15)_0%,rgba(5,7,10,0.45)_65%,rgba(5,7,10,0.88)_100%)]" />
 
       {/* Interactive Controls Bar: Centered or Top Right */}
       <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex items-center gap-1.5 sm:gap-2 text-xs font-mono max-w-[calc(100vw-24px)]">
