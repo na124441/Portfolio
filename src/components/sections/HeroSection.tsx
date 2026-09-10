@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { PORTFOLIO_METADATA } from '@/data/portfolio';
 import { ArrowDown, ArrowRight, Terminal } from 'lucide-react';
 import { AsciiDonutBackground } from '@/components/ui/AsciiDonutBackground';
+import { EnergyField } from '@/components/ui/EnergyField';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -16,6 +17,7 @@ export const HeroSection: React.FC = () => {
   const portraitLayerRef = useRef<HTMLDivElement | null>(null);
   const portraitMaskRef = useRef<HTMLDivElement | null>(null);
   const haloRef = useRef<HTMLDivElement | null>(null);
+  const energyFieldRef = useRef<HTMLDivElement | null>(null);
   const lightSweepRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement | null>(null);
@@ -77,6 +79,15 @@ export const HeroSection: React.FC = () => {
         opacity: 0,
         scale: 0.7,
         rotation: -8,
+        transformOrigin: 'center center',
+      });
+
+      gsap.set(energyFieldRef.current, {
+        opacity: 0.04,
+        scale: 1.15,
+        y: 35,
+        x: isDesktop ? 60 : 0,
+        filter: 'brightness(0.3) blur(6px)',
         transformOrigin: 'center center',
       });
 
@@ -150,6 +161,19 @@ export const HeroSection: React.FC = () => {
           0
         )
         .to(
+          energyFieldRef.current,
+          {
+            opacity: 0.16,
+            scale: 1.1,
+            y: 20,
+            x: isDesktop ? 45 : 0,
+            filter: 'brightness(0.4) blur(4px)',
+            ease: 'power1.inOut',
+            duration: 0.15,
+          },
+          0
+        )
+        .to(
           scrollIndicatorRef.current,
           {
             opacity: 0,
@@ -190,6 +214,19 @@ export const HeroSection: React.FC = () => {
             opacity: 0.5,
             scale: 1.0,
             rotation: 0,
+            ease: 'power2.out',
+            duration: 0.3,
+          },
+          0.15
+        )
+        .to(
+          energyFieldRef.current,
+          {
+            opacity: 0.75,
+            scale: 1.03,
+            x: isDesktop ? 15 : 0,
+            y: 0,
+            filter: 'brightness(0.8) blur(1px)',
             ease: 'power2.out',
             duration: 0.3,
           },
@@ -257,6 +294,19 @@ export const HeroSection: React.FC = () => {
           0.45
         )
         .to(
+          energyFieldRef.current,
+          {
+            opacity: 1,
+            scale: 1,
+            x: 0,
+            y: -5,
+            filter: 'brightness(1.0) blur(0px)',
+            ease: 'power3.out',
+            duration: 0.25,
+          },
+          0.45
+        )
+        .to(
           textRef.current,
           {
             xPercent: isDesktop ? -27 : 0,
@@ -278,21 +328,32 @@ export const HeroSection: React.FC = () => {
           duration: 0.3,
         },
         0.7
-      ).to(
-        bottomBarRef.current,
-        {
-          opacity: 1,
-          y: 0,
-          ease: 'power2.out',
-          duration: 0.25,
-        },
-        0.75
-      );
+      )
+        .to(
+          energyFieldRef.current,
+          {
+            y: -20,
+            scale: 1.015,
+            ease: 'none',
+            duration: 0.3,
+          },
+          0.7
+        )
+        .to(
+          bottomBarRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            ease: 'power2.out',
+            duration: 0.25,
+          },
+          0.75
+        );
 
       // ---------------------------------------------------------------------
       // Micro-Interaction: Multi-Plane Mouse Depth Parallax via gsap.quickTo
       // ---------------------------------------------------------------------
-      if (portraitLayerRef.current && haloRef.current && overlayRef.current) {
+      if (portraitLayerRef.current && haloRef.current && overlayRef.current && energyFieldRef.current) {
         const quickPortraitX = gsap.quickTo(portraitLayerRef.current, 'x', {
           duration: 0.6,
           ease: 'power3.out',
@@ -307,6 +368,14 @@ export const HeroSection: React.FC = () => {
         });
         const quickHaloY = gsap.quickTo(haloRef.current, 'y', {
           duration: 0.9,
+          ease: 'power3.out',
+        });
+        const quickEnergyX = gsap.quickTo(energyFieldRef.current, 'x', {
+          duration: 0.75,
+          ease: 'power3.out',
+        });
+        const quickEnergyY = gsap.quickTo(energyFieldRef.current, 'y', {
+          duration: 0.75,
           ease: 'power3.out',
         });
         const quickOverlayX = gsap.quickTo(overlayRef.current, 'x', {
@@ -331,6 +400,8 @@ export const HeroSection: React.FC = () => {
           quickPortraitY(normY * 5 * factor - 5 - (progress > 0.7 ? ((progress - 0.7) / 0.3) * 15 : 0));
           quickHaloX(normX * 15 * factor);
           quickHaloY(normY * 10 * factor);
+          quickEnergyX(normX * 10 * factor);
+          quickEnergyY(normY * 6 * factor - 5 - (progress > 0.7 ? ((progress - 0.7) / 0.3) * 15 : 0));
           quickOverlayX(normX * 4 * factor);
           quickOverlayY(normY * 3 * factor);
         };
@@ -339,6 +410,8 @@ export const HeroSection: React.FC = () => {
           quickPortraitX(0);
           quickHaloX(0);
           quickHaloY(0);
+          quickEnergyX(0);
+          quickEnergyY(0);
           quickOverlayX(0);
           quickOverlayY(0);
         };
@@ -405,6 +478,10 @@ export const HeroSection: React.FC = () => {
             <div className="lg:col-span-5 flex items-center justify-center relative">
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] xl:w-[26rem] xl:h-[26rem] 2xl:w-[29rem] 2xl:h-[29rem] flex items-center justify-center">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%] rounded-full bg-[radial-gradient(circle,rgba(246,208,9,0.16)_0%,rgba(246,208,9,0.04)_45%,transparent_70%)] blur-3xl pointer-events-none z-0" />
+                {/* N-01 / ENERGY FIELD Static Fallback */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] pointer-events-none z-5 flex items-center justify-center">
+                  <EnergyField className="w-full h-full" reducedMotion={true} />
+                </div>
                 <div className="relative w-full h-full z-10">
                   <Image
                     src="/nayant-portrait-clean.png"
@@ -499,7 +576,15 @@ export const HeroSection: React.FC = () => {
                 aria-hidden="true"
               />
 
-              {/* 3. Masked Portrait Container with Light Sweep */}
+              {/* 3. N-01 / ENERGY FIELD: 3D Computational Torus + Traveling Flux + Particles */}
+              <div
+                ref={energyFieldRef}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[145%] h-[145%] pointer-events-none z-15 will-change-transform flex items-center justify-center"
+              >
+                <EnergyField className="w-full h-full" reducedMotion={prefersReducedMotion} />
+              </div>
+
+              {/* 4. Masked Portrait Container with Light Sweep */}
               <div
                 ref={portraitMaskRef}
                 className="relative w-full h-full z-20 overflow-hidden flex items-center justify-center"
