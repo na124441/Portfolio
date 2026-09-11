@@ -15,7 +15,7 @@ export const ByteLogicHero: React.FC = () => {
       </div>
 
       {/* Hero Foreground Content - Centered Adaptive Layout */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-10 pb-16 sm:pt-16 sm:pb-20 md:pt-20 md:pb-24 flex flex-col items-center text-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-10 pb-10 sm:pt-14 sm:pb-14 md:pt-16 md:pb-16 flex flex-col items-center text-center">
         {/* Top Platform Thesis Eyebrow Badge */}
         <div className="mb-3 sm:mb-5 flex items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-[4px] bg-[#0A0F14]/90 backdrop-blur-sm border border-[#1C2830] text-[10px] sm:text-xs font-mono text-[#019AA2] bl-tick-box">
           <span className="w-1.5 h-1.5 bg-[#019AA2] rounded-full animate-pulse" />
@@ -60,11 +60,6 @@ export const ByteLogicHero: React.FC = () => {
           <span className="hover:text-[#A8B3BA] transition-colors">SYSTEMS</span>
         </div>
 
-        {/* Supporting Paragraph */}
-        <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-[#A8B3BA] leading-relaxed max-w-2xl font-sans px-2">
-          An independent technical learning platform for understanding ideas, visualizing algorithms, implementing concepts, and experimenting with systems. Built for engineers seeking depth beyond abstractions.
-        </p>
-
         {/* 5-Stage Cognitive Loop with Adaptive Wrapping */}
         <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 py-2 rounded-[6px] bg-[#0E151B]/85 backdrop-blur-md border border-[#1C2830] text-[10px] sm:text-xs font-mono text-[#68747D] max-w-full">
           <span className="text-[#F3F6F7] font-semibold">UNDERSTAND</span>
@@ -99,6 +94,15 @@ export const ByteLogicHero: React.FC = () => {
           >
             Enter Lab
           </ByteLogicButton>
+        </div>
+      </div>
+
+      {/* Bottom Technical Focus Bar at Base of Hero */}
+      <div className="relative z-10 w-full border-t border-[#1C2830] bg-[#0A0F14]/85 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4">
+        <div className="max-w-3xl mx-auto flex items-center justify-center text-center">
+          <p className="text-xs sm:text-sm text-[#A8B3BA] leading-relaxed font-display tracking-wide font-normal">
+            An independent technical learning platform for understanding ideas, visualizing algorithms, implementing concepts, and experimenting with systems. Built for engineers seeking depth beyond abstractions.
+          </p>
         </div>
       </div>
     </section>
