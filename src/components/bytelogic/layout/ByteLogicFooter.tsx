@@ -39,28 +39,38 @@ export const ByteLogicFooter: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-[#A8B3BA]">
               <li>
-                <Link href="/bytelogic#paths" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
-                  01 / Learn Paths
+                <Link href="/bytelogic#idea" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
+                  01 / The Idea
                 </Link>
               </li>
               <li>
-                <Link href="/bytelogic#content" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
-                  02 / Video Lectures
+                <Link href="/bytelogic#loop" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
+                  02 / The Loop
                 </Link>
               </li>
               <li>
-                <Link href="/bytelogic/concepts/k-means#read" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
-                  03 / Written Articles
+                <Link href="/bytelogic/concepts/k-means" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
+                  03 / Featured Concept
+                </Link>
+              </li>
+              <li>
+                <Link href="/bytelogic#domains" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
+                  04 / Knowledge Domains
+                </Link>
+              </li>
+              <li>
+                <Link href="/bytelogic#archive" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
+                  05 / Technical Archive
                 </Link>
               </li>
               <li>
                 <Link href="/bytelogic#lab" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
-                  04 / Computational Lab
+                  06 / Computational Lab
                 </Link>
               </li>
               <li>
-                <Link href="/bytelogic#philosophy" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
-                  05 / Philosophy
+                <Link href="/bytelogic#method" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block">
+                  07 / Teaching Method
                 </Link>
               </li>
             </ul>

@@ -224,18 +224,28 @@ export const ByteLogicLabSection: React.FC = () => {
   }, [isRunning, status, points, centroids]);
 
   return (
-    <section id="lab" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 border-t border-[#1C2830]">
+    <section id="lab" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 border-t border-[#1C2830] relative z-10">
       {/* Section Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-8 border-b border-[#1C2830] text-xs font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-8 sm:mb-12 border-b border-[#1C2830] text-xs font-mono">
         <div className="flex items-center gap-2 text-[#019AA2]">
           <Terminal className="w-4 h-4" />
-          <span className="font-semibold">05 / BYTELOGIC LAB · INSTRUMENTATION</span>
+          <span className="font-semibold tracking-wider">06 / RUN AN EXPERIMENT</span>
         </div>
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[#68747D]">
-          <span>EXPERIMENT 023</span>
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[#68747D] text-[11px]">
+          <span>COMPUTATIONAL INSTRUMENTATION</span>
           <span className="hidden sm:inline">•</span>
-          <span className="text-[#019AA2]">INTERACTIVE ALGORITHM PLAYGROUND</span>
+          <span className="text-[#A8B3BA]">INTERACTIVE BENCHMARK</span>
         </div>
+      </div>
+
+      {/* Narrative Headline */}
+      <div className="max-w-3xl mb-8 sm:mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold font-sans tracking-tight text-[#F3F6F7]">
+          ByteLogic Lab: Don&apos;t Just Read It. Run It.
+        </h2>
+        <p className="mt-3 text-sm sm:text-base text-[#A8B3BA] leading-relaxed font-sans">
+          An interactive algorithm instrumentation sandbox. Stress-test K-Means against non-convex manifolds, tune cluster parameters in real time, and compare K-Means++ vs. standard random initialization.
+        </p>
       </div>
 
       {/* Main Lab Instrument Chassis */}
