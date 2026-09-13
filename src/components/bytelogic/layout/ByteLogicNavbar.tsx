@@ -50,7 +50,7 @@ export const ByteLogicNavbar: React.FC = () => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: 'Learn', href: '/bytelogic#paths' },
+    { label: 'Learn', href: '/bytelogic/learn' },
     { label: 'Watch', href: '/bytelogic#content' },
     { label: 'Read', href: '/bytelogic/concepts/k-means#read' },
     { label: 'Lab', href: '/bytelogic#lab' },
