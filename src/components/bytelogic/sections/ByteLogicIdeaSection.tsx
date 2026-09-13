@@ -297,7 +297,7 @@ export const ByteLogicIdeaSection: React.FC = () => {
                       {pillar.icon}
                     </div>
                     <span className="text-[#019AA2] font-semibold tracking-wider">
-                      {pillar.code} // PILLAR
+                      {pillar.code} PILLAR
                     </span>
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded-[3px] bg-white/[0.04] border border-white/[0.12] text-[#A8B3BA]">
