@@ -16,16 +16,8 @@ export const ByteLogicHero: React.FC = () => {
 
       {/* Hero Foreground Content - Centered Adaptive Layout */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-10 pb-10 sm:pt-14 sm:pb-14 md:pt-16 md:pb-16 flex flex-col items-center text-center">
-        {/* Top Platform Thesis Eyebrow Badge */}
-        <div className="mb-3 sm:mb-5 flex items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-[4px] bg-[#0A0F14]/90 backdrop-blur-sm border border-[#1C2830] text-[10px] sm:text-xs font-mono text-[#019AA2] bl-tick-box">
-          <span className="w-1.5 h-1.5 bg-[#019AA2] rounded-full animate-pulse" />
-          <span className="font-semibold tracking-wider">01 / PLATFORM THESIS</span>
-          <span className="text-[#68747D] hidden xs:inline">•</span>
-          <span className="text-[#A8B3BA] hidden xs:inline">FIRST-PRINCIPLES COMPUTATION</span>
-        </div>
-
         {/* Centerpiece Hero ByteLogic Logo - Takes ~75% of the middle space to command primary attention */}
-        <div className="w-full flex flex-col items-center justify-center my-3 sm:my-5 md:my-6">
+        <div className="w-full flex flex-col items-center justify-center mb-3 sm:mb-5 md:mb-6">
           <div className="relative w-[92%] sm:w-[82%] md:w-[75%] max-w-5xl flex items-center justify-center group">
             {/* Atmospheric Cyan Radial Backlight */}
             <div className="absolute -inset-6 sm:-inset-10 md:-inset-16 bg-[radial-gradient(ellipse_at_center,rgba(1,154,162,0.22)_0%,rgba(19,34,121,0.12)_45%,transparent_75%)] pointer-events-none filter blur-3xl opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
@@ -50,19 +42,8 @@ export const ByteLogicHero: React.FC = () => {
           UNDERSTAND THE <span className="text-[#019AA2] font-extrabold">LOGIC BEHIND</span> COMPUTATION.
         </h2>
 
-        {/* Technical Domain Line */}
-        <div className="mt-2.5 sm:mt-3 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 text-[10px] sm:text-xs md:text-sm font-mono tracking-wider text-[#68747D]">
-          <span className="hover:text-[#A8B3BA] transition-colors">AI</span>
-          <span className="text-[#019AA2]">•</span>
-          <span className="hover:text-[#A8B3BA] transition-colors">MACHINE LEARNING</span>
-          <span className="text-[#019AA2]">•</span>
-          <span className="hover:text-[#A8B3BA] transition-colors">MATHEMATICS</span>
-          <span className="text-[#019AA2]">•</span>
-          <span className="hover:text-[#A8B3BA] transition-colors">SYSTEMS</span>
-        </div>
-
         {/* 5-Stage Cognitive Loop with Adaptive Wrapping */}
-        <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 py-2 rounded-[6px] bg-[#0E151B]/85 backdrop-blur-md border border-[#1C2830] text-[10px] sm:text-xs font-mono text-[#68747D] max-w-full">
+        <div className="mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 py-2 rounded-[6px] bg-[#0E151B]/85 backdrop-blur-md border border-[#1C2830] text-[10px] sm:text-xs font-mono text-[#68747D] max-w-full">
           <span className="text-[#F3F6F7] font-semibold">UNDERSTAND</span>
           <span className="text-[#019AA2]">→</span>
           <span className="text-[#019AA2] font-semibold">VISUALIZE</span>

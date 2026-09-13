@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Play, Pause, RotateCcw, Box, Compass, Activity, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export type AsciiShape = 'torus' | 'tesseract' | 'saddle' | 'sphere';
@@ -305,13 +304,6 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
     };
   }, [currentShape, isPlaying]);
 
-  const shapes: { id: AsciiShape; label: string; code: string; icon: React.ReactNode }[] = [
-    { id: 'torus', label: 'Torus', code: '01', icon: <Compass className="w-3 h-3" /> },
-    { id: 'tesseract', label: 'Tesseract', code: '02', icon: <Box className="w-3 h-3" /> },
-    { id: 'saddle', label: 'Saddle Loss', code: '03', icon: <Activity className="w-3 h-3" /> },
-    { id: 'sphere', label: 'Manifold', code: '04', icon: <Globe className="w-3 h-3" /> },
-  ];
-
   return (
     <div
       ref={containerRef}
@@ -325,49 +317,6 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
 
       {/* Subtle Contrast Vignette: Preserves bright center illumination while softly blending the perimeter */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_85%_75%_at_50%_50%,rgba(5,7,10,0.15)_0%,rgba(5,7,10,0.45)_65%,rgba(5,7,10,0.88)_100%)]" />
-
-      {/* Interactive Controls Bar: Centered or Top Right */}
-      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex items-center gap-1.5 sm:gap-2 text-xs font-mono max-w-[calc(100vw-24px)]">
-        {/* Shape Switcher Pills */}
-        <div className="flex items-center gap-1 p-1 rounded-[4px] bg-[#0E151B]/80 backdrop-blur-sm border border-[#1C2830]">
-          {shapes.map((s) => (
-            <button
-              key={s.id}
-              onClick={() => handleSelectShape(s.id)}
-              className={cn(
-                'min-h-[30px] sm:min-h-[26px] px-2 py-1 rounded-[3px] text-[10px] tracking-wider uppercase transition-colors cursor-pointer flex items-center gap-1',
-                currentShape === s.id
-                  ? 'bg-[#019AA2] text-[#05070A] font-bold'
-                  : 'text-[#68747D] hover:text-[#A8B3BA]'
-              )}
-            >
-              <span>{s.code}</span>
-              <span className="hidden md:inline">{s.label}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Play/Pause Toggle */}
-        <button
-          onClick={() => setIsPlaying(!isPlaying)}
-          aria-label={isPlaying ? 'Pause 3D ASCII animation' : 'Play 3D ASCII animation'}
-          className="min-h-[32px] min-w-[32px] sm:min-h-0 sm:min-w-0 p-1.5 rounded-[4px] bg-[#0E151B]/80 backdrop-blur-sm border border-[#1C2830] text-[#A8B3BA] hover:text-[#019AA2] transition-colors cursor-pointer flex items-center justify-center"
-        >
-          {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-        </button>
-
-        {/* Reset Angle */}
-        <button
-          onClick={() => {
-            angleARef.current = 0;
-            angleBRef.current = 0;
-          }}
-          aria-label="Reset 3D ASCII orientation"
-          className="min-h-[32px] min-w-[32px] sm:min-h-0 sm:min-w-0 p-1.5 rounded-[4px] bg-[#0E151B]/80 backdrop-blur-sm border border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] transition-colors cursor-pointer hidden sm:flex items-center justify-center"
-        >
-          <RotateCcw className="w-3.5 h-3.5" />
-        </button>
-      </div>
     </div>
   );
 };
