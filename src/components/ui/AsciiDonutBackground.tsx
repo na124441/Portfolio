@@ -125,13 +125,28 @@ export const AsciiDonutBackground: React.FC<AsciiDonutProps> = ({
     let A = 0;
     let B = 0;
     let raf = 0;
-    let visible = !document.hidden;
+    let isIntersecting = true;
+    let isRunning = false;
+
+    function updateRunning() {
+      const shouldRun = isIntersecting && !document.hidden && !prefersReducedMotion;
+      if (shouldRun && !isRunning) {
+        isRunning = true;
+        tick();
+      } else if (!shouldRun && isRunning) {
+        isRunning = false;
+        cancelAnimationFrame(raf);
+      }
+    }
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isIntersecting = entry.isIntersecting;
+      updateRunning();
+    });
+    observer.observe(canvas);
 
     function onVisibility() {
-      visible = !document.hidden;
-      if (visible && !prefersReducedMotion) {
-        tick();
-      }
+      updateRunning();
     }
     document.addEventListener('visibilitychange', onVisibility);
 
@@ -226,14 +241,17 @@ export const AsciiDonutBackground: React.FC<AsciiDonutProps> = ({
       frame();
       A += 0.018;
       B += 0.009;
-      if (visible && !prefersReducedMotion) {
+      if (isIntersecting && !document.hidden && !prefersReducedMotion) {
         raf = requestAnimationFrame(tick);
+      } else {
+        isRunning = false;
       }
     }
 
     if (prefersReducedMotion) {
       frame(); // Static single frame for accessibility
     } else {
+      isRunning = true;
       tick();
     }
 
@@ -241,6 +259,7 @@ export const AsciiDonutBackground: React.FC<AsciiDonutProps> = ({
       cancelAnimationFrame(raf);
       window.removeEventListener('resize', resize);
       document.removeEventListener('visibilitychange', onVisibility);
+      observer.disconnect();
     };
   }, [widthFraction, opacity]);
 

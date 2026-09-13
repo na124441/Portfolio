@@ -1,9 +1,11 @@
 import React from 'react';
 import { ArchitectureNode, ArchitectureDataFlow } from '@/types/project';
-import { Badge } from '@/components/ui/Badge';
 import { ArrowDown, ArrowRight, Layers, Cpu, Radio, ShieldCheck, Activity } from 'lucide-react';
+import { AdctmControlLoopSvg } from '@/components/ui/AdctmControlLoopSvg';
+import { SpacecraftAvionicsSvg } from '@/components/ui/SpacecraftAvionicsSvg';
 
 interface ArchitectureDiagramProps {
+  projectSlug?: string;
   summary: string;
   nodes: ArchitectureNode[];
   dataFlows: ArchitectureDataFlow[];
@@ -19,21 +21,39 @@ const nodeIcons: Record<string, React.ReactNode> = {
 };
 
 export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
+  projectSlug,
   summary,
   nodes,
   dataFlows,
   componentRelationships,
 }) => {
+  // If flagship project with bespoke interactive SVG schematic, render it prominently
+  if (projectSlug === 'adctm') {
+    return (
+      <div className="space-y-6">
+        <AdctmControlLoopSvg />
+      </div>
+    );
+  }
+
+  if (projectSlug === 'self-aware-spacecraft') {
+    return (
+      <div className="space-y-6">
+        <SpacecraftAvionicsSvg />
+      </div>
+    );
+  }
+
   return (
-    <div className="glass-panel corner-brackets p-6 sm:p-8 relative">
+    <div className="surface-workspace p-6 sm:p-8 relative">
       {/* Top Bar / Schematic Metadata */}
       <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-white/10 font-mono text-xs">
         <div className="flex items-center gap-2.5 text-white/70">
           <span className="w-2 h-2 rounded-full bg-[#d4af37] radar-dot inline-block" />
-          <span>SYSTEM ARCHITECTURE DIAGRAM // v1.2</span>
+          <span>SYSTEM ARCHITECTURE SCHEMATIC // PIPELINE</span>
         </div>
         <div className="text-white/40">
-          STAGES: {nodes.length} · BUS: ZERO-COPY SHARED MEMORY
+          STAGES: {nodes.length} · BUS: ZERO-COPY PIPELINE
         </div>
       </div>
 

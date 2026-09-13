@@ -18,7 +18,7 @@ export const CurrentlyBuildingSection: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="py-16 sm:py-20 border-b border-white/10 relative">
+    <section id="currently-building" className="py-16 sm:py-20 border-b border-white/10 relative scroll-mt-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <SectionHeader
           number="02"
@@ -38,7 +38,7 @@ export const CurrentlyBuildingSection: React.FC = () => {
             >
               <Link
                 href={project.href || '#'}
-                className="block p-5 glass-panel glass-panel-hover corner-brackets h-full group transition-all"
+                className="block p-5 surface-workspace surface-workspace-hover h-full group transition-all"
               >
                 {/* Status + Category */}
                 <div className="flex items-center justify-between mb-3">
@@ -49,7 +49,7 @@ export const CurrentlyBuildingSection: React.FC = () => {
                     <span
                       className={`w-1.5 h-1.5 rounded-full ${STATUS_COLORS[project.status] || STATUS_COLORS.Active}`}
                     />
-                    <span className="font-mono text-[10px] text-white/40 uppercase tracking-wider">
+                    <span className="font-mono text-[10px] text-white/65 uppercase tracking-wider">
                       {project.status}
                     </span>
                   </div>

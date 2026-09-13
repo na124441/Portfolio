@@ -88,15 +88,23 @@ export const EnergyField: React.FC<EnergyFieldProps> = ({
     const PULSE_INTERVAL = 8; // Seconds between pulses
     const PULSE_DURATION = 1.8; // Duration of pulse in seconds
 
-    // Visibility Observer to save GPU/CPU cycles
+    // Visibility Observer to save GPU/CPU cycles by halting RAF offscreen
+    let isRunning = false;
     const observer = new IntersectionObserver(([entry]) => {
       isVisible = entry.isIntersecting;
+      if (isVisible && !isRunning && !reducedMotion) {
+        isRunning = true;
+        animId = requestAnimationFrame(render);
+      } else if (!isVisible) {
+        isRunning = false;
+        cancelAnimationFrame(animId);
+      }
     });
     observer.observe(canvas);
 
     const render = () => {
       if (!isVisible) {
-        animId = requestAnimationFrame(render);
+        isRunning = false;
         return;
       }
 
@@ -380,7 +388,7 @@ export const EnergyField: React.FC<EnergyFieldProps> = ({
         className="absolute bottom-1 right-1 sm:bottom-3 sm:right-3 z-20 font-mono text-[8px] sm:text-[9px] text-white/30 tracking-widest hidden md:flex flex-col items-end space-y-0.5 pointer-events-none"
         aria-hidden="true"
       >
-        <span className="text-[#f6d009]/60 font-semibold">N-01 // ENERGY FIELD</span>
+        <span className="text-[#dfb15b]/60 font-semibold">N-01 // ENERGY FIELD</span>
         <span>STATE: ACTIVE [87.4%]</span>
         <span className="hidden lg:inline">FLUX: T-GRAPH_04</span>
         <span className="hidden lg:inline">ROT: 0.18 RAD/S</span>

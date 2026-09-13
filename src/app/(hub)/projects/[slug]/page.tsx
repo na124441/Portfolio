@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/Button';
 import { MetricCard } from '@/components/ui/MetricCard';
 import { ArchitectureDiagram } from '@/components/ui/ArchitectureDiagram';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { CaseStudyFlightDeckHud } from '@/components/ui/CaseStudyFlightDeckHud';
+import { BenchmarkDeltaChart } from '@/components/ui/BenchmarkDeltaChart';
 import {
   ArrowLeft,
   ArrowRight,
@@ -43,23 +45,13 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
 
   return (
     <article className="pt-24 pb-24 sm:pt-32">
-      {/* Top Breadcrumbs & Return Bar */}
-      <div className="border-b border-white/10 bg-[#010a0b]/60 backdrop-blur-sm sticky top-[61px] z-30 py-3">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between font-mono text-xs">
-          <Link
-            href="/work"
-            className="flex items-center gap-2 text-white/60 hover:text-[#dfb15b] transition-colors"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>RETURN TO SELECTED PROJECTS</span>
-          </Link>
-          <div className="flex items-center gap-2 text-white/40">
-            <span>TIER {project.tier}</span>
-            <span>·</span>
-            <span className="text-[#dfb15b]">{project.status}</span>
-          </div>
-        </div>
-      </div>
+      {/* Sticky Flight-Deck Telemetry HUD */}
+      <CaseStudyFlightDeckHud
+        projectTitle={project.title}
+        projectSlug={project.slug}
+        tier={project.tier}
+        status={project.status}
+      />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 mt-10">
         {/* ============================================================ */}
@@ -268,6 +260,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
           />
 
           <ArchitectureDiagram
+            projectSlug={project.slug}
             summary={sections.system.diagramSummary}
             nodes={sections.system.nodes}
             dataFlows={sections.system.dataFlows}
@@ -438,7 +431,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
           </p>
 
           {/* Metric Cards Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
             {sections.results.metrics.map((m) => (
               <MetricCard
                 key={m.label}
@@ -450,6 +443,9 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
             ))}
           </div>
 
+          {/* Bespoke SVG Benchmark Delta / Pareto Visualization */}
+          <BenchmarkDeltaChart projectSlug={project.slug} />
+
           {/* Comparison Table */}
           <div className="border border-white/10 bg-white/[0.02] overflow-x-auto">
             <div className="p-4 border-b border-white/10 font-mono text-xs uppercase tracking-widest text-[#dfb15b]">
@@ -460,7 +456,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
                 <tr>
                   <th className="p-3">Evaluation Metric</th>
                   <th className="p-3">Baseline Architecture</th>
-                  <th className="p-3">Our T-GNN System</th>
+                  <th className="p-3">{project.slug === 'adctm' ? 'Our ADCTM System' : 'Our T-GNN System'}</th>
                   <th className="p-3 text-right">Delta</th>
                 </tr>
               </thead>

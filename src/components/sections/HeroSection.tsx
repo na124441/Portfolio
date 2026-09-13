@@ -125,14 +125,14 @@ export const HeroSection: React.FC = () => {
       });
 
       // ---------------------------------------------------------------------
-      // Master ScrollTrigger Timeline: 180vh-215vh Pinned Scrub (Desktop Only)
+      // Master ScrollTrigger Timeline: 135vh Streamlined Scrub (Desktop Only)
       // ---------------------------------------------------------------------
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
           end: 'bottom bottom',
-          scrub: 1.2,
+          scrub: 0.8,
         },
       });
 
@@ -557,7 +557,7 @@ export const HeroSection: React.FC = () => {
   }
 
   return (
-    <div ref={containerRef} className="relative w-full lg:h-[215vh] bg-[#010a0b] overflow-hidden">
+    <div ref={containerRef} className="relative w-full lg:h-[135vh] bg-[#010a0b] overflow-hidden">
       {/* 
         ========================================================================
         RESPONSIVE STAGE:
@@ -612,7 +612,7 @@ export const HeroSection: React.FC = () => {
           >
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full font-mono text-[11px] text-white/80 shadow-sm backdrop-blur-md mb-3 sm:mb-4 lg:mb-5">
-              <span className="w-2 h-2 rounded-full bg-[#f6d009] shadow-[0_0_10px_rgba(246,208,9,0.8)] radar-dot inline-block" />
+              <span className="w-2 h-2 rounded-full bg-[#d4af37] shadow-[0_0_10px_rgba(212,175,55,0.8)] radar-dot inline-block" />
               <span className="text-[#feffff] font-medium">{PORTFOLIO_METADATA.statusBadge}</span>
             </div>
 
@@ -626,7 +626,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Role & Positioning */}
             <div className="mt-3 sm:mt-4 lg:mt-5 space-y-1">
-              <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.22em] text-[#f6d009] font-bold">
+              <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.22em] text-[#dfb15b] font-bold">
                 {PORTFOLIO_METADATA.role}
               </p>
               <p className="font-mono text-[11px] sm:text-xs text-white/50 tracking-wider">
@@ -641,7 +641,7 @@ export const HeroSection: React.FC = () => {
 
             {/* Technical foundations line */}
             <div className="flex items-center justify-center md:justify-start lg:justify-center gap-2 text-xs font-mono text-white/45 mt-3 max-w-full">
-              <Terminal className="w-3.5 h-3.5 text-[#f6d009] flex-shrink-0" />
+              <Terminal className="w-3.5 h-3.5 text-[#dfb15b] flex-shrink-0" />
               <span className="text-[11px] sm:text-xs">Foundations in Artificial Intelligence, Systems, Graphics & Algorithms</span>
             </div>
 
@@ -649,7 +649,7 @@ export const HeroSection: React.FC = () => {
             <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-center justify-center md:justify-start lg:justify-center gap-3 w-full sm:w-auto">
               <a
                 href="/work"
-                className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-gradient-to-r from-[#d4af37] to-[#f6d009] hover:from-[#e5c04a] hover:to-[#ffd829] text-[#010a0b] font-mono text-xs uppercase font-bold tracking-wider rounded-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(246,208,9,0.25)] transition-all transform active:scale-95"
+                className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-gradient-to-r from-[#d4af37] to-[#dfb15b] hover:from-[#dfb15b] hover:to-[#edd899] text-[#010a0b] font-mono text-xs uppercase font-bold tracking-wider rounded-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(212,175,55,0.25)] transition-all transform active:scale-95"
               >
                 Explore Work
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -657,7 +657,7 @@ export const HeroSection: React.FC = () => {
 
               <a
                 href="/lab"
-                className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-white/[0.03] hover:bg-white/[0.08] border border-white/20 hover:border-[#f6d009]/60 text-white/90 font-mono text-xs uppercase tracking-wider rounded-sm flex items-center justify-center gap-2 transition-all backdrop-blur-sm active:scale-95"
+                className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-white/[0.03] hover:bg-white/[0.08] border border-white/20 hover:border-[#dfb15b]/60 text-white/90 font-mono text-xs uppercase tracking-wider rounded-sm flex items-center justify-center gap-2 transition-all backdrop-blur-sm active:scale-95"
               >
                 Enter the Lab
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -729,7 +729,7 @@ export const HeroSection: React.FC = () => {
               {/* 5. Technical Reticle Overlay (Hidden below md to eliminate mobile clutter) */}
               <div
                 ref={overlayRef}
-                className="absolute inset-[-10px] pointer-events-none z-30 hidden md:flex flex-col justify-between p-1 font-mono text-[9px] text-[#f6d009]/40 select-none tracking-widest will-change-transform"
+                className="absolute inset-[-10px] pointer-events-none z-30 hidden md:flex flex-col justify-between p-1 font-mono text-[9px] text-[#dfb15b]/40 select-none tracking-widest will-change-transform"
                 aria-hidden="true"
               >
                 <div className="flex justify-between items-start">
@@ -737,8 +737,8 @@ export const HeroSection: React.FC = () => {
                   <span>SYS:NEURAL ] +</span>
                 </div>
                 <div className="flex justify-between items-end">
-                  <span>+ [ 12.97°N</span>
-                  <span>77.59°E ] +</span>
+                  <span>+ [ 28.47°N</span>
+                  <span>77.50°E ] +</span>
                 </div>
               </div>
 
@@ -754,17 +754,19 @@ export const HeroSection: React.FC = () => {
 
         {/* 
           ======================================================================
-          SCROLL INDICATOR AFFORDANCE (Desktop only)
+          SCROLL INDICATOR AFFORDANCE (Desktop only — Interactive Quick Jump)
           ======================================================================
         */}
-        <div
-          ref={scrollIndicatorRef}
-          className="absolute bottom-16 sm:bottom-20 right-8 sm:right-12 hidden lg:flex flex-col items-center gap-2 font-mono text-[10px] tracking-[0.2em] text-white/40 pointer-events-none select-none will-change-transform"
+        <a
+          ref={scrollIndicatorRef as any}
+          href="#currently-building"
+          title="Jump directly to active initiatives and systems"
+          className="absolute bottom-16 sm:bottom-20 right-8 sm:right-12 hidden lg:flex flex-col items-center gap-2 font-mono text-[10px] tracking-[0.2em] text-white/40 hover:text-[#dfb15b] select-none will-change-transform transition-colors group cursor-pointer"
         >
-          <span className="uppercase">Scroll</span>
-          <div className="w-[1px] h-7 bg-gradient-to-b from-[#f6d009] to-transparent animate-pulse" />
-          <ArrowDown className="w-3 h-3 text-[#f6d009]" />
-        </div>
+          <span className="uppercase group-hover:text-[#dfb15b] transition-colors">Work ↓</span>
+          <div className="w-[1px] h-7 bg-gradient-to-b from-[#dfb15b] to-transparent group-hover:from-white transition-colors" />
+          <ArrowDown className="w-3 h-3 text-[#dfb15b] group-hover:translate-y-1 transition-transform" />
+        </a>
 
         {/* 
           ======================================================================
@@ -782,7 +784,7 @@ export const HeroSection: React.FC = () => {
             <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs font-mono text-white/60">
               {technicalPillars.map((pillar) => (
                 <span key={pillar} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#f6d009]/60 flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#dfb15b]/60 flex-shrink-0" />
                   <span className="hover:text-white transition-colors">{pillar}</span>
                 </span>
               ))}

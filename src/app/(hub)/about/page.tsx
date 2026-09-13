@@ -24,7 +24,7 @@ export default function AboutPage() {
           title="About & Engineering Lineage"
           subtitle="A comprehensive view of cognitive models, engineering methodology, and technical trajectory."
         />
-        <div className="p-6 sm:p-8 glass-panel corner-brackets space-y-4">
+        <div className="p-6 sm:p-8 surface-signature corner-brackets space-y-4">
           <div className="flex flex-wrap items-baseline gap-3">
             <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#feffff]">
               {PORTFOLIO_METADATA.name}
@@ -36,7 +36,7 @@ export default function AboutPage() {
           <p className="font-sans text-base text-white/80 leading-relaxed max-w-2xl">
             {PORTFOLIO_METADATA.tagline}
           </p>
-          <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono text-white/60">
+          <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono text-white/70">
             <span className="px-2.5 py-1 bg-white/5 border border-white/10">Location: {PORTFOLIO_METADATA.location}</span>
             <span className="px-2.5 py-1 bg-white/5 border border-white/10">Status: {PORTFOLIO_METADATA.statusBadge}</span>
           </div>
@@ -59,7 +59,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: idx * 0.08 }}
-              className="p-6 sm:p-7 glass-panel glass-panel-hover corner-brackets"
+              className="p-6 sm:p-7 surface-workspace surface-workspace-hover"
             >
               <div className="flex flex-wrap items-center gap-3 mb-3">
                 <span className="font-mono text-xs font-semibold text-[#dfb15b]">
@@ -69,7 +69,7 @@ export default function AboutPage() {
                   {layer.title}
                 </h3>
                 <span className="text-white/30 font-mono text-xs">/</span>
-                <span className="font-mono text-xs text-white/50 uppercase tracking-wider">
+                <span className="font-mono text-xs text-white/65 uppercase tracking-wider">
                   {layer.subtitle}
                 </span>
               </div>
@@ -97,7 +97,7 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.08 }}
-              className={`p-6 transition-all group glass-panel glass-panel-hover corner-brackets ${
+              className={`p-6 transition-all group surface-workspace surface-workspace-hover ${
                 index === 4 ? 'md:col-span-2' : ''
               }`}
             >
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 <span className="font-mono text-xs font-bold text-[#dfb15b] tracking-wider">
                   // 0{index + 1}
                 </span>
-                <span className="font-mono text-[11px] uppercase tracking-widest text-white/40">
+                <span className="font-mono text-[11px] uppercase tracking-widest text-white/60">
                   {principle.subtitle}
                 </span>
               </div>
@@ -128,7 +128,7 @@ export default function AboutPage() {
           title="Experience & Trajectory"
           subtitle="Academic path, community leadership, and autonomous systems research."
         />
-        <div className="relative border-l border-white/15 pl-6 sm:pl-8 ml-3 sm:ml-4 space-y-10">
+        <div className="relative border-l-2 border-[#dfb15b]/30 pl-6 sm:pl-8 ml-3 sm:ml-4 space-y-10">
           {JOURNEY_ITEMS.map((item, idx) => (
             <motion.div
               key={idx}
@@ -136,9 +136,11 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: idx * 0.08 }}
-              className="relative group"
+              className="relative group p-5 surface-workspace surface-workspace-hover"
             >
-              <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3 h-3 bg-[#010a0b] border-2 border-[#d4af37] group-hover:bg-[#d4af37] transition-all shadow-[0_0_8px_rgba(212,175,55,0.4)]" />
+              <div className="absolute -left-[32px] sm:-left-[41px] top-5 w-3.5 h-3.5 bg-[#010a0b] border-2 border-[#dfb15b] group-hover:bg-[#dfb15b] transition-all shadow-[0_0_10px_rgba(223,177,91,0.5)] flex items-center justify-center">
+                <span className="w-1 h-1 bg-[#dfb15b] group-hover:bg-[#010a0b] block" />
+              </div>
               <div className="space-y-2">
                 <div className="flex flex-wrap items-center gap-2.5">
                   <span className="font-mono text-xs font-semibold text-[#dfb15b]">
@@ -153,7 +155,7 @@ export default function AboutPage() {
                   <h3 className="font-display text-lg font-bold text-[#feffff]">
                     {item.role}
                   </h3>
-                  <span className="font-mono text-xs text-white/50">
+                  <span className="font-mono text-xs text-white/65">
                     @ {item.organization}
                   </span>
                 </div>
@@ -164,7 +166,7 @@ export default function AboutPage() {
                   {item.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="font-mono text-[10px] text-white/50 bg-white/5 px-2 py-0.5"
+                      className="font-mono text-[10px] text-white/65 bg-white/5 px-2 py-0.5"
                     >
                       {skill}
                     </span>

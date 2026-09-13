@@ -63,10 +63,10 @@ export default function WorkPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: idx * 0.1 }}
               onMouseMove={handleMouseMove}
-              className={`p-6 sm:p-8 relative transition-all duration-200 glass-panel glass-panel-hover spotlight-card corner-brackets ${
+              className={`p-6 sm:p-8 relative transition-all duration-200 spotlight-card ${
                 isFlagship
-                  ? 'border-[#d4af37]/35 hover:border-[#d4af37]/80 shadow-[0_0_24px_rgba(212,175,55,0.08)]'
-                  : 'border-white/10 hover:border-white/25'
+                  ? 'surface-signature corner-brackets'
+                  : 'surface-workspace surface-workspace-hover'
               }`}
             >
               {/* Header Metadata Bar */}
@@ -75,11 +75,11 @@ export default function WorkPage() {
                   <Badge variant={isFlagship ? 'gold' : 'default'} size="sm">
                     TIER {project.tier} · {isFlagship ? 'FLAGSHIP' : 'MAJOR'}
                   </Badge>
-                  <span className="font-mono text-xs text-white/40">
+                  <span className="font-mono text-xs text-white/65">
                     {project.timeline}
                   </span>
                 </div>
-                <div className="font-mono text-xs text-white/50">
+                <div className="font-mono text-xs text-white/65">
                   {project.status}
                 </div>
               </div>

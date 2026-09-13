@@ -148,6 +148,48 @@ body {
 }
 
 /* ==========================================================================
+   3-Tier Elevation Surface System
+   ========================================================================== */
+/* Level 01: Signature Focal Glass (Reserved for Tier S & HUD boundaries) */
+.surface-signature {
+  background: rgba(1, 10, 11, 0.85);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.75),
+              0 0 24px rgba(212, 175, 55, 0.08),
+              inset 0 1px 0 0 rgba(254, 255, 255, 0.15);
+}
+
+/* Level 02: Laboratory Workspace Deck (Standard interactive zones) */
+.surface-workspace {
+  background: rgba(1, 10, 11, 0.65);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(254, 255, 255, 0.07);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.surface-workspace-hover {
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.surface-workspace-hover:hover {
+  border-color: rgba(254, 255, 255, 0.16);
+  background: rgba(1, 10, 11, 0.78);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
+}
+
+/* Level 03: Inset Telemetry & Borderless Trays (Data streams, code chips) */
+.surface-telemetry {
+  background: rgba(254, 255, 255, 0.02);
+  border-top: 1px solid rgba(254, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(254, 255, 255, 0.04);
+}
+
+/* ==========================================================================
    Interactive Cursor Spotlight & Glow
    ========================================================================== */
 .spotlight-card {
@@ -308,6 +350,41 @@ p {
   -webkit-text-fill-color: transparent;
   animation: metallic-text-sweep 6s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Specular Metallic Gold Gradient Mask */
+.text-specular-gold {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 35%, rgba(223, 177, 91, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Animated SVG Conduit Signal Pulse */
+@keyframes signal-flow {
+  0% {
+    stroke-dashoffset: 64;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-signal-pulse {
+  stroke-dasharray: 6 14;
+  animation: signal-flow 2.2s linear infinite;
+}
+
+.animate-signal-pulse-fast {
+  stroke-dasharray: 4 10;
+  animation: signal-flow 1.2s linear infinite;
+}
+
+/* Focus Ring Token */
+.focus-ring-gold:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #010a0b, 0 0 0 4px #d4af37;
+}
+
 
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
