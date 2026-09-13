@@ -181,3 +181,63 @@ body.bl-body {
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   ByteLogic Section 01 Glassmorphism & Aurora Styling
+   ========================================================================== */
+
+.bl-glass-pillar-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+@media (max-width: 639px) {
+  .bl-glass-pillar-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+.bl-glass-pillar-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.bl-glass-pillar-card:hover {
+  border-color: rgba(45, 212, 191, 0.35);
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bl-glass-pillar-card:hover {
+    transform: none;
+  }
+}
+
+/* Shimmer Button Effect */
+.bl-btn-shimmer {
+  position: relative;
+  border-radius: 6px;
+  background: linear-gradient(#05070a, #05070a) padding-box,
+              linear-gradient(90deg, #2dd4bf, #7c3aed, #2dd4bf) border-box;
+  border: 1px solid transparent;
+  background-size: 300% 100%, 300% 100%;
+  animation: bl-shimmer-border 4s linear infinite;
+  color: #e5e7eb;
+}
+
+@keyframes bl-shimmer-border {
+  0% { background-position: 0% 0%, 0% 0%; }
+  100% { background-position: 0% 0%, 300% 0%; }
+}
