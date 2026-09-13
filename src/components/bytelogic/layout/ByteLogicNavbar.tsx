@@ -82,6 +82,7 @@ export const ByteLogicNavbar: React.FC = () => {
                 width={150}
                 height={50}
                 priority
+                unoptimized
                 className="h-6 sm:h-7 md:h-8 w-auto object-contain transition-opacity duration-200 group-hover:opacity-90"
               />
             </div>

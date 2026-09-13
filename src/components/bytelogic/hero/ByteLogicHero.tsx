@@ -37,6 +37,7 @@ export const ByteLogicHero: React.FC = () => {
                 width={1024}
                 height={341}
                 priority
+                unoptimized
                 className="w-full h-auto max-h-[130px] sm:max-h-[200px] md:max-h-[260px] lg:max-h-[320px] object-contain drop-shadow-[0_12px_40px_rgba(0,0,0,0.85)] transition-transform duration-300 hover:scale-[1.01]"
               />
               <span className="sr-only">ByteLogic</span>

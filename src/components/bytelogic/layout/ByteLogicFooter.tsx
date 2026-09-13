@@ -19,6 +19,7 @@ export const ByteLogicFooter: React.FC = () => {
                 alt="ByteLogic"
                 width={150}
                 height={50}
+                unoptimized
                 className="h-6 sm:h-7 w-auto object-contain"
               />
             </Link>
