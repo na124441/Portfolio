@@ -9,6 +9,7 @@ export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
+    let isMounted = true;
     let lenis: Lenis | null = null;
     let updateTicker: ((time: number) => void) | null = null;
     let activeGsap: typeof import('gsap').default | null = null;
@@ -17,6 +18,7 @@ export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children
       import('gsap'),
       import('gsap/ScrollTrigger'),
     ]).then(([{ default: gsap }, { ScrollTrigger }]) => {
+      if (!isMounted) return;
       gsap.registerPlugin(ScrollTrigger);
       activeGsap = gsap;
 
@@ -38,6 +40,7 @@ export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     return () => {
+      isMounted = false;
       if (updateTicker && activeGsap) {
         activeGsap.ticker.remove(updateTicker);
       }

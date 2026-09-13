@@ -54,6 +54,21 @@ export const HeroSection: React.FC = () => {
     const mm = gsap.matchMedia();
 
     mm.add('(min-width: 1024px)', () => {
+      // Ensure all required target elements are mounted
+      if (
+        !portraitLayerRef.current ||
+        !portraitMaskRef.current ||
+        !haloRef.current ||
+        !energyFieldRef.current ||
+        !lightSweepRef.current ||
+        !textRef.current ||
+        !scrollIndicatorRef.current ||
+        !bottomBarRef.current ||
+        !containerRef.current
+      ) {
+        return;
+      }
+
       // ---------------------------------------------------------------------
       // Initial Desktop State: Portrait shrouded in shadow, masked, blurred
       // ---------------------------------------------------------------------
@@ -429,21 +444,23 @@ export const HeroSection: React.FC = () => {
       return () => {
         if (cleanupMouse) cleanupMouse();
 
-        gsap.set(
-          [
-            portraitLayerRef.current,
-            portraitMaskRef.current,
-            haloRef.current,
-            energyFieldRef.current,
-            lightSweepRef.current,
-            textRef.current,
-            scrollIndicatorRef.current,
-            bottomBarRef.current,
-          ],
-          {
+        // Safely extract only mounted elements to prevent "Cannot read properties of null (reading '_gsap')" on unmount
+        const targets = [
+          portraitLayerRef.current,
+          portraitMaskRef.current,
+          haloRef.current,
+          energyFieldRef.current,
+          lightSweepRef.current,
+          textRef.current,
+          scrollIndicatorRef.current,
+          bottomBarRef.current,
+        ].filter((el): el is HTMLDivElement => Boolean(el));
+
+        if (targets.length > 0) {
+          gsap.set(targets, {
             clearProps: 'all',
-          }
-        );
+          });
+        }
       };
     });
 
