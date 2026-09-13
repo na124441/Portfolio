@@ -130,13 +130,12 @@ export const ByteLogicNavbar: React.FC = () => {
               </kbd>
             </button>
 
-            {/* Bridge to Parent Portfolio */}
+            {/* Bridge to Parent Tech Hub */}
             <Link
               href="/"
-              className="flex items-center gap-1 px-2.5 lg:px-3 py-1.5 rounded-[4px] border border-[#1C2830] bg-transparent text-[#68747D] hover:text-[#A8B3BA] hover:border-[#A8B3BA]/40 text-xs font-mono transition-colors"
+              className="flex items-center gap-1 px-2.5 lg:px-3 py-1.5 rounded-[4px] border border-[#1C2830] bg-transparent text-[#68747D] hover:text-[#019AA2] hover:border-[#019AA2]/40 text-xs font-mono transition-colors"
             >
-              <span className="hidden lg:inline">Portfolio</span>
-              <ArrowUpRight className="w-3 h-3" />
+              <span>← Hub</span>
             </Link>
           </div>
 
@@ -227,14 +226,13 @@ export const ByteLogicNavbar: React.FC = () => {
               </Link>
 
               <div className="flex items-center justify-between text-xs font-mono pt-1">
-                <span className="text-[#68747D]">Return to portfolio:</span>
+                <span className="text-[#68747D]">Return to base:</span>
                 <Link
                   href="/"
                   onClick={() => setMobileMenuOpen(false)}
                   className="min-h-[36px] flex items-center gap-1 text-[#A8B3BA] hover:text-[#019AA2] py-1 px-2 rounded hover:bg-[#0E151B]"
                 >
-                  <span>Portfolio</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  <span>← Tech Hub</span>
                 </Link>
               </div>
             </div>

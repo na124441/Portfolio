@@ -24,22 +24,46 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://nayantsrivastava.in'),
   title: {
-    template: '%s | Nayant Srivastava & ByteLogic',
-    default: 'Nayant Srivastava — AI / ML Engineer & ByteLogic Platform',
+    template: '%s — Nayant Srivastava',
+    default: 'Nayant Srivastava — Personal Website & Engineering Tech Hub',
   },
   description:
-    'Engineering portfolio of Nayant Srivastava and home of ByteLogic: a technical learning and computational knowledge platform.',
+    'Personal Website & Engineering Tech Hub of Nayant Srivastava. Exploring computation through artificial intelligence, systems, algorithms, mathematics, graphics, and interactive technology.',
   keywords: [
     'Nayant Srivastava',
     'ByteLogic',
-    'AI Engineer',
-    'ML Engineer',
-    'Reinforcement Learning',
-    'Intelligent Systems',
+    'Engineer',
+    'Researcher',
+    'Builder',
     'Systems Engineering',
-    'Computational Platform',
+    'Artificial Intelligence',
+    'Reinforcement Learning',
+    'Computer Graphics',
+    'Vulkan',
+    'Algorithms',
+    'Computational Mathematics',
+    'Personal Tech Hub',
   ],
+  authors: [{ name: 'Nayant Srivastava', url: 'https://nayantsrivastava.in' }],
+  creator: 'Nayant Srivastava',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://nayantsrivastava.in',
+    title: 'Nayant Srivastava — Personal Website & Engineering Tech Hub',
+    description:
+      'Exploring computation through artificial intelligence, systems, algorithms, mathematics, graphics, and interactive technology.',
+    siteName: 'Nayant Srivastava',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nayant Srivastava — Personal Website & Engineering Tech Hub',
+    description:
+      'Exploring computation through artificial intelligence, systems, algorithms, mathematics, graphics, and interactive technology.',
+    creator: '@nayantsrivastava',
+  },
 };
 
 export default function RootLayout({

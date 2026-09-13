@@ -47,7 +47,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
       <div className="border-b border-white/10 bg-[#010a0b]/60 backdrop-blur-sm sticky top-[61px] z-30 py-3">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between font-mono text-xs">
           <Link
-            href="/#projects"
+            href="/work"
             className="flex items-center gap-2 text-white/60 hover:text-[#dfb15b] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />

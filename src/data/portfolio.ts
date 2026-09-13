@@ -34,165 +34,202 @@ export interface AboutLayer {
   content: string;
 }
 
+export interface CurrentProject {
+  name: string;
+  description: string;
+  category: string;
+  status: 'Active' | 'Development' | 'Building' | 'Long-term' | 'Community';
+  href?: string;
+}
+
 export const PORTFOLIO_METADATA = {
   name: 'Nayant Srivastava',
-  role: 'AI / ML Engineer',
-  specialization: 'Reinforcement Learning + Intelligent Systems',
-  foundations: 'Systems Engineering, DSA, Distributed Architecture & Applied Mathematics',
-  thesis: 'I build intelligent systems and explore the engineering problems behind them.',
-  location: 'Bangalore, India',
-  statusBadge: 'Open to AI/ML & Systems Roles',
+  role: 'Engineer · Researcher · Builder',
+  tagline: 'Exploring computation through artificial intelligence, systems, algorithms, mathematics, graphics, and interactive technology.',
+  thesis: 'I build systems at the intersection of artificial intelligence, software engineering, computation, and interactive technology.',
+  location: 'Greater Noida, India',
+  statusBadge: 'Building & Learning',
   email: 'nayant@example.com',
   githubUrl: 'https://github.com/nayantsrivastava',
-  linkedinUrl: 'https://linkedin.com/in/nayantsrivastava',
-  resumeUrl: '#', // placeholder CV link
+  linkedinUrl: 'https://linkedin.com/in/nayant-srivastava-24b315228',
+  resumeUrl: '#',
 };
+
+export const CURRENT_PROJECTS: CurrentProject[] = [
+  {
+    name: 'MINDLITE',
+    description: 'Efficient AI / ML experimentation',
+    category: 'AI · Systems',
+    status: 'Active',
+    href: '/build#mindlite',
+  },
+  {
+    name: 'OMNIX ENGINE',
+    description: 'Experimental 3D engine in C++ / Vulkan',
+    category: 'Graphics · Systems',
+    status: 'Development',
+    href: '/build#omnix',
+  },
+  {
+    name: 'BYTELOGIC',
+    description: 'Technical learning & visualization platform',
+    category: 'Education · Engineering',
+    status: 'Building',
+    href: '/bytelogic',
+  },
+  {
+    name: 'ATTACK ON CODE',
+    description: 'Developer community & open source',
+    category: 'Community · Open Source',
+    status: 'Active',
+    href: '/build#aoc',
+  },
+  {
+    name: 'LAST TRANSISTOR',
+    description: 'Long-term AAA game development',
+    category: 'Game Development',
+    status: 'Long-term',
+    href: '/build#last-transistor',
+  },
+];
 
 export const NOW_FOCUS: NowItem[] = [
   {
     key: 'building',
     label: 'Building',
-    description: 'Autonomous telemetry anomaly reasoning engine using Temporal Graph Networks with quantized edge execution.',
-  },
-  {
-    key: 'researching',
-    label: 'Researching',
-    description: 'Sample-efficient offline reinforcement learning under non-stationary dynamics and distribution shifts.',
+    description: 'MINDLITE — efficient ML experimentation framework. ADCTM case study. Omnix Engine rendering pipeline.',
   },
   {
     key: 'learning',
     label: 'Learning',
-    description: 'Distributed consensus algorithms (Raft internals) and Linux eBPF telemetry hooks for low-overhead model observability.',
+    description: 'Data Structures & Algorithms. Unsupervised Learning. Systems Design. ML optimization techniques.',
   },
   {
-    key: 'contributing',
-    label: 'Contributing',
-    description: 'Gymnasium benchmark environments and memory-profiling tooling for PyTorch model inference.',
+    key: 'exploring',
+    label: 'Exploring',
+    description: 'AI agents and coding assistants. Efficient inference. Graphics programming and GPU compute.',
+  },
+  {
+    key: 'creating',
+    label: 'Creating',
+    description: 'ByteLogic interactive concept visualizations. Attack On Code open-source initiatives.',
   },
   {
     key: 'open_to',
-    label: 'Open to',
-    description: 'AI/ML Engineering, Intelligent Systems Architecture, and High-Performance ML Systems opportunities.',
+    label: 'Looking for',
+    description: 'Engineering internships. Research collaborations. Technical community partnerships.',
   },
 ];
 
 export const PHILOSOPHY_PRINCIPLES: PhilosophyPrinciple[] = [
   {
-    title: 'Build',
+    title: 'Evidence Over Claims',
+    subtitle: 'Show, don\'t tell',
+    description: 'Every capability claim must be backed by a project, experiment, benchmark, or implementation. Skills without artifacts are just words.',
+  },
+  {
+    title: 'Build to Learn',
     subtitle: 'From theory to systems',
-    description: 'Turn mathematical formulations and model architectures into resilient, production-grade systems rather than leaving them as isolated notebook prototypes.',
+    description: 'Understanding comes from building. Turn mathematical formulations and model architectures into working systems, not just notebook prototypes.',
   },
   {
-    title: 'Measure',
+    title: 'Systems Over Spectacle',
+    subtitle: 'Depth over decoration',
+    description: 'Prioritize architectural clarity, performance measurement, and failure analysis over superficial demonstrations and visual polish.',
+  },
+  {
+    title: 'Long-Term Thinking',
+    subtitle: 'Compound over time',
+    description: 'Build infrastructure that compounds: knowledge systems, reusable frameworks, documented experiments. Every project should make the next one easier.',
+  },
+  {
+    title: 'Measure, Don\'t Speculate',
     subtitle: 'Empirical over intuitive',
-    description: "Don't rely on intuition when an empirical experiment, profiler trace, loss curve, or ablation study can answer the question with certainty.",
-  },
-  {
-    title: 'Break',
-    subtitle: 'Search for failure modes',
-    description: 'Actively stress-test boundaries, perturb input distributions, simulate adversarial telemetry, and probe edge cases to uncover latent failure modes early.',
-  },
-  {
-    title: 'Understand',
-    subtitle: 'Full-stack mechanical sympathy',
-    description: 'Investigate why systems succeed or degrade — from algorithmic gradient flows and loss formulations down to CPU/GPU memory caches and network bandwidth.',
-  },
-  {
-    title: 'Improve',
-    subtitle: 'Evidence-driven iteration',
-    description: 'Iterate systematically based on verified quantitative benchmark data and disciplined root-cause diagnoses, never speculative premature optimization.',
+    description: 'Don\'t rely on intuition when a profiler trace, benchmark, ablation study, or experiment can answer the question with certainty.',
   },
 ];
 
 export const JOURNEY_ITEMS: JourneyItem[] = [
   {
+    period: '2024 — Present',
+    role: 'B.Tech CSE + AI/ML',
+    organization: 'AKTU University',
+    type: 'Milestone',
+    description: 'Studying Computer Science & Engineering with specialization in Artificial Intelligence and Machine Learning. Building projects across AI, systems, algorithms, and game technology.',
+    skills: ['Python', 'C++', 'Machine Learning', 'DSA', 'Systems Design'],
+  },
+  {
     period: '2025 — Present',
-    role: 'Lead ML Systems Architect',
-    organization: 'Self-Aware Spacecraft Project',
-    type: 'Research',
-    description: 'Designing real-time anomaly detection and causal reasoning engines for high-dimensional satellite telemetry streams under sub-20ms latency limits.',
-    skills: ['PyTorch', 'Temporal GNN', 'C++20', 'ONNX Runtime', 'eBPF'],
-  },
-  {
-    period: '2024 — 2025',
-    role: 'AI / ML Engineering Fellow',
-    organization: 'Autonomous Agents Lab',
+    role: 'Founder & Lead Developer',
+    organization: 'Attack On Code',
     type: 'Role',
-    description: 'Engineered reinforcement learning training pipelines, reward shaping frameworks, and vectorized environment rollouts for complex continuous-control tasks.',
-    skills: ['Reinforcement Learning', 'Gymnasium', 'Ray Tune', 'Distributed Training'],
+    description: 'Building a developer community focused on open-source collaboration, technical education, and engineering culture.',
+    skills: ['Community Building', 'Open Source', 'Technical Leadership'],
   },
   {
-    period: '2023 — 2024',
-    role: 'Systems & Algorithms Researcher',
-    organization: 'High-Performance Computing Group',
+    period: '2025 — Present',
+    role: 'Independent Researcher & Builder',
+    organization: 'Personal Projects',
     type: 'Research',
-    description: 'Investigated cache-oblivious algorithms, high-throughput feature caching layers, and parallel graph partitioning algorithms for large-scale data structures.',
-    skills: ['DSA', 'C++', 'System Design', 'Linux Internals', 'Concurrency'],
-  },
-  {
-    period: '2023',
-    role: 'First Place Winner',
-    organization: 'National AI Systems Hackathon',
-    type: 'Hackathon',
-    description: 'Constructed an edge computer-vision pipeline running localized inference on constrained hardware with real-time audio-visual feedback loops.',
-    skills: ['Edge ML', 'TensorRT', 'Embedded Linux', 'Real-time Systems'],
+    description: 'Designing and implementing ADCTM, MINDLITE, Omnix Engine, Nevula, and ByteLogic — spanning AI/ML, systems engineering, graphics, and technical education.',
+    skills: ['AI/ML', 'Systems', 'C++', 'Graphics', 'Technical Writing'],
   },
 ];
 
 export const CONTRIBUTIONS: ContributionItem[] = [
   {
     category: 'Open Source',
-    title: 'Graph Tensor Batching Optimization',
-    description: 'Contributed sparse graph tensor collation and memory-efficient batching routines to open-source ML acceleration utilities, reducing allocation overhead by 28%.',
-    linkText: 'View PR & Code',
-    linkUrl: 'https://github.com',
-    impactBadge: 'Merged',
-  },
-  {
-    category: 'Research',
-    title: 'Offline RL Benchmark Reproductions',
-    description: 'Validated and reproduced Conservative Q-Learning (CQL) and Decision Transformer baselines on continuous control benchmarks under distribution drift.',
-    linkText: 'Technical Report',
-    linkUrl: 'https://github.com',
-    impactBadge: 'Reproduced',
+    title: 'Attack On Code',
+    description: 'Developer community and open-source initiative focused on engineering education and collaborative building.',
+    linkText: 'View Community',
+    linkUrl: 'https://github.com/nayantsrivastava',
+    impactBadge: 'Active',
   },
   {
     category: 'Technical Writing',
-    title: 'Understanding Memory Latency in GNN Inference',
-    description: 'Published an engineering post analyzing cache misses, sparse adjacency matrix traversals, and quantization strategies for on-device edge ML.',
-    linkText: 'Read Article',
-    linkUrl: 'https://github.com',
-    impactBadge: 'Technical Note',
+    title: 'ByteLogic Platform',
+    description: 'Interactive technical learning platform covering ML, algorithms, mathematics, systems, and distributed computing with first-principles visual explanations.',
+    linkText: 'Explore ByteLogic',
+    linkUrl: '/bytelogic',
+    impactBadge: 'Building',
   },
   {
     category: 'Developer Tools',
-    title: 'vram-trace: Lightweight GPU Memory Profiler',
-    description: 'Engineered a zero-overhead CLI profiler that tracks CUDA tensor allocations, fragmentation events, and memory leaks during PyTorch RL training runs.',
-    linkText: 'GitHub Repository',
-    linkUrl: 'https://github.com',
-    impactBadge: 'Tool',
+    title: 'MINDLITE',
+    description: 'Efficient ML experimentation framework designed for rapid prototyping and benchmark-driven development.',
+    linkText: 'Learn More',
+    linkUrl: '/build#mindlite',
+    impactBadge: 'In Development',
+  },
+  {
+    category: 'Research',
+    title: 'ADCTM',
+    description: 'Autonomous Data Centre Thermal Management — a closed-loop RL-based thermal control system for dynamic data-centre workloads.',
+    linkText: 'View Project',
+    linkUrl: '/projects/adctm',
+    impactBadge: 'Research',
   },
 ];
 
 export const ABOUT_LAYERS: AboutLayer[] = [
   {
-    title: 'Who I am',
-    subtitle: 'Professional Identity',
-    content: 'I am an AI/ML Engineer focused on Reinforcement Learning and intelligent systems. I specialize in building computational architectures that can reason, adapt to non-stationary environments, and execute reliably under strict physical and latency constraints.',
+    title: 'What I do',
+    subtitle: 'Engineering Identity',
+    content: 'I build software, study computational systems, and experiment with artificial intelligence. My work spans AI/ML systems, software engineering, algorithms, mathematics, graphics, game technology, and developer tools.',
   },
   {
-    title: 'How I got here',
-    subtitle: 'Background & Path',
-    content: 'My foundation was built in competitive programming, algorithms, and systems engineering. When I delved into machine learning, I recognized that deploying intelligent models into production is primarily a systems problem: managing memory bandwidth, ensuring telemetry integrity, and handling real-world distribution shifts.',
+    title: 'What I\'m interested in',
+    subtitle: 'Technical Domains',
+    content: 'AI systems and efficient inference. Systems engineering and low-level optimization. Algorithms and data structures. Mathematics and computational theory. Graphics programming and game engines. Developer tools and technical education.',
   },
   {
     title: 'How I think',
     subtitle: 'Engineering Philosophy',
-    content: 'I prioritize depth first and breadth second. Rather than treating ML as a black box of off-the-shelf APIs, I seek mechanistic explanations down to the loss gradient, matrix formulation, and CPU/GPU memory cache. Every engineering claim must be backed by reproducible experiments and metric baselines.',
+    content: 'I prioritize building working systems over theoretical knowledge. Every claim should be backed by evidence — a project, an experiment, a benchmark. I document failures as carefully as successes, because understanding what doesn\'t work is as valuable as knowing what does.',
   },
   {
     title: 'Where I\'m going',
-    subtitle: 'Future Trajectory',
-    content: 'I am focused on designing autonomous, self-healing systems that close the loop between perception, causal reasoning, and real-time control — particularly for aerospace, robotics, and distributed infrastructure where failure is not an option.',
+    subtitle: 'Long-term Direction',
+    content: 'Building technology across software, AI, systems, and interactive worlds. The projects I\'m working on — MINDLITE, Omnix Engine, ByteLogic, Attack On Code, and eventually Last Transistor — represent different branches of the same long-term vision: creating tools and systems that push the boundaries of computation and interactive technology.',
   },
 ];

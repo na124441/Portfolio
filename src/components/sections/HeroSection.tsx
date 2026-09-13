@@ -27,10 +27,10 @@ export const HeroSection: React.FC = () => {
 
   // Technical pillars for the editorial domain focus bar
   const technicalPillars = [
-    'Autonomous Telemetry Anomaly Reasoning',
-    'Temporal Graph Networks',
-    'Offline Reinforcement Learning',
-    'Quantized Edge Execution',
+    'Artificial Intelligence',
+    'Systems Engineering',
+    'Algorithms & Mathematics',
+    'Graphics & Interactive Technology',
   ];
 
   useEffect(() => {
@@ -494,23 +494,23 @@ export const HeroSection: React.FC = () => {
                 </span>
               </h1>
               <p className="font-mono text-xs uppercase tracking-[0.22em] text-[#f6d009] font-semibold">
-                AI / ML ENGINEER · {PORTFOLIO_METADATA.specialization}
+                {PORTFOLIO_METADATA.role}
               </p>
               <p className="font-sans text-sm sm:text-base text-white/70 max-w-xl leading-relaxed">
                 {PORTFOLIO_METADATA.thesis}
               </p>
               <div className="flex flex-col sm:flex-row items-center gap-3 pt-2 w-full sm:w-auto">
                 <a
-                  href="#projects"
+                  href="/work"
                   className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-gradient-to-r from-[#d4af37] to-[#f6d009] text-black font-mono text-xs uppercase font-bold tracking-wider rounded-sm flex items-center justify-center gap-2"
                 >
-                  View Projects <ArrowRight className="w-3.5 h-3.5" />
+                  Explore Work <ArrowRight className="w-3.5 h-3.5" />
                 </a>
                 <a
-                  href={PORTFOLIO_METADATA.resumeUrl}
+                  href="/lab"
                   className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-white/[0.03] border border-white/20 hover:border-[#f6d009]/60 text-white font-mono text-xs uppercase tracking-wider rounded-sm flex items-center justify-center gap-2"
                 >
-                  Resume / CV <ArrowDown className="w-3.5 h-3.5" />
+                  Enter the Lab <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>
@@ -624,13 +624,13 @@ export const HeroSection: React.FC = () => {
               </span>
             </h1>
 
-            {/* Role & Specialization */}
+            {/* Role & Positioning */}
             <div className="mt-3 sm:mt-4 lg:mt-5 space-y-1">
               <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.22em] text-[#f6d009] font-bold">
-                AI / ML Engineer
+                {PORTFOLIO_METADATA.role}
               </p>
               <p className="font-mono text-[11px] sm:text-xs text-white/50 tracking-wider">
-                {PORTFOLIO_METADATA.specialization}
+                {PORTFOLIO_METADATA.tagline}
               </p>
             </div>
 
@@ -642,25 +642,25 @@ export const HeroSection: React.FC = () => {
             {/* Technical foundations line */}
             <div className="flex items-center justify-center md:justify-start lg:justify-center gap-2 text-xs font-mono text-white/45 mt-3 max-w-full">
               <Terminal className="w-3.5 h-3.5 text-[#f6d009] flex-shrink-0" />
-              <span className="text-[11px] sm:text-xs">Foundations in {PORTFOLIO_METADATA.foundations}</span>
+              <span className="text-[11px] sm:text-xs">Foundations in Artificial Intelligence, Systems, Graphics & Algorithms</span>
             </div>
 
-            {/* Premium Touch-Optimized CTA Buttons (min-h-[44px] tap target) */}
+            {/* Touch-Optimized CTA Buttons */}
             <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-center justify-center md:justify-start lg:justify-center gap-3 w-full sm:w-auto">
               <a
-                href="#projects"
+                href="/work"
                 className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-gradient-to-r from-[#d4af37] to-[#f6d009] hover:from-[#e5c04a] hover:to-[#ffd829] text-[#010a0b] font-mono text-xs uppercase font-bold tracking-wider rounded-sm flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(246,208,9,0.25)] transition-all transform active:scale-95"
               >
-                View Projects
+                Explore Work
                 <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </a>
 
               <a
-                href={PORTFOLIO_METADATA.resumeUrl}
+                href="/lab"
                 className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-white/[0.03] hover:bg-white/[0.08] border border-white/20 hover:border-[#f6d009]/60 text-white/90 font-mono text-xs uppercase tracking-wider rounded-sm flex items-center justify-center gap-2 transition-all backdrop-blur-sm active:scale-95"
               >
-                Resume / CV
-                <ArrowDown className="w-3.5 h-3.5 stroke-[2.5]" />
+                Enter the Lab
+                <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
               </a>
             </div>
           </div>
