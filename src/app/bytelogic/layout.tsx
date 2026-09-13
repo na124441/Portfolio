@@ -33,7 +33,7 @@ export default function ByteLogicLayout({
 
       <div className="relative z-10 flex flex-col min-h-[100dvh] w-full max-w-full overflow-x-hidden">
         <ByteLogicNavbar />
-        <main className="flex-1 w-full max-w-full pt-16 sm:pt-20 md:pt-24">{children}</main>
+        <main className="flex-1 w-full max-w-full">{children}</main>
         <ByteLogicFooter />
       </div>
     </div>
