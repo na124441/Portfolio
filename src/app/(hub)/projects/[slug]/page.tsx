@@ -28,13 +28,17 @@ interface ProjectPageProps {
 }
 
 export async function generateStaticParams() {
-  return ALL_PROJECTS.map((project) => ({
+  return ALL_PROJECTS.filter((project) => project.slug !== 'adctm').map((project) => ({
     slug: project.slug,
   }));
 }
 
 export default async function ProjectCaseStudyPage({ params }: ProjectPageProps) {
   const { slug } = await params;
+  if (slug === 'adctm') {
+    const { redirect } = await import('next/navigation');
+    redirect('/projects/adctm');
+  }
   const project = ALL_PROJECTS.find((p) => p.slug === slug);
 
   if (!project) {

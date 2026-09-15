@@ -47,3 +47,9 @@ yarn-error.log*
 # Temporary test screenshots and test filters
 public/test_*.jpg
 public/screenshot-*.png
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/

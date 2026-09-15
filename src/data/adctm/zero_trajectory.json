@@ -1,0 +1,724 @@
+{
+  "controller": "zero",
+  "task": "medium",
+  "seed": 202,
+  "config": {
+    "num_zones": 5,
+    "initial_temperatures": [
+      68.0,
+      69.0,
+      69.5,
+      68.0,
+      69.0
+    ],
+    "initial_workloads": [
+      0.82,
+      0.86,
+      0.8,
+      0.78,
+      0.88
+    ],
+    "ambient_temperature": 44.0,
+    "safe_temperature": 74.0,
+    "max_steps": 24,
+    "target_temperature": 61.0,
+    "seed": 202,
+    "workload_volatility": 0.08,
+    "degradation_step": 10,
+    "degraded_zone": 2,
+    "jitter_bypass_threshold": 0.8
+  },
+  "metrics": {
+    "mean_temp": 91.44188679450858,
+    "peak_temp": 105.0,
+    "p95_temp": 102.36950322528074,
+    "thermal_headroom": -31.0,
+    "safety_violations": 23.0,
+    "safety_violations_zones": 115.0,
+    "cooling_energy": 0.0,
+    "mean_cooling_power": 0.0,
+    "peak_cooling_power": 0.0,
+    "undercooling": 3653.0264153410317,
+    "mean_undercooling": 30.441886794508598,
+    "overcooling": 0.0,
+    "mean_overcooling": 0.0,
+    "response_time": 24.0
+  },
+  "steps": [
+    {
+      "step": 0,
+      "temperatures": [
+        68.0,
+        69.0,
+        69.5,
+        68.0,
+        69.0
+      ],
+      "workloads": [
+        0.82,
+        0.86,
+        0.8,
+        0.78,
+        0.88
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": false,
+      "degraded_zone": null
+    },
+    {
+      "step": 1,
+      "temperatures": [
+        71.62,
+        72.86,
+        73.23,
+        71.8,
+        72.81
+      ],
+      "workloads": [
+        0.7954,
+        0.851,
+        0.8505,
+        0.81,
+        0.8481
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": false,
+      "degraded_zone": null
+    },
+    {
+      "step": 2,
+      "temperatures": [
+        74.81,
+        76.39,
+        77.0,
+        74.87,
+        76.74
+      ],
+      "workloads": [
+        0.7858,
+        0.8611,
+        0.9044,
+        0.764,
+        0.9144
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": false,
+      "degraded_zone": null
+    },
+    {
+      "step": 3,
+      "temperatures": [
+        77.48,
+        79.89,
+        80.37,
+        77.53,
+        80.3
+      ],
+      "workloads": [
+        0.7563,
+        0.9057,
+        0.9084,
+        0.7398,
+        0.9236
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": false,
+      "degraded_zone": null
+    },
+    {
+      "step": 4,
+      "temperatures": [
+        79.91,
+        82.58,
+        83.32,
+        80.52,
+        83.65
+      ],
+      "workloads": [
+        0.754,
+        0.8501,
+        0.9,
+        0.8083,
+        0.9489
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": false,
+      "degraded_zone": null
+    },
+    {
+      "step": 5,
+      "temperatures": [
+        81.65,
+        85.24,
+        86.2,
+        83.22,
+        86.08
+      ],
+      "workloads": [
+        0.6932,
+        0.8823,
+        0.9319,
+        0.8075,
+        0.8736
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": false,
+      "degraded_zone": null
+    },
+    {
+      "step": 6,
+      "temperatures": [
+        83.33,
+        87.34,
+        88.82,
+        85.5,
+        88.16
+      ],
+      "workloads": [
+        0.7019,
+        0.8475,
+        0.9387,
+        0.7883,
+        0.858
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": false,
+      "degraded_zone": null
+    },
+    {
+      "step": 7,
+      "temperatures": [
+        85.39,
+        89.77,
+        90.75,
+        87.26,
+        90.63
+      ],
+      "workloads": [
+        0.7719,
+        0.9185,
+        0.8863,
+        0.7478,
+        0.9355
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": false,
+      "degraded_zone": null
+    },
+    {
+      "step": 8,
+      "temperatures": [
+        87.32,
+        92.14,
+        92.6,
+        88.43,
+        92.88
+      ],
+      "workloads": [
+        0.7809,
+        0.9486,
+        0.9004,
+        0.6874,
+        0.9439
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": false,
+      "degraded_zone": null
+    },
+    {
+      "step": 9,
+      "temperatures": [
+        88.54,
+        93.62,
+        93.69,
+        89.58,
+        94.35
+      ],
+      "workloads": [
+        0.7078,
+        0.8687,
+        0.8236,
+        0.6879,
+        0.8782
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": false,
+      "degraded_zone": null
+    },
+    {
+      "step": 10,
+      "temperatures": [
+        89.09,
+        94.44,
+        94.72,
+        90.78,
+        95.32
+      ],
+      "workloads": [
+        0.6334,
+        0.8042,
+        0.8274,
+        0.7091,
+        0.8327
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 11,
+      "temperatures": [
+        90.1,
+        94.79,
+        95.56,
+        92.02,
+        96.36
+      ],
+      "workloads": [
+        0.6998,
+        0.7533,
+        0.8167,
+        0.7315,
+        0.8526
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 12,
+      "temperatures": [
+        90.62,
+        94.8,
+        96.02,
+        93.17,
+        97.71
+      ],
+      "workloads": [
+        0.6526,
+        0.7048,
+        0.7778,
+        0.7421,
+        0.9067
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 13,
+      "temperatures": [
+        90.67,
+        94.85,
+        96.11,
+        94.53,
+        98.78
+      ],
+      "workloads": [
+        0.6003,
+        0.7029,
+        0.7331,
+        0.7869,
+        0.89
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 14,
+      "temperatures": [
+        90.3,
+        95.09,
+        96.31,
+        95.87,
+        99.43
+      ],
+      "workloads": [
+        0.545,
+        0.7305,
+        0.7394,
+        0.8132,
+        0.8449
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 15,
+      "temperatures": [
+        89.71,
+        95.07,
+        96.95,
+        96.73,
+        100.27
+      ],
+      "workloads": [
+        0.5074,
+        0.702,
+        0.7944,
+        0.7796,
+        0.8751
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 16,
+      "temperatures": [
+        89.37,
+        95.26,
+        97.44,
+        97.8,
+        101.01
+      ],
+      "workloads": [
+        0.528,
+        0.7293,
+        0.7853,
+        0.8204,
+        0.8721
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 17,
+      "temperatures": [
+        88.8,
+        95.42,
+        98.12,
+        98.25,
+        101.96
+      ],
+      "workloads": [
+        0.4895,
+        0.7292,
+        0.8151,
+        0.7595,
+        0.909
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 18,
+      "temperatures": [
+        88.33,
+        96.03,
+        98.72,
+        99.16,
+        102.41
+      ],
+      "workloads": [
+        0.491,
+        0.7938,
+        0.8189,
+        0.8206,
+        0.8575
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 19,
+      "temperatures": [
+        87.53,
+        96.52,
+        98.68,
+        99.94,
+        102.37
+      ],
+      "workloads": [
+        0.4324,
+        0.7927,
+        0.7395,
+        0.8199,
+        0.7944
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 20,
+      "temperatures": [
+        87.27,
+        97.19,
+        98.66,
+        100.1,
+        102.74
+      ],
+      "workloads": [
+        0.4857,
+        0.8346,
+        0.7319,
+        0.7605,
+        0.8443
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 21,
+      "temperatures": [
+        87.68,
+        97.72,
+        98.48,
+        100.15,
+        103.42
+      ],
+      "workloads": [
+        0.5652,
+        0.8368,
+        0.7057,
+        0.7462,
+        0.8909
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 22,
+      "temperatures": [
+        87.69,
+        97.77,
+        98.02,
+        100.63,
+        104.28
+      ],
+      "workloads": [
+        0.5172,
+        0.7842,
+        0.6588,
+        0.8026,
+        0.9285
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 23,
+      "temperatures": [
+        88.24,
+        98.29,
+        97.75,
+        100.75,
+        105.0
+      ],
+      "workloads": [
+        0.5892,
+        0.8523,
+        0.6678,
+        0.7631,
+        0.9508
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    },
+    {
+      "step": 24,
+      "temperatures": [
+        89.17,
+        99.13,
+        96.99,
+        101.44,
+        105.0
+      ],
+      "workloads": [
+        0.6459,
+        0.9061,
+        0.5921,
+        0.841,
+        0.9423
+      ],
+      "cooling": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ambient_temp": 44.0,
+      "fault_active": true,
+      "degraded_zone": 2
+    }
+  ]
+}
