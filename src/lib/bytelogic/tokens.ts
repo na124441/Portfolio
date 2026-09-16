@@ -172,6 +172,18 @@ export const FEATURED_CONTENT: ContentItem[] = [
     equationOrSnippet: '\\theta_{t+1} = \\theta_t - \\eta \\nabla L(\\theta_t)',
   },
   {
+    id: 'more-data-article-001',
+    type: 'ARTICLE',
+    code: '01',
+    title: 'What Does More Data Sometimes Stop Helping?',
+    subtitle: 'When a bigger dataset stops being a better dataset. Diminishing returns, redundancy, and coverage.',
+    domain: 'AI / Machine Learning · Editorial',
+    difficulty: 'Intermediate',
+    durationOrReadTime: '8–10 min read',
+    slug: '/bytelogic/articles/more-data-sometimes-stops-helping',
+    equationOrSnippet: '\\lim_{D \\to \\infty} \\frac{dP}{dD} = 0',
+  },
+  {
     id: 'pca-article',
     type: 'ARTICLE',
     code: '03',
