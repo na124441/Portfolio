@@ -27,9 +27,9 @@ export default function WorkPage() {
   return (
     <div className="pt-28 sm:pt-32 pb-16 sm:pb-24 max-w-4xl mx-auto px-4 sm:px-6">
       <SectionHeader
-        number="01"
-        tag="Engineering // Portfolio"
-        title="Work & Systems Portfolio"
+        number="02"
+        tag="ENGINEERING / 02 · REPOSITORY DIRECTORY"
+        title="Systems & Research Portfolio"
         subtitle="Engineered systems evaluated against quantitative benchmarks, hardware constraints, and failure modes."
       />
 
@@ -42,7 +42,7 @@ export default function WorkPage() {
             onClick={() => setSelectedTier(tier)}
             className={`px-3 py-1 border transition-colors ${
               selectedTier === tier
-                ? 'border-[#d4af37] bg-[#d4af37]/10 text-[#dfb15b]'
+                ? 'border-gold bg-gold/10 text-gold'
                 : 'border-white/10 bg-white/[0.02] text-white/60 hover:text-white hover:border-white/20'
             }`}
           >
@@ -63,11 +63,7 @@ export default function WorkPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: idx * 0.1 }}
               onMouseMove={handleMouseMove}
-              className={`p-6 sm:p-8 relative transition-all duration-200 spotlight-card ${
-                isFlagship
-                  ? 'surface-signature corner-brackets'
-                  : 'surface-workspace surface-workspace-hover'
-              }`}
+              className={`p-6 sm:p-8 border border-white/10 bg-surface/50 backdrop-blur-sm transition-colors duration-200 hover:border-gold/30 relative`}
             >
               {/* Header Metadata Bar */}
               <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-white/10 relative z-10">
@@ -79,27 +75,27 @@ export default function WorkPage() {
                     {project.timeline}
                   </span>
                 </div>
-                <div className="font-mono text-xs text-white/65">
+                <div className="font-mono text-xs text-gold/80 tracking-wider">
                   {project.status}
                 </div>
               </div>
 
               {/* Project Title */}
-              <h2 className="font-display text-xl sm:text-2xl font-bold text-[#feffff] mb-3 leading-snug relative z-10">
+              <h2 className="font-display text-xl sm:text-2xl font-bold text-text mb-3 leading-snug relative z-10">
                 {project.title}
               </h2>
 
               {/* Thesis */}
-              <p className="font-sans text-sm sm:text-base text-white/80 leading-relaxed mb-6 relative z-10">
+              <p className="font-sans text-sm sm:text-base text-text-secondary leading-relaxed mb-6 relative z-10">
                 {project.oneLineThesis}
               </p>
 
               {/* Quantitative Metric Callout */}
-              <div className="mb-6 p-4 bg-white/[0.03] border border-white/10 backdrop-blur-sm flex items-baseline justify-between max-w-sm relative z-10">
+              <div className="mb-6 p-4 bg-white/[0.02] border border-white/10 flex items-baseline justify-between max-w-sm relative z-10">
                 <span className="font-mono text-xs uppercase tracking-widest text-white/50">
                   {project.featuredMetric.label}
                 </span>
-                <span className="font-mono text-xl sm:text-2xl font-semibold text-metallic-gold tabular-nums">
+                <span className="font-mono text-xl sm:text-2xl font-semibold text-gold tabular-nums">
                   {project.featuredMetric.value}
                 </span>
               </div>
@@ -133,9 +129,6 @@ export default function WorkPage() {
                   </Button>
                 ) : (
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs text-white/40 italic">
-                      [Case study in documentation]
-                    </span>
                     <Button
                       href={project.links[0]?.url || '#'}
                       variant="ghost"

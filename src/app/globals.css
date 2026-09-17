@@ -25,6 +25,183 @@
   --white-rgb: 254, 255, 255;
   --border-muted: rgba(254, 255, 255, 0.08);
   --border-active: rgba(212, 175, 55, 0.45);
+
+  /* Glass surface */
+  --glass-bg: rgba(254, 255, 255, 0.04);
+  --glass-bg-hover: rgba(254, 255, 255, 0.07);
+  --glass-border: rgba(246, 208, 9, 0.15);   /* gold-tinted, not generic white */
+  --glass-border-hover: rgba(246, 208, 9, 0.35);
+
+  /* Blur scale — intentionally small */
+  --blur-sm: 6px;
+  --blur-md: 12px;
+
+  /* Shadow */
+  --glass-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  --glass-shadow-hover: 0 4px 18px rgba(0, 0, 0, 0.3);
+
+  /* Motion */
+  --glass-transition: 150ms ease;
+}
+
+/* ==========================================================================
+   Glass / Blur Surface System (Restrained Interactive Accents)
+   ========================================================================== */
+.glass-surface {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+  box-shadow: var(--glass-shadow);
+  transition: background var(--glass-transition),
+              border-color var(--glass-transition),
+              box-shadow var(--glass-transition);
+}
+
+.glass-surface:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-surface {
+    background: rgba(1, 10, 11, 0.85); /* solid near-black fallback */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-surface {
+    transition: none;
+  }
+}
+
+/* Card Hover-Only Glass Treatment (Phase 2) */
+.project-card {
+  transition: transform var(--glass-transition),
+              border-color var(--glass-transition),
+              background var(--glass-transition);
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    transition: none;
+  }
+  .project-card:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Hero Visual Fixes (Texture, Gradient, CTAs, Portrait Mask, Spacing)
+   ========================================================================== */
+.hero-texture {
+  opacity: 0.06;              /* was effectively ~0.3-0.4 */
+  filter: grayscale(100%);    /* remove any stray color flecks */
+  mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
+  pointer-events: none;
+}
+
+.hero-headline {
+  background: linear-gradient(90deg, #feffff 0%, #feffff 60%, #f6d009 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-role-line {
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: rgba(246, 208, 9, 0.8);
+}
+
+.hero-tagline,
+.hero-subline {
+  font-weight: 400;
+  color: rgba(254, 255, 255, 0.65);
+}
+
+/* Spacing Scale (8px rhythm) */
+.hero-badge-wrap { margin-bottom: 24px; }
+.hero-headline-wrap { margin-bottom: 20px; }
+.hero-role-wrap { margin-bottom: 20px; }
+.hero-subline-wrap { margin-bottom: 36px; }
+
+/* Primary CTA — Explore Work */
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(246, 208, 9, 0.08);
+  border: 1px solid rgba(246, 208, 9, 0.45);
+  color: #feffff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: background 150ms ease, border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+.hero-btn-primary:hover {
+  background: rgba(246, 208, 9, 0.16);
+  border-color: rgba(246, 208, 9, 0.7);
+  box-shadow: 0 0 20px rgba(246, 208, 9, 0.15);
+}
+.hero-btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* Secondary CTA — Enter the Lab (Understated Editorial Text Link) */
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba(254, 255, 255, 0.65);
+  padding: 14px 18px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 150ms ease, transform 150ms ease;
+}
+.hero-btn-secondary:hover {
+  color: #feffff;
+  transform: translateX(3px);
+}
+.hero-btn-secondary:active {
+  transform: translateY(1px);
+}
+
+/* Portrait Edge Blend */
+.portrait-image {
+  mask-image: radial-gradient(ellipse 85% 85% at center, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at center, black 60%, transparent 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    transition: none;
+  }
 }
 
 /* ==========================================================================

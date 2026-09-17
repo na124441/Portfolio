@@ -44,9 +44,9 @@ export interface CurrentProject {
 
 export const PORTFOLIO_METADATA = {
   name: 'Nayant Srivastava',
-  role: 'Engineer · Researcher · Builder',
+  role: 'AI / Systems Engineer',
   tagline: 'Exploring computation through artificial intelligence, systems, algorithms, mathematics, graphics, and interactive technology.',
-  thesis: 'I build systems at the intersection of artificial intelligence, software engineering, computation, and interactive technology.',
+  thesis: 'I build intelligent systems, computational tools and interactive technology.',
   location: 'Greater Noida, India',
   statusBadge: 'Building & Learning',
   email: 'nayant@example.com',

@@ -185,7 +185,7 @@ export const ContactSection: React.FC = () => {
 
                   <Button
                     type="submit"
-                    variant="primary"
+                    variant="glass"
                     size="md"
                     disabled={status === 'submitting'}
                     className="w-full"

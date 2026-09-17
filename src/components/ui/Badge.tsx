@@ -23,7 +23,7 @@ export const Badge: React.FC<BadgeProps> = ({
 
   const variants = {
     default: 'bg-white/[0.04] text-white/80 border border-white/10',
-    gold: 'bg-[#d4af37]/10 text-[#dfb15b] border border-[#d4af37]/40 shadow-[0_0_10px_rgba(212,175,55,0.12)]',
+    gold: 'bg-gold/10 text-gold border border-gold/40',
     outline: 'bg-transparent text-white/60 border border-white/15',
     muted: 'bg-white/[0.02] text-white/40 border border-white/5',
   };

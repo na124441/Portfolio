@@ -15,7 +15,7 @@ interface Particle {
   speed: number;
   size: number;
   alpha: number;
-  colorType: 'gold' | 'cyan' | 'violet';
+  colorType: 'gold' | 'specular';
 }
 
 export const EnergyField: React.FC<EnergyFieldProps> = ({
@@ -60,24 +60,22 @@ export const EnergyField: React.FC<EnergyFieldProps> = ({
     handleResize();
     window.addEventListener('resize', handleResize);
 
-    // Particle Setup
+    // Particle Setup - Restrained, physical computational field
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const particleCount = isMobile ? 32 : 76;
+    const particleCount = isMobile ? 28 : 56;
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
       const rand = Math.random();
-      let colorType: 'gold' | 'cyan' | 'violet' = 'gold';
-      if (rand > 0.88) colorType = 'violet';
-      else if (rand > 0.7) colorType = 'cyan';
+      const colorType: 'gold' | 'specular' = rand > 0.75 ? 'specular' : 'gold';
 
       particles.push({
         theta: Math.random() * Math.PI * 2,
         phi: Math.random() * Math.PI * 2,
-        rOffset: (Math.random() - 0.5) * 26,
-        speed: (0.003 + Math.random() * 0.006) * (Math.random() > 0.5 ? 1 : -1),
-        size: 0.8 + Math.random() * 1.6,
-        alpha: 0.2 + Math.random() * 0.7,
+        rOffset: (Math.random() - 0.5) * 24,
+        speed: (0.0025 + Math.random() * 0.005) * (Math.random() > 0.5 ? 1 : -1),
+        size: 0.7 + Math.random() * 1.4,
+        alpha: 0.18 + Math.random() * 0.55,
         colorType,
       });
     }
@@ -253,28 +251,19 @@ export const EnergyField: React.FC<EnergyFieldProps> = ({
         if (phiDiff > Math.PI) phiDiff = Math.PI * 2 - phiDiff;
 
         // Localized Color Interpolation:
-        // 70% Gold/Amber, 20% Cyan streak, 10% Violet accent
-        let r = 212;
-        let g = 175;
-        let b = 55;
-        let nodeAlpha = (0.18 + 0.65 * diffuse) * depthFactor * intensity;
+        // Pure palette: Gold (#f6d009: 246, 208, 9) with Specular White gleams
+        let r = 246;
+        let g = 208;
+        let b = 9;
+        let nodeAlpha = (0.15 + 0.5 * diffuse) * depthFactor * intensity;
 
-        // Cyan energy streak (localized along trailing edge of energy wave)
-        if (phiDiff < 0.6) {
-          const tCyan = 1 - phiDiff / 0.6;
-          // Blend towards Electric Cyan (rgb(0, 240, 255))
-          r = Math.round(r * (1 - tCyan) + 0 * tCyan);
-          g = Math.round(g * (1 - tCyan) + 240 * tCyan);
-          b = Math.round(b * (1 - tCyan) + 255 * tCyan);
-          nodeAlpha += 0.35 * tCyan * depthFactor;
-        }
-        // Violet accent (small localized node)
-        else if (phiDiff > 1.8 && phiDiff < 2.3) {
-          const tViolet = 1 - Math.abs(phiDiff - 2.05) / 0.25;
-          r = Math.round(r * (1 - tViolet) + 139 * tViolet);
-          g = Math.round(g * (1 - tViolet) + 92 * tViolet);
-          b = Math.round(b * (1 - tViolet) + 246 * tViolet);
-          nodeAlpha += 0.25 * tViolet * depthFactor;
+        // Specular White traveling energy gleam (localized along trailing edge of energy wave)
+        if (phiDiff < 0.5) {
+          const tWhite = 1 - phiDiff / 0.5;
+          r = Math.round(r * (1 - tWhite) + 254 * tWhite);
+          g = Math.round(g * (1 - tWhite) + 255 * tWhite);
+          b = Math.round(b * (1 - tWhite) + 255 * tWhite);
+          nodeAlpha += 0.25 * tWhite * depthFactor;
         }
 
         // Apply Periodic Energy Pulse if active
@@ -283,16 +272,15 @@ export const EnergyField: React.FC<EnergyFieldProps> = ({
           if (pulseDiff > Math.PI) pulseDiff = Math.PI * 2 - pulseDiff;
           if (pulseDiff < 0.8) {
             const pulseBoost = (1 - pulseDiff / 0.8) * Math.sin(pulseProgress * Math.PI);
-            nodeAlpha = Math.min(1, nodeAlpha + pulseBoost * 0.45);
-            // Brighten with intense specular warm gold
-            r = Math.min(255, r + Math.round(40 * pulseBoost));
-            g = Math.min(255, g + Math.round(40 * pulseBoost));
-            b = Math.min(255, b + Math.round(40 * pulseBoost));
+            nodeAlpha = Math.min(1, nodeAlpha + pulseBoost * 0.3);
+            r = Math.min(255, r + Math.round(30 * pulseBoost));
+            g = Math.min(255, g + Math.round(30 * pulseBoost));
+            b = Math.min(255, b + Math.round(30 * pulseBoost));
           }
         }
 
         // Draw computational particle point
-        const ptSize = (1.2 + diffuse * 1.5) * depthFactor;
+        const ptSize = (1.1 + diffuse * 1.3) * depthFactor;
         ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${Math.max(0, Math.min(1, nodeAlpha))})`;
         ctx.fillRect(node.x2d, node.y2d, ptSize, ptSize);
       }
@@ -336,19 +324,10 @@ export const EnergyField: React.FC<EnergyFieldProps> = ({
         const depthNorm = (z3 + R_MAJOR + R_MINOR) / ((R_MAJOR + R_MINOR) * 2);
         const pAlpha = pt.alpha * (0.3 + 0.7 * Math.max(0, Math.min(1, depthNorm))) * intensity;
 
-        // Color attribution
-        let pr = 246;
-        let pg = 208;
-        let pb = 9;
-        if (pt.colorType === 'cyan') {
-          pr = 0;
-          pg = 240;
-          pb = 255;
-        } else if (pt.colorType === 'violet') {
-          pr = 168;
-          pg = 85;
-          pb = 247;
-        }
+        // Color attribution: Specular White or Radiant Gold (#f6d009)
+        const pr = pt.colorType === 'specular' ? 254 : 246;
+        const pg = pt.colorType === 'specular' ? 255 : 208;
+        const pb = pt.colorType === 'specular' ? 255 : 9;
 
         ctx.fillStyle = `rgba(${pr}, ${pg}, ${pb}, ${Math.max(0, Math.min(1, pAlpha))})`;
         ctx.beginPath();
@@ -372,7 +351,7 @@ export const EnergyField: React.FC<EnergyFieldProps> = ({
     <div className={`relative flex items-center justify-center pointer-events-none select-none ${className}`}>
       {/* 1. Atmospheric Ambient Radial Glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.12)_0%,rgba(0,240,255,0.03)_38%,rgba(139,92,246,0.015)_52%,transparent_72%)] blur-3xl pointer-events-none z-0"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[125%] h-[125%] rounded-full bg-[radial-gradient(circle,rgba(246,208,9,0.06)_0%,rgba(246,208,9,0.015)_45%,transparent_70%)] blur-3xl pointer-events-none z-0"
         aria-hidden="true"
       />
 
@@ -382,17 +361,6 @@ export const EnergyField: React.FC<EnergyFieldProps> = ({
         className="relative z-10 w-full h-full object-contain"
         style={{ width: '100%', height: '100%' }}
       />
-
-      {/* 3. System Diagnostic Telemetry HUD (Minimalist low-contrast readout - hidden on mobile/tablet to avoid edge clipping) */}
-      <div
-        className="absolute bottom-1 right-1 sm:bottom-3 sm:right-3 z-20 font-mono text-[8px] sm:text-[9px] text-white/30 tracking-widest hidden md:flex flex-col items-end space-y-0.5 pointer-events-none"
-        aria-hidden="true"
-      >
-        <span className="text-[#dfb15b]/60 font-semibold">N-01 // ENERGY FIELD</span>
-        <span>STATE: ACTIVE [87.4%]</span>
-        <span className="hidden lg:inline">FLUX: T-GRAPH_04</span>
-        <span className="hidden lg:inline">ROT: 0.18 RAD/S</span>
-      </div>
     </div>
   );
 };

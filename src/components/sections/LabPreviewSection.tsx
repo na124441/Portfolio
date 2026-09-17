@@ -99,10 +99,10 @@ export const LabPreviewSection: React.FC = () => {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <Button href="/lab" variant="outline" size="sm">
+            <Button href="/lab" variant="glass" size="sm">
               Enter Lab
             </Button>
-            <Button href="/bytelogic" variant="primary" size="sm">
+            <Button href="/bytelogic" variant="glass" size="sm">
               Launch ByteLogic
               <ArrowRight className="w-3.5 h-3.5" />
             </Button>

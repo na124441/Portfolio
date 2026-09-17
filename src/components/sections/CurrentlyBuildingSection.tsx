@@ -38,7 +38,7 @@ export const CurrentlyBuildingSection: React.FC = () => {
             >
               <Link
                 href={project.href || '#'}
-                className="block p-5 surface-workspace surface-workspace-hover h-full group transition-all"
+                className="block p-5 surface-workspace surface-workspace-hover project-card h-full group transition-all"
               >
                 {/* Status + Category */}
                 <div className="flex items-center justify-between mb-3">
