@@ -20,8 +20,8 @@ export const ByteLogicHero: React.FC = () => {
           {/* Centerpiece Hero ByteLogic Logo - Takes ~75% of the middle space to command primary attention */}
           <div className="w-full flex flex-col items-center justify-center mb-3 sm:mb-5 md:mb-6">
             <div className="relative w-[92%] sm:w-[82%] md:w-[75%] max-w-5xl flex items-center justify-center group">
-              {/* Atmospheric Cyan Radial Backlight */}
-              <div className="absolute -inset-6 sm:-inset-10 md:-inset-16 bg-[radial-gradient(ellipse_at_center,rgba(1,154,162,0.22)_0%,rgba(19,34,121,0.12)_45%,transparent_75%)] pointer-events-none filter blur-3xl opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Atmospheric Subtle Ambient Backlight */}
+              <div className="absolute -inset-6 sm:-inset-10 md:-inset-16 bg-[radial-gradient(ellipse_at_center,rgba(1,154,162,0.06)_0%,rgba(14,21,27,0.3)_50%,transparent_75%)] pointer-events-none filter blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
 
               <h1 className="relative z-10 w-full flex items-center justify-center select-none">
                 <Image

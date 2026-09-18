@@ -115,7 +115,7 @@ export const TeachingMethodSection: React.FC = () => {
         </div>
 
         {/* Right: The ByteLogic Way */}
-        <div className="p-6 sm:p-8 rounded-[6px] bg-[#0E151B] border border-[#019AA2]/40 shadow-[0_0_24px_rgba(1,154,162,0.08)] space-y-6 bl-tick-box">
+        <div className="p-6 sm:p-8 rounded-[6px] bg-[#0E151B] border border-[#019AA2]/40 space-y-6 bl-tick-box">
           <div className="flex items-center justify-between pb-3 border-b border-[#1C2830] text-xs font-mono">
             <span className="text-[#019AA2] font-bold tracking-wider">THE BYTELOGIC WAY</span>
             <span className="text-[#019AA2] text-[10px] px-2 py-0.5 rounded-[3px] bg-[#019AA2]/15 border border-[#019AA2]/40">

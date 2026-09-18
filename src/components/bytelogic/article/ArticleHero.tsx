@@ -106,7 +106,7 @@ export const ArticleHero: React.FC<ArticleHeroProps> = ({
                   className={cn(
                     'p-3 rounded bg-[#0E151B] border flex flex-col justify-between transition-colors',
                     node.highlight
-                      ? 'border-[#019AA2]/40 shadow-[0_0_12px_rgba(1,154,162,0.1)]'
+                      ? 'border-[#019AA2]/60'
                       : 'border-[#1C2830]'
                   )}
                 >

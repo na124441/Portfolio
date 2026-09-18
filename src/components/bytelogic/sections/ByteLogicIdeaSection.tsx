@@ -9,9 +9,6 @@ import { EquationBlock } from '@/components/bytelogic/ui/EquationBlock';
 
 export const ByteLogicIdeaSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const blob1Ref = useRef<HTMLDivElement | null>(null);
-  const blob2Ref = useRef<HTMLDivElement | null>(null);
-  const blob3Ref = useRef<HTMLDivElement | null>(null);
 
   const eyebrowRef = useRef<HTMLDivElement | null>(null);
   const headlineRef = useRef<HTMLHeadingElement | null>(null);
@@ -23,44 +20,9 @@ export const ByteLogicIdeaSection: React.FC = () => {
 
     gsap.registerPlugin(ScrollTrigger);
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.innerWidth < 640;
 
     const ctx = gsap.context(() => {
-      // 1. Mesh Blobs Drift Animation (skipped on reduced-motion or mobile < 640px)
-      if (!prefersReducedMotion && !isMobile) {
-        if (blob1Ref.current) {
-          gsap.to(blob1Ref.current, {
-            x: '+=8%',
-            y: '-=6%',
-            duration: 18,
-            ease: 'sine.inOut',
-            repeat: -1,
-            yoyo: true,
-          });
-        }
-        if (blob2Ref.current) {
-          gsap.to(blob2Ref.current, {
-            x: '-=10%',
-            y: '+=8%',
-            duration: 24,
-            ease: 'sine.inOut',
-            repeat: -1,
-            yoyo: true,
-          });
-        }
-        if (blob3Ref.current) {
-          gsap.to(blob3Ref.current, {
-            x: '+=7%',
-            y: '+=9%',
-            duration: 20,
-            ease: 'sine.inOut',
-            repeat: -1,
-            yoyo: true,
-          });
-        }
-      }
-
-      // 2. Scroll-Entrance Stagger Motion
+      // 1. Scroll-Entrance Stagger Motion
       if (prefersReducedMotion) {
         gsap.from(sectionRef.current, {
           opacity: 0,
@@ -161,8 +123,8 @@ export const ByteLogicIdeaSection: React.FC = () => {
       detail: 'Analytical Derivation & Constraints',
       metric: 'FIRST PRINCIPLES',
       specBadge: 'DERIVATION // L2-ERM',
-      accentLine: 'from-[#019AA2] via-[#2dd4bf] to-transparent',
-      hoverBorder: 'hover:border-[#019AA2]/50 hover:shadow-[0_16px_36px_-8px_rgba(1,154,162,0.22)]',
+      accentLine: 'from-[#019AA2] via-[#01868D] to-transparent',
+      hoverBorder: 'hover:border-[#019AA2]/60',
       actionText: 'Inspect Proof',
       actionHref: '/bytelogic/concepts/k-means',
       visualType: 'math' as const,
@@ -177,8 +139,8 @@ export const ByteLogicIdeaSection: React.FC = () => {
       detail: 'Coordinate Manifolds & Vector Fields',
       metric: 'SPATIAL GEOMETRY',
       specBadge: 'MANIFOLD // SGD CONTOUR',
-      accentLine: 'from-[#8b5cf6] via-[#019AA2] to-transparent',
-      hoverBorder: 'hover:border-[#8b5cf6]/50 hover:shadow-[0_16px_36px_-8px_rgba(139,92,246,0.22)]',
+      accentLine: 'from-[#A8B3BA] via-[#68747D] to-transparent',
+      hoverBorder: 'hover:border-[#A8B3BA]/50',
       actionText: 'Explore Manifold',
       actionHref: '/bytelogic/concepts/k-means#visualization',
       visualType: 'contour' as const,
@@ -193,8 +155,8 @@ export const ByteLogicIdeaSection: React.FC = () => {
       detail: 'Vectorized NumPy & C++ Primitives',
       metric: 'FROM SCRATCH',
       specBadge: 'KERNEL // VECTORIZED GEMM',
-      accentLine: 'from-[#d4af37] via-[#019AA2] to-transparent',
-      hoverBorder: 'hover:border-[#d4af37]/50 hover:shadow-[0_16px_36px_-8px_rgba(212,175,55,0.22)]',
+      accentLine: 'from-[#d4af37] via-[#A8B3BA] to-transparent',
+      hoverBorder: 'hover:border-[#d4af37]/50',
       actionText: 'Review Kernel',
       actionHref: '/bytelogic/concepts/k-means#implementation',
       visualType: 'code' as const,
@@ -207,41 +169,11 @@ export const ByteLogicIdeaSection: React.FC = () => {
       id="idea"
       className="relative w-full overflow-hidden isolate bg-[#05070a] border-t border-[#1C2830]"
     >
-      {/* 1. Background — Animated Mesh / Aurora Gradient */}
-      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        {/* Blob 1: Teal accent (dominant, ByteLogic identity) */}
-        <div
-          ref={blob1Ref}
-          className="absolute -top-[15%] -left-[10%] w-[65vw] max-w-[750px] h-[65vw] max-h-[750px] rounded-full opacity-60 mix-blend-screen pointer-events-none filter blur-[40px] sm:blur-[50px] lg:blur-[70px]"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(1, 154, 162, 0.55) 0%, rgba(45, 212, 191, 0.25) 35%, transparent 70%)',
-          }}
-        />
-
-        {/* Blob 2: Violet accent (top right) */}
-        <div
-          ref={blob2Ref}
-          className="absolute -top-[10%] -right-[15%] w-[55vw] max-w-[650px] h-[55vw] max-h-[650px] rounded-full opacity-45 mix-blend-screen pointer-events-none filter blur-[40px] sm:blur-[50px] lg:blur-[70px]"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(139, 92, 246, 0.45) 0%, rgba(124, 58, 237, 0.20) 40%, transparent 70%)',
-          }}
-        />
-
-        {/* Blob 3: Deep blue accent (bottom center/right) */}
-        <div
-          ref={blob3Ref}
-          className="absolute -bottom-[20%] left-[25%] w-[60vw] max-w-[700px] h-[60vw] max-h-[700px] rounded-full opacity-40 mix-blend-screen pointer-events-none filter blur-[40px] sm:blur-[50px] lg:blur-[70px]"
-          style={{
-            background:
-              'radial-gradient(circle, rgba(37, 99, 235, 0.40) 0%, rgba(19, 34, 121, 0.25) 40%, transparent 70%)',
-          }}
-        />
-
+      {/* 1. Background — Clean Technical Drafting Grid (Zero Neon Bloom) */}
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden bl-cartesian-grid opacity-60">
         {/* Subtle noise/grain SVG overlay */}
         <div
-          className="absolute inset-0 opacity-[0.035] pointer-events-none"
+          className="absolute inset-0 opacity-[0.025] pointer-events-none"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
           }}
@@ -253,11 +185,7 @@ export const ByteLogicIdeaSection: React.FC = () => {
         {/* 2. Section Header Row */}
         <div
           ref={eyebrowRef}
-          className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-8 sm:mb-12 text-xs font-mono"
-          style={{
-            borderBottom: '1px solid transparent',
-            borderImage: 'linear-gradient(90deg, rgba(45, 212, 191, 0.4), transparent) 1',
-          }}
+          className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-8 sm:mb-12 text-xs font-mono border-b border-[#1C2830]"
         >
           <div className="flex items-center gap-2 text-[#019AA2]">
             <span className="w-2 h-2 rounded-[2px] bg-[#019AA2]" />
@@ -318,12 +246,12 @@ export const ByteLogicIdeaSection: React.FC = () => {
                 className={`absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r ${pillar.accentLine} opacity-80 group-hover:opacity-100 transition-opacity`}
               />
 
-              {/* Spotlight cursor glow overlay */}
+              {/* Spotlight cursor glow overlay - subtle neutral */}
               <div
                 className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
                 style={{
                   background:
-                    'radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), rgba(1, 154, 162, 0.14), transparent 75%)',
+                    'radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.03), transparent 75%)',
                 }}
               />
 
@@ -333,7 +261,7 @@ export const ByteLogicIdeaSection: React.FC = () => {
                   {/* Pillar Top Meta Header */}
                   <div className="flex items-center justify-between text-xs font-mono mb-5 pb-3 border-b border-white/[0.08]">
                     <div className="flex items-center gap-2.5">
-                      <div className="p-2 rounded-[5px] bg-[#070B0E] border border-[#1C2830] transition-all duration-300 group-hover:border-[#019AA2]/60 group-hover:shadow-[0_0_16px_rgba(1,154,162,0.3)]">
+                      <div className="p-2 rounded-[5px] bg-[#070B0E] border border-[#1C2830] transition-all duration-300 group-hover:border-[#019AA2]/60">
                         {pillar.icon}
                       </div>
                       <div className="flex items-center gap-1.5">
@@ -392,7 +320,7 @@ export const ByteLogicIdeaSection: React.FC = () => {
                     {pillar.visualType === 'contour' && (
                       <div className="space-y-1.5">
                         <div className="flex items-center justify-between text-[10px] font-mono text-[#68747D] border-b border-[#1C2830]/60 pb-1.5">
-                          <span className="text-[#8b5cf6]">LOSS CONTOUR MAP</span>
+                          <span className="text-[#019AA2]">LOSS CONTOUR MAP</span>
                           <span>LEVEL SETS R^2</span>
                         </div>
                         <div className="w-full h-20 flex items-center justify-center relative">
@@ -400,8 +328,8 @@ export const ByteLogicIdeaSection: React.FC = () => {
                             {/* Elliptical Contours */}
                             <ellipse cx="150" cy="40" rx="75" ry="32" fill="none" stroke="#1C2830" strokeWidth="1" strokeDasharray="3 3" />
                             <ellipse cx="150" cy="40" rx="55" ry="23" fill="none" stroke="#1C2830" strokeWidth="1" />
-                            <ellipse cx="150" cy="40" rx="35" ry="14" fill="none" stroke="#8b5cf6" strokeWidth="1" strokeOpacity="0.4" />
-                            <ellipse cx="150" cy="40" rx="18" ry="7" fill="#8b5cf6" fillOpacity="0.1" stroke="#019AA2" strokeWidth="1.2" />
+                            <ellipse cx="150" cy="40" rx="35" ry="14" fill="none" stroke="#A8B3BA" strokeWidth="1" strokeOpacity="0.4" />
+                            <ellipse cx="150" cy="40" rx="18" ry="7" fill="#019AA2" fillOpacity="0.06" stroke="#019AA2" strokeWidth="1.2" />
 
                             {/* Coordinate Axis crosshairs */}
                             <line x1="20" y1="40" x2="225" y2="40" stroke="#1C2830" strokeWidth="1" strokeDasharray="2 2" />
@@ -450,7 +378,7 @@ export const ByteLogicIdeaSection: React.FC = () => {
                           <code>
                             <span className="text-[#68747D]"># Vectorized gradient update</span>{'\n'}
                             <span className="text-[#019AA2]">dW</span> = (X.T @ (<span className="text-[#d4af37]">sigma</span>(X @ W) - Y)) / N{'\n'}
-                            W -= <span className="text-[#2dd4bf]">eta</span> * (dW + <span className="text-[#f59e0b]">lmbda</span> * W)
+                            W -= <span className="text-[#019AA2]">eta</span> * (dW + <span className="text-[#f59e0b]">lmbda</span> * W)
                           </code>
                         </pre>
                         <div className="flex items-center justify-between text-[9px] font-mono text-[#68747D] pt-1 border-t border-[#1C2830]/40">
@@ -489,7 +417,7 @@ export const ByteLogicIdeaSection: React.FC = () => {
             className="bl-btn-shimmer px-3.5 py-1.5 text-xs font-mono inline-flex items-center gap-2 hover:brightness-110 transition-all font-medium"
           >
             <span>Examine the Learning Loop</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#2dd4bf]" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#019AA2]" />
           </Link>
         </div>
       </div>

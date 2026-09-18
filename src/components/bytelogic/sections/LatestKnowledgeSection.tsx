@@ -37,7 +37,7 @@ export const LatestKnowledgeSection: React.FC = () => {
       case 'IMPLEMENTATION':
         return <Code className="w-3.5 h-3.5 text-[#f59e0b]" />;
       case 'EXPERIMENT':
-        return <Terminal className="w-3.5 h-3.5 text-[#8b5cf6]" />;
+        return <Terminal className="w-3.5 h-3.5 text-[#019AA2]" />;
     }
   };
 

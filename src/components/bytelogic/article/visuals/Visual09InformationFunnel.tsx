@@ -8,7 +8,7 @@ export const Visual09InformationFunnel: React.FC<{ className?: string }> = ({ cl
   return (
     <figure
       className={cn(
-        'my-12 sm:my-16 rounded-[8px] bg-[#0E151B] border border-[#019AA2]/50 overflow-hidden bl-tick-box w-full max-w-2xl mx-auto shadow-[0_0_30px_rgba(1,154,162,0.08)]',
+        'my-12 sm:my-16 rounded-[8px] bg-[#0E151B] border border-[#019AA2]/50 overflow-hidden bl-tick-box w-full max-w-2xl mx-auto',
         className
       )}
       aria-label="The ByteLogic Information Funnel: Data to Information to Model to Performance"
@@ -104,7 +104,7 @@ export const Visual09InformationFunnel: React.FC<{ className?: string }> = ({ cl
         </div>
 
         {/* Stage 4: GENERALIZED PERFORMANCE */}
-        <div className="w-full max-w-[260px] p-3 rounded-[6px] bg-[#019AA2]/15 border border-[#019AA2] text-center shadow-[0_0_16px_rgba(1,154,162,0.15)]">
+        <div className="w-full max-w-[260px] p-3 rounded-[6px] bg-[#019AA2]/15 border border-[#019AA2] text-center">
           <div className="flex items-center justify-center gap-2 text-xs font-mono font-bold text-[#019AA2] uppercase tracking-wider">
             <Award className="w-3.5 h-3.5" />
             <span>04 // TRUE GENERALIZATION</span>

@@ -49,7 +49,7 @@ export const Visual06ModelBottleneck: React.FC<{ className?: string }> = ({ clas
         </div>
 
         {/* Middle: MODEL BOTTLENECK BOX */}
-        <div className="w-full max-w-sm p-4 sm:p-5 rounded-[6px] bg-[#05070A] border-2 border-[#019AA2] text-center font-mono relative shadow-[0_0_24px_rgba(1,154,162,0.15)]">
+        <div className="w-full max-w-sm p-4 sm:p-5 rounded-[6px] bg-[#05070A] border-2 border-[#019AA2] text-center font-mono relative">
           <div className="flex items-center justify-center gap-2 text-xs font-bold text-[#019AA2] uppercase tracking-wider mb-1">
             <Cpu className="w-4 h-4 text-[#019AA2]" />
             <span>MODEL CAPACITY BOTTLENECK</span>

@@ -141,15 +141,15 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
                 const luminanceIndex = Math.max(0, Math.min(CHAR_RAMP.length - 1, Math.floor((L + 1.2) * 3)));
                 charBuffer[idx] = CHAR_RAMP[luminanceIndex];
 
-                // Vibrant, high-visibility color ramp based on luminance & depth
+                // Restrained technical color ramp based on luminance & depth
                 if (luminanceIndex >= 8) {
-                  colorBuffer[idx] = '#00E5FF'; // High-voltage Cyan highlight
+                  colorBuffer[idx] = '#019AA2'; // Logic Cyan highlight
                 } else if (luminanceIndex >= 5) {
-                  colorBuffer[idx] = '#01CAD6'; // Logic Cyan primary
+                  colorBuffer[idx] = '#01868D'; // Muted Cyan
                 } else if (luminanceIndex >= 3) {
-                  colorBuffer[idx] = '#3874FF'; // Luminous Byte Blue
+                  colorBuffer[idx] = '#475569'; // Technical Slate
                 } else {
-                  colorBuffer[idx] = 'rgba(148, 163, 184, 0.75)'; // Bright structural silver
+                  colorBuffer[idx] = 'rgba(104, 116, 125, 0.5)'; // Structural silver
                 }
               }
             }
@@ -195,7 +195,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
               zBuffer[idx] = ooz;
               const isOuter = i < cubePoints.length / 2;
               charBuffer[idx] = isOuter ? (i % 2 === 0 ? '0' : '1') : '+';
-              colorBuffer[idx] = isOuter ? '#00E5FF' : '#3874FF';
+              colorBuffer[idx] = isOuter ? '#019AA2' : '#475569';
             }
           }
         });
@@ -227,7 +227,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
                 zBuffer[idx] = ooz;
                 const isStationary = Math.abs(u) < 0.25 && Math.abs(v) < 0.25;
                 charBuffer[idx] = isStationary ? '0' : (u * v > 0 ? '·' : ':');
-                colorBuffer[idx] = isStationary ? '#00E5FF' : (u * v > 0 ? '#3874FF' : '#94A3B8');
+                colorBuffer[idx] = isStationary ? '#019AA2' : (u * v > 0 ? '#475569' : '#68747D');
               }
             }
           }
@@ -261,7 +261,7 @@ export const Ascii3DBackground: React.FC<Ascii3DBackgroundProps> = ({
                 zBuffer[idx] = ooz;
                 const isEquator = Math.abs(lat) < 0.15;
                 charBuffer[idx] = isEquator ? '0' : (Math.sin(lon * 4) > 0 ? '1' : '·');
-                colorBuffer[idx] = isEquator ? '#00E5FF' : (Math.sin(lon * 4) > 0 ? '#3874FF' : 'rgba(148, 163, 184, 0.75)');
+                colorBuffer[idx] = isEquator ? '#019AA2' : (Math.sin(lon * 4) > 0 ? '#475569' : 'rgba(104, 116, 125, 0.5)');
               }
             }
           }

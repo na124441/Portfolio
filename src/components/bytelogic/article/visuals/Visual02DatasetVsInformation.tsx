@@ -105,7 +105,7 @@ export const Visual02DatasetVsInformation: React.FC<{ className?: string }> = ({
         </div>
 
         {/* Panel B: Dataset B (Large + Diverse) */}
-        <div className="p-4 sm:p-5 rounded-[6px] bg-[#05070A] border border-[#019AA2]/30 flex flex-col justify-between relative shadow-[0_0_20px_rgba(1,154,162,0.05)]">
+        <div className="p-4 sm:p-5 rounded-[6px] bg-[#05070A] border border-[#019AA2]/40 flex flex-col justify-between relative">
           <div>
             <div className="flex items-center justify-between text-xs font-mono pb-3 mb-3 border-b border-[#1C2830]">
               <span className="text-[#019AA2] font-semibold flex items-center gap-2">

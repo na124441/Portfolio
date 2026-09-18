@@ -112,7 +112,7 @@ export const LearningPathCard: React.FC<LearningPathCardProps> = ({ path }) => {
 
         <Link
           href={path.slug}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[4px] bg-[#019AA2] hover:bg-[#01868D] text-[#05070A] font-bold transition-all group-hover:shadow-[0_0_16px_rgba(1,154,162,0.4)]"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[4px] bg-[#019AA2] hover:bg-[#01868D] text-[#05070A] font-bold transition-all"
         >
           <span>START PATH</span>
           <ArrowRight className="w-3.5 h-3.5" />

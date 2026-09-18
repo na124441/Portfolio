@@ -57,7 +57,7 @@ export const KnowledgeDomainsSection: React.FC = () => {
                 className={cn(
                   'w-full text-left p-3.5 sm:p-4 rounded-[6px] border transition-all duration-200 cursor-pointer flex items-center justify-between group min-h-[58px]',
                   isSelected
-                    ? 'bg-[#0E151B] border-[#019AA2] text-[#F3F6F7] shadow-[0_0_12px_rgba(1,154,162,0.12)]'
+                    ? 'bg-[#0E151B] border-[#019AA2] text-[#F3F6F7]'
                     : 'bg-[#0A0F14] border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] hover:border-[#1C2830]/80'
                 )}
               >

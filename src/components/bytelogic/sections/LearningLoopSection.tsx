@@ -80,14 +80,14 @@ export const LearningLoopSection: React.FC = () => {
         'Every concept begins with the exact problem statement. Deconstruct the objective function, identify mathematical invariants, and derive convergence boundaries before touching code.',
       telemetry: 'ANALYTICAL RIGOR // DERIVATION',
       color: '#019AA2',
-      gradient: 'from-[#019AA2] to-[#2dd4bf]',
+      gradient: 'from-[#019AA2] to-[#01868D]',
     },
     {
       step: '02',
       category: 'GEOMETRY',
       title: 'VISUALIZE',
       tagline: 'Spatial Geometry & Manifold Dynamics',
-      icon: <Eye className="w-4 h-4 text-[#8b5cf6]" />,
+      icon: <Eye className="w-4 h-4 text-[#019AA2]" />,
       input: 'Abstract Loss Surface & Metric Space (L2 Euclidean)',
       operation: 'Dynamic Voronoi partitioning & vector projection',
       output: 'Geometric intuition of centroid velocity field',
@@ -95,8 +95,8 @@ export const LearningLoopSection: React.FC = () => {
       description:
         'Equations become intuitive when rendered spatially. Observe how boundaries warp, gradients flow along manifolds, and optimization trajectories settle into local minima.',
       telemetry: 'COORDINATE PROJECTION // GEOMETRY',
-      color: '#8b5cf6',
-      gradient: 'from-[#8b5cf6] to-[#019AA2]',
+      color: '#019AA2',
+      gradient: 'from-[#019AA2] to-[#A8B3BA]',
     },
     {
       step: '03',
@@ -111,14 +111,14 @@ export const LearningLoopSection: React.FC = () => {
         'Discard opaque library abstractions. Implement algorithms from bare mathematical equations using vectorized matrix operations to understand runtime and memory complexity.',
       telemetry: 'NUMPY PRIMITIVES // NO BLACK BOXES',
       color: '#d4af37',
-      gradient: 'from-[#d4af37] to-[#019AA2]',
+      gradient: 'from-[#d4af37] to-[#A8B3BA]',
     },
     {
       step: '04',
       category: 'STRESS TEST',
       title: 'EXPERIMENT',
       tagline: 'Empirical Stress-Testing & Topologies',
-      icon: <PlayCircle className="w-4 h-4 text-[#ef4444]" />,
+      icon: <PlayCircle className="w-4 h-4 text-[#d4af37]" />,
       input: 'Non-Convex Topologies & Adversarial Noise',
       operation: 'Monte-Carlo parameter sweep & initialization trials',
       output: 'Empirical convergence rate & variance bounds',
@@ -126,15 +126,15 @@ export const LearningLoopSection: React.FC = () => {
       description:
         'Subject the algorithm to adversarial topologies: concentric rings, anisotropic stretches, and poor initializations. Experience firsthand why heuristics fail and principled techniques succeed.',
       telemetry: 'MONTE-CARLO STRESS // 100 ITERATIONS',
-      color: '#ef4444',
-      gradient: 'from-[#ef4444] to-[#f59e0b]',
+      color: '#d4af37',
+      gradient: 'from-[#d4af37] to-[#019AA2]',
     },
     {
       step: '05',
       category: 'TOPOLOGY',
       title: 'DISCOVER',
       tagline: 'Interconnected Knowledge Topology',
-      icon: <Network className="w-4 h-4 text-[#10b981]" />,
+      icon: <Network className="w-4 h-4 text-[#019AA2]" />,
       input: 'Isolated Algorithmic Mechanism',
       operation: 'Graph theoretical mapping & topological unification',
       output: 'Synthesis with EM, GMM, and PCA',
@@ -142,8 +142,8 @@ export const LearningLoopSection: React.FC = () => {
       description:
         'No algorithm exists in isolation. Connect K-Means to Expectation-Maximization, Gaussian Mixture Models with spherical covariance, and spectral projections in the global knowledge graph.',
       telemetry: 'GRAPH TOPOLOGY // UNIFIED THEORY',
-      color: '#10b981',
-      gradient: 'from-[#10b981] to-[#019AA2]',
+      color: '#019AA2',
+      gradient: 'from-[#019AA2] to-[#1C2830]',
     },
   ];
 
@@ -205,7 +205,7 @@ export const LearningLoopSection: React.FC = () => {
         {/* Background Interconnected Signal Bus Line (Desktop) */}
         <div className="hidden sm:block absolute top-1/2 left-[5%] right-[5%] -translate-y-1/2 h-[2px] bg-[#1C2830] -z-10">
           <div
-            className="h-full bg-gradient-to-r from-[#019AA2] via-[#2dd4bf] to-[#019AA2] transition-all duration-500"
+            className="h-full bg-[#019AA2] transition-all duration-500"
             style={{ width: `${(activeStage / 4) * 100}%` }}
           />
         </div>
@@ -223,7 +223,7 @@ export const LearningLoopSection: React.FC = () => {
                 className={cn(
                   'p-3.5 sm:p-4 rounded-[8px] border text-left font-mono transition-all duration-300 cursor-pointer flex flex-col justify-between group relative overflow-hidden',
                   isActive
-                    ? 'bg-[#0E151B] border-[#019AA2] shadow-[0_0_24px_rgba(1,154,162,0.25)] -translate-y-1'
+                    ? 'bg-[#0E151B] border-[#019AA2] -translate-y-1'
                     : isCompleted
                     ? 'bg-[#0A0F14] border-[#019AA2]/40 hover:border-[#019AA2]/80 hover:bg-[#0E151B]'
                     : 'bg-[#0A0F14] border-[#1C2830] hover:border-[#A8B3BA]/40 hover:bg-[#0E151B]/60'
@@ -255,7 +255,7 @@ export const LearningLoopSection: React.FC = () => {
                       {stage.step}
                     </span>
                     {isActive && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#019AA2] animate-ping" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#019AA2]" />
                     )}
                   </div>
 
@@ -263,7 +263,7 @@ export const LearningLoopSection: React.FC = () => {
                     className={cn(
                       'p-1.5 rounded-[4px] border transition-all duration-200',
                       isActive
-                        ? 'bg-[#019AA2]/15 border-[#019AA2]/50 text-[#019AA2] shadow-[0_0_10px_rgba(1,154,162,0.3)]'
+                        ? 'bg-[#019AA2]/15 border-[#019AA2]/50 text-[#019AA2]'
                         : 'bg-[#070B0E] border-[#1C2830] text-[#68747D] group-hover:text-[#A8B3BA]'
                     )}
                   >
@@ -494,13 +494,13 @@ export const LearningLoopSection: React.FC = () => {
 
                         {/* Voronoi Partition Regions (Polygons) */}
                         <path d="M 0 0 L 140 0 L 160 85 L 0 110 Z" fill="#019AA2" fillOpacity="0.08" />
-                        <path d="M 140 0 L 320 0 L 320 95 L 160 85 Z" fill="#8b5cf6" fillOpacity="0.08" />
+                        <path d="M 140 0 L 320 0 L 320 95 L 160 85 Z" fill="#A8B3BA" fillOpacity="0.05" />
                         <path d="M 0 110 L 160 85 L 320 95 L 320 160 L 0 160 Z" fill="#d4af37" fillOpacity="0.08" />
 
                         {/* Voronoi Boundary Lines */}
                         <line x1="140" y1="0" x2="160" y2="85" stroke="#019AA2" strokeWidth="1.5" strokeDasharray="3 3" />
                         <line x1="0" y1="110" x2="160" y2="85" stroke="#019AA2" strokeWidth="1.5" strokeDasharray="3 3" />
-                        <line x1="160" y1="85" x2="320" y2="95" stroke="#8b5cf6" strokeWidth="1.5" strokeDasharray="3 3" />
+                        <line x1="160" y1="85" x2="320" y2="95" stroke="#A8B3BA" strokeWidth="1.5" strokeDasharray="3 3" />
 
                         {/* Cluster 1 Points (Teal) */}
                         <g fill="#019AA2">
@@ -511,8 +511,8 @@ export const LearningLoopSection: React.FC = () => {
                           <circle cx="100" cy="65" r="2.5" opacity="0.8" />
                         </g>
 
-                        {/* Cluster 2 Points (Violet) */}
-                        <g fill="#8b5cf6">
+                        {/* Cluster 2 Points (Muted Silver) */}
+                        <g fill="#A8B3BA">
                           <circle cx="210" cy="30" r="2.5" opacity="0.8" />
                           <circle cx="250" cy="45" r="2.5" opacity="0.8" />
                           <circle cx="270" cy="30" r="2.5" opacity="0.8" />
@@ -537,10 +537,10 @@ export const LearningLoopSection: React.FC = () => {
                         <text x="60" y="38" fill="#019AA2" fontSize="9" fontWeight="bold">μ_1</text>
 
                         {/* Centroid 2 */}
-                        <circle cx="245" cy="42" r="6" fill="#8b5cf6" fillOpacity="0.25" stroke="#8b5cf6" strokeWidth="1.5" />
+                        <circle cx="245" cy="42" r="6" fill="#A8B3BA" fillOpacity="0.25" stroke="#A8B3BA" strokeWidth="1.5" />
                         <circle cx="245" cy="42" r="2.5" fill="#F3F6F7" />
-                        <line x1="245" y1="42" x2="235" y2="48" stroke="#8b5cf6" strokeWidth="2" />
-                        <text x="250" y="38" fill="#8b5cf6" fontSize="9" fontWeight="bold">μ_2</text>
+                        <line x1="245" y1="42" x2="235" y2="48" stroke="#A8B3BA" strokeWidth="2" />
+                        <text x="250" y="38" fill="#A8B3BA" fontSize="9" fontWeight="bold">μ_2</text>
 
                         {/* Centroid 3 */}
                         <circle cx="160" cy="132" r="6" fill="#d4af37" fillOpacity="0.25" stroke="#d4af37" strokeWidth="1.5" />
@@ -574,8 +574,8 @@ export const LearningLoopSection: React.FC = () => {
                       >
                         {copied ? (
                           <>
-                            <Check className="w-3 h-3 text-[#10b981]" />
-                            <span className="text-[#10b981]">COPIED</span>
+                            <Check className="w-3 h-3 text-[#019AA2]" />
+                            <span className="text-[#019AA2]">COPIED</span>
                           </>
                         ) : (
                           <>
@@ -623,15 +623,15 @@ export const LearningLoopSection: React.FC = () => {
                   <div className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
                       {/* Adversarial Test 1 */}
-                      <div className="p-3.5 rounded-[6px] bg-[#0A0F14] border border-[#ef4444]/30 space-y-2">
+                      <div className="p-3.5 rounded-[6px] bg-[#0A0F14] border border-[#dfb15b]/30 space-y-2">
                         <div className="flex items-center justify-between text-[10px]">
-                          <span className="text-[#ef4444] font-bold">TOPOLOGY 01: CONCENTRIC</span>
+                          <span className="text-[#dfb15b] font-bold">TOPOLOGY 01: CONCENTRIC</span>
                           <span className="text-[#68747D]">FAIL</span>
                         </div>
                         <div className="h-16 flex items-center justify-center">
                           <svg viewBox="0 0 100 60" className="h-full">
-                            <circle cx="50" cy="30" r="12" fill="none" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="2 2" />
-                            <circle cx="50" cy="30" r="26" fill="none" stroke="#ef4444" strokeWidth="1.5" />
+                            <circle cx="50" cy="30" r="12" fill="none" stroke="#dfb15b" strokeWidth="1.5" strokeDasharray="2 2" />
+                            <circle cx="50" cy="30" r="26" fill="none" stroke="#dfb15b" strokeWidth="1.5" />
                           </svg>
                         </div>
                         <p className="text-[10px] text-[#A8B3BA] font-sans">
@@ -643,7 +643,7 @@ export const LearningLoopSection: React.FC = () => {
                       <div className="p-3.5 rounded-[6px] bg-[#0A0F14] border border-[#019AA2]/30 space-y-2">
                         <div className="flex items-center justify-between text-[10px]">
                           <span className="text-[#019AA2] font-bold">INIT TRIAL: K-MEANS++</span>
-                          <span className="text-[#10b981]">99.4% OPT</span>
+                          <span className="text-[#019AA2]">99.4% OPT</span>
                         </div>
                         <div className="h-16 flex items-center justify-center">
                           <svg viewBox="0 0 120 50" className="w-full h-full">
@@ -661,7 +661,7 @@ export const LearningLoopSection: React.FC = () => {
 
                     <div className="p-3 rounded bg-[#0A0F14] border border-[#1C2830] font-mono text-xs flex items-center justify-between">
                       <span className="text-[#68747D]">VARIANCE REDUCTION:</span>
-                      <span className="text-[#10b981] font-bold">O(log K) COMPETITIVE BOUND</span>
+                      <span className="text-[#019AA2] font-bold">O(log K) COMPETITIVE BOUND</span>
                     </div>
                   </div>
                 )}
@@ -675,7 +675,7 @@ export const LearningLoopSection: React.FC = () => {
                       <svg viewBox="0 0 320 150" className="w-full h-full select-none font-mono">
                         {/* Connecting Graph Edges */}
                         <line x1="160" y1="75" x2="60" y2="40" stroke="#019AA2" strokeWidth="1.5" />
-                        <line x1="160" y1="75" x2="260" y2="40" stroke="#8b5cf6" strokeWidth="1.5" />
+                        <line x1="160" y1="75" x2="260" y2="40" stroke="#A8B3BA" strokeWidth="1.5" />
                         <line x1="160" y1="75" x2="160" y2="130" stroke="#d4af37" strokeWidth="1.5" />
 
                         {/* Center Node: K-Means */}
@@ -692,8 +692,8 @@ export const LearningLoopSection: React.FC = () => {
                         <text x="105" y="50" fill="#68747D" fontSize="6.5">Hard E-step</text>
 
                         {/* Connected Node 2: GMM */}
-                        <circle cx="260" cy="40" r="18" fill="#0E151B" stroke="#8b5cf6" strokeWidth="1.5" />
-                        <text x="260" y="43" fill="#8b5cf6" fontSize="8" textAnchor="middle">
+                        <circle cx="260" cy="40" r="18" fill="#0E151B" stroke="#A8B3BA" strokeWidth="1.5" />
+                        <text x="260" y="43" fill="#A8B3BA" fontSize="8" textAnchor="middle">
                           GMM
                         </text>
                         <text x="215" y="50" fill="#68747D" fontSize="6.5">σ² → 0 Limit</text>
@@ -707,8 +707,8 @@ export const LearningLoopSection: React.FC = () => {
                       </svg>
                     </div>
 
-                    <div className="p-3 rounded bg-[#10b981]/10 border border-[#10b981]/30 font-sans text-xs text-[#A8B3BA] leading-relaxed">
-                      <strong className="text-[#10b981] font-mono block mb-1">
+                    <div className="p-3 rounded bg-[#0E151B] border border-[#1C2830] font-sans text-xs text-[#A8B3BA] leading-relaxed">
+                      <strong className="text-[#019AA2] font-mono block mb-1">
                         UNIFIED THEORETICAL THEOREM:
                       </strong>
                       K-Means is not an ad-hoc clustering heuristic. It is the exact asymptotic limit
@@ -740,7 +740,7 @@ export const LearningLoopSection: React.FC = () => {
                     className={cn(
                       'w-2 h-2 rounded-full transition-all cursor-pointer',
                       activeStage === i
-                        ? 'w-6 bg-[#019AA2] shadow-[0_0_8px_rgba(1,154,162,0.6)]'
+                        ? 'w-6 bg-[#019AA2]'
                         : 'bg-[#1C2830] hover:bg-[#68747D]'
                     )}
                   />
@@ -750,7 +750,7 @@ export const LearningLoopSection: React.FC = () => {
               <button
                 disabled={activeStage === stages.length - 1}
                 onClick={() => setActiveStage((p) => Math.min(stages.length - 1, p + 1))}
-                className="px-4 py-2 rounded-[6px] border border-[#019AA2]/50 bg-[#019AA2]/15 text-[#019AA2] hover:bg-[#019AA2]/25 disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-[0_0_12px_rgba(1,154,162,0.15)]"
+                className="px-4 py-2 rounded-[6px] border border-[#019AA2]/50 bg-[#019AA2]/15 text-[#019AA2] hover:bg-[#019AA2]/25 disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center gap-1.5 cursor-pointer font-semibold"
               >
                 <span>Next Stage</span>
                 <ChevronRight className="w-3.5 h-3.5" />

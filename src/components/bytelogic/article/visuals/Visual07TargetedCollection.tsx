@@ -80,7 +80,7 @@ export const Visual07TargetedCollection: React.FC<{ className?: string }> = ({ c
         </div>
 
         {/* After Panel */}
-        <div className="p-5 rounded-[6px] bg-[#05070A] border border-[#019AA2]/40 flex flex-col justify-between relative shadow-[0_0_20px_rgba(1,154,162,0.06)]">
+        <div className="p-5 rounded-[6px] bg-[#05070A] border border-[#019AA2]/40 flex flex-col justify-between relative">
           <div>
             <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#1C2830] text-xs font-mono">
               <span className="text-[#019AA2] font-semibold uppercase tracking-wider flex items-center gap-1.5">
