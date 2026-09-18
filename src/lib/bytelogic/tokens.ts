@@ -184,6 +184,18 @@ export const FEATURED_CONTENT: ContentItem[] = [
     equationOrSnippet: '\\lim_{D \\to \\infty} \\frac{dP}{dD} = 0',
   },
   {
+    id: 'smaller-model-article-002',
+    type: 'ARTICLE',
+    code: '02',
+    title: 'Why Can a Smaller Model Beat a Larger Model?',
+    subtitle: 'On the physics of parameter capacity, task manifolds, and efficient intelligence.',
+    domain: 'AI / Machine Learning · Systems',
+    difficulty: 'Advanced',
+    durationOrReadTime: '14–16 min read',
+    slug: '/bytelogic/articles/why-can-a-smaller-model-beat-a-larger-model',
+    equationOrSnippet: '\\mathcal{U} = f(\\mathcal{A}, \\mathcal{D}, \\mathcal{T}, \\mathcal{C}, \\mathcal{M}, \\mathcal{I})',
+  },
+  {
     id: 'pca-article',
     type: 'ARTICLE',
     code: '03',

@@ -3,11 +3,38 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Clock, Tag, BookOpen, Layers, ArrowRight } from 'lucide-react';
+import { ArticleMetadata } from '@/types/bytelogic-article';
 import { ARTICLE_001_METADATA } from '@/data/bytelogic/articles/more-data';
 import { cn } from '@/lib/utils';
 
-export const ArticleHero: React.FC<{ className?: string }> = ({ className }) => {
-  const meta = ARTICLE_001_METADATA;
+export interface FrameworkNode {
+  num: string;
+  label: string;
+  title: string;
+  sub: string;
+  highlight?: boolean;
+}
+
+export interface ArticleHeroProps {
+  metadata?: ArticleMetadata;
+  frameworkNodes?: FrameworkNode[];
+  frameworkLabel?: string;
+  className?: string;
+}
+
+export const ArticleHero: React.FC<ArticleHeroProps> = ({
+  metadata,
+  frameworkNodes,
+  frameworkLabel = 'CONCEPTUAL CHAIN OF INFERENCE',
+  className,
+}) => {
+  const meta = metadata || ARTICLE_001_METADATA;
+  const nodes: FrameworkNode[] = frameworkNodes || [
+    { num: '01', label: 'OBSERVATIONS', title: 'DATA', sub: 'Volume / Cardinality' },
+    { num: '02', label: 'ENTROPY', title: 'INFORMATION', sub: 'Uncertainty Removed', highlight: true },
+    { num: '03', label: 'CAPACITY', title: 'MODEL', sub: 'Inductive Biases' },
+    { num: '04', label: 'UTILITY', title: 'PERFORMANCE', sub: 'Generalization Bound' },
+  ];
 
   return (
     <header
@@ -67,51 +94,42 @@ export const ArticleHero: React.FC<{ className?: string }> = ({ className }) => 
           <div className="p-4 sm:p-6 rounded-[6px] bg-[#0A0F14] border border-[#1C2830] bl-tick-box">
             <div className="flex items-center justify-between text-[11px] font-mono text-[#68747D] pb-3 mb-4 border-b border-[#1C2830]">
               <span className="uppercase tracking-widest text-[#019AA2] font-medium">
-                CONCEPTUAL CHAIN OF INFERENCE
+                {frameworkLabel}
               </span>
               <span>ANALYTICAL FRAMEWORK</span>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 font-mono text-xs">
-              {/* Node 1: DATA */}
-              <div className="p-3 rounded bg-[#0E151B] border border-[#1C2830] flex flex-col justify-between">
-                <div className="flex items-center justify-between text-[10px] text-[#68747D]">
-                  <span>01</span>
-                  <span>OBSERVATIONS</span>
+              {nodes.map((node) => (
+                <div
+                  key={node.num}
+                  className={cn(
+                    'p-3 rounded bg-[#0E151B] border flex flex-col justify-between transition-colors',
+                    node.highlight
+                      ? 'border-[#019AA2]/40 shadow-[0_0_12px_rgba(1,154,162,0.1)]'
+                      : 'border-[#1C2830]'
+                  )}
+                >
+                  <div
+                    className={cn(
+                      'flex items-center justify-between text-[10px]',
+                      node.highlight ? 'text-[#019AA2]' : 'text-[#68747D]'
+                    )}
+                  >
+                    <span>{node.num}</span>
+                    <span>{node.label}</span>
+                  </div>
+                  <div
+                    className={cn(
+                      'text-sm font-bold my-1',
+                      node.highlight ? 'text-[#019AA2]' : 'text-[#F3F6F7]'
+                    )}
+                  >
+                    {node.title}
+                  </div>
+                  <div className="text-[10px] text-[#A8B3BA]">{node.sub}</div>
                 </div>
-                <div className="text-sm font-bold text-[#F3F6F7] my-1">DATA</div>
-                <div className="text-[10px] text-[#A8B3BA]">Volume / Cardinality</div>
-              </div>
-
-              {/* Node 2: INFORMATION */}
-              <div className="p-3 rounded bg-[#0E151B] border border-[#019AA2]/40 flex flex-col justify-between shadow-[0_0_12px_rgba(1,154,162,0.1)]">
-                <div className="flex items-center justify-between text-[10px] text-[#019AA2]">
-                  <span>02</span>
-                  <span>ENTROPY</span>
-                </div>
-                <div className="text-sm font-bold text-[#019AA2] my-1">INFORMATION</div>
-                <div className="text-[10px] text-[#A8B3BA]">Uncertainty Removed</div>
-              </div>
-
-              {/* Node 3: MODEL */}
-              <div className="p-3 rounded bg-[#0E151B] border border-[#1C2830] flex flex-col justify-between">
-                <div className="flex items-center justify-between text-[10px] text-[#68747D]">
-                  <span>03</span>
-                  <span>CAPACITY</span>
-                </div>
-                <div className="text-sm font-bold text-[#F3F6F7] my-1">MODEL</div>
-                <div className="text-[10px] text-[#A8B3BA]">Inductive Biases</div>
-              </div>
-
-              {/* Node 4: PERFORMANCE */}
-              <div className="p-3 rounded bg-[#0E151B] border border-[#1C2830] flex flex-col justify-between">
-                <div className="flex items-center justify-between text-[10px] text-[#68747D]">
-                  <span>04</span>
-                  <span>UTILITY</span>
-                </div>
-                <div className="text-sm font-bold text-[#F3F6F7] my-1">PERFORMANCE</div>
-                <div className="text-[10px] text-[#A8B3BA]">Generalization Bound</div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

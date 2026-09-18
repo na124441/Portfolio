@@ -3,10 +3,22 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { List, ChevronUp, ArrowLeft } from 'lucide-react';
+import { ArticleSectionItem } from '@/types/bytelogic-article';
 import { ARTICLE_001_SECTIONS } from '@/data/bytelogic/articles/more-data';
 import { cn } from '@/lib/utils';
 
-export const ArticleLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export interface ArticleLayoutProps {
+  children: React.ReactNode;
+  sections?: ArticleSectionItem[];
+  className?: string;
+}
+
+export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
+  children,
+  sections,
+  className,
+}) => {
+  const sectionsList = sections || ARTICLE_001_SECTIONS;
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
@@ -22,13 +34,13 @@ export const ArticleLayout: React.FC<{ children: React.ReactNode }> = ({ childre
       }
 
       // Check current active section
-      const sections = ARTICLE_001_SECTIONS.map((s) => document.getElementById(s.id));
+      const sectionElements = sectionsList.map((s) => document.getElementById(s.id));
       const scrollPos = window.scrollY + 200;
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sec = sections[i];
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const sec = sectionElements[i];
         if (sec && sec.offsetTop <= scrollPos) {
-          setActiveSection(ARTICLE_001_SECTIONS[i].id);
+          setActiveSection(sectionsList[i].id);
           break;
         }
       }
@@ -36,7 +48,7 @@ export const ArticleLayout: React.FC<{ children: React.ReactNode }> = ({ childre
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [sectionsList]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -80,7 +92,7 @@ export const ArticleLayout: React.FC<{ children: React.ReactNode }> = ({ childre
               </div>
 
               <nav className="max-h-[calc(100vh-220px)] overflow-y-auto space-y-1 bl-scrollbar pr-1">
-                {ARTICLE_001_SECTIONS.map((sec) => {
+                {sectionsList.map((sec) => {
                   const isActive = activeSection === sec.id;
                   return (
                     <a
