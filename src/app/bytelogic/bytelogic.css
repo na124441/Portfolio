@@ -248,3 +248,90 @@ body.bl-body {
   background-color: #131C24;
   color: #FFFFFF;
 }
+
+/* ==========================================================================
+   Editorial Design System — De-AI Overrides
+   ========================================================================== */
+
+/* Oversized decorative stage number (background watermark element) */
+.bl-stage-number-deco {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 200;
+  font-size: clamp(4rem, 8vw, 7rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgba(243, 246, 247, 0.04);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Active state — slightly more visible */
+.bl-stage-number-deco[data-active="true"] {
+  color: rgba(1, 154, 162, 0.07);
+}
+
+/* Editorial left-bar accent for active items */
+.bl-editorial-bar-left {
+  position: relative;
+}
+
+.bl-editorial-bar-left::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  background: #019AA2;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.bl-editorial-bar-left[data-active="true"]::before {
+  opacity: 1;
+}
+
+/* Warm accent text utility */
+.bl-text-warm {
+  color: #C4703F;
+}
+
+/* Dataflow vertical connector line */
+.bl-dataflow-connector {
+  position: relative;
+  padding-left: 20px;
+}
+
+.bl-dataflow-connector::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  background: linear-gradient(
+    to bottom,
+    rgba(1, 154, 162, 0.3),
+    rgba(196, 112, 63, 0.3)
+  );
+}
+
+/* Clean dot marker for dataflow nodes */
+.bl-dataflow-dot {
+  position: relative;
+}
+
+.bl-dataflow-dot::before {
+  content: "";
+  position: absolute;
+  left: -17px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  background: #05070A;
+}
+

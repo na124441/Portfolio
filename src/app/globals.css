@@ -21,6 +21,8 @@
   --accent-light: #edd899;
   --accent-mid: #dfb15b;
   --accent-dark: #997328;
+  --accent-warm: #C4703F;
+  --accent-warm-rgb: 196, 112, 63;
   --bg-rgb: 1, 10, 11;
   --white-rgb: 254, 255, 255;
   --border-muted: rgba(254, 255, 255, 0.08);
