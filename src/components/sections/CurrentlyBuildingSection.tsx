@@ -22,7 +22,6 @@ export const CurrentlyBuildingSection: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <SectionHeader
           number="02"
-          tag="Active // Live"
           title="Currently Building"
           subtitle="Active projects, frameworks, and long-term initiatives."
         />
