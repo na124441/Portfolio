@@ -1,11 +1,16 @@
 /**
  * DSA Question Bank Type Definitions
  * Structured types for interactive algorithmic learning problems, hints, solutions, and test cases.
+ * Extended with execution, submission, and judge types for the practice platform.
  */
+
+/* ─── Difficulty & Status ─── */
 
 export type DsaDifficulty = 'Warm-up' | 'Easy' | 'Medium' | 'Hard';
 
 export type DsaStatus = 'unattempted' | 'attempted' | 'solved' | 'revisit';
+
+/* ─── Problem Content Types ─── */
 
 export interface DsaExample {
   input: string;
@@ -51,6 +56,13 @@ export interface DsaTestCase {
   input: string;
   expectedOutput: string;
   explanation?: string;
+  visibility?: 'public' | 'hidden';
+}
+
+export interface ProblemLimits {
+  timeLimitMs: number;    // default: 2000
+  memoryLimitMb: number;  // default: 256
+  outputLimitMb: number;  // default: 1
 }
 
 export interface DsaProblem {
@@ -69,6 +81,7 @@ export interface DsaProblem {
   code: DsaCodeSnippet[];
   followUp: string;
   testCases: DsaTestCase[];
+  limits?: ProblemLimits;
   revisit?: boolean;
   prerequisites?: string[];
   relatedSlugs?: string[];
@@ -81,6 +94,8 @@ export interface DsaTopicMeta {
   description: string;
 }
 
+/* ─── User State (localStorage) ─── */
+
 export interface UserProblemState {
   status: DsaStatus;
   hintsRevealed: number; // 0..3
@@ -88,4 +103,54 @@ export interface UserProblemState {
   savedCode?: Record<string, string>; // language -> code
   solvedAt?: string;
   lastAttemptAt?: string;
+}
+
+/* ─── Execution & Submission Types ─── */
+
+export type SubmissionVerdict =
+  | 'QUEUED'
+  | 'RUNNING'
+  | 'ACCEPTED'
+  | 'WRONG_ANSWER'
+  | 'COMPILE_ERROR'
+  | 'RUNTIME_ERROR'
+  | 'TIME_LIMIT'
+  | 'MEMORY_LIMIT'
+  | 'OUTPUT_LIMIT'
+  | 'SYSTEM_ERROR';
+
+export interface ExecutionResult {
+  status: 'success' | 'compile_error' | 'runtime_error' | 'timeout' | 'memory_limit';
+  stdout: string;
+  stderr: string;
+  exitCode: number;
+  compileTimeMs?: number;
+  executionTimeMs: number;
+  memoryKb?: number;
+}
+
+export interface JudgeResult {
+  verdict: SubmissionVerdict;
+  passedTests: number;
+  totalTests: number;
+  executionTimeMs: number;
+  memoryKb: number;
+  failedTestIndex?: number;
+  compileError?: string;
+  runtimeError?: string;
+}
+
+export interface SubmissionRecord {
+  id: string;
+  problemSlug: string;
+  language: string;
+  sourceCode: string;
+  verdict: SubmissionVerdict;
+  passedTests: number;
+  totalTests: number;
+  runtime: number | null;
+  memory: number | null;
+  compileError: string | null;
+  runtimeError: string | null;
+  createdAt: string;
 }

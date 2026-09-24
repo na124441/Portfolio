@@ -1,0 +1,7 @@
+services:
+  bytelogic-judge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bytelogic-judge
+    container_name: bytelogic-judge-build

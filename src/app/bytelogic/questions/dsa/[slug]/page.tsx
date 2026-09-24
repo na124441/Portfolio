@@ -54,9 +54,14 @@ export default async function DsaProblemWorkspacePage({ params }: PageProps) {
 
   const { prev, next } = getAdjacentDsaProblems(slug);
 
+  const clientProblem = {
+    ...problem,
+    testCases: (problem.testCases || []).filter((tc) => tc.visibility !== 'hidden'),
+  };
+
   return (
     <div className="min-h-screen bg-[#05070A] pt-14 sm:pt-16">
-      <DsaWorkspace problem={problem} prevProblem={prev} nextProblem={next} />
+      <DsaWorkspace problem={clientProblem} prevProblem={prev} nextProblem={next} />
     </div>
   );
 }

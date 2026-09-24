@@ -1,0 +1,58 @@
+// Prisma schema for ByteLogic DSA Practice Platform
+// Database: SQLite (file-based, zero-config)
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Submission {
+  id              String   @id @default(cuid())
+  problemSlug     String
+  language        String   @default("cpp")
+  sourceCode      String
+  verdict         String   @default("QUEUED")
+  passedTests     Int      @default(0)
+  totalTests      Int      @default(0)
+  runtime         Int?     // ms
+  memory          Int?     // KB
+  compileError    String?
+  runtimeError    String?
+  failedTestIndex Int?
+  mode            String   @default("submit") // "run" or "submit"
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([problemSlug])
+  @@index([verdict])
+  @@index([createdAt])
+}
+
+model ProblemProgress {
+  id             String    @id @default(cuid())
+  problemSlug    String    @unique
+  status         String    @default("UNATTEMPTED")
+  attemptCount   Int       @default(0)
+  accepted       Boolean   @default(false)
+  hintsUsed      Int       @default(0)
+  revisitReason  String?
+  firstAttemptAt DateTime?
+  solvedAt       DateTime?
+  lastAttemptAt  DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model ProblemDraft {
+  id          String   @id @default(cuid())
+  problemSlug String
+  language    String   @default("cpp")
+  sourceCode  String
+  updatedAt   DateTime @updatedAt
+
+  @@unique([problemSlug, language])
+}
