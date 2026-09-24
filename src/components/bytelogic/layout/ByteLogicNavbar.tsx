@@ -51,7 +51,7 @@ export const ByteLogicNavbar: React.FC = () => {
 
   const navLinks = [
     { label: 'Learn', href: '/bytelogic/learn' },
-    { label: 'Questions', href: '/bytelogic/learn/question-bank' },
+    { label: 'Questions', href: '/bytelogic/questions' },
     { label: 'Read', href: '/bytelogic/articles/more-data-sometimes-stops-helping' },
     { label: 'Watch', href: '/bytelogic#content' },
     { label: 'Lab', href: '/bytelogic#lab' },
@@ -95,7 +95,9 @@ export const ByteLogicNavbar: React.FC = () => {
           {/* Desktop & Tablet Navigation Links */}
           <nav className="hidden md:flex items-center gap-4 lg:gap-8" aria-label="ByteLogic Navigation">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive =
+                pathname === link.href ||
+                (link.href !== '/bytelogic' && pathname.startsWith(link.href + '/'));
               return (
                 <Link
                   key={link.label}
