@@ -51,6 +51,7 @@ export const ByteLogicNavbar: React.FC = () => {
 
   const navLinks = [
     { label: 'Learn', href: '/bytelogic/learn' },
+    { label: 'Questions', href: '/bytelogic/learn/question-bank' },
     { label: 'Read', href: '/bytelogic/articles/more-data-sometimes-stops-helping' },
     { label: 'Watch', href: '/bytelogic#content' },
     { label: 'Lab', href: '/bytelogic#lab' },

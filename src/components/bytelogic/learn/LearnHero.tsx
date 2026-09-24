@@ -1,7 +1,8 @@
 'use client';
 
 import React from 'react';
-import { ArrowRight, Compass, Layers, Terminal } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, Compass, Layers, Terminal, CheckCircle2 } from 'lucide-react';
 import { KnowledgeGraphVisual } from '@/components/bytelogic/learn/KnowledgeGraphVisual';
 
 export const LearnHero: React.FC = () => {
@@ -63,6 +64,13 @@ export const LearnHero: React.FC = () => {
                 <Terminal className="w-3.5 h-3.5 text-[#019AA2]" />
                 <span>04 Learning Paths</span>
               </a>
+              <Link
+                href="/bytelogic/learn/question-bank"
+                className="px-3 py-1.5 rounded-[4px] bg-[#019AA2]/10 border border-[#019AA2]/40 hover:border-[#019AA2] text-[#019AA2] hover:bg-[#019AA2]/20 flex items-center gap-1.5 transition-colors"
+              >
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#019AA2]" />
+                <span>Question Bank (20 Topics)</span>
+              </Link>
             </div>
           </div>
 

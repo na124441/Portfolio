@@ -74,6 +74,11 @@ export const ByteLogicFooter: React.FC = () => {
                   07 / Teaching Method
                 </Link>
               </li>
+              <li>
+                <Link href="/bytelogic/learn/question-bank" className="hover:text-[#019AA2] transition-colors py-0.5 inline-block text-[#019AA2]">
+                  08 / Question Bank
+                </Link>
+              </li>
             </ul>
           </div>
 
