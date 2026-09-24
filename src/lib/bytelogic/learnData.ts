@@ -269,6 +269,22 @@ export const FEATURED_LEARNING_PATHS: LearnPath[] = [
 // -----------------------------------------------------------------------------
 export const POPULAR_CONCEPTS: LearnConcept[] = [
   {
+    id: 'what-does-a-model-actually-learn',
+    title: 'What Does a Model Actually Learn?',
+    slug: '/bytelogic/learn/what-does-a-model-actually-learn',
+    domain: 'MACHINE LEARNING',
+    domainCategory: 'AI / ML',
+    subdomain: 'STATISTICAL LEARNING & OPTIMIZATION',
+    difficulty: 'INTERMEDIATE',
+    description: 'An exploration of parameters, internal representations, optimization dynamics, generalization, and what “learning” really means inside a model.',
+    formats: ['ARTICLE', 'CONCEPT'],
+    equation: '\\theta \\leftarrow \\theta - \\eta \\nabla_\\theta L',
+    estimatedTime: '12 min study',
+    prerequisites: ['Loss Functions', 'Gradient Descent', 'Model Parameters'],
+    tags: ['Machine Learning', 'Parameters', 'Optimization', 'Generalization', 'Representations', 'Loss Functions'],
+    isPopular: true,
+  },
+  {
     id: 'k-means',
     title: 'K-Means Clustering',
     slug: '/bytelogic/concepts/k-means',
@@ -445,6 +461,15 @@ export const POPULAR_CONCEPTS: LearnConcept[] = [
 // 06 / RECENTLY ADDED (Living Platform Archive)
 // -----------------------------------------------------------------------------
 export const RECENTLY_ADDED: RecentItem[] = [
+  {
+    id: 'recent-model-learn',
+    title: 'What Does a Model Actually Learn?',
+    domain: 'MACHINE LEARNING · FOUNDATIONS',
+    type: 'ARTICLE',
+    relativeTime: 'Today',
+    slug: '/bytelogic/learn/what-does-a-model-actually-learn',
+    badge: 'NEW ARTICLE',
+  },
   {
     id: 'recent-1',
     title: 'K-Means++ Seeding Heuristics & Boundary Partitioning',

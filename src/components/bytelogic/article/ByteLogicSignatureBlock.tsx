@@ -6,7 +6,21 @@ import Link from 'next/link';
 import { ArrowRight, Compass, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export const ByteLogicSignatureBlock: React.FC<{ className?: string }> = ({ className }) => {
+export interface ByteLogicSignatureBlockProps {
+  className?: string;
+  articleCode?: string;
+  articleRef?: string;
+  statementHeading?: React.ReactNode;
+  statementDescription?: React.ReactNode;
+}
+
+export const ByteLogicSignatureBlock: React.FC<ByteLogicSignatureBlockProps> = ({
+  className,
+  articleCode = 'ARTICLE 001',
+  articleRef = 'BL-ART-001',
+  statementHeading,
+  statementDescription,
+}) => {
   return (
     <section
       className={cn(
@@ -34,24 +48,30 @@ export const ByteLogicSignatureBlock: React.FC<{ className?: string }> = ({ clas
 
         <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[4px] bg-[#0E151B] border border-[#1C2830] text-[10px] font-mono tracking-widest text-[#019AA2] uppercase">
           <Sparkles className="w-3 h-3" />
-          <span>EDITORIAL SIGNATURE · ARTICLE 001</span>
+          <span>EDITORIAL SIGNATURE · {articleCode}</span>
         </div>
 
         {/* Core Statement */}
         <div className="space-y-4 px-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-[#F3F6F7] leading-snug tracking-tight">
-            Data is not valuable because it is large.
-            <br />
-            <span className="text-[#019AA2]">
-              It is valuable because it tells us something we didn&apos;t already know.
-            </span>
-          </h2>
+          {statementHeading || (
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-[#F3F6F7] leading-snug tracking-tight">
+              Data is not valuable because it is large.
+              <br />
+              <span className="text-[#019AA2]">
+                It is valuable because it tells us something we didn&apos;t already know.
+              </span>
+            </h2>
+          )}
 
-          <p className="text-sm sm:text-base text-[#A8B3BA] font-sans leading-relaxed pt-2 max-w-xl mx-auto">
-            If more data isn&apos;t necessarily more information, how do we find the data that
-            actually matters? That question leads directly into our upcoming investigations on
-            active learning, uncertainty quantification, and curriculum design.
-          </p>
+          {statementDescription !== undefined ? (
+            statementDescription
+          ) : (
+            <p className="text-sm sm:text-base text-[#A8B3BA] font-sans leading-relaxed pt-2 max-w-xl mx-auto">
+              If more data isn&apos;t necessarily more information, how do we find the data that
+              actually matters? That question leads directly into our upcoming investigations on
+              active learning, uncertainty quantification, and curriculum design.
+            </p>
+          )}
         </div>
 
         {/* Editorial Action Row */}
@@ -74,7 +94,7 @@ export const ByteLogicSignatureBlock: React.FC<{ className?: string }> = ({ clas
 
         {/* Editorial Colophon */}
         <div className="pt-8 border-t border-[#1C2830]/60 flex items-center justify-between text-[11px] font-mono text-[#68747D]">
-          <span>REF: BL-ART-001</span>
+          <span>REF: {articleRef}</span>
           <span>COMPUTATIONAL EDITORIAL SYSTEM</span>
           <span>CURATED BY BYTELOGIC</span>
         </div>
