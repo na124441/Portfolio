@@ -335,3 +335,112 @@ body.bl-body {
   background: #05070A;
 }
 
+/* ==========================================================================
+   Hero Section — "Monumental Computational" Design Tokens
+   ========================================================================== */
+
+.hero {
+  --bg: #010607;
+  --grid-line: rgba(255, 255, 255, 0.03);
+  --ink-primary: #ECECEC;
+  --ink-muted: #8A9296;
+  --ink-dim: #3A4244;
+  --cyan-signal: #4FD8E8;
+
+  background-color: var(--bg);
+}
+
+/* Binary Globe Container */
+.binary-globe {
+  --globe-size: clamp(290px, 58vw, 720px);
+  width: var(--globe-size);
+  height: var(--globe-size);
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Individual binary character on the globe */
+.binary-char {
+  position: absolute;
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  line-height: 1;
+  color: var(--ink-dim);
+  transition: color 180ms ease, transform 180ms ease, opacity 180ms ease;
+  user-select: none;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+/* Active state — cursor-proximate or flickering */
+.binary-char.active {
+  color: var(--cyan-signal);
+  will-change: color, transform;
+}
+
+/* Globe wordmark (centered inside the sphere, decorative) */
+.globe-wordmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(24px, 4.5vw, 52px);
+  background: linear-gradient(135deg, #132279 20%, #019AA2 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.06em;
+  user-select: none;
+  pointer-events: none;
+  z-index: 20;
+  white-space: nowrap;
+}
+
+/* Hero headline — editorial, not marketing */
+.hero-headline {
+  font-size: clamp(39px, 6vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  text-wrap: balance;
+  color: var(--ink-primary);
+}
+
+@media (min-width: 768px) {
+  .hero-headline {
+    font-weight: 600;
+  }
+}
+
+/* Scroll indicator gentle pulse */
+.scroll-indicator {
+  animation: scrollPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 0.7; transform: translateY(4px); }
+}
+
+/* Mobile-only figure label */
+.fig-label {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .fig-label {
+    display: block;
+  }
+}
+
+/* Reduced motion — CSS-level (complements gsap.matchMedia) */
+@media (prefers-reduced-motion: reduce) {
+  .binary-char {
+    transition: none !important;
+  }
+  .scroll-indicator {
+    animation: none !important;
+    opacity: 0.5 !important;
+  }
+}

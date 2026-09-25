@@ -1,94 +1,223 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
-import { ByteLogicButton } from '@/components/bytelogic/ui/ByteLogicButton';
-import { Ascii3DBackground } from '@/components/bytelogic/hero/Ascii3DBackground';
-import { Terminal } from 'lucide-react';
+import React, { useRef, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Client-only dynamic import of BinaryGlobe prevents any hydration mismatch
+const BinaryGlobe = dynamic(
+  () => import('./BinaryGlobe').then((m) => m.BinaryGlobe),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        className="binary-globe flex items-center justify-center"
+        aria-hidden="true"
+        role="presentation"
+      >
+        <span className="globe-wordmark" aria-hidden="true">
+          ByteLogic
+        </span>
+      </div>
+    ),
+  }
+);
 
 export const ByteLogicHero: React.FC = () => {
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+
+      // Respect prefers-reduced-motion
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        // Load Entrance Timeline
+        const entranceTl = gsap.timeline();
+
+        entranceTl
+          .from('.binary-globe', {
+            opacity: 0,
+            scale: 0.94,
+            duration: 1.2,
+            ease: 'power2.out',
+          })
+          .from(
+            '.eyebrow',
+            {
+              opacity: 0,
+              y: 8,
+              duration: 0.4,
+              ease: 'power2.out',
+            },
+            '-=0.6'
+          )
+          .from(
+            '.headline',
+            {
+              opacity: 0,
+              y: 12,
+              duration: 0.6,
+              ease: 'power3.out',
+            },
+            '-=0.3'
+          )
+          .from(
+            '.description',
+            {
+              opacity: 0,
+              y: 12,
+              duration: 0.75,
+              ease: 'power2.out',
+            },
+            '-=0.3'
+          )
+          .from(
+            '.cta-group',
+            {
+              opacity: 0,
+              y: 8,
+              duration: 0.9,
+              ease: 'power2.out',
+            },
+            '-=0.4'
+          )
+          .from(
+            '.scroll-indicator',
+            {
+              opacity: 0,
+              duration: 0.8,
+              ease: 'power2.out',
+            },
+            '-=0.4'
+          );
+
+        // Scroll Scrubbed Timeline
+        const scrollTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: 'top top',
+            end: () => '+=' + (heroRef.current?.offsetHeight || 800),
+            scrub: 0.6,
+          },
+        });
+
+        scrollTl
+          .to(
+            '.binary-globe',
+            {
+              scale: 0.35,
+              y: -120,
+              opacity: 0.85,
+              ease: 'none',
+            },
+            0
+          )
+          .to(
+            '.editorial-block',
+            {
+              y: -60,
+              ease: 'none',
+            },
+            0
+          )
+          .to(
+            '.binary-globe',
+            {
+              opacity: 0.4,
+              ease: 'none',
+            },
+            0.6
+          );
+      });
+
+      // Reduced motion: instant visibility without motion
+      mm.add('(prefers-reduced-motion: reduce)', () => {
+        gsap.set(
+          [
+            '.binary-globe',
+            '.eyebrow',
+            '.headline',
+            '.description',
+            '.cta-group',
+            '.scroll-indicator',
+            '.fig-label',
+          ],
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }
+        );
+      });
+    }, heroRef);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   return (
-    <>
-      <section className="relative w-full max-w-full min-h-screen min-h-[100svh] flex flex-col items-center justify-center overflow-hidden border-b border-[#1C2830]">
-        {/* 3D ASCII Animation Canvas in the Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <Ascii3DBackground />
-        </div>
+    <section
+      ref={heroRef}
+      className="hero relative w-full min-h-[calc(100svh-48px)] flex flex-col items-center justify-between overflow-hidden px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 pb-8 sm:pb-10 border-b border-[#1C2830]"
+    >
+      {/* Central Artifact: Binary Globe */}
+      <div className="w-full flex flex-col items-center justify-center flex-shrink-0">
+        <BinaryGlobe className="binary-globe" />
 
-        {/* Hero Foreground Content - Centered Adaptive Layout */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-20 sm:pt-24 pb-8 sm:pb-12 flex-1 flex flex-col items-center justify-center text-center my-auto">
-          {/* Centerpiece Hero ByteLogic Logo - Takes ~75% of the middle space to command primary attention */}
-          <div className="w-full flex flex-col items-center justify-center mb-3 sm:mb-5 md:mb-6">
-            <div className="relative w-[92%] sm:w-[82%] md:w-[75%] max-w-5xl flex items-center justify-center group">
-              {/* Atmospheric Subtle Ambient Backlight */}
-              <div className="absolute -inset-6 sm:-inset-10 md:-inset-16 bg-[radial-gradient(ellipse_at_center,rgba(1,154,162,0.06)_0%,rgba(14,21,27,0.3)_50%,transparent_75%)] pointer-events-none filter blur-3xl opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+        {/* Mobile-only Figure Label (Hidden on desktop via .fig-label) */}
+        <span className="fig-label font-mono text-[9px] tracking-[0.16em] uppercase mt-2.5 text-[#4FD8E8]/70">
+          FIG. 01 / COMPUTATIONAL FIELD
+        </span>
+      </div>
 
-              <h1 className="relative z-10 w-full flex items-center justify-center select-none">
-                <Image
-                  src="/images/bytelogic/bytelogic-logo.png"
-                  alt="ByteLogic"
-                  width={1024}
-                  height={341}
-                  priority
-                  unoptimized
-                  className="w-full h-auto max-h-[130px] sm:max-h-[200px] md:max-h-[260px] lg:max-h-[320px] object-contain drop-shadow-[0_12px_40px_rgba(0,0,0,0.85)] transition-transform duration-300 hover:scale-[1.01]"
-                />
-                <span className="sr-only">ByteLogic</span>
-              </h1>
-            </div>
-          </div>
+      {/* Editorial Content Block */}
+      <div className="editorial-block w-full max-w-[720px] mx-auto text-center flex flex-col items-center mt-6 md:mt-8">
+        {/* Eyebrow */}
+        <p className="eyebrow font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] text-[#4FD8E8]/70">
+          COMPUTATION · MATHEMATICS · LEARNING
+        </p>
 
-          {/* Subordinate Thesis Phrase - Positioned Beneath ByteLogic and Significantly Smaller */}
-          <h2 className="mt-3 sm:mt-4 md:mt-5 text-xs sm:text-sm md:text-base lg:text-lg font-bold font-sans tracking-[0.18em] sm:tracking-[0.24em] text-[#A8B3BA] uppercase max-w-3xl text-center px-4">
-            UNDERSTAND THE <span className="text-[#019AA2] font-extrabold">LOGIC BEHIND</span> COMPUTATION.
-          </h2>
+        {/* Headline — Primary accessible H1 */}
+        <h1 className="headline hero-headline mt-4 md:mt-6">
+          UNDERSTAND THE LOGIC
+          <br />
+          BEHIND COMPUTATION.
+        </h1>
 
-          {/* 5-Stage Cognitive Loop with Adaptive Wrapping */}
-          <div className="mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 px-3 sm:px-4 py-2 rounded-[6px] bg-[#0E151B]/85 backdrop-blur-md border border-[#1C2830] text-[10px] sm:text-xs font-mono text-[#68747D] max-w-full">
-            <span className="text-[#F3F6F7] font-semibold">UNDERSTAND</span>
-            <span className="text-[#019AA2]">→</span>
-            <span className="text-[#019AA2] font-semibold">VISUALIZE</span>
-            <span className="text-[#019AA2]">→</span>
-            <span className="text-[#F3F6F7] font-semibold">IMPLEMENT</span>
-            <span className="text-[#019AA2]">→</span>
-            <span className="text-[#019AA2] font-semibold">EXPERIMENT</span>
-            <span className="text-[#019AA2]">→</span>
-            <span className="text-[#A8B3BA] font-semibold">DISCOVER</span>
-          </div>
+        {/* Description */}
+        <p className="description font-sans text-[17px] md:text-[19px] leading-[1.5] max-w-[560px] text-[#8A9296] mt-5 md:mt-6">
+          Ideas, models, mathematics, and experiments for understanding how computation works.
+        </p>
 
-          {/* Primary Action Buttons (Stacked full-width on mobile, side-by-side on tablet/desktop) */}
-          <div className="mt-7 sm:mt-9 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full sm:w-auto max-w-xs sm:max-w-none">
-            <ByteLogicButton
-              href="#featured"
-              variant="primary"
-              size="lg"
-              showArrow
-              className="w-full sm:w-auto min-h-[44px]"
-            >
-              Explore Concepts
-            </ByteLogicButton>
-
-            <ByteLogicButton
-              href="#lab"
-              variant="outline"
-              size="lg"
-              icon={<Terminal className="w-4 h-4 text-[#019AA2]" />}
-              className="w-full sm:w-auto min-h-[44px]"
-            >
-              Enter Lab
-            </ByteLogicButton>
-          </div>
-        </div>
-      </section>
-
-      {/* Transition Technical Focus Bar immediately after Hero, revealed on scroll */}
-      <div className="relative z-10 w-full border-b border-[#1C2830] bg-[#0A0F14]/85 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
-        <div className="max-w-3xl mx-auto flex items-center justify-center text-center">
-          <p className="text-xs sm:text-sm text-[#A8B3BA] leading-relaxed font-display tracking-wide font-normal">
-            An independent technical learning platform for understanding ideas, visualizing algorithms, implementing concepts, and experimenting with systems. Built for engineers seeking depth beyond abstractions.
-          </p>
+        {/* Action CTAs */}
+        <div className="cta-group flex flex-row items-center justify-center gap-6 sm:gap-8 mt-7 md:mt-9">
+          <Link
+            href="#featured"
+            className="inline-flex items-center justify-center px-5 py-2.5 rounded-[4px] border border-[#1C2830] bg-[#0E151B] text-[#ECECEC] font-mono text-xs uppercase tracking-[0.12em] font-semibold hover:border-[#4FD8E8]/60 hover:text-[#ECECEC] hover:bg-[#131C24] transition-all"
+          >
+            EXPLORE CONCEPTS →
+          </Link>
+          <Link
+            href="#lab"
+            className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.12em] font-semibold text-[#8A9296] hover:text-[#4FD8E8] transition-colors"
+          >
+            ENTER LAB →
+          </Link>
         </div>
       </div>
-    </>
+
+      {/* Scroll to Field Notes Indicator */}
+      <div className="scroll-indicator font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] text-[#8A9296] mt-8 sm:mt-10 mb-1 select-none">
+        ↓ SCROLL TO FIELD NOTES
+      </div>
+    </section>
   );
 };
