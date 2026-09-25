@@ -1,9 +1,20 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Copy, Check, RotateCcw, Code2, Eye } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import {
+  Code2,
+  ChevronDown,
+  RotateCcw,
+  Copy,
+  Check,
+  Maximize2,
+  Minimize2,
+  Settings,
+  Sparkles,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { DsaProblem } from '@/types/dsa-question';
+import { formatSolutionStarter } from '@/lib/bytelogic/leetcode-utils';
 
 interface CodeEditorPanelProps {
   problem: DsaProblem;
@@ -21,27 +32,49 @@ export function CodeEditorPanel({
   onCodeChange,
 }: CodeEditorPanelProps) {
   const [copied, setCopied] = useState(false);
-  const [viewReferenceSolution, setViewReferenceSolution] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [cursorPos, setCursorPos] = useState({ ln: 1, col: 1 });
+  const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
+  const langDropdownRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   // Default starter code for current language
   const currentSnippet =
     problem.code.find((c) => c.language === selectedLanguage) || problem.code[0];
 
-  const currentCode = viewReferenceSolution
-    ? currentSnippet?.source || ''
-    : savedCode?.[selectedLanguage] ?? currentSnippet?.starterCode ?? '';
+  const currentCode =
+    savedCode?.[selectedLanguage] ??
+    (selectedLanguage === 'cpp'
+      ? formatSolutionStarter(currentSnippet?.starterCode || '', problem.title, problem.slug)
+      : currentSnippet?.starterCode ?? '');
 
   const lines = currentCode.split('\n');
 
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (langDropdownRef.current && !langDropdownRef.current.contains(e.target as Node)) {
+        setIsLangDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (viewReferenceSolution) return;
     onCodeChange(selectedLanguage, e.target.value);
+    updateCursorPos(e.target);
+  };
+
+  const updateCursorPos = (target: HTMLTextAreaElement) => {
+    const textBefore = target.value.substring(0, target.selectionStart);
+    const lineNum = textBefore.split('\n').length;
+    const colNum = textBefore.length - textBefore.lastIndexOf('\n');
+    setCursorPos({ ln: lineNum, col: colNum });
   };
 
   // Support Tab key to insert 4 spaces
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (viewReferenceSolution) return;
     if (e.key === 'Tab') {
       e.preventDefault();
       const target = e.currentTarget;
@@ -53,14 +86,18 @@ export function CodeEditorPanel({
 
       setTimeout(() => {
         target.selectionStart = target.selectionEnd = start + 4;
+        updateCursorPos(target);
       }, 0);
     }
   };
 
   const handleReset = () => {
-    if (viewReferenceSolution) return;
-    if (confirm('Reset editor to initial starter code?')) {
-      onCodeChange(selectedLanguage, currentSnippet?.starterCode || '');
+    if (confirm('Reset editor to initial starter template?')) {
+      const resetCode =
+        selectedLanguage === 'cpp'
+          ? formatSolutionStarter(currentSnippet?.starterCode || '', problem.title, problem.slug)
+          : currentSnippet?.starterCode || '';
+      onCodeChange(selectedLanguage, resetCode);
     }
   };
 
@@ -75,90 +112,120 @@ export function CodeEditorPanel({
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#0A0F14] border border-[#1C2830] rounded-lg overflow-hidden bl-tick-box">
-      {/* Editor Header */}
-      <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 bg-[#0E151B] border-b border-[#1C2830] text-xs font-mono">
+    <div
+      className={cn(
+        'flex flex-col bg-[#1e1e1e] text-[#eff2f6] font-sans overflow-hidden border border-[#2e2e2e]',
+        isFullscreen
+          ? 'fixed inset-0 z-50 rounded-none'
+          : 'h-full rounded-lg'
+      )}
+    >
+      {/* Editor Header Bar matching Image 2 */}
+      <div className="flex items-center justify-between px-3 sm:px-4 py-2 bg-[#262626] border-b border-[#2e2e2e] text-xs font-mono select-none shrink-0">
         <div className="flex items-center gap-2 sm:gap-3">
-          <Code2 className="w-4 h-4 text-[#019AA2]" />
-          {/* Language Selector */}
-          <div className="flex items-center bg-[#05070A] p-0.5 rounded border border-[#1C2830]">
-            {(['cpp', 'python'] as const).map((lang) => (
-              <button
-                key={lang}
-                type="button"
-                onClick={() => onLanguageChange(lang)}
-                className={cn(
-                  'px-2.5 py-1 text-[11px] uppercase tracking-wider rounded-[3px] transition-colors cursor-pointer',
-                  selectedLanguage === lang
-                    ? 'bg-[#019AA2] text-[#05070A] font-semibold'
-                    : 'text-[#A8B3BA] hover:text-[#F3F6F7]'
-                )}
-              >
-                {lang === 'cpp' ? 'C++' : 'Python'}
-              </button>
-            ))}
+          {/* </> Code tab */}
+          <div className="flex items-center gap-1.5 px-2 py-1 rounded text-white font-medium text-xs bg-[#333]">
+            <Code2 className="w-3.5 h-3.5 text-[#38bdf8]" />
+            <span>Code</span>
           </div>
 
-          {/* Reference Solution Toggle */}
-          <button
-            type="button"
-            onClick={() => setViewReferenceSolution((prev) => !prev)}
-            className={cn(
-              'flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-mono border transition-colors cursor-pointer',
-              viewReferenceSolution
-                ? 'bg-[#019AA2]/15 text-[#019AA2] border-[#019AA2]'
-                : 'text-[#68747D] hover:text-[#A8B3BA] border-transparent hover:border-[#1C2830]'
-            )}
-            title="Toggle reference solution code"
-          >
-            <Eye className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">
-              {viewReferenceSolution ? 'Viewing Reference' : 'View Reference'}
-            </span>
-          </button>
-        </div>
+          <span className="text-[#3a3a3a]">|</span>
 
-        {/* Action Controls */}
-        <div className="flex items-center gap-2">
-          {!viewReferenceSolution && (
+          {/* Language Selector Dropdown */}
+          <div ref={langDropdownRef} className="relative">
             <button
               type="button"
-              onClick={handleReset}
-              className="flex items-center gap-1 px-2.5 py-1 rounded bg-[#070B0E] border border-[#1C2830] text-[#68747D] hover:text-[#F3F6F7] text-[11px] transition-colors cursor-pointer"
-              title="Reset code to starter boilerplate"
+              onClick={() => setIsLangDropdownOpen((prev) => !prev)}
+              className="flex items-center gap-1 px-2.5 py-1 rounded bg-[#1f1f1f] hover:bg-[#333] border border-[#383838] text-xs text-white transition-colors cursor-pointer"
             >
-              <RotateCcw className="w-3 h-3" />
-              <span className="hidden sm:inline">Reset</span>
+              <span>{selectedLanguage === 'cpp' ? 'C++' : 'Python 3'}</span>
+              <ChevronDown className="w-3 h-3 text-[#a1a1aa]" />
             </button>
-          )}
+
+            {isLangDropdownOpen && (
+              <div className="absolute left-0 top-full mt-1 w-32 rounded-md bg-[#252525] border border-[#383838] shadow-xl py-1 z-30 font-sans">
+                <button
+                  type="button"
+                  onClick={() => {
+                    onLanguageChange('cpp');
+                    setIsLangDropdownOpen(false);
+                  }}
+                  className={cn(
+                    'w-full text-left px-3 py-1.5 text-xs transition-colors cursor-pointer',
+                    selectedLanguage === 'cpp' ? 'text-[#38bdf8] font-semibold bg-[#2e2e2e]' : 'text-[#d4d4d8] hover:bg-[#333]'
+                  )}
+                >
+                  C++
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onLanguageChange('python');
+                    setIsLangDropdownOpen(false);
+                  }}
+                  className={cn(
+                    'w-full text-left px-3 py-1.5 text-xs transition-colors cursor-pointer',
+                    selectedLanguage === 'python' ? 'text-[#38bdf8] font-semibold bg-[#2e2e2e]' : 'text-[#d4d4d8] hover:bg-[#333]'
+                  )}
+                >
+                  Python 3
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Auto Format pill */}
+          <span className="hidden sm:inline-flex items-center gap-1 text-[11px] text-[#a1a1aa] bg-[#1f1f1f] px-2 py-0.5 rounded border border-[#333]">
+            <Sparkles className="w-3 h-3 text-[#facc15]" />
+            <span>Auto</span>
+          </span>
+        </div>
+
+        {/* Right Controls: Settings, Reset, Copy, Fullscreen */}
+        <div className="flex items-center gap-1 sm:gap-2 text-[#a1a1aa]">
+          <button
+            type="button"
+            onClick={handleReset}
+            className="p-1.5 rounded hover:bg-[#333] hover:text-white transition-colors cursor-pointer"
+            title="Reset code template"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+          </button>
 
           <button
             type="button"
             onClick={handleCopy}
-            className="flex items-center gap-1 px-2.5 py-1 rounded bg-[#070B0E] border border-[#1C2830] text-[#68747D] hover:text-[#019AA2] text-[11px] transition-colors cursor-pointer"
+            className="p-1.5 rounded hover:bg-[#333] hover:text-white transition-colors cursor-pointer"
             title="Copy code"
           >
             {copied ? (
-              <>
-                <Check className="w-3 h-3 text-[#019AA2]" />
-                <span className="text-[#019AA2]">Copied</span>
-              </>
+              <Check className="w-3.5 h-3.5 text-[#2cbb5d]" />
             ) : (
-              <>
-                <Copy className="w-3 h-3" />
-                <span>Copy</span>
-              </>
+              <Copy className="w-3.5 h-3.5" />
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setIsFullscreen((prev) => !prev)}
+            className="p-1.5 rounded hover:bg-[#333] hover:text-white transition-colors cursor-pointer"
+            title={isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
+          >
+            {isFullscreen ? (
+              <Minimize2 className="w-3.5 h-3.5" />
+            ) : (
+              <Maximize2 className="w-3.5 h-3.5" />
             )}
           </button>
         </div>
       </div>
 
       {/* Editor Body */}
-      <div className="relative flex-1 flex overflow-hidden min-h-[320px] sm:min-h-[420px] max-h-[580px] bg-[#05070A]">
+      <div className="relative flex-1 flex overflow-hidden bg-[#1e1e1e]">
         {/* Line Numbers Bar */}
         <div
           aria-hidden="true"
-          className="w-10 sm:w-12 py-3 bg-[#070B0E] border-r border-[#1C2830] text-right pr-2 text-[#68747D] font-mono text-xs select-none leading-relaxed flex flex-col shrink-0"
+          className="w-10 sm:w-11 py-3 bg-[#1e1e1e] border-r border-[#2e2e2e] text-right pr-2.5 text-[#52525b] font-mono text-xs select-none leading-relaxed flex flex-col shrink-0"
         >
           {lines.map((_, idx) => (
             <span key={idx} className="tabular-nums text-[11px]">
@@ -173,17 +240,23 @@ export function CodeEditorPanel({
           value={currentCode}
           onChange={handleTextChange}
           onKeyDown={handleKeyDown}
-          readOnly={viewReferenceSolution}
+          onClick={(e) => updateCursorPos(e.currentTarget)}
+          onKeyUp={(e) => updateCursorPos(e.currentTarget)}
           spellCheck={false}
           autoCapitalize="off"
           autoComplete="off"
           autoCorrect="off"
-          className={cn(
-            'flex-1 p-3 font-mono text-xs sm:text-[13px] leading-relaxed text-[#F3F6F7] bg-transparent resize-none focus:outline-none overflow-auto bl-scrollbar whitespace-pre tab-[4]',
-            viewReferenceSolution && 'opacity-90'
-          )}
-          placeholder="// Type your implementation here..."
+          className="flex-1 p-3 font-mono text-xs sm:text-[13px] leading-relaxed text-[#eff2f6] bg-transparent resize-none focus:outline-none overflow-auto bl-scrollbar whitespace-pre tab-[4]"
+          placeholder="// Write your solution here..."
         />
+      </div>
+
+      {/* Status Footer matching Image 2: Saved | Ln X, Col Y */}
+      <div className="flex items-center justify-between px-3 py-1 bg-[#1a1a1a] border-t border-[#2e2e2e] text-[11px] font-mono text-[#71717a] select-none shrink-0">
+        <span className="text-[#a1a1aa]">Saved</span>
+        <span>
+          Ln {cursorPos.ln}, Col {cursorPos.col}
+        </span>
       </div>
     </div>
   );

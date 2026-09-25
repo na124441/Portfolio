@@ -3,9 +3,16 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ArrowUpRight, Terminal } from 'lucide-react';
 
 export const ByteLogicFooter: React.FC = () => {
+  const pathname = usePathname();
+  const isDsaWorkspace = pathname.includes('/questions/dsa/') && Boolean(pathname.split('/questions/dsa/')[1]);
+
+  if (isDsaWorkspace) {
+    return null;
+  }
   return (
     <footer className="w-full bg-[#05070A] border-t border-[#1C2830] pt-16 pb-12 text-xs font-mono relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

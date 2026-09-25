@@ -14,6 +14,8 @@ export const ByteLogicNavbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
+  const isDsaWorkspace = pathname.includes('/questions/dsa/') && Boolean(pathname.split('/questions/dsa/')[1]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -21,6 +23,10 @@ export const ByteLogicNavbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  if (isDsaWorkspace) {
+    return null;
+  }
 
   // Background scroll lock when mobile drawer is open
   useEffect(() => {
