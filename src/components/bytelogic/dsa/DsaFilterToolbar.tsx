@@ -103,18 +103,37 @@ export function DsaFilterToolbar({
           </div>
 
           {/* Topic Dropdown */}
-          <div className="w-full sm:w-64 shrink-0">
+          <div className="w-full sm:w-72 shrink-0">
             <select
               value={selectedTopic}
               onChange={(e) => onTopicChange(e.target.value)}
               className="w-full bg-[#05070A] text-[#F3F6F7] border border-[#1C2830] rounded-[6px] px-3.5 py-2.5 text-xs sm:text-sm font-sans focus:outline-none focus:border-[#019AA2] focus:ring-1 focus:ring-[#019AA2] cursor-pointer"
             >
               <option value="ALL">All Topics ({DSA_TOPICS.length})</option>
-              {DSA_TOPICS.map((topic) => (
-                <option key={topic.id} value={topic.name}>
-                  {topic.name}
-                </option>
-              ))}
+              {(() => {
+                const phaseGroups: Record<string, typeof DSA_TOPICS> = {};
+                for (const t of DSA_TOPICS) {
+                  if (!phaseGroups[t.phase]) phaseGroups[t.phase] = [];
+                  phaseGroups[t.phase].push(t);
+                }
+                return Object.entries(phaseGroups).map(([phaseName, topics]) => (
+                  <optgroup
+                    key={phaseName}
+                    label={phaseName}
+                    className="bg-[#0A0F14] text-[#019AA2] font-semibold"
+                  >
+                    {topics.map((topic) => (
+                      <option
+                        key={topic.id}
+                        value={topic.name}
+                        className="bg-[#05070A] text-[#F3F6F7] font-normal"
+                      >
+                        {topic.name}
+                      </option>
+                    ))}
+                  </optgroup>
+                ));
+              })()}
             </select>
           </div>
         </div>

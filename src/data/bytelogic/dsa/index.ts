@@ -6,9 +6,11 @@ import { validPalindromeProblem } from './problems/valid-palindrome';
 import { binarySearchProblem } from './problems/binary-search';
 import { validParenthesesProblem } from './problems/valid-parentheses';
 import { reverseLinkedListProblem } from './problems/reverse-linked-list';
+import { ALL_CURRICULUM_PROBLEMS } from './phases';
+
 export { DSA_TOPICS } from './topics';
 
-export const DSA_PROBLEMS: DsaProblem[] = [
+const SEED_PROBLEMS: DsaProblem[] = [
   findMaxMinProblem,
   reverseArrayProblem,
   twoSumProblem,
@@ -16,7 +18,16 @@ export const DSA_PROBLEMS: DsaProblem[] = [
   binarySearchProblem,
   validParenthesesProblem,
   reverseLinkedListProblem,
-].sort((a, b) => a.order - b.order);
+];
+
+// Merge seed problems and curriculum problems, deduplicating by slug (seed takes precedence)
+const seedSlugs = new Set(SEED_PROBLEMS.map((p) => p.slug));
+const uniqueCurriculum = ALL_CURRICULUM_PROBLEMS.filter((p) => !seedSlugs.has(p.slug));
+
+export const DSA_PROBLEMS: DsaProblem[] = [
+  ...SEED_PROBLEMS,
+  ...uniqueCurriculum,
+].map((p, idx) => ({ ...p, order: idx + 1 }));
 
 export function getAllDsaProblems(): DsaProblem[] {
   return DSA_PROBLEMS;

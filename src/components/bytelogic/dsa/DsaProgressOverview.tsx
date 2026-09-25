@@ -40,6 +40,9 @@ export function DsaProgressOverview({ problems, stateMap }: DsaProgressOverviewP
     };
   }).filter((t) => t.count > 0);
 
+  const [showAllTopics, setShowAllTopics] = React.useState(false);
+  const displayedTopicStats = showAllTopics ? topicStats : topicStats.slice(0, 6);
+
   return (
     <div className="p-5 sm:p-6 bg-[#0A0F14] border border-[#1C2830] rounded-lg bl-tick-box flex flex-col gap-5">
       <div className="flex items-center justify-between border-b border-[#1C2830] pb-3">
@@ -85,11 +88,22 @@ export function DsaProgressOverview({ problems, stateMap }: DsaProgressOverviewP
       {/* Per Topic Completion Bars */}
       {topicStats.length > 0 && (
         <div className="flex flex-col gap-2.5 pt-2">
-          <span className="text-[11px] font-mono text-[#68747D] uppercase tracking-wider">
-            Active Topic Breakdown
-          </span>
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-mono text-[#68747D] uppercase tracking-wider">
+              Curriculum Topics ({topicStats.length})
+            </span>
+            {topicStats.length > 6 && (
+              <button
+                type="button"
+                onClick={() => setShowAllTopics((prev) => !prev)}
+                className="text-[11px] font-mono text-[#019AA2] hover:underline cursor-pointer"
+              >
+                {showAllTopics ? 'Show Less' : `View All (${topicStats.length})`}
+              </button>
+            )}
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {topicStats.map((item) => (
+            {displayedTopicStats.map((item) => (
               <div
                 key={item.name}
                 className="p-3 bg-[#0E151B]/70 border border-[#1C2830] rounded flex flex-col gap-1.5"

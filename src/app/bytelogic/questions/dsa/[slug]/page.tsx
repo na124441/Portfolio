@@ -14,9 +14,12 @@ interface PageProps {
   }>;
 }
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   const problems = getAllDsaProblems();
-  return problems.map((p) => ({
+  // Pre-render the first 50 problems at build time; all 760+ problems are accessible on-demand
+  return problems.slice(0, 50).map((p) => ({
     slug: p.slug,
   }));
 }
