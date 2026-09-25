@@ -1,13 +1,14 @@
 'use client';
 
 import React, { useRef, useState, useEffect, useMemo } from 'react';
+import Image from 'next/image';
 import { useGlobeFlicker, GlobePoint } from './useGlobeFlicker';
 
 interface BinaryGlobeProps {
   className?: string;
 }
 
-const TOTAL_POINTS = 460;
+const TOTAL_POINTS = 520;
 
 // Deterministic Fibonacci sphere sampling
 function createFibonacciPoints(count: number): Array<{
@@ -22,8 +23,8 @@ function createFibonacciPoints(count: number): Array<{
   const points = [];
   const goldenAngle = Math.PI * (3 - Math.sqrt(5)); // ~2.39996 rad
 
-  // Slight 18° tilt around X-axis for natural planetary projection
-  const tiltRad = (18 * Math.PI) / 180;
+  // Slight 15° tilt around X-axis for natural planetary projection
+  const tiltRad = (15 * Math.PI) / 180;
   const cosT = Math.cos(tiltRad);
   const sinT = Math.sin(tiltRad);
 
@@ -59,13 +60,14 @@ function createFibonacciPoints(count: number): Array<{
 
 export const BinaryGlobe: React.FC<BinaryGlobeProps> = ({ className = '' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [radius, setRadius] = useState<number>(240);
+  const [radiusX, setRadiusX] = useState<number>(380);
+  const [radiusY, setRadiusY] = useState<number>(200);
   const [mounted, setMounted] = useState<boolean>(false);
 
   // Precompute base unit sphere geometry
   const basePoints = useMemo(() => createFibonacciPoints(TOTAL_POINTS), []);
 
-  // Update radius dynamically on container resize
+  // Update horizontal and vertical radii dynamically on container resize
   useEffect(() => {
     setMounted(true);
     const container = containerRef.current;
@@ -73,9 +75,10 @@ export const BinaryGlobe: React.FC<BinaryGlobeProps> = ({ className = '' }) => {
 
     const updateRadius = () => {
       const width = container.offsetWidth;
-      if (width > 0) {
-        // Radius is ~45% of container width to prevent any boundary overflow
-        setRadius(Math.round(width * 0.45));
+      const height = container.offsetHeight;
+      if (width > 0 && height > 0) {
+        setRadiusX(Math.round(width * 0.48));
+        setRadiusY(Math.round(height * 0.46));
       }
     };
 
@@ -91,12 +94,13 @@ export const BinaryGlobe: React.FC<BinaryGlobeProps> = ({ className = '' }) => {
     };
   }, []);
 
-  // Calculate projected point coordinates with current radius
+  // Calculate projected point coordinates with current horizontal and vertical radii
   const points: GlobePoint[] = useMemo(() => {
+    const avgRadius = (radiusX + radiusY) / 2;
     return basePoints.map((bp) => {
-      const x = bp.nx * radius;
-      const y = bp.ny * radius;
-      const z = bp.nz * radius;
+      const x = bp.nx * radiusX;
+      const y = bp.ny * radiusY;
+      const z = bp.nz * avgRadius;
       const depth = (bp.nz + 1) / 2; // 0 (back) to 1 (front)
 
       return {
@@ -110,12 +114,12 @@ export const BinaryGlobe: React.FC<BinaryGlobeProps> = ({ className = '' }) => {
         depth,
       };
     });
-  }, [basePoints, radius]);
+  }, [basePoints, radiusX, radiusY]);
 
   const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   // Attach idle flicker and cursor proximity interaction
-  useGlobeFlicker(containerRef, charRefs, mounted ? points : [], radius);
+  useGlobeFlicker(containerRef, charRefs, mounted ? points : [], (radiusX + radiusY) / 2);
 
   return (
     <div
@@ -124,10 +128,18 @@ export const BinaryGlobe: React.FC<BinaryGlobeProps> = ({ className = '' }) => {
       aria-hidden="true"
       role="presentation"
     >
-      {/* Central "ByteLogic" Wordmark */}
-      <span className="globe-wordmark" aria-hidden="true">
-        ByteLogic
-      </span>
+      {/* Central "ByteLogic" Brand Logo — Commands ~65% of hero section space */}
+      <div className="globe-logo-wrapper" aria-hidden="true">
+        <Image
+          src="/images/bytelogic/bytelogic-logo.png"
+          alt="ByteLogic"
+          width={1024}
+          height={341}
+          priority
+          unoptimized
+          className="w-full h-auto max-h-[140px] sm:max-h-[220px] md:max-h-[280px] lg:max-h-[320px] object-contain drop-shadow-[0_16px_45px_rgba(0,0,0,0.9)] transition-transform duration-300 hover:scale-[1.01]"
+        />
+      </div>
 
       {/* Binary Character Field — only rendered on client once mounted */}
       {mounted &&

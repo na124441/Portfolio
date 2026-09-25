@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -19,9 +20,17 @@ const BinaryGlobe = dynamic(
         aria-hidden="true"
         role="presentation"
       >
-        <span className="globe-wordmark" aria-hidden="true">
-          ByteLogic
-        </span>
+        <div className="globe-logo-wrapper" aria-hidden="true">
+          <Image
+            src="/images/bytelogic/bytelogic-logo.png"
+            alt="ByteLogic"
+            width={1024}
+            height={341}
+            priority
+            unoptimized
+            className="w-full h-auto max-h-[140px] sm:max-h-[220px] md:max-h-[280px] lg:max-h-[320px] object-contain drop-shadow-[0_16px_45px_rgba(0,0,0,0.9)]"
+          />
+        </div>
       </div>
     ),
   }

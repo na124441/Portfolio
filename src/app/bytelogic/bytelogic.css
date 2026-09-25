@@ -352,9 +352,10 @@ body.bl-body {
 
 /* Binary Globe Container */
 .binary-globe {
-  --globe-size: clamp(290px, 58vw, 720px);
-  width: var(--globe-size);
-  height: var(--globe-size);
+  --globe-width: clamp(340px, 82vw, 1140px);
+  --globe-height: clamp(240px, 36vw, 480px);
+  width: var(--globe-width);
+  height: var(--globe-height);
   position: relative;
   flex-shrink: 0;
 }
@@ -377,12 +378,24 @@ body.bl-body {
   will-change: color, transform;
 }
 
-/* Globe wordmark (centered inside the sphere, decorative) */
-.globe-wordmark {
+/* Globe logo wrapper (centered inside the sphere, commands ~65% of hero space) */
+.globe-logo-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 920px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Fallback wordmark */
+.globe-wordmark {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 600;
   font-size: clamp(24px, 4.5vw, 52px);
@@ -393,7 +406,6 @@ body.bl-body {
   letter-spacing: 0.06em;
   user-select: none;
   pointer-events: none;
-  z-index: 20;
   white-space: nowrap;
 }
 
