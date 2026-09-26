@@ -1,0 +1,12 @@
+{
+  "name": "bytelogic-compiler-service",
+  "version": "1.0.0",
+  "description": "Standalone C++ and Python Sandboxed Execution Service for Render",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
