@@ -21,6 +21,7 @@ import { cn } from '@/lib/utils';
 import type { DsaProblem, DsaStatus } from '@/types/dsa-question';
 import { getDifficultyMeta, getProblemCompanies } from '@/lib/bytelogic/leetcode-utils';
 import { SubmissionHistory } from './SubmissionHistory';
+import { FormattedStatement } from './FormattedStatement';
 
 interface ProblemStatementPanelProps {
   problem: DsaProblem;
@@ -316,8 +317,8 @@ export function ProblemStatementPanel({
             )}
 
             {/* Problem Statement Text */}
-            <div className="text-sm leading-relaxed text-[#d4d4d8] whitespace-pre-line space-y-3 font-normal">
-              {problem.statement}
+            <div className="pt-1">
+              <FormattedStatement content={problem.statement} />
             </div>
 
             {/* Examples (LeetCode exact rounded box) */}
@@ -327,19 +328,19 @@ export function ProblemStatementPanel({
                   <span className="text-xs font-semibold text-white">
                     Example {index + 1}:
                   </span>
-                  <div className="p-3.5 sm:p-4 rounded-lg bg-[#282828] border border-[#333333] font-mono text-xs leading-relaxed text-[#eff2f6] flex flex-col gap-1">
-                    <div>
-                      <strong className="text-white font-semibold">Input: </strong>
-                      <span className="text-[#eff2f6]">{ex.input}</span>
+                  <div className="p-3.5 sm:p-4 rounded-lg bg-[#282828] border border-[#333333] font-mono text-xs leading-relaxed text-[#eff2f6] flex flex-col gap-2">
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-1.5">
+                      <strong className="text-white font-semibold shrink-0">Input:</strong>
+                      <pre className="font-mono text-[#eff2f6] whitespace-pre-wrap break-all m-0">{ex.input}</pre>
                     </div>
-                    <div>
-                      <strong className="text-white font-semibold">Output: </strong>
-                      <span className="text-[#eff2f6]">{ex.output}</span>
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-1.5">
+                      <strong className="text-white font-semibold shrink-0">Output:</strong>
+                      <pre className="font-mono text-[#eff2f6] whitespace-pre-wrap break-all m-0">{ex.output}</pre>
                     </div>
                     {ex.explanation && (
-                      <div className="mt-1 font-sans text-xs text-[#a1a1aa]">
+                      <div className="mt-1 font-sans text-xs text-[#a1a1aa] pt-2 border-t border-[#383838]">
                         <strong className="text-white font-semibold font-mono">Explanation: </strong>
-                        {ex.explanation}
+                        <span>{ex.explanation}</span>
                       </div>
                     )}
                   </div>
