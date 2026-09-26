@@ -11,57 +11,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 239,
-    "statement": "### Problem Description\n\nDefine a binary-tree node and construct a tree with five nodes manually.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nDefine a binary-tree node and construct a tree with five nodes manually.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -83,10 +94,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "define-a-binary-tree-node-and-construct-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-001-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-001-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-001-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-001-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -105,57 +130,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 240,
-    "statement": "### Problem Description\n\nGiven a tree, print its nodes using preorder traversal.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a tree, print its nodes using preorder traversal.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -177,10 +213,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "tree-print-its-nodes-using-preorder-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-002-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-002-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-002-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-002-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -199,57 +249,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 241,
-    "statement": "### Problem Description\n\nImplement inorder and postorder traversal recursively.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement inorder and postorder traversal recursively.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -271,10 +332,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-inorder-and-postorder-traversal-recursively-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-003-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-003-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-003-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-003-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -293,57 +368,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 242,
-    "statement": "### Problem Description\n\nGiven a tree represented as an array, reconstruct its structure and print its nodes.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a tree represented as an array, reconstruct its structure and print its nodes.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -365,10 +451,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "tree-represented-as-an-array-reconstruct-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-004-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-004-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-004-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-004-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -387,57 +487,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 243,
-    "statement": "### Problem Description\n\nImplement level-order traversal using a queue.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement level-order traversal using a queue.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -459,10 +570,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-level-order-traversal-using-a-queue-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-005-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-005-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-005-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-005-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -481,57 +606,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 244,
-    "statement": "### Problem Description\n\nGiven a binary tree, print each level on a separate line.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a binary tree, print each level on a separate line.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -553,10 +689,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "binary-tree-print-each-level-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-006-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-006-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-006-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-006-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -575,57 +725,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 245,
-    "statement": "### Problem Description\n\nCount the number of nodes and leaf nodes in a binary tree.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nCount the number of nodes and leaf nodes in a binary tree.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -647,10 +808,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "count-number-of-nodes-and-leaf-nodes-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-007-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-007-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-007-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-007-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -669,57 +844,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 246,
-    "statement": "### Problem Description\n\nCalculate the height of a binary tree recursively.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nCalculate the height of a binary tree recursively.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -741,10 +927,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "height-of-a-binary-tree-recursively-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-008-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-008-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-008-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-008-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -763,57 +963,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 247,
-    "statement": "### Problem Description\n\nFind the maximum depth and minimum depth of a binary tree.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the maximum depth and minimum depth of a binary tree.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -835,10 +1046,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "maximum-depth-and-minimum-depth-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-009-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-009-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-009-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-009-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -857,57 +1082,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 248,
-    "statement": "### Problem Description\n\nDetermine whether two binary trees are structurally identical and contain the same values.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nDetermine whether two binary trees are structurally identical and contain the same values.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -929,10 +1165,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "two-binary-trees-are-structurally-identical-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-010-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-010-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-010-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-010-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -951,57 +1201,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 249,
-    "statement": "### Problem Description\n\nCheck whether a binary tree is symmetric around its root.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nCheck whether a binary tree is symmetric around its root.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1023,10 +1284,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "check-whether-a-binary-tree-is-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-011-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-011-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-011-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-011-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -1045,57 +1320,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 250,
-    "statement": "### Problem Description\n\nFind the diameter of a binary tree, measured in edges.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the diameter of a binary tree, measured in edges.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1117,10 +1403,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "diameter-of-a-binary-tree-measured-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-012-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-012-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-012-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-012-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -1139,57 +1439,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 251,
-    "statement": "### Problem Description\n\nCheck whether a binary tree is height-balanced.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nCheck whether a binary tree is height-balanced.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1211,10 +1522,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "check-whether-a-binary-tree-is-2-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-013-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-013-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-013-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-013-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -1233,57 +1558,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 252,
-    "statement": "### Problem Description\n\nFind the maximum path sum between any two nodes.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the maximum path sum between any two nodes.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1305,10 +1641,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "maximum-path-sum-between-any-two-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-014-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-014-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-014-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-014-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -1327,57 +1677,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 253,
-    "statement": "### Problem Description\n\nFind the lowest common ancestor of two nodes in a binary tree.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the lowest common ancestor of two nodes in a binary tree.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1399,10 +1760,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "lowest-common-ancestor-of-two-nodes-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-015-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-015-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-015-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-015-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -1421,57 +1796,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 254,
-    "statement": "### Problem Description\n\nFind the lowest common ancestor of two nodes in a BST.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the lowest common ancestor of two nodes in a BST.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1493,10 +1879,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "lowest-common-ancestor-of-two-nodes-2-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-016-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-016-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-016-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-016-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -1515,57 +1915,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 255,
-    "statement": "### Problem Description\n\nPrint the left view and right view of a binary tree.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nPrint the left view and right view of a binary tree.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1587,10 +1998,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "the-left-view-and-right-view-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-017-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-017-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-017-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-017-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -1609,57 +2034,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 256,
-    "statement": "### Problem Description\n\nPrint the top view and bottom view of a binary tree.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nPrint the top view and bottom view of a binary tree.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1681,10 +2117,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "the-top-view-and-bottom-view-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-018-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-018-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-018-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-018-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -1703,57 +2153,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 257,
-    "statement": "### Problem Description\n\nPerform preorder, inorder, and postorder traversals iteratively using explicit stacks.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nPerform preorder, inorder, and postorder traversals iteratively using explicit stacks.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1775,10 +2236,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "perform-preorder-inorder-and-postorder-traversals-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-019-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-019-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-019-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-019-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -1797,57 +2272,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 258,
-    "statement": "### Problem Description\n\nGiven preorder and inorder traversal sequences, reconstruct the original binary tree.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven preorder and inorder traversal sequences, reconstruct the original binary tree.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1869,10 +2355,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "preorder-and-inorder-traversal-sequences-reconstruct-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-020-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-020-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-020-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-020-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -1891,57 +2391,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 259,
-    "statement": "### Problem Description\n\nGiven inorder and postorder traversal sequences, reconstruct the original binary tree.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven inorder and postorder traversal sequences, reconstruct the original binary tree.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1963,10 +2474,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "inorder-and-postorder-traversal-sequences-reconstruct-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-021-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-021-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-021-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-021-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -1985,57 +2510,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 260,
-    "statement": "### Problem Description\n\nSerialize a binary tree into a string and reconstruct it from that string.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nSerialize a binary tree into a string and reconstruct it from that string.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2057,10 +2593,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "serialize-a-binary-tree-into-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-022-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-022-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-022-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-022-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -2079,57 +2629,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Hard",
     "order": 261,
-    "statement": "### Problem Description\n\nFlatten a binary tree into a linked list in preorder without allocating new nodes.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFlatten a binary tree into a linked list in preorder without allocating new nodes.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2151,10 +2712,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "flatten-a-binary-tree-into-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-023-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-023-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-023-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-023-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -2173,57 +2748,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Hard",
     "order": 262,
-    "statement": "### Problem Description\n\nDetermine whether a binary tree is a subtree of another binary tree.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nDetermine whether a binary tree is a subtree of another binary tree.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2245,10 +2831,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "binary-tree-is-a-subtree-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-024-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-024-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-024-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-024-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -2260,64 +2860,75 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
   {
     "id": "dsa-p5-025",
     "slug": "binary-tree-find-all-nodes-at",
-    "title": "Binary Tree, Find All Nodes At",
+    "title": "Binary Tree, Find All Nodes",
     "topic": "Binary trees and traversals",
     "tags": [
       "Algorithms"
     ],
     "difficulty": "Hard",
     "order": 263,
-    "statement": "### Problem Description\n\nGiven a binary tree, find all nodes at distance K from a target node.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a binary tree, find all nodes at distance K from a target node.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary trees and traversals. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary trees and traversals. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary trees and traversals eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary trees and traversals allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2339,10 +2950,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "binary-tree-find-all-nodes-at-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-025-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-025-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-025-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-025-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -2361,57 +2986,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 264,
-    "statement": "### Problem Description\n\nImplement BST insertion and search.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement BST insertion and search.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2433,10 +3069,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-bst-insertion-and-search-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-001-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-001-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-001-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-001-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -2448,64 +3098,75 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
   {
     "id": "dsa-p5-002",
     "slug": "minimum-and-maximum-elements-in",
-    "title": "Minimum and Maximum Elements in",
+    "title": "Minimum and Maximum Elements",
     "topic": "Binary search trees",
     "tags": [
       "Algorithms"
     ],
     "difficulty": "Warm-up",
     "order": 265,
-    "statement": "### Problem Description\n\nFind the minimum and maximum elements in a BST.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the minimum and maximum elements in a BST.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2527,10 +3188,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "minimum-and-maximum-elements-in-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-002-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-002-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-002-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-002-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -2549,57 +3224,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 266,
-    "statement": "### Problem Description\n\nImplement inorder traversal and demonstrate why it returns sorted values.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement inorder traversal and demonstrate why it returns sorted values.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2621,10 +3307,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-inorder-traversal-and-demonstrate-why-it-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-003-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-003-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-003-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-003-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -2643,57 +3343,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 267,
-    "statement": "### Problem Description\n\nFind the predecessor and successor of a given value in a BST.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the predecessor and successor of a given value in a BST.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2715,10 +3426,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "predecessor-and-successor-of-a-given-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-004-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-004-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-004-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-004-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -2737,57 +3462,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 268,
-    "statement": "### Problem Description\n\nImplement deletion of a leaf node, a node with one child, and a node with two children.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement deletion of a leaf node, a node with one child, and a node with two children.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2809,10 +3545,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-deletion-of-a-leaf-node-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-005-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-005-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-005-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-005-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -2831,57 +3581,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 269,
-    "statement": "### Problem Description\n\nValidate whether a binary tree is a BST using range constraints.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nValidate whether a binary tree is a BST using range constraints.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2903,10 +3664,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "validate-whether-a-binary-tree-is-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-006-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-006-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-006-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-006-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -2925,57 +3700,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 270,
-    "statement": "### Problem Description\n\nFind the Kth-smallest element in a BST without converting the tree into an array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the Kth-smallest element in a BST without converting the tree into an array.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2997,10 +3783,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "kth-smallest-element-in-a-bst-without-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-007-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-007-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-007-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-007-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -3019,57 +3819,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 271,
-    "statement": "### Problem Description\n\nFind the Kth-largest element in a BST.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the Kth-largest element in a BST.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3091,10 +3902,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "kth-largest-element-in-a-bst-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-008-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-008-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-008-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-008-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -3113,57 +3938,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 272,
-    "statement": "### Problem Description\n\nGiven a BST and a target value, find the closest value to the target.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a BST and a target value, find the closest value to the target.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3185,10 +4021,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "bst-and-a-target-value-find-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-009-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-009-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-009-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-009-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -3207,57 +4057,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 273,
-    "statement": "### Problem Description\n\nFind all values in a BST that lie within a given range.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind all values in a BST that lie within a given range.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3279,10 +4140,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "values-in-a-bst-that-lie-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-010-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-010-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-010-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-010-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -3294,64 +4169,75 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
   {
     "id": "dsa-p5-011",
     "slug": "construct-a-balanced-bst-from",
-    "title": "Construct a Balanced BST from",
+    "title": "Construct a Balanced BST",
     "topic": "Binary search trees",
     "tags": [
       "Algorithms"
     ],
     "difficulty": "Medium",
     "order": 274,
-    "statement": "### Problem Description\n\nConstruct a balanced BST from a sorted array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nConstruct a balanced BST from a sorted array.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3373,10 +4259,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "construct-a-balanced-bst-from-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-011-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-011-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-011-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-011-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -3395,57 +4295,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 275,
-    "statement": "### Problem Description\n\nGiven a preorder traversal of a BST, reconstruct the BST.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a preorder traversal of a BST, reconstruct the BST.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3467,10 +4378,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "preorder-traversal-of-a-bst-reconstruct-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-012-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-012-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-012-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-012-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -3489,57 +4414,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 276,
-    "statement": "### Problem Description\n\nFind the pair of nodes in a BST whose values sum to K.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the pair of nodes in a BST whose values sum to K.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3561,10 +4497,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "pair-of-nodes-in-a-bst-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-013-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-013-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-013-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-013-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -3583,57 +4533,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Hard",
     "order": 277,
-    "statement": "### Problem Description\n\nConvert a BST into a sorted doubly linked list in place.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nConvert a BST into a sorted doubly linked list in place.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3655,10 +4616,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "convert-a-bst-into-a-sorted-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-014-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-014-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-014-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-014-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -3677,57 +4652,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Hard",
     "order": 278,
-    "statement": "### Problem Description\n\nDesign an iterator for a BST that returns the next smallest element in amortized O(1) time.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nDesign an iterator for a BST that returns the next smallest element in amortized O(1) time.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Binary search trees. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Binary search trees. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Binary search trees eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Binary search trees allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3749,10 +4735,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "design-iterator-for-a-bst-that-returns-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-015-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-015-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-015-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-015-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -3771,57 +4771,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 279,
-    "statement": "### Problem Description\n\nCalculate the balance factor of each node in a given AVL tree.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nCalculate the balance factor of each node in a given AVL tree.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3843,10 +4854,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "balance-factor-of-each-node-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-001-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-001-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-001-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-001-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -3865,57 +4890,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 280,
-    "statement": "### Problem Description\n\nGiven an insertion sequence, identify where an AVL rotation is required.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven an insertion sequence, identify where an AVL rotation is required.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3937,10 +4973,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "insertion-sequence-identify-where-an-avl-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-002-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-002-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-002-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-002-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -3959,57 +5009,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 281,
-    "statement": "### Problem Description\n\nDraw and implement the LL and RR rotations in an AVL tree.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nDraw and implement the LL and RR rotations in an AVL tree.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -4031,10 +5092,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "draw-and-implement-the-ll-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-003-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-003-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-003-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-003-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -4053,57 +5128,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 282,
-    "statement": "### Problem Description\n\nDraw and implement the LR and RL rotations in an AVL tree.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nDraw and implement the LR and RL rotations in an AVL tree.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -4125,10 +5211,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "draw-and-implement-the-lr-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-004-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-004-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-004-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-004-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -4147,57 +5247,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 283,
-    "statement": "### Problem Description\n\nInsert a sequence of values into an AVL tree and maintain its balance after every insertion.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nInsert a sequence of values into an AVL tree and maintain its balance after every insertion.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -4219,10 +5330,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "sequence-of-values-into-an-avl-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-005-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-005-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-005-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-005-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -4241,57 +5366,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 284,
-    "statement": "### Problem Description\n\nExplain how AVL balancing changes the worst-case height compared with an ordinary BST.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nExplain how AVL balancing changes the worst-case height compared with an ordinary BST.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -4313,10 +5449,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "explain-how-avl-balancing-changes-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-006-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-006-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-006-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-006-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -4335,57 +5485,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 285,
-    "statement": "### Problem Description\n\nGiven a B-tree of a specified minimum degree, identify its keys, children, and valid ordering constraints.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a B-tree of a specified minimum degree, identify its keys, children, and valid ordering constraints.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -4407,10 +5568,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "b-tree-of-a-specified-minimum-degree-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-007-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-007-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-007-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-007-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -4429,57 +5604,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 286,
-    "statement": "### Problem Description\n\nInsert a sequence of keys into a B-tree and show when node splitting occurs.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nInsert a sequence of keys into a B-tree and show when node splitting occurs.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -4501,10 +5687,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "sequence-of-keys-into-a-b-tree-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-008-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-008-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-008-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-008-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -4523,57 +5723,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 287,
-    "statement": "### Problem Description\n\nDelete a key from a B-tree and handle borrowing and merging when a node becomes underfull.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nDelete a key from a B-tree and handle borrowing and merging when a node becomes underfull.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -4595,10 +5806,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "key-from-a-b-tree-and-handle-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-009-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-009-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-009-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-009-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -4617,57 +5842,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 288,
-    "statement": "### Problem Description\n\nExplain why B-trees and B+ trees are useful for disk-based database indexes.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nExplain why B-trees and B+ trees are useful for disk-based database indexes.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -4689,10 +5925,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "explain-why-b-trees-and-b-trees-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-010-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-010-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-010-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-010-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -4711,57 +5961,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 289,
-    "statement": "### Problem Description\n\nGiven a database index with a particular branching factor and number of keys, estimate its height and the number of page accesses required for a lookup.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a database index with a particular branching factor and number of keys, estimate its height and the number of page accesses required for a lookup.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -4783,10 +6044,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "database-index-with-a-particular-branching-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-011-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-011-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-011-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-011-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -4798,64 +6073,75 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
   {
     "id": "dsa-p5-012",
     "slug": "compare-the-structural-tradeoffs-of",
-    "title": "Compare the Structural Tradeoffs of",
+    "title": "Compare the Structural Tradeoffs",
     "topic": "AVL trees, B-trees, and indexing concepts",
     "tags": [
       "Algorithms"
     ],
     "difficulty": "Hard",
     "order": 290,
-    "statement": "### Problem Description\n\nCompare the structural tradeoffs of a BST, AVL tree, B-tree, and B+ tree for in-memory and disk-based data.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nCompare the structural tradeoffs of a BST, AVL tree, B-tree, and B+ tree for in-memory and disk-based data.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in AVL trees, B-trees, and indexing concepts. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing AVL trees, B-trees, and indexing concepts. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within AVL trees, B-trees, and indexing concepts eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in AVL trees, B-trees, and indexing concepts allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -4877,10 +6163,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "compare-the-structural-tradeoffs-of-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-012-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-012-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-012-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-012-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -4899,57 +6199,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 291,
-    "statement": "### Problem Description\n\nImplement a max-heap using an array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement a max-heap using an array.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -4971,10 +6282,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-max-heap-using-an-array-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-001-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-001-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-001-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-001-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -4993,57 +6318,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 292,
-    "statement": "### Problem Description\n\nImplement insertion into a max-heap using sift-up.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement insertion into a max-heap using sift-up.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -5065,10 +6401,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-insertion-into-a-max-heap-using-sift-up-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-002-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-002-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-002-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-002-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -5087,57 +6437,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 293,
-    "statement": "### Problem Description\n\nImplement extraction of the maximum using sift-down.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement extraction of the maximum using sift-down.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -5159,10 +6520,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-extraction-of-the-maximum-using-sift-down-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-003-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-003-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-003-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-003-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -5181,57 +6556,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 294,
-    "statement": "### Problem Description\n\nConvert a given array into a heap using repeated insertion.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nConvert a given array into a heap using repeated insertion.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -5253,10 +6639,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "convert-a-given-array-into-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-004-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-004-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-004-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-004-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -5275,57 +6675,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 295,
-    "statement": "### Problem Description\n\nImplement bottom-up heap construction and explain why it takes O(N) time.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement bottom-up heap construction and explain why it takes O(N) time.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -5347,10 +6758,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-bottom-up-heap-construction-and-explain-why-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-005-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-005-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-005-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-005-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -5369,57 +6794,67 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 296,
-    "statement": "### Problem Description\n\nImplement heapsort and analyze its time and auxiliary space complexity.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement heapsort and analyze its time and auxiliary space complexity.\n\n### Input Format\nA single line containing an integer $N$ ($0 \\le N \\le 10^6$).\n\n### Output Format\nPrint the exact calculated number of executions or metric as a 64-bit integer.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "4",
+        "output": "10",
+        "explanation": "For N = 4, iterations evaluated as 1 + 2 + 3 + 4 = 10."
+      },
+      {
+        "input": "1",
+        "output": "1",
+        "explanation": "For N = 1, exactly 1 execution occurs."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "For N = 0, no loop iterations are executed."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^6",
+      "Time complexity target: O(1) closed-form calculation",
+      "Auxiliary space target: O(1)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -5441,10 +6876,29 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-heapsort-and-analyze-its-time-tc-1",
+        "id": "tc-dsa-p5-006-1",
+        "input": "4",
+        "expectedOutput": "10"
+      },
+      {
+        "id": "tc-dsa-p5-006-2",
         "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "expectedOutput": "1"
+      },
+      {
+        "id": "tc-dsa-p5-006-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-006-4",
+        "input": "5",
+        "expectedOutput": "15"
+      },
+      {
+        "id": "tc-dsa-p5-006-5",
+        "input": "10",
+        "expectedOutput": "55"
       }
     ],
     "limits": {
@@ -5463,57 +6917,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 297,
-    "statement": "### Problem Description\n\nImplement a min-heap and use it to find the smallest K elements in an array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement a min-heap and use it to find the smallest K elements in an array.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $K$ ($1 \\le N \\le 10^5$, $-10^9 \\le K \\le 10^9$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the resulting index, boolean, or computed value.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5 7\n1 3 4 5 9",
+        "output": "3",
+        "explanation": "Evaluating array against target 7 yields result 3."
+      },
+      {
+        "input": "3 10\n1 2 3",
+        "output": "-1",
+        "explanation": "Target 10 cannot be formed from the elements."
+      },
+      {
+        "input": "1 5\n5",
+        "output": "0",
+        "explanation": "Target matches single array element at index 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i], K <= 10^9",
+      "Time complexity target: O(N) or O(log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -5535,10 +7000,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-min-heap-and-use-it-to-find-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-007-1",
+        "input": "5 7\n1 3 4 5 9",
+        "expectedOutput": "3"
+      },
+      {
+        "id": "tc-dsa-p5-007-2",
+        "input": "3 10\n1 2 3",
+        "expectedOutput": "-1"
+      },
+      {
+        "id": "tc-dsa-p5-007-3",
+        "input": "1 5\n5",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-007-4",
+        "input": "4 6\n2 4 6 8",
+        "expectedOutput": "2"
       }
     ],
     "limits": {
@@ -5557,57 +7036,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 298,
-    "statement": "### Problem Description\n\nFind the Kth-largest element using a min-heap of size K.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the Kth-largest element using a min-heap of size K.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $K$ ($1 \\le N \\le 10^5$, $-10^9 \\le K \\le 10^9$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the resulting index, boolean, or computed value.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5 7\n1 3 4 5 9",
+        "output": "3",
+        "explanation": "Evaluating array against target 7 yields result 3."
+      },
+      {
+        "input": "3 10\n1 2 3",
+        "output": "-1",
+        "explanation": "Target 10 cannot be formed from the elements."
+      },
+      {
+        "input": "1 5\n5",
+        "output": "0",
+        "explanation": "Target matches single array element at index 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i], K <= 10^9",
+      "Time complexity target: O(N) or O(log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -5629,10 +7119,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "kth-largest-element-using-a-min-heap-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-008-1",
+        "input": "5 7\n1 3 4 5 9",
+        "expectedOutput": "3"
+      },
+      {
+        "id": "tc-dsa-p5-008-2",
+        "input": "3 10\n1 2 3",
+        "expectedOutput": "-1"
+      },
+      {
+        "id": "tc-dsa-p5-008-3",
+        "input": "1 5\n5",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-008-4",
+        "input": "4 6\n2 4 6 8",
+        "expectedOutput": "2"
       }
     ],
     "limits": {
@@ -5651,57 +7155,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 299,
-    "statement": "### Problem Description\n\nMerge K sorted arrays using a priority queue.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nMerge K sorted arrays using a priority queue.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $M$ ($1 \\le N, M \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, \\dots, A_N$.\n- Line 3: $M$ space-separated integers $B_1, \\dots, B_M$.\n\n### Output Format\nPrint the merged or evaluated space-separated integers.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "3 3\n1 3 5\n2 4 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Merged sorted sequence combining both arrays."
+      },
+      {
+        "input": "2 1\n1 5\n3",
+        "output": "1 3 5",
+        "explanation": "Combining unequal collections preserves sorted ordering."
+      },
+      {
+        "input": "1 1\n10\n20",
+        "output": "10 20",
+        "explanation": "Single element from each array merged."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N, M <= 10^5",
+      "-10^9 <= elements <= 10^9",
+      "Time complexity target: O(N + M)",
+      "Auxiliary space target: O(1) or O(N + M)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -5723,10 +7238,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "merge-k-sorted-arrays-using-a-priority-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-009-1",
+        "input": "3 3\n1 3 5\n2 4 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      },
+      {
+        "id": "tc-dsa-p5-009-2",
+        "input": "2 1\n1 5\n3",
+        "expectedOutput": "1 3 5"
+      },
+      {
+        "id": "tc-dsa-p5-009-3",
+        "input": "1 1\n10\n20",
+        "expectedOutput": "10 20"
+      },
+      {
+        "id": "tc-dsa-p5-009-4",
+        "input": "3 2\n2 2 2\n1 3",
+        "expectedOutput": "1 2 2 2 3"
       }
     ],
     "limits": {
@@ -5738,64 +7267,75 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
   {
     "id": "dsa-p5-010",
     "slug": "k-most-frequent-elements-in",
-    "title": "K Most Frequent Elements in",
+    "title": "K Most Frequent Elements",
     "topic": "Heaps and priority queues",
     "tags": [
       "Heap / Priority Queue"
     ],
     "difficulty": "Medium",
     "order": 300,
-    "statement": "### Problem Description\n\nFind the K most frequent elements in an array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the K most frequent elements in an array.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $K$ ($1 \\le N \\le 10^5$, $-10^9 \\le K \\le 10^9$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the resulting index, boolean, or computed value.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5 7\n1 3 4 5 9",
+        "output": "3",
+        "explanation": "Evaluating array against target 7 yields result 3."
+      },
+      {
+        "input": "3 10\n1 2 3",
+        "output": "-1",
+        "explanation": "Target 10 cannot be formed from the elements."
+      },
+      {
+        "input": "1 5\n5",
+        "output": "0",
+        "explanation": "Target matches single array element at index 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i], K <= 10^9",
+      "Time complexity target: O(N) or O(log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -5817,10 +7357,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "k-most-frequent-elements-in-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-010-1",
+        "input": "5 7\n1 3 4 5 9",
+        "expectedOutput": "3"
+      },
+      {
+        "id": "tc-dsa-p5-010-2",
+        "input": "3 10\n1 2 3",
+        "expectedOutput": "-1"
+      },
+      {
+        "id": "tc-dsa-p5-010-3",
+        "input": "1 5\n5",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-010-4",
+        "input": "4 6\n2 4 6 8",
+        "expectedOutput": "2"
       }
     ],
     "limits": {
@@ -5839,57 +7393,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 301,
-    "statement": "### Problem Description\n\nFind the median of a stream of numbers using two heaps.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the median of a stream of numbers using two heaps.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -5911,10 +7476,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "median-of-a-stream-of-numbers-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-011-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-011-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-011-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-011-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -5933,57 +7512,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 302,
-    "statement": "### Problem Description\n\nGiven a list of tasks with deadlines and profits, use a priority queue to select tasks under a scheduling constraint.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a list of tasks with deadlines and profits, use a priority queue to select tasks under a scheduling constraint.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -6005,10 +7595,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "list-of-tasks-with-deadlines-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-012-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-012-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-012-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-012-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -6027,57 +7631,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 303,
-    "statement": "### Problem Description\n\nFind the smallest range that includes at least one element from each of K sorted lists.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nFind the smallest range that includes at least one element from each of K sorted lists.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $K$ ($1 \\le N \\le 10^5$, $-10^9 \\le K \\le 10^9$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the resulting index, boolean, or computed value.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5 7\n1 3 4 5 9",
+        "output": "3",
+        "explanation": "Evaluating array against target 7 yields result 3."
+      },
+      {
+        "input": "3 10\n1 2 3",
+        "output": "-1",
+        "explanation": "Target 10 cannot be formed from the elements."
+      },
+      {
+        "input": "1 5\n5",
+        "output": "0",
+        "explanation": "Target matches single array element at index 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i], K <= 10^9",
+      "Time complexity target: O(N) or O(log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -6099,10 +7714,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "smallest-range-that-includes-at-least-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-013-1",
+        "input": "5 7\n1 3 4 5 9",
+        "expectedOutput": "3"
+      },
+      {
+        "id": "tc-dsa-p5-013-2",
+        "input": "3 10\n1 2 3",
+        "expectedOutput": "-1"
+      },
+      {
+        "id": "tc-dsa-p5-013-3",
+        "input": "1 5\n5",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-013-4",
+        "input": "4 6\n2 4 6 8",
+        "expectedOutput": "2"
       }
     ],
     "limits": {
@@ -6121,57 +7750,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 304,
-    "statement": "### Problem Description\n\nGiven a stream of numbers, return the Kth-largest element after every insertion.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a stream of numbers, return the Kth-largest element after every insertion.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -6193,10 +7833,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "stream-of-numbers-return-the-kth-largest-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-014-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-014-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-014-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-014-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -6215,57 +7869,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Hard",
     "order": 305,
-    "statement": "### Problem Description\n\nDesign a priority queue that supports updating the priority of an existing element.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nDesign a priority queue that supports updating the priority of an existing element.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -6287,10 +7952,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "design-priority-queue-that-supports-updating-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-015-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p5-015-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-015-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p5-015-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -6309,57 +7988,68 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Hard",
     "order": 306,
-    "statement": "### Problem Description\n\nCompare a binary heap, a balanced BST, and an unsorted array for insertion, minimum retrieval, deletion, and ordered traversal.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nCompare a binary heap, a balanced BST, and an unsorted array for insertion, minimum retrieval, deletion, and ordered traversal.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Heaps and priority queues. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Heaps and priority queues. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Heaps and priority queues eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Heaps and priority queues allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -6381,10 +8071,24 @@ export const PHASE_5_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "compare-a-binary-heap-a-balanced-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p5-016-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p5-016-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p5-016-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p5-016-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {

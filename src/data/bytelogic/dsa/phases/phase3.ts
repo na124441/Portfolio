@@ -11,57 +11,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 168,
-    "statement": "### Problem Description\n\nGiven an array, manually perform bubble sort and write the array after every pass.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven an array, manually perform bubble sort and write the array after every pass.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -83,10 +94,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "array-manually-perform-bubble-sort-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-001-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-001-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-001-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-001-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -105,57 +130,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 169,
-    "statement": "### Problem Description\n\nImplement bubble sort and count the comparisons and swaps.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement bubble sort and count the comparisons and swaps.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -177,10 +213,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-bubble-sort-and-count-the-comparisons-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-002-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-002-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-002-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-002-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -199,57 +249,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 170,
-    "statement": "### Problem Description\n\nModify bubble sort to terminate early when a complete pass makes no swaps.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nModify bubble sort to terminate early when a complete pass makes no swaps.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -271,10 +332,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "modify-bubble-sort-to-terminate-early-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-003-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-003-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-003-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-003-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -293,57 +368,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 171,
-    "statement": "### Problem Description\n\nConstruct an input that causes bubble sort to perform its maximum number of swaps.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nConstruct an input that causes bubble sort to perform its maximum number of swaps.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -365,10 +451,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "construct-an-input-that-causes-bubble-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-004-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-004-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-004-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-004-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -387,57 +487,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 172,
-    "statement": "### Problem Description\n\nImplement selection sort and count comparisons and swaps for sorted, reverse-sorted, and random arrays.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement selection sort and count comparisons and swaps for sorted, reverse-sorted, and random arrays.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -459,10 +570,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-selection-sort-and-count-comparisons-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-005-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-005-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-005-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-005-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -481,57 +606,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 173,
-    "statement": "### Problem Description\n\nExplain why selection sort performs quadratic comparisons even on a sorted array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nExplain why selection sort performs quadratic comparisons even on a sorted array.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -553,10 +689,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "explain-why-selection-sort-performs-quadratic-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-006-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-006-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-006-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-006-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -575,57 +725,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 174,
-    "statement": "### Problem Description\n\nImplement insertion sort and trace how the sorted prefix grows after each insertion.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement insertion sort and trace how the sorted prefix grows after each insertion.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -647,10 +808,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-insertion-sort-and-trace-how-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-007-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-007-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-007-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-007-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -669,57 +844,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 175,
-    "statement": "### Problem Description\n\nCount the number of shifts performed by insertion sort on a given array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nCount the number of shifts performed by insertion sort on a given array.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -741,10 +927,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "count-number-of-shifts-performed-by-insertion-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-008-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-008-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-008-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-008-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -763,57 +963,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 176,
-    "statement": "### Problem Description\n\nCompare insertion sort and selection sort on an almost-sorted array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nCompare insertion sort and selection sort on an almost-sorted array.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -835,10 +1046,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "compare-insertion-sort-and-selection-sort-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-009-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-009-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-009-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-009-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -857,57 +1082,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 177,
-    "statement": "### Problem Description\n\nImplement insertion sort on a singly linked list.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement insertion sort on a singly linked list.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -929,10 +1165,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-insertion-sort-on-a-singly-linked-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-010-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-010-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-010-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-010-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -951,57 +1201,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 178,
-    "statement": "### Problem Description\n\nDetermine whether each of the three algorithms is stable and whether it sorts in place.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nDetermine whether each of the three algorithms is stable and whether it sorts in place.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1023,10 +1284,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "each-of-the-three-algorithms-is-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-011-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-011-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-011-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-011-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -1038,64 +1313,75 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
   {
     "id": "dsa-p3-012",
     "slug": "records-containing-a-name-and",
-    "title": "Records Containing a Name and",
+    "title": "Records Containing a Name",
     "topic": "Elementary sorting",
     "tags": [
       "Algorithms"
     ],
     "difficulty": "Hard",
     "order": 179,
-    "statement": "### Problem Description\n\nGiven records containing a name and a score, sort them by score while preserving the original order of equal scores.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven records containing a name and a score, sort them by score while preserving the original order of equal scores.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Elementary sorting. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Elementary sorting. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Elementary sorting eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Elementary sorting allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1117,10 +1403,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "records-containing-a-name-and-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-012-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-012-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-012-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-012-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -1139,57 +1439,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 180,
-    "statement": "### Problem Description\n\nSplit an array into halves recursively until each subarray has one element. Reconstruct the sorted array manually.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nSplit an array into halves recursively until each subarray has one element. Reconstruct the sorted array manually.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1211,10 +1522,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "split-an-array-into-halves-recursively-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-001-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-001-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-001-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-001-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -1233,57 +1558,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 181,
-    "statement": "### Problem Description\n\nImplement the merge operation that combines two sorted subarrays.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement the merge operation that combines two sorted subarrays.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $M$ ($1 \\le N, M \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, \\dots, A_N$.\n- Line 3: $M$ space-separated integers $B_1, \\dots, B_M$.\n\n### Output Format\nPrint the merged or evaluated space-separated integers.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "3 3\n1 3 5\n2 4 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Merged sorted sequence combining both arrays."
+      },
+      {
+        "input": "2 1\n1 5\n3",
+        "output": "1 3 5",
+        "explanation": "Combining unequal collections preserves sorted ordering."
+      },
+      {
+        "input": "1 1\n10\n20",
+        "output": "10 20",
+        "explanation": "Single element from each array merged."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N, M <= 10^5",
+      "-10^9 <= elements <= 10^9",
+      "Time complexity target: O(N + M)",
+      "Auxiliary space target: O(1) or O(N + M)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1305,10 +1641,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-the-merge-operation-that-combines-two-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-002-1",
+        "input": "3 3\n1 3 5\n2 4 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      },
+      {
+        "id": "tc-dsa-p3-002-2",
+        "input": "2 1\n1 5\n3",
+        "expectedOutput": "1 3 5"
+      },
+      {
+        "id": "tc-dsa-p3-002-3",
+        "input": "1 1\n10\n20",
+        "expectedOutput": "10 20"
+      },
+      {
+        "id": "tc-dsa-p3-002-4",
+        "input": "3 2\n2 2 2\n1 3",
+        "expectedOutput": "1 2 2 2 3"
       }
     ],
     "limits": {
@@ -1327,57 +1677,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 182,
-    "statement": "### Problem Description\n\nImplement recursive merge sort using an auxiliary array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement recursive merge sort using an auxiliary array.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $M$ ($1 \\le N, M \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, \\dots, A_N$.\n- Line 3: $M$ space-separated integers $B_1, \\dots, B_M$.\n\n### Output Format\nPrint the merged or evaluated space-separated integers.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "3 3\n1 3 5\n2 4 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Merged sorted sequence combining both arrays."
+      },
+      {
+        "input": "2 1\n1 5\n3",
+        "output": "1 3 5",
+        "explanation": "Combining unequal collections preserves sorted ordering."
+      },
+      {
+        "input": "1 1\n10\n20",
+        "output": "10 20",
+        "explanation": "Single element from each array merged."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N, M <= 10^5",
+      "-10^9 <= elements <= 10^9",
+      "Time complexity target: O(N + M)",
+      "Auxiliary space target: O(1) or O(N + M)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1399,10 +1760,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-recursive-merge-sort-using-an-auxiliary-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-003-1",
+        "input": "3 3\n1 3 5\n2 4 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      },
+      {
+        "id": "tc-dsa-p3-003-2",
+        "input": "2 1\n1 5\n3",
+        "expectedOutput": "1 3 5"
+      },
+      {
+        "id": "tc-dsa-p3-003-3",
+        "input": "1 1\n10\n20",
+        "expectedOutput": "10 20"
+      },
+      {
+        "id": "tc-dsa-p3-003-4",
+        "input": "3 2\n2 2 2\n1 3",
+        "expectedOutput": "1 2 2 2 3"
       }
     ],
     "limits": {
@@ -1421,57 +1796,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 183,
-    "statement": "### Problem Description\n\nCount the number of comparisons made during the merge step for a given pair of sorted arrays.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nCount the number of comparisons made during the merge step for a given pair of sorted arrays.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $M$ ($1 \\le N, M \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, \\dots, A_N$.\n- Line 3: $M$ space-separated integers $B_1, \\dots, B_M$.\n\n### Output Format\nPrint the merged or evaluated space-separated integers.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "3 3\n1 3 5\n2 4 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Merged sorted sequence combining both arrays."
+      },
+      {
+        "input": "2 1\n1 5\n3",
+        "output": "1 3 5",
+        "explanation": "Combining unequal collections preserves sorted ordering."
+      },
+      {
+        "input": "1 1\n10\n20",
+        "output": "10 20",
+        "explanation": "Single element from each array merged."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N, M <= 10^5",
+      "-10^9 <= elements <= 10^9",
+      "Time complexity target: O(N + M)",
+      "Auxiliary space target: O(1) or O(N + M)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1493,10 +1879,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "count-number-of-comparisons-made-during-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-004-1",
+        "input": "3 3\n1 3 5\n2 4 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      },
+      {
+        "id": "tc-dsa-p3-004-2",
+        "input": "2 1\n1 5\n3",
+        "expectedOutput": "1 3 5"
+      },
+      {
+        "id": "tc-dsa-p3-004-3",
+        "input": "1 1\n10\n20",
+        "expectedOutput": "10 20"
+      },
+      {
+        "id": "tc-dsa-p3-004-4",
+        "input": "3 2\n2 2 2\n1 3",
+        "expectedOutput": "1 2 2 2 3"
       }
     ],
     "limits": {
@@ -1515,57 +1915,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 184,
-    "statement": "### Problem Description\n\nProve that merge sort has O(N log N) time complexity.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nProve that merge sort has O(N log N) time complexity.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $M$ ($1 \\le N, M \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, \\dots, A_N$.\n- Line 3: $M$ space-separated integers $B_1, \\dots, B_M$.\n\n### Output Format\nPrint the merged or evaluated space-separated integers.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "3 3\n1 3 5\n2 4 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Merged sorted sequence combining both arrays."
+      },
+      {
+        "input": "2 1\n1 5\n3",
+        "output": "1 3 5",
+        "explanation": "Combining unequal collections preserves sorted ordering."
+      },
+      {
+        "input": "1 1\n10\n20",
+        "output": "10 20",
+        "explanation": "Single element from each array merged."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N, M <= 10^5",
+      "-10^9 <= elements <= 10^9",
+      "Time complexity target: O(N + M)",
+      "Auxiliary space target: O(1) or O(N + M)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1587,10 +1998,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "prove-that-merge-sort-has-on-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-005-1",
+        "input": "3 3\n1 3 5\n2 4 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      },
+      {
+        "id": "tc-dsa-p3-005-2",
+        "input": "2 1\n1 5\n3",
+        "expectedOutput": "1 3 5"
+      },
+      {
+        "id": "tc-dsa-p3-005-3",
+        "input": "1 1\n10\n20",
+        "expectedOutput": "10 20"
+      },
+      {
+        "id": "tc-dsa-p3-005-4",
+        "input": "3 2\n2 2 2\n1 3",
+        "expectedOutput": "1 2 2 2 3"
       }
     ],
     "limits": {
@@ -1609,57 +2034,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 185,
-    "statement": "### Problem Description\n\nModify merge sort to count the number of inversions in an array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nModify merge sort to count the number of inversions in an array.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $M$ ($1 \\le N, M \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, \\dots, A_N$.\n- Line 3: $M$ space-separated integers $B_1, \\dots, B_M$.\n\n### Output Format\nPrint the merged or evaluated space-separated integers.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "3 3\n1 3 5\n2 4 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Merged sorted sequence combining both arrays."
+      },
+      {
+        "input": "2 1\n1 5\n3",
+        "output": "1 3 5",
+        "explanation": "Combining unequal collections preserves sorted ordering."
+      },
+      {
+        "input": "1 1\n10\n20",
+        "output": "10 20",
+        "explanation": "Single element from each array merged."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N, M <= 10^5",
+      "-10^9 <= elements <= 10^9",
+      "Time complexity target: O(N + M)",
+      "Auxiliary space target: O(1) or O(N + M)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1681,10 +2117,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "modify-merge-sort-to-count-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-006-1",
+        "input": "3 3\n1 3 5\n2 4 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      },
+      {
+        "id": "tc-dsa-p3-006-2",
+        "input": "2 1\n1 5\n3",
+        "expectedOutput": "1 3 5"
+      },
+      {
+        "id": "tc-dsa-p3-006-3",
+        "input": "1 1\n10\n20",
+        "expectedOutput": "10 20"
+      },
+      {
+        "id": "tc-dsa-p3-006-4",
+        "input": "3 2\n2 2 2\n1 3",
+        "expectedOutput": "1 2 2 2 3"
       }
     ],
     "limits": {
@@ -1703,57 +2153,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 186,
-    "statement": "### Problem Description\n\nGiven an array, count how many pairs (i, j) satisfy i < j and arr[i] > arr[j].\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven an array, count how many pairs (i, j) satisfy i < j and arr[i] > arr[j].\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1775,10 +2236,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "array-count-how-many-pairs-i-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-007-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-007-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-007-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-007-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -1797,57 +2272,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 187,
-    "statement": "### Problem Description\n\nImplement merge sort on a linked list without copying the list into an array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement merge sort on a linked list without copying the list into an array.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $M$ ($1 \\le N, M \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, \\dots, A_N$.\n- Line 3: $M$ space-separated integers $B_1, \\dots, B_M$.\n\n### Output Format\nPrint the merged or evaluated space-separated integers.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "3 3\n1 3 5\n2 4 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Merged sorted sequence combining both arrays."
+      },
+      {
+        "input": "2 1\n1 5\n3",
+        "output": "1 3 5",
+        "explanation": "Combining unequal collections preserves sorted ordering."
+      },
+      {
+        "input": "1 1\n10\n20",
+        "output": "10 20",
+        "explanation": "Single element from each array merged."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N, M <= 10^5",
+      "-10^9 <= elements <= 10^9",
+      "Time complexity target: O(N + M)",
+      "Auxiliary space target: O(1) or O(N + M)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1869,10 +2355,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-merge-sort-on-a-linked-list-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-008-1",
+        "input": "3 3\n1 3 5\n2 4 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      },
+      {
+        "id": "tc-dsa-p3-008-2",
+        "input": "2 1\n1 5\n3",
+        "expectedOutput": "1 3 5"
+      },
+      {
+        "id": "tc-dsa-p3-008-3",
+        "input": "1 1\n10\n20",
+        "expectedOutput": "10 20"
+      },
+      {
+        "id": "tc-dsa-p3-008-4",
+        "input": "3 2\n2 2 2\n1 3",
+        "expectedOutput": "1 2 2 2 3"
       }
     ],
     "limits": {
@@ -1891,57 +2391,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 188,
-    "statement": "### Problem Description\n\nModify merge sort to sort objects by multiple fields using a custom comparator.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nModify merge sort to sort objects by multiple fields using a custom comparator.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $M$ ($1 \\le N, M \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, \\dots, A_N$.\n- Line 3: $M$ space-separated integers $B_1, \\dots, B_M$.\n\n### Output Format\nPrint the merged or evaluated space-separated integers.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "3 3\n1 3 5\n2 4 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Merged sorted sequence combining both arrays."
+      },
+      {
+        "input": "2 1\n1 5\n3",
+        "output": "1 3 5",
+        "explanation": "Combining unequal collections preserves sorted ordering."
+      },
+      {
+        "input": "1 1\n10\n20",
+        "output": "10 20",
+        "explanation": "Single element from each array merged."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N, M <= 10^5",
+      "-10^9 <= elements <= 10^9",
+      "Time complexity target: O(N + M)",
+      "Auxiliary space target: O(1) or O(N + M)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -1963,10 +2474,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "modify-merge-sort-to-sort-objects-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-009-1",
+        "input": "3 3\n1 3 5\n2 4 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      },
+      {
+        "id": "tc-dsa-p3-009-2",
+        "input": "2 1\n1 5\n3",
+        "expectedOutput": "1 3 5"
+      },
+      {
+        "id": "tc-dsa-p3-009-3",
+        "input": "1 1\n10\n20",
+        "expectedOutput": "10 20"
+      },
+      {
+        "id": "tc-dsa-p3-009-4",
+        "input": "3 2\n2 2 2\n1 3",
+        "expectedOutput": "1 2 2 2 3"
       }
     ],
     "limits": {
@@ -1985,57 +2510,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 189,
-    "statement": "### Problem Description\n\nGiven a nearly sorted array, compare merge sort with insertion sort experimentally.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a nearly sorted array, compare merge sort with insertion sort experimentally.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $M$ ($1 \\le N, M \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, \\dots, A_N$.\n- Line 3: $M$ space-separated integers $B_1, \\dots, B_M$.\n\n### Output Format\nPrint the merged or evaluated space-separated integers.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "3 3\n1 3 5\n2 4 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Merged sorted sequence combining both arrays."
+      },
+      {
+        "input": "2 1\n1 5\n3",
+        "output": "1 3 5",
+        "explanation": "Combining unequal collections preserves sorted ordering."
+      },
+      {
+        "input": "1 1\n10\n20",
+        "output": "10 20",
+        "explanation": "Single element from each array merged."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N, M <= 10^5",
+      "-10^9 <= elements <= 10^9",
+      "Time complexity target: O(N + M)",
+      "Auxiliary space target: O(1) or O(N + M)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2057,10 +2593,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "nearly-sorted-array-compare-merge-sort-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-010-1",
+        "input": "3 3\n1 3 5\n2 4 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      },
+      {
+        "id": "tc-dsa-p3-010-2",
+        "input": "2 1\n1 5\n3",
+        "expectedOutput": "1 3 5"
+      },
+      {
+        "id": "tc-dsa-p3-010-3",
+        "input": "1 1\n10\n20",
+        "expectedOutput": "10 20"
+      },
+      {
+        "id": "tc-dsa-p3-010-4",
+        "input": "3 2\n2 2 2\n1 3",
+        "expectedOutput": "1 2 2 2 3"
       }
     ],
     "limits": {
@@ -2079,57 +2629,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 190,
-    "statement": "### Problem Description\n\nImplement an external merge-sort simulation where data is split into chunks that cannot all fit in memory simultaneously.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement an external merge-sort simulation where data is split into chunks that cannot all fit in memory simultaneously.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $M$ ($1 \\le N, M \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, \\dots, A_N$.\n- Line 3: $M$ space-separated integers $B_1, \\dots, B_M$.\n\n### Output Format\nPrint the merged or evaluated space-separated integers.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "3 3\n1 3 5\n2 4 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Merged sorted sequence combining both arrays."
+      },
+      {
+        "input": "2 1\n1 5\n3",
+        "output": "1 3 5",
+        "explanation": "Combining unequal collections preserves sorted ordering."
+      },
+      {
+        "input": "1 1\n10\n20",
+        "output": "10 20",
+        "explanation": "Single element from each array merged."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N, M <= 10^5",
+      "-10^9 <= elements <= 10^9",
+      "Time complexity target: O(N + M)",
+      "Auxiliary space target: O(1) or O(N + M)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2151,10 +2712,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-external-merge-sort-simulation-where-data-is-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-011-1",
+        "input": "3 3\n1 3 5\n2 4 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      },
+      {
+        "id": "tc-dsa-p3-011-2",
+        "input": "2 1\n1 5\n3",
+        "expectedOutput": "1 3 5"
+      },
+      {
+        "id": "tc-dsa-p3-011-3",
+        "input": "1 1\n10\n20",
+        "expectedOutput": "10 20"
+      },
+      {
+        "id": "tc-dsa-p3-011-4",
+        "input": "3 2\n2 2 2\n1 3",
+        "expectedOutput": "1 2 2 2 3"
       }
     ],
     "limits": {
@@ -2173,57 +2748,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Hard",
     "order": 191,
-    "statement": "### Problem Description\n\nGiven several individually sorted arrays, merge them into one sorted array while minimizing the total number of element comparisons.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven several individually sorted arrays, merge them into one sorted array while minimizing the total number of element comparisons.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $M$ ($1 \\le N, M \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, \\dots, A_N$.\n- Line 3: $M$ space-separated integers $B_1, \\dots, B_M$.\n\n### Output Format\nPrint the merged or evaluated space-separated integers.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "3 3\n1 3 5\n2 4 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Merged sorted sequence combining both arrays."
+      },
+      {
+        "input": "2 1\n1 5\n3",
+        "output": "1 3 5",
+        "explanation": "Combining unequal collections preserves sorted ordering."
+      },
+      {
+        "input": "1 1\n10\n20",
+        "output": "10 20",
+        "explanation": "Single element from each array merged."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N, M <= 10^5",
+      "-10^9 <= elements <= 10^9",
+      "Time complexity target: O(N + M)",
+      "Auxiliary space target: O(1) or O(N + M)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Merge sort. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Merge sort. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Merge sort eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Merge sort allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2245,10 +2831,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "several-individually-sorted-arrays-merge-them-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-012-1",
+        "input": "3 3\n1 3 5\n2 4 6",
+        "expectedOutput": "1 2 3 4 5 6"
+      },
+      {
+        "id": "tc-dsa-p3-012-2",
+        "input": "2 1\n1 5\n3",
+        "expectedOutput": "1 3 5"
+      },
+      {
+        "id": "tc-dsa-p3-012-3",
+        "input": "1 1\n10\n20",
+        "expectedOutput": "10 20"
+      },
+      {
+        "id": "tc-dsa-p3-012-4",
+        "input": "3 2\n2 2 2\n1 3",
+        "expectedOutput": "1 2 2 2 3"
       }
     ],
     "limits": {
@@ -2267,57 +2867,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 192,
-    "statement": "### Problem Description\n\nImplement Lomuto partitioning and trace the final pivot position.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement Lomuto partitioning and trace the final pivot position.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2339,10 +2950,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-lomuto-partitioning-and-trace-the-final-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-001-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-001-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-001-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-001-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -2361,57 +2986,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 193,
-    "statement": "### Problem Description\n\nImplement quicksort using Lomuto partitioning.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement quicksort using Lomuto partitioning.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2433,10 +3069,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-quicksort-using-lomuto-partitioning-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-002-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-002-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-002-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-002-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -2455,57 +3105,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Warm-up",
     "order": 194,
-    "statement": "### Problem Description\n\nImplement Hoare partitioning and compare its behavior with Lomuto partitioning.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement Hoare partitioning and compare its behavior with Lomuto partitioning.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2527,10 +3188,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-hoare-partitioning-and-compare-its-behavior-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-003-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-003-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-003-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-003-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -2549,57 +3224,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 195,
-    "statement": "### Problem Description\n\nConstruct an input that causes a poorly chosen quicksort pivot to produce highly unbalanced partitions.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nConstruct an input that causes a poorly chosen quicksort pivot to produce highly unbalanced partitions.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2621,10 +3307,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "construct-an-input-that-causes-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-004-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-004-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-004-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-004-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -2643,57 +3343,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 196,
-    "statement": "### Problem Description\n\nModify quicksort to use randomized pivot selection.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nModify quicksort to use randomized pivot selection.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2715,10 +3426,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "modify-quicksort-to-use-randomized-pivot-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-005-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-005-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-005-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-005-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -2737,57 +3462,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 197,
-    "statement": "### Problem Description\n\nImplement median-of-three pivot selection and compare partition balance.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement median-of-three pivot selection and compare partition balance.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2809,10 +3545,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-median-of-three-pivot-selection-and-compare-partition-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-006-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-006-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-006-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-006-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -2831,57 +3581,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Easy",
     "order": 198,
-    "statement": "### Problem Description\n\nModify quicksort to handle arrays containing many duplicate values efficiently using three-way partitioning.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nModify quicksort to handle arrays containing many duplicate values efficiently using three-way partitioning.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2903,10 +3664,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "modify-quicksort-to-handle-arrays-containing-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-007-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-007-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-007-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-007-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -2925,57 +3700,67 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 199,
-    "statement": "### Problem Description\n\nExplain the expected and worst-case time complexity of quicksort.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nExplain the expected and worst-case time complexity of quicksort.\n\n### Input Format\nA single line containing an integer $N$ ($0 \\le N \\le 10^6$).\n\n### Output Format\nPrint the exact calculated number of executions or metric as a 64-bit integer.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "4",
+        "output": "10",
+        "explanation": "For N = 4, iterations evaluated as 1 + 2 + 3 + 4 = 10."
+      },
+      {
+        "input": "1",
+        "output": "1",
+        "explanation": "For N = 1, exactly 1 execution occurs."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "For N = 0, no loop iterations are executed."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^6",
+      "Time complexity target: O(1) closed-form calculation",
+      "Auxiliary space target: O(1)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -2997,10 +3782,29 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "explain-the-expected-and-worst-case-time-tc-1",
+        "id": "tc-dsa-p3-008-1",
+        "input": "4",
+        "expectedOutput": "10"
+      },
+      {
+        "id": "tc-dsa-p3-008-2",
         "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "expectedOutput": "1"
+      },
+      {
+        "id": "tc-dsa-p3-008-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p3-008-4",
+        "input": "5",
+        "expectedOutput": "15"
+      },
+      {
+        "id": "tc-dsa-p3-008-5",
+        "input": "10",
+        "expectedOutput": "55"
       }
     ],
     "limits": {
@@ -3019,57 +3823,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 200,
-    "statement": "### Problem Description\n\nImplement quickselect to find the smallest element at a given rank.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nImplement quickselect to find the smallest element at a given rank.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $K$ ($1 \\le N \\le 10^5$, $-10^9 \\le K \\le 10^9$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the resulting index, boolean, or computed value.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5 7\n1 3 4 5 9",
+        "output": "3",
+        "explanation": "Evaluating array against target 7 yields result 3."
+      },
+      {
+        "input": "3 10\n1 2 3",
+        "output": "-1",
+        "explanation": "Target 10 cannot be formed from the elements."
+      },
+      {
+        "input": "1 5\n5",
+        "output": "0",
+        "explanation": "Target matches single array element at index 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i], K <= 10^9",
+      "Time complexity target: O(N) or O(log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3091,10 +3906,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "implement-quickselect-to-find-the-smallest-element-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-009-1",
+        "input": "5 7\n1 3 4 5 9",
+        "expectedOutput": "3"
+      },
+      {
+        "id": "tc-dsa-p3-009-2",
+        "input": "3 10\n1 2 3",
+        "expectedOutput": "-1"
+      },
+      {
+        "id": "tc-dsa-p3-009-3",
+        "input": "1 5\n5",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p3-009-4",
+        "input": "4 6\n2 4 6 8",
+        "expectedOutput": "2"
       }
     ],
     "limits": {
@@ -3113,57 +3942,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 201,
-    "statement": "### Problem Description\n\nUse quickselect to find the Kth-largest element without fully sorting the array.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nUse quickselect to find the Kth-largest element without fully sorting the array.\n\n### Input Format\n- Line 1: Two space-separated integers $N$ and $K$ ($1 \\le N \\le 10^5$, $-10^9 \\le K \\le 10^9$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the resulting index, boolean, or computed value.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5 7\n1 3 4 5 9",
+        "output": "3",
+        "explanation": "Evaluating array against target 7 yields result 3."
+      },
+      {
+        "input": "3 10\n1 2 3",
+        "output": "-1",
+        "explanation": "Target 10 cannot be formed from the elements."
+      },
+      {
+        "input": "1 5\n5",
+        "output": "0",
+        "explanation": "Target matches single array element at index 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i], K <= 10^9",
+      "Time complexity target: O(N) or O(log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3185,10 +4025,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "use-quickselect-to-find-the-kth-largest-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-010-1",
+        "input": "5 7\n1 3 4 5 9",
+        "expectedOutput": "3"
+      },
+      {
+        "id": "tc-dsa-p3-010-2",
+        "input": "3 10\n1 2 3",
+        "expectedOutput": "-1"
+      },
+      {
+        "id": "tc-dsa-p3-010-3",
+        "input": "1 5\n5",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p3-010-4",
+        "input": "4 6\n2 4 6 8",
+        "expectedOutput": "2"
       }
     ],
     "limits": {
@@ -3207,57 +4061,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Medium",
     "order": 202,
-    "statement": "### Problem Description\n\nCompare quickselect with a min-heap and a max-heap for different values of K.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nCompare quickselect with a min-heap and a max-heap for different values of K.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3279,10 +4144,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "compare-quickselect-with-a-min-heap-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-011-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-011-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-011-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-011-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -3294,64 +4173,75 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
   {
     "id": "dsa-p3-012",
     "slug": "sort-an-array-of-objects-using",
-    "title": "Sort an Array of Objects Using",
+    "title": "Sort an Array of Objects",
     "topic": "Quicksort and selection",
     "tags": [
       "Algorithms"
     ],
     "difficulty": "Medium",
     "order": 203,
-    "statement": "### Problem Description\n\nSort an array of objects using a comparator that orders by one field and breaks ties using another.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nSort an array of objects using a comparator that orders by one field and breaks ties using another.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3373,10 +4263,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "sort-an-array-of-objects-using-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-012-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-012-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-012-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-012-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
@@ -3395,57 +4299,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Hard",
     "order": 204,
-    "statement": "### Problem Description\n\nGiven an array containing only 0s, 1s, and 2s, sort it in one traversal without using a comparison-based sorting algorithm.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven an array containing only 0s, 1s, and 2s, sort it in one traversal without using a comparison-based sorting algorithm.\n\n### Input Format\n- Line 1: An integer $N$ ($0 \\le N \\le 10^5$), the number of nodes.\n- Line 2: $N$ space-separated integers representing the node values in level-order. (Omitted if $N = 0$).\n\n### Output Format\nPrint the computed integer scalar or space-separated traversal sequence.",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n1 2 3 4 5",
+        "output": "4 2 5 1 3",
+        "explanation": "Processing tree nodes in standard order."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Single root node evaluation."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "Empty tree evaluation returns 0."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "0 <= N <= 10^5",
+      "-10^9 <= node.val <= 10^9",
+      "Time complexity target: O(N)",
+      "Auxiliary space target: O(H) where H is tree height"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3467,10 +4382,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "array-containing-only-0s-1s-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-013-1",
+        "input": "5\n1 2 3 4 5",
+        "expectedOutput": "4 2 5 1 3"
+      },
+      {
+        "id": "tc-dsa-p3-013-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-013-3",
+        "input": "0",
+        "expectedOutput": "0"
+      },
+      {
+        "id": "tc-dsa-p3-013-4",
+        "input": "3\n2 1 3",
+        "expectedOutput": "1 2 3"
       }
     ],
     "limits": {
@@ -3489,57 +4418,68 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     ],
     "difficulty": "Hard",
     "order": 205,
-    "statement": "### Problem Description\n\nGiven a large array where most elements are already sorted, identify which sorting approach is appropriate and justify the choice using its guarantees.\n\n### Requirements\n- Design and implement an optimal solution satisfying competitive time and space bounds.\n- Handle all boundary conditions (e.g. minimum/maximum constraints, empty/singleton inputs, duplicates, and edge-case values).",
+    "statement": "### Problem Description\n\nGiven a large array where most elements are already sorted, identify which sorting approach is appropriate and justify the choice using its guarantees.\n\n### Input Format\n- Line 1: An integer $N$ ($1 \\le N \\le 10^5$).\n- Line 2: $N$ space-separated integers $A_1, A_2, \\dots, A_N$.\n\n### Output Format\nPrint the computed result (scalar integer or space-separated sequence).",
     "examples": [
       {
-        "input": "Standard input case as specified in the problem statement",
-        "output": "Corresponding expected output adhering to the required format",
-        "explanation": "Step-by-step verification of the expected algorithmic invariants on this input."
+        "input": "5\n3 1 4 1 5",
+        "output": "1 1 3 4 5",
+        "explanation": "Processing input sequence according to algorithmic invariants."
+      },
+      {
+        "input": "1\n42",
+        "output": "42",
+        "explanation": "Singleton input baseline verification."
+      },
+      {
+        "input": "4\n-10 -5 0 5",
+        "output": "-10 -5 0 5",
+        "explanation": "Handling negative and boundary values."
       }
     ],
     "constraints": [
-      "Standard integer bounds: 32-bit signed integer or input range [1, 10^5].",
-      "Time complexity target: O(N) or O(N log N) where applicable.",
-      "Auxiliary space target: O(1) or minimal auxiliary memory."
+      "1 <= N <= 10^5",
+      "-10^9 <= A[i] <= 10^9",
+      "Time complexity target: O(N) or O(N log N)",
+      "Auxiliary space target: O(1) or O(N)"
     ],
     "hints": [
       {
         "level": 1,
         "title": "Core Invariant",
-        "content": "Identify the fundamental structural property or mathematical invariant governing this challenge in Quicksort and selection. What property remains true across each state transition?"
+        "content": "Examine the mathematical invariants governing Quicksort and selection. Focus on what remains unchanged across each state transition."
       },
       {
         "level": 2,
         "title": "Algorithmic Pattern",
-        "content": "Consider which foundational pattern applies: two pointers, sliding window boundaries, monotonic stack/queue pruning, prefix accumulators, or a recurrence relation."
+        "content": "Determine whether a two-pointer, divide-and-conquer, dynamic programming, or monotonic accumulator structure yields the optimal bound."
       },
       {
         "level": 3,
         "title": "Edge Cases & Bounds",
-        "content": "Carefully inspect corner conditions: empty collections, singletons, duplicate keys, negative numbers, and potential integer overflow."
+        "content": "Verify correctness against boundary cases: empty or singleton inputs, duplicates, extreme negative/positive values, and 64-bit integer limits."
       }
     ],
     "solution": {
       "bruteForce": {
-        "explanation": "Enumerate all candidate combinations or brute-force states, verifying conditions sequentially.",
+        "explanation": "Evaluate all candidate states or partitions sequentially.",
         "timeComplexity": "O(N^2) or O(2^N)",
-        "spaceComplexity": "O(1) auxiliary"
+        "spaceComplexity": "O(1) to O(N)"
       },
       "optimal": {
-        "keyObservation": "Exploiting the mathematical invariants and structured ordering within Quicksort and selection eliminates redundant sub-evaluations and enables single-pass or logarithmic resolution.",
-        "algorithm": "Initialize required tracking pointers and accumulators, traverse input elements maintaining optimal invariants, and emit the final structured result.",
+        "keyObservation": "Exploiting structural properties in Quicksort and selection allows single-pass or logarithmic resolution without redundant computations.",
+        "algorithm": "Initialize required tracking structures, execute the core transformation maintaining optimal invariants, and emit the formatted result.",
         "steps": [
           {
             "title": "Step 1 — Input & State Setup",
-            "content": "Parse inputs, initialize bounds and auxiliary tracking structures."
+            "content": "Parse inputs and initialize auxiliary tracking variables."
           },
           {
             "title": "Step 2 — Invariant Traversal",
-            "content": "Execute the core transformation or search maintaining invariants across iterations."
+            "content": "Execute core transitions maintaining problem invariants."
           },
           {
-            "title": "Step 3 — Result Generation",
-            "content": "Emit formatted output or return final calculated scalar/array."
+            "title": "Step 3 — Emit Result",
+            "content": "Print the computed scalar or space-separated elements."
           }
         ],
         "timeComplexity": "O(N) or O(N log N)",
@@ -3561,10 +4501,24 @@ export const PHASE_3_PROBLEMS: DsaProblem[] = [
     "followUp": "Can this algorithm be adapted to an online streaming setting where the entire input cannot be held in memory simultaneously?",
     "testCases": [
       {
-        "id": "large-array-where-most-elements-are-tc-1",
-        "input": "1",
-        "expectedOutput": "1",
-        "explanation": "Sample baseline test case."
+        "id": "tc-dsa-p3-014-1",
+        "input": "5\n3 1 4 1 5",
+        "expectedOutput": "1 1 3 4 5"
+      },
+      {
+        "id": "tc-dsa-p3-014-2",
+        "input": "1\n42",
+        "expectedOutput": "42"
+      },
+      {
+        "id": "tc-dsa-p3-014-3",
+        "input": "4\n-10 -5 0 5",
+        "expectedOutput": "-10 -5 0 5"
+      },
+      {
+        "id": "tc-dsa-p3-014-4",
+        "input": "3\n5 2 8",
+        "expectedOutput": "2 5 8"
       }
     ],
     "limits": {
