@@ -69,9 +69,8 @@ export function DsaWorkspace({
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [isTimerVisible, setIsTimerVisible] = useState(false);
 
-  // Synchronized execution state for top-bar Run / Submit
-  const [isExecuting, setIsExecuting] = useState(false);
-  const [executionMode, setExecutionMode] = useState<'run' | 'submit' | null>(null);
+  // Synchronized execution trigger for top-bar Run / Submit
+  const [externalTrigger, setExternalTrigger] = useState<{ mode: 'run' | 'submit'; timestamp: number } | null>(null);
 
   // Active code
   const snippets = problem.code || [];
@@ -136,37 +135,10 @@ export function DsaWorkspace({
     }
   };
 
-  const handleExecuteTrigger = async (mode: 'run' | 'submit') => {
-    if (isExecuting) return;
-    setIsExecuting(true);
-    setExecutionMode(mode);
-
-    try {
-      const response = await fetch('/api/dsa/submissions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          problemSlug: problem.slug,
-          language: selectedLanguage,
-          sourceCode: activeCode,
-          mode,
-        }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        if (mode === 'submit' && data.verdict === 'ACCEPTED') {
-          setProblemStatus(problem.slug, 'solved');
-          setSubmissionRefresh((r) => r + 1);
-        } else if (userState.status === 'unattempted') {
-          setProblemStatus(problem.slug, 'attempted');
-        }
-      }
-    } catch {
-      // handled in test runner
-    } finally {
-      setIsExecuting(false);
-      setExecutionMode(null);
+  const handleExecuteTrigger = (mode: 'run' | 'submit') => {
+    setExternalTrigger({ mode, timestamp: Date.now() });
+    if (mobileTab === 'problem') {
+      setMobileTab('code');
     }
   };
 
@@ -242,10 +214,10 @@ export function DsaWorkspace({
           <button
             type="button"
             onClick={() => handleExecuteTrigger('run')}
-            disabled={isExecuting}
-            className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#333333] hover:bg-[#3d3d3d] text-white text-xs font-medium transition-colors cursor-pointer disabled:opacity-50"
+            className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#333333] hover:bg-[#3d3d3d] text-white text-xs font-medium transition-colors cursor-pointer"
+            title="Run solution (Ctrl+Enter)"
           >
-            <Play className={cn('w-3.5 h-3.5 fill-current', isExecuting && executionMode === 'run' && 'animate-spin')} />
+            <Play className="w-3.5 h-3.5 fill-current" />
             <span className="hidden xs:inline">Run</span>
           </button>
 
@@ -253,10 +225,10 @@ export function DsaWorkspace({
           <button
             type="button"
             onClick={() => handleExecuteTrigger('submit')}
-            disabled={isExecuting}
-            className="flex items-center gap-1.5 px-3.5 py-1 rounded bg-[#2cbb5d] hover:bg-[#27a852] text-white text-xs font-semibold transition-colors cursor-pointer disabled:opacity-50"
+            className="flex items-center gap-1.5 px-3.5 py-1 rounded bg-[#2cbb5d] hover:bg-[#27a852] text-white text-xs font-semibold transition-colors cursor-pointer"
+            title="Submit solution (Ctrl+Shift+Enter)"
           >
-            <Send className={cn('w-3.5 h-3.5', isExecuting && executionMode === 'submit' && 'animate-pulse')} />
+            <Send className="w-3.5 h-3.5" />
             <span>Submit</span>
           </button>
         </div>
@@ -404,9 +376,8 @@ export function DsaWorkspace({
                 setLeftTab('submissions');
                 setMobileTab('problem');
               }}
-              isExecutingExternal={isExecuting}
-              executionModeExternal={executionMode}
-              onExecuteExternal={handleExecuteTrigger}
+              isExecutingExternal={Boolean(externalTrigger)}
+              externalTrigger={externalTrigger}
             />
           </div>
         </div>

@@ -1,56 +1,80 @@
 /**
- * POST /api/dsa/submissions — Create a new submission (run or submit)
- * GET  /api/dsa/submissions — List submissions for a problem
+ * POST /api/submit
+ * Submits user code against official public + hidden test cases.
+ * Returns normalized verdict (AC, WA, TLE, MLE, RE, CE, IE).
+ * Stores submission record and updates user problem progress.
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
 import { judgeSubmission } from '@/lib/judging/judge';
+import { checkRateLimit, getClientIp, MAX_CODE_BYTES } from '@/lib/execution/rate-limiter';
+
+const SubmitSchema = z.object({
+  problemSlug: z.string().min(1, 'Problem slug is required'),
+  language: z.enum(['cpp', 'python']),
+  code: z.string().min(1, 'Source code cannot be empty').max(MAX_CODE_BYTES, 'Source code exceeds 64KB limit'),
+});
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { problemSlug, language, sourceCode, mode } = body as {
-      problemSlug: string;
-      language: 'cpp' | 'python';
-      sourceCode: string;
-      mode: 'run' | 'submit';
-    };
+    // 1. Rate limiting
+    const ip = getClientIp(request.headers);
+    const rateLimit = checkRateLimit(ip, 'submit');
 
-    // Validate required fields
-    if (!problemSlug || !sourceCode || !mode) {
+    if (!rateLimit.allowed) {
       return NextResponse.json(
-        { error: 'Missing required fields: problemSlug, sourceCode, mode' },
-        { status: 400 }
+        {
+          error: `Rate limit exceeded. Please wait ${rateLimit.retryAfterSec} seconds before submitting again.`,
+        },
+        {
+          status: 429,
+          headers: { 'Retry-After': String(rateLimit.retryAfterSec || 60) },
+        }
       );
     }
 
-    if (sourceCode.length > 65536) {
-      return NextResponse.json(
-        { error: 'Source code exceeds maximum size (64KB)' },
-        { status: 400 }
-      );
+    // 2. Validation
+    const json = await request.json().catch(() => null);
+    if (!json) {
+      return NextResponse.json({ error: 'Malformed JSON payload' }, { status: 400 });
     }
 
-    // Create submission record in QUEUED state
+    // Handle problemId alias for problemSlug
+    if (json.problemId && !json.problemSlug) {
+      json.problemSlug = json.problemId;
+    }
+
+    const parseResult = SubmitSchema.safeParse(json);
+    if (!parseResult.success) {
+      const issue = parseResult.error.issues[0]?.message || 'Validation error';
+      return NextResponse.json({ error: issue }, { status: 400 });
+    }
+
+    const { problemSlug, language, code } = parseResult.data;
+
+    // 3. Create persistent submission record in QUEUED state
     const submission = await prisma.submission.create({
       data: {
         problemSlug,
-        language: language || 'cpp',
-        sourceCode,
+        language,
+        sourceCode: code,
         verdict: 'QUEUED',
-        mode,
+        mode: 'submit',
       },
     });
 
-    // Execute judging
+    // 4. Update to RUNNING
     await prisma.submission.update({
       where: { id: submission.id },
       data: { verdict: 'RUNNING' },
     });
 
-    const result = await judgeSubmission(problemSlug, sourceCode, language || 'cpp', mode);
+    // 5. Run judging against test suite
+    const result = await judgeSubmission(problemSlug, code, language, 'submit');
 
+    // 6. Map verdict for backward compatibility with prisma model
     const prismaVerdict =
       result.verdict === 'AC' ? 'ACCEPTED' :
       result.verdict === 'WA' ? 'WRONG_ANSWER' :
@@ -59,7 +83,7 @@ export async function POST(request: NextRequest) {
       result.verdict === 'TLE' ? 'TIME_LIMIT' :
       result.verdict === 'MLE' ? 'MEMORY_LIMIT' : 'SYSTEM_ERROR';
 
-    // Persist result
+    // 7. Persist judge results
     const updated = await prisma.submission.update({
       where: { id: submission.id },
       data: {
@@ -74,8 +98,8 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // If accepted on submit, update progress
-    if (mode === 'submit' && result.verdict === 'AC') {
+    // 8. Update problem progress
+    if (result.verdict === 'AC') {
       await prisma.problemProgress.upsert({
         where: { problemSlug },
         create: {
@@ -95,13 +119,13 @@ export async function POST(request: NextRequest) {
           attemptCount: { increment: 1 },
         },
       });
-    } else if (mode === 'submit') {
-      // Non-accepted submit still counts as an attempt
+    } else {
       await prisma.problemProgress.upsert({
         where: { problemSlug },
         create: {
           problemSlug,
           status: 'ATTEMPTED',
+          accepted: false,
           attemptCount: 1,
           firstAttemptAt: new Date(),
           lastAttemptAt: new Date(),
@@ -116,7 +140,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       id: updated.id,
-      verdict: updated.verdict,
+      verdict: result.verdict, // Clean normalized verdict: AC, WA, TLE, MLE, RE, CE, IE
       passedTests: updated.passedTests,
       totalTests: updated.totalTests,
       runtime: updated.runtime,
@@ -126,47 +150,9 @@ export async function POST(request: NextRequest) {
       failedTestIndex: updated.failedTestIndex,
     });
   } catch (error) {
-    console.error('[DSA Submissions] Error:', error);
+    console.error('[API Submit] Unexpected error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
-  }
-}
-
-export async function GET(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const problemSlug = searchParams.get('problemSlug');
-    const limit = parseInt(searchParams.get('limit') || '20', 10);
-
-    const where = problemSlug ? { problemSlug, mode: 'submit' } : { mode: 'submit' };
-
-    const submissions = await prisma.submission.findMany({
-      where,
-      orderBy: { createdAt: 'desc' },
-      take: Math.min(limit, 100),
-      select: {
-        id: true,
-        problemSlug: true,
-        language: true,
-        sourceCode: true,
-        verdict: true,
-        passedTests: true,
-        totalTests: true,
-        runtime: true,
-        memory: true,
-        compileError: true,
-        runtimeError: true,
-        createdAt: true,
-      },
-    });
-
-    return NextResponse.json({ submissions });
-  } catch (error) {
-    console.error('[DSA Submissions] GET Error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal judging error occurred' },
       { status: 500 }
     );
   }

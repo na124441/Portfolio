@@ -1,0 +1,23 @@
+services:
+  # Piston Remote Sandboxed Execution Engine
+  # Official container: https://github.com/engineer-man/piston
+  piston:
+    image: ghcr.io/engineer-man/piston
+    container_name: bytelogic-execution-engine
+    restart: unless-stopped
+    ports:
+      - "2000:2000"
+    environment:
+      - PISTON_BIND_ADDRESS=0.0.0.0:2000
+      - PISTON_RUN_TIMEOUT=10000
+      - PISTON_COMPILE_TIMEOUT=15000
+      - PISTON_MAX_PROCESS_COUNT=64
+    tmpfs:
+      - /tmp:exec,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - piston_packages:/piston/packages
+
+volumes:
+  piston_packages:
