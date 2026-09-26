@@ -39,8 +39,9 @@ export function CodeEditorPanel({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   // Default starter code for current language
+  const snippets = problem.code || [];
   const currentSnippet =
-    problem.code.find((c) => c.language === selectedLanguage) || problem.code[0];
+    snippets.find((c) => c.language === selectedLanguage) || snippets[0];
 
   const currentCode =
     savedCode?.[selectedLanguage] ??

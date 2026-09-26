@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import {
   getAllDsaProblems,
+  getAllDsaSlugs,
   getDsaProblemBySlug,
   getAdjacentDsaProblems,
 } from '@/data/bytelogic/dsa';
@@ -16,10 +17,10 @@ interface PageProps {
 
 export const dynamicParams = true;
 
+// Pre-render static pages for every single question in the curriculum
 export async function generateStaticParams() {
   const problems = getAllDsaProblems();
-  // Pre-render the first 50 problems at build time; all 760+ problems are accessible on-demand
-  return problems.slice(0, 50).map((p) => ({
+  return problems.map((p) => ({
     slug: p.slug,
   }));
 }
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${problem.title} — ByteLogic DSA (${problem.difficulty})`,
+    title: `${problem.order}. ${problem.title} — ByteLogic DSA (${problem.difficulty})`,
     description: `Solve ${problem.title} on ByteLogic. Progressive hints, C++ & Python workspace, and optimal complexity breakdown.`,
     keywords: [
       problem.title,
@@ -56,6 +57,7 @@ export default async function DsaProblemWorkspacePage({ params }: PageProps) {
   }
 
   const { prev, next } = getAdjacentDsaProblems(slug);
+  const allSlugs = getAllDsaSlugs();
 
   const clientProblem = {
     ...problem,
@@ -64,7 +66,12 @@ export default async function DsaProblemWorkspacePage({ params }: PageProps) {
 
   return (
     <div className="w-full min-h-screen bg-[#1a1a1a]">
-      <DsaWorkspace problem={clientProblem} prevProblem={prev} nextProblem={next} />
+      <DsaWorkspace
+        problem={clientProblem}
+        prevProblem={prev}
+        nextProblem={next}
+        allSlugs={allSlugs}
+      />
     </div>
   );
 }

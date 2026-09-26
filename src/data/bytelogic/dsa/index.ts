@@ -1,36 +1,20 @@
 import type { DsaProblem } from '@/types/dsa-question';
-import { findMaxMinProblem } from './problems/find-max-min';
-import { reverseArrayProblem } from './problems/reverse-array';
-import { twoSumProblem } from './problems/two-sum';
-import { validPalindromeProblem } from './problems/valid-palindrome';
-import { binarySearchProblem } from './problems/binary-search';
-import { validParenthesesProblem } from './problems/valid-parentheses';
-import { reverseLinkedListProblem } from './problems/reverse-linked-list';
 import { ALL_CURRICULUM_PROBLEMS } from './phases';
 
 export { DSA_TOPICS } from './topics';
 
-const SEED_PROBLEMS: DsaProblem[] = [
-  findMaxMinProblem,
-  reverseArrayProblem,
-  twoSumProblem,
-  validPalindromeProblem,
-  binarySearchProblem,
-  validParenthesesProblem,
-  reverseLinkedListProblem,
-];
-
-// Merge seed problems and curriculum problems, deduplicating by slug (seed takes precedence)
-const seedSlugs = new Set(SEED_PROBLEMS.map((p) => p.slug));
-const uniqueCurriculum = ALL_CURRICULUM_PROBLEMS.filter((p) => !seedSlugs.has(p.slug));
-
-export const DSA_PROBLEMS: DsaProblem[] = [
-  ...SEED_PROBLEMS,
-  ...uniqueCurriculum,
-].map((p, idx) => ({ ...p, order: idx + 1 }));
+// Appending only the curriculum problems provided by the user across Phase 0 to Phase 10
+export const DSA_PROBLEMS: DsaProblem[] = ALL_CURRICULUM_PROBLEMS.map((p, idx) => ({
+  ...p,
+  order: idx + 1,
+}));
 
 export function getAllDsaProblems(): DsaProblem[] {
   return DSA_PROBLEMS;
+}
+
+export function getAllDsaSlugs(): string[] {
+  return DSA_PROBLEMS.map((p) => p.slug);
 }
 
 export function getDsaProblemBySlug(slug: string): DsaProblem | undefined {

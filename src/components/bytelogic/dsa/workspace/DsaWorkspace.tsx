@@ -22,7 +22,6 @@ import {
 import { cn } from '@/lib/utils';
 import type { DsaProblem } from '@/types/dsa-question';
 import { useDsaProgress } from '@/lib/bytelogic/dsaProgress';
-import { getAllDsaProblems } from '@/data/bytelogic/dsa';
 import { ProblemStatementPanel } from './ProblemStatementPanel';
 import { CodeEditorPanel } from './CodeEditorPanel';
 import { TestRunnerPanel } from './TestRunnerPanel';
@@ -31,15 +30,16 @@ interface DsaWorkspaceProps {
   problem: DsaProblem;
   prevProblem: DsaProblem | null;
   nextProblem: DsaProblem | null;
+  allSlugs?: string[];
 }
 
 export function DsaWorkspace({
   problem,
   prevProblem,
   nextProblem,
+  allSlugs,
 }: DsaWorkspaceProps) {
   const router = useRouter();
-  const allProblems = getAllDsaProblems();
   const {
     getProblemState,
     revealNextHint,
@@ -74,8 +74,9 @@ export function DsaWorkspace({
   const [executionMode, setExecutionMode] = useState<'run' | 'submit' | null>(null);
 
   // Active code
+  const snippets = problem.code || [];
   const currentSnippet =
-    problem.code.find((c) => c.language === selectedLanguage) || problem.code[0];
+    snippets.find((c) => c.language === selectedLanguage) || snippets[0];
   const activeCode =
     userState.savedCode?.[selectedLanguage] ?? currentSnippet?.starterCode ?? '';
 
@@ -123,10 +124,15 @@ export function DsaWorkspace({
 
   // Random problem handler
   const handleRandomProblem = () => {
-    if (allProblems.length === 0) return;
-    const rand = allProblems[Math.floor(Math.random() * allProblems.length)];
-    if (rand) {
-      router.push(`/bytelogic/questions/dsa/${rand.slug}`);
+    if (allSlugs && allSlugs.length > 0) {
+      const rand = allSlugs[Math.floor(Math.random() * allSlugs.length)];
+      if (rand && rand !== problem.slug) {
+        router.push(`/bytelogic/questions/dsa/${rand}`);
+        return;
+      }
+    }
+    if (nextProblem) {
+      router.push(`/bytelogic/questions/dsa/${nextProblem.slug}`);
     }
   };
 

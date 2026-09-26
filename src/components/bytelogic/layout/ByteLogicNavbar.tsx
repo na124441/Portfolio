@@ -24,10 +24,6 @@ export const ByteLogicNavbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  if (isDsaWorkspace) {
-    return null;
-  }
-
   // Background scroll lock when mobile drawer is open
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -54,6 +50,10 @@ export const ByteLogicNavbar: React.FC = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [mobileMenuOpen]);
+
+  if (isDsaWorkspace) {
+    return null;
+  }
 
   const navLinks = [
     { label: 'Learn', href: '/bytelogic/learn' },

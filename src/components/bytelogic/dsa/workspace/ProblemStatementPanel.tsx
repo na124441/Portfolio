@@ -228,7 +228,7 @@ export function ProblemStatementPanel({
                 <Lightbulb className="w-3 h-3 text-[#fde047]" />
                 <span>Hint</span>
                 <span className="text-[10px] text-[#71717a]">
-                  ({hintsRevealed}/{problem.hints.length})
+                  ({hintsRevealed}/{problem.hints?.length || 0})
                 </span>
               </button>
             </div>
@@ -239,7 +239,7 @@ export function ProblemStatementPanel({
                 <span className="px-2 py-0.5 rounded bg-[#333] text-white text-xs font-medium">
                   {problem.topic}
                 </span>
-                {problem.tags.map((tag) => (
+                {(problem.tags || []).map((tag) => (
                   <span
                     key={tag}
                     className="px-2 py-0.5 rounded bg-[#1f1f1f] text-[#a1a1aa] text-xs hover:text-white transition-colors"
@@ -272,9 +272,9 @@ export function ProblemStatementPanel({
               <div className="flex flex-col gap-2 p-3.5 rounded-lg bg-[#262626] border border-[#333]">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold text-white">
-                    Progressive Hints ({hintsRevealed}/3 Unlocked)
+                    Progressive Hints ({hintsRevealed}/{(problem.hints?.length || 0)} Unlocked)
                   </span>
-                  {hintsRevealed < problem.hints.length && (
+                  {hintsRevealed < (problem.hints?.length || 0) && (
                     <button
                       type="button"
                       onClick={onRevealHint}
@@ -286,7 +286,7 @@ export function ProblemStatementPanel({
                 </div>
 
                 <div className="flex flex-col gap-2 mt-1">
-                  {problem.hints.map((hint) => {
+                  {(problem.hints || []).map((hint) => {
                     const isUnlocked = hintsRevealed >= hint.level;
                     return (
                       <div
@@ -322,7 +322,7 @@ export function ProblemStatementPanel({
 
             {/* Examples (LeetCode exact rounded box) */}
             <div className="flex flex-col gap-4 pt-1">
-              {problem.examples.map((ex, index) => (
+              {(problem.examples || []).map((ex, index) => (
                 <div key={index} className="flex flex-col gap-1.5">
                   <span className="text-xs font-semibold text-white">
                     Example {index + 1}:
@@ -353,7 +353,7 @@ export function ProblemStatementPanel({
                 Constraints:
               </span>
               <ul className="list-disc list-inside space-y-1 text-xs text-[#d4d4d8] pl-1 font-mono">
-                {problem.constraints.map((c, idx) => (
+                {(problem.constraints || []).map((c, idx) => (
                   <li key={idx} className="leading-relaxed">
                     <code className="text-[#eff2f6] bg-[#282828] px-1.5 py-0.5 rounded border border-[#383838]">
                       {c}
@@ -393,16 +393,16 @@ export function ProblemStatementPanel({
               </h3>
               <div className="p-3.5 rounded-lg bg-[#262626] border border-[#333] flex flex-col gap-2.5">
                 <p className="text-xs text-[#eff2f6] font-medium">
-                  {problem.solution.optimal.keyObservation}
+                  {problem.solution?.optimal?.keyObservation || 'Key algorithmic invariant and core observation.'}
                 </p>
                 <p className="text-xs text-[#a1a1aa] leading-relaxed">
-                  {problem.solution.optimal.algorithm}
+                  {problem.solution?.optimal?.algorithm || 'Algorithmic breakdown for optimal solution.'}
                 </p>
 
-                {problem.solution.optimal.steps && (
+                {problem.solution?.optimal?.steps && (
                   <div className="flex flex-col gap-2 mt-2 pt-2 border-t border-[#333]">
                     <span className="text-xs font-semibold text-white">Algorithmic Sequence:</span>
-                    {problem.solution.optimal.steps.map((step, idx) => (
+                    {(problem.solution.optimal.steps || []).map((step, idx) => (
                       <div key={idx} className="pl-3 border-l-2 border-[#38bdf8] text-xs">
                         <strong className="text-white block">{step.title}</strong>
                         <span className="text-[#a1a1aa]">{step.content}</span>
@@ -412,8 +412,8 @@ export function ProblemStatementPanel({
                 )}
 
                 <div className="flex items-center gap-4 mt-2 pt-2 border-t border-[#333] text-xs font-mono text-[#a1a1aa]">
-                  <span>Time Complexity: <strong className="text-[#2cbb5d]">{problem.solution.optimal.timeComplexity}</strong></span>
-                  <span>Space Complexity: <strong className="text-[#2cbb5d]">{problem.solution.optimal.spaceComplexity}</strong></span>
+                  <span>Time Complexity: <strong className="text-[#2cbb5d]">{problem.solution?.optimal?.timeComplexity || 'O(N)'}</strong></span>
+                  <span>Space Complexity: <strong className="text-[#2cbb5d]">{problem.solution?.optimal?.spaceComplexity || 'O(1)'}</strong></span>
                 </div>
               </div>
             </div>
@@ -426,11 +426,11 @@ export function ProblemStatementPanel({
               </h3>
               <div className="p-3.5 rounded-lg bg-[#262626] border border-[#333] flex flex-col gap-2">
                 <p className="text-xs text-[#a1a1aa] leading-relaxed">
-                  {problem.solution.bruteForce.explanation}
+                  {problem.solution?.bruteForce?.explanation || 'Direct naive simulation.'}
                 </p>
                 <div className="flex items-center gap-4 text-xs font-mono text-[#a1a1aa]">
-                  <span>Time: <strong className="text-[#ffa116]">{problem.solution.bruteForce.timeComplexity}</strong></span>
-                  <span>Space: <strong className="text-[#ffa116]">{problem.solution.bruteForce.spaceComplexity}</strong></span>
+                  <span>Time: <strong className="text-[#ffa116]">{problem.solution?.bruteForce?.timeComplexity || 'O(N^2)'}</strong></span>
+                  <span>Space: <strong className="text-[#ffa116]">{problem.solution?.bruteForce?.spaceComplexity || 'O(1)'}</strong></span>
                 </div>
               </div>
             </div>
@@ -453,7 +453,7 @@ export function ProblemStatementPanel({
               <button
                 type="button"
                 onClick={() => {
-                  const cppCode = problem.code.find((c) => c.language === 'cpp')?.source || '';
+                  const cppCode = (problem.code || []).find((c) => c.language === 'cpp')?.source || '';
                   navigator.clipboard.writeText(cppCode);
                   setCopiedSolution(true);
                   setTimeout(() => setCopiedSolution(false), 2000);
@@ -474,7 +474,7 @@ export function ProblemStatementPanel({
               </button>
             </div>
 
-            {problem.code.map((snippet) => (
+            {(problem.code || []).map((snippet) => (
               <div key={snippet.language} className="flex flex-col gap-2">
                 <span className="text-xs font-semibold text-white uppercase tracking-wider">
                   {snippet.language === 'cpp' ? 'C++ Solution' : 'Python 3 Solution'}
