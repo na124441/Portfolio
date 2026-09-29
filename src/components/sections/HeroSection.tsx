@@ -191,40 +191,43 @@ export const HeroSection: React.FC = () => {
         <span>GREATER NOIDA, IN</span>
       </div>
 
-      {/* Main Content Area: Responsive 12-Column Editorial Showcase */}
-      <div className="w-full max-w-7xl mx-auto my-auto py-6 sm:py-8 lg:py-4">
+      {/* Main Content Area */}
+      <div className="relative w-full max-w-7xl mx-auto my-auto py-6 sm:py-8 lg:py-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-14 items-center w-full">
-          {/* Typography & Actions */}
+
+          {/* Centered Typography & Actions */}
           <div
             ref={textRef}
-            className="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left z-10 will-change-transform"
+            className="md:col-span-7 flex flex-col items-center justify-center text-center z-10 will-change-transform"
           >
             {/* Status Pill */}
-            <div className="hero-badge-wrap inline-flex items-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full font-mono text-[11px] text-white/80 shadow-sm backdrop-blur-md">
+            <div className="hero-badge-wrap inline-flex items-center justify-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full font-mono text-[11px] text-white/80 shadow-sm backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-[#f6d009] shadow-[0_0_10px_rgba(246,208,9,0.8)] radar-dot inline-block" />
-              <span className="text-[#feffff] font-medium">{PORTFOLIO_METADATA.statusBadge}</span>
+              <span className="text-[#feffff] font-medium">
+                {PORTFOLIO_METADATA.statusBadge}
+              </span>
             </div>
 
-            {/* Monumental Two-Line Editorial Headline */}
+            {/* Centered Headline */}
             <h1 className="hero-headline hero-headline-wrap font-display font-black tracking-[-0.04em] uppercase select-none text-5xl sm:text-6xl md:text-7xl lg:text-[clamp(3.5rem,7.5vw,7.2rem)] leading-[0.92] drop-shadow-[0_4px_36px_rgba(0,0,0,0.9)]">
               <span className="block">NAYANT</span>
               <span className="block">SRIVASTAVA</span>
             </h1>
 
-            {/* Role & Positioning */}
+            {/* Role */}
             <div className="hero-role-wrap">
               <p className="hero-role-line font-mono text-xs sm:text-sm tracking-[0.2em] uppercase">
                 {PORTFOLIO_METADATA.role}
               </p>
             </div>
 
-            {/* Thesis Statement / Editorial Bio */}
-            <p className="hero-subline hero-subline-wrap font-sans text-sm sm:text-base leading-relaxed max-w-[34ch] sm:max-w-xl">
+            {/* Description */}
+            <p className="hero-subline hero-subline-wrap font-sans text-sm sm:text-base leading-relaxed max-w-[34ch] sm:max-w-xl mx-auto">
               {PORTFOLIO_METADATA.thesis}
             </p>
 
-            {/* CTA Hierarchy */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+            {/* Centered CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
               <a
                 href="/work"
                 className="hero-btn-primary w-full sm:w-auto min-h-[44px]"
@@ -246,28 +249,32 @@ export const HeroSection: React.FC = () => {
           {/* Portrait & Computational Energy Field */}
           <div className="md:col-span-5 flex items-center justify-center relative my-6 md:my-0">
             <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[22rem] lg:h-[22rem] xl:w-[26rem] xl:h-[26rem] 2xl:w-[29rem] 2xl:h-[29rem] flex items-center justify-center">
-              {/* 1. Atmospheric Ambient Glow */}
+
+              {/* Ambient Glow */}
               <div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[125%] h-[125%] rounded-full bg-[radial-gradient(circle,rgba(246,208,9,0.06)_0%,rgba(246,208,9,0.015)_50%,transparent_70%)] blur-3xl pointer-events-none z-0"
                 aria-hidden="true"
               />
 
-              {/* 2. Dynamic Gold Radial Halo */}
+              {/* Gold Halo */}
               <div
                 ref={haloRef}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%] rounded-full bg-[radial-gradient(circle,rgba(246,208,9,0.14)_0%,rgba(246,208,9,0.04)_45%,transparent_70%)] blur-2xl pointer-events-none z-10 will-change-transform"
                 aria-hidden="true"
               />
 
-              {/* 3. N-01 / ENERGY FIELD: 3D Computational Torus */}
+              {/* Energy Field */}
               <div
                 ref={energyFieldRef}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] pointer-events-none z-15 will-change-transform flex items-center justify-center"
               >
-                <EnergyField className="w-full h-full" reducedMotion={prefersReducedMotion} />
+                <EnergyField
+                  className="w-full h-full"
+                  reducedMotion={prefersReducedMotion}
+                />
               </div>
 
-              {/* 4. Masked Portrait Container with Clean Drop Shadow */}
+              {/* Portrait */}
               <div
                 ref={portraitLayerRef}
                 className="relative w-full h-full z-20 will-change-transform"
