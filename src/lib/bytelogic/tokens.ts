@@ -208,6 +208,18 @@ export const FEATURED_CONTENT: ContentItem[] = [
     equationOrSnippet: '\\theta \\leftarrow \\theta - \\eta \\nabla_\\theta L',
   },
   {
+    id: 'capable-without-bigger-article-004',
+    type: 'ARTICLE',
+    code: '04',
+    title: 'Why Does AI Become More Capable Without Getting Bigger?',
+    subtitle: 'Understanding the science behind smaller, smarter AI models: parameter efficiency, data curation, distillation, and test-time compute.',
+    domain: 'AI / Machine Learning · Systems',
+    difficulty: 'Intermediate',
+    durationOrReadTime: '12–14 min read',
+    slug: '/bytelogic/articles/why-does-ai-become-more-capable-without-getting-bigger',
+    equationOrSnippet: 'P \\approx \\sum_{l=1}^L (d_{l-1}d_l + d_l)',
+  },
+  {
     id: 'pca-article',
     type: 'ARTICLE',
     code: '04',
