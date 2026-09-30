@@ -9,11 +9,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 /* -------------------------------------------------------
-   Binary Globe / ASCII Computational Field
+   ASCII Donut / 3D Rotating Computational Field
 ------------------------------------------------------- */
 
-const BinaryGlobe = dynamic(
-  () => import('./BinaryGlobe').then((m) => m.BinaryGlobe),
+const AsciiDonut = dynamic(
+  () => import('./AsciiDonut').then((m) => m.AsciiDonut),
   {
     ssr: false,
     loading: () => (
@@ -301,7 +301,7 @@ export const ByteLogicHero: React.FC = () => {
             sm:w-[min(95vw,920px)]
           "
         >
-          <BinaryGlobe className="!h-full !w-full [&_.globe-logo-wrapper]:hidden" />
+          <AsciiDonut className="h-full w-full" />
 
           {/* Bottom fade */}
 
