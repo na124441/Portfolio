@@ -44,8 +44,15 @@ export const ByteLogicHero: React.FC = () => {
       ================================================== */
 
       mm.add('(prefers-reduced-motion: no-preference)', () => {
+        const isMobile = window.innerWidth < 640;
+        const targetBackgroundOpacity = isMobile ? 0.025 : 0.05;
+
         /* -----------------------------------------------
-           Entrance
+           Entrance Sequence
+           Phase 1: Artifact arrives as the primary computational hero
+           Phase 2: As the headline reveals, artifact gracefully dissolves
+                    into an ambient peripheral texture, letting the slogan
+                    command 100% of visual clarity
         ----------------------------------------------- */
 
         const entrance = gsap.timeline({
@@ -55,12 +62,20 @@ export const ByteLogicHero: React.FC = () => {
         });
 
         entrance
-          .from('.binary-field', {
-            opacity: 0,
-            scale: 0.82,
-            duration: 1.5,
-            ease: 'power2.out',
-          })
+          // Phase 1: Artifact entrance
+          .fromTo(
+            '.binary-field',
+            {
+              opacity: 0,
+              scale: 0.82,
+            },
+            {
+              opacity: 1,
+              scale: 1,
+              duration: 1.3,
+              ease: 'power2.out',
+            }
+          )
           .from(
             '.top-meta',
             {
@@ -68,7 +83,7 @@ export const ByteLogicHero: React.FC = () => {
               y: -8,
               duration: 0.45,
             },
-            '-=0.9'
+            '-=0.7'
           )
           .from(
             '.hero-kicker',
@@ -77,17 +92,29 @@ export const ByteLogicHero: React.FC = () => {
               y: 12,
               duration: 0.45,
             },
-            '-=0.45'
+            '-=0.3'
+          )
+          // Phase 2: Headline reveal begins — artifact progressively fades away
+          .to(
+            '.binary-field',
+            {
+              opacity: targetBackgroundOpacity,
+              scale: 0.94,
+              duration: 1.1,
+              ease: 'power2.inOut',
+            },
+            '>-0.1'
           )
           .from(
             '.hero-title-line',
             {
               opacity: 0,
-              y: 28,
+              y: 30,
               duration: 0.7,
-              stagger: 0.08,
+              stagger: 0.09,
+              ease: 'power3.out',
             },
-            '-=0.25'
+            '<+0.1'
           )
           .from(
             '.hero-description',
@@ -96,7 +123,7 @@ export const ByteLogicHero: React.FC = () => {
               y: 14,
               duration: 0.55,
             },
-            '-=0.35'
+            '-=0.3'
           )
           .from(
             '.hero-actions',
@@ -134,9 +161,9 @@ export const ByteLogicHero: React.FC = () => {
           .to(
             '.binary-field',
             {
-              scale: 0.65,
-              y: -100,
-              opacity: 0.28,
+              scale: 0.7,
+              y: -80,
+              opacity: 0,
               ease: 'none',
             },
             0
@@ -164,9 +191,13 @@ export const ByteLogicHero: React.FC = () => {
       ================================================== */
 
       mm.add('(prefers-reduced-motion: reduce)', () => {
+        gsap.set('.binary-field', {
+          opacity: 0.05,
+          scale: 1,
+          y: 0,
+        });
         gsap.set(
           [
-            '.binary-field',
             '.top-meta',
             '.hero-kicker',
             '.hero-title-line',
