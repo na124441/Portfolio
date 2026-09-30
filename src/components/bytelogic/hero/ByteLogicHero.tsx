@@ -1,40 +1,34 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Client-only dynamic import of BinaryGlobe prevents any hydration mismatch
+/* -------------------------------------------------------
+   Binary Globe / ASCII Computational Field
+------------------------------------------------------- */
+
 const BinaryGlobe = dynamic(
   () => import('./BinaryGlobe').then((m) => m.BinaryGlobe),
   {
     ssr: false,
     loading: () => (
       <div
-        className="binary-globe flex items-center justify-center"
+        className="h-full w-full"
         aria-hidden="true"
         role="presentation"
-      >
-        <div className="globe-logo-wrapper" aria-hidden="true">
-          <Image
-            src="/images/bytelogic/bytelogic-logo.png"
-            alt="ByteLogic"
-            width={1024}
-            height={341}
-            priority
-            unoptimized
-            className="w-full h-auto max-h-[140px] sm:max-h-[220px] md:max-h-[280px] lg:max-h-[320px] object-contain drop-shadow-[0_16px_45px_rgba(0,0,0,0.9)]"
-          />
-        </div>
-      </div>
+      />
     ),
   }
 );
+
+/* -------------------------------------------------------
+   Hero
+------------------------------------------------------- */
 
 export const ByteLogicHero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -45,118 +39,140 @@ export const ByteLogicHero: React.FC = () => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // Respect prefers-reduced-motion
-      mm.add('(prefers-reduced-motion: no-preference)', () => {
-        // Load Entrance Timeline
-        const entranceTl = gsap.timeline();
+      /* ==================================================
+         MOTION
+      ================================================== */
 
-        entranceTl
-          .from('.binary-globe', {
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        /* -----------------------------------------------
+           Entrance
+        ----------------------------------------------- */
+
+        const entrance = gsap.timeline({
+          defaults: {
+            ease: 'power3.out',
+          },
+        });
+
+        entrance
+          .from('.binary-field', {
             opacity: 0,
-            scale: 0.94,
-            duration: 1.2,
+            scale: 0.82,
+            duration: 1.5,
             ease: 'power2.out',
           })
           .from(
-            '.eyebrow',
+            '.top-meta',
             {
               opacity: 0,
-              y: 8,
-              duration: 0.4,
-              ease: 'power2.out',
+              y: -8,
+              duration: 0.45,
             },
-            '-=0.6'
+            '-=0.9'
           )
           .from(
-            '.headline',
+            '.hero-kicker',
             {
               opacity: 0,
               y: 12,
-              duration: 0.6,
-              ease: 'power3.out',
+              duration: 0.45,
+            },
+            '-=0.45'
+          )
+          .from(
+            '.hero-title-line',
+            {
+              opacity: 0,
+              y: 28,
+              duration: 0.7,
+              stagger: 0.08,
+            },
+            '-=0.25'
+          )
+          .from(
+            '.hero-description',
+            {
+              opacity: 0,
+              y: 14,
+              duration: 0.55,
+            },
+            '-=0.35'
+          )
+          .from(
+            '.hero-actions',
+            {
+              opacity: 0,
+              y: 10,
+              duration: 0.55,
             },
             '-=0.3'
           )
           .from(
-            '.description',
+            '.bottom-meta',
             {
               opacity: 0,
-              y: 12,
-              duration: 0.75,
-              ease: 'power2.out',
+              duration: 0.7,
             },
-            '-=0.3'
-          )
-          .from(
-            '.cta-group',
-            {
-              opacity: 0,
-              y: 8,
-              duration: 0.9,
-              ease: 'power2.out',
-            },
-            '-=0.4'
-          )
-          .from(
-            '.scroll-indicator',
-            {
-              opacity: 0,
-              duration: 0.8,
-              ease: 'power2.out',
-            },
-            '-=0.4'
+            '-=0.25'
           );
 
-        // Scroll Scrubbed Timeline
+        /* -----------------------------------------------
+           Scroll transformation
+        ----------------------------------------------- */
+
         const scrollTl = gsap.timeline({
           scrollTrigger: {
             trigger: heroRef.current,
             start: 'top top',
-            end: () => '+=' + (heroRef.current?.offsetHeight || 800),
-            scrub: 0.6,
+            end: () =>
+              '+=' + (heroRef.current?.offsetHeight || window.innerHeight),
+            scrub: 0.8,
           },
         });
 
         scrollTl
           .to(
-            '.binary-globe',
+            '.binary-field',
             {
-              scale: 0.35,
-              y: -120,
-              opacity: 0.85,
+              scale: 0.65,
+              y: -100,
+              opacity: 0.28,
               ease: 'none',
             },
             0
           )
           .to(
-            '.editorial-block',
+            '.hero-copy',
             {
-              y: -60,
+              y: -70,
               ease: 'none',
             },
             0
           )
           .to(
-            '.binary-globe',
+            '.bottom-meta',
             {
-              opacity: 0.4,
+              opacity: 0,
               ease: 'none',
             },
-            0.6
+            0.15
           );
       });
 
-      // Reduced motion: instant visibility without motion
+      /* ==================================================
+         REDUCED MOTION
+      ================================================== */
+
       mm.add('(prefers-reduced-motion: reduce)', () => {
         gsap.set(
           [
-            '.binary-globe',
-            '.eyebrow',
-            '.headline',
-            '.description',
-            '.cta-group',
-            '.scroll-indicator',
-            '.fig-label',
+            '.binary-field',
+            '.top-meta',
+            '.hero-kicker',
+            '.hero-title-line',
+            '.hero-description',
+            '.hero-actions',
+            '.bottom-meta',
           ],
           {
             opacity: 1,
@@ -167,65 +183,401 @@ export const ByteLogicHero: React.FC = () => {
       });
     }, heroRef);
 
-    return () => {
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
     <section
       ref={heroRef}
-      className="hero relative w-full min-h-[calc(100svh-48px)] flex flex-col items-center justify-between overflow-hidden px-4 sm:px-6 lg:px-8 pt-8 sm:pt-10 pb-8 sm:pb-10 border-b border-[#1C2830]"
+      className="
+        relative
+        isolate
+        min-h-[calc(100svh-48px)]
+        w-full
+        overflow-hidden
+        border-b
+        border-[#1C2830]
+        bg-[#080C10]
+        px-5
+        sm:px-8
+        lg:px-12
+      "
     >
-      {/* Central Artifact: Binary Globe */}
-      <div className="w-full flex flex-col items-center justify-center flex-shrink-0">
-        <BinaryGlobe className="binary-globe" />
+      {/* ==================================================
+         ATMOSPHERIC FIELD
+      ================================================== */}
 
-        {/* Mobile-only Figure Label (Hidden on desktop via .fig-label) */}
-        <span className="fig-label font-mono text-[9px] tracking-[0.16em] uppercase mt-2.5 text-[#4FD8E8]/70">
-          FIG. 01 / COMPUTATIONAL FIELD
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-[0.025]
+          [background-image:linear-gradient(to_right,#8A9296_1px,transparent_1px),linear-gradient(to_bottom,#8A9296_1px,transparent_1px)]
+          [background-size:64px_64px]
+        "
+      />
+
+      {/* Soft center atmosphere */}
+
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          left-1/2
+          top-[43%]
+          h-[65vh]
+          w-[65vw]
+          -translate-x-1/2
+          -translate-y-1/2
+          rounded-full
+          bg-[#4FD8E8]/[0.025]
+          blur-[120px]
+        "
+      />
+
+      {/* ==================================================
+         TOP METADATA
+      ================================================== */}
+
+      <div
+        className="
+          top-meta
+          absolute
+          left-5
+          right-5
+          top-6
+          z-20
+          flex
+          items-center
+          justify-between
+          font-mono
+          text-[9px]
+          uppercase
+          tracking-[0.2em]
+          text-[#566168]
+          sm:left-8
+          sm:right-8
+          sm:text-[10px]
+          lg:left-12
+          lg:right-12
+        "
+      >
+        <span>BYTELOGIC / 01</span>
+
+        <span className="hidden md:block">
+          COMPUTATION · MATHEMATICS · LEARNING
         </span>
+
+        <span>0x01</span>
       </div>
 
-      {/* Editorial Content Block */}
-      <div className="editorial-block w-full max-w-[720px] mx-auto text-center flex flex-col items-center mt-6 md:mt-8">
-        {/* Eyebrow */}
-        <p className="eyebrow font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] text-[#4FD8E8]/70">
-          COMPUTATION · MATHEMATICS · LEARNING
-        </p>
+      {/* ==================================================
+         ASCII COMPUTATIONAL FIELD
+      ================================================== */}
 
-        {/* Headline — Primary accessible H1 */}
-        <h1 className="headline hero-headline mt-4 md:mt-6">
-          UNDERSTAND THE LOGIC
-          <br />
-          BEHIND COMPUTATION.
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          z-0
+          flex
+          items-center
+          justify-center
+        "
+        aria-hidden="true"
+      >
+        <div
+          className="
+            binary-field
+            relative
+            mt-[-9vh]
+            h-[min(120vw,920px)]
+            w-[min(120vw,920px)]
+            sm:h-[min(95vw,920px)]
+            sm:w-[min(95vw,920px)]
+          "
+        >
+          <BinaryGlobe className="!h-full !w-full [&_.globe-logo-wrapper]:hidden" />
+
+          {/* Bottom fade */}
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-x-0
+              bottom-0
+              h-[28%]
+              bg-gradient-to-t
+              from-[#080C10]
+              to-transparent
+            "
+          />
+
+          {/* Side fade */}
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-y-0
+              left-0
+              w-[20%]
+              bg-gradient-to-r
+              from-[#080C10]
+              to-transparent
+            "
+          />
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-y-0
+              right-0
+              w-[20%]
+              bg-gradient-to-l
+              from-[#080C10]
+              to-transparent
+            "
+          />
+        </div>
+      </div>
+
+      {/* ==================================================
+         HERO COPY
+      ================================================== */}
+
+      <div
+        className="
+          hero-copy
+          relative
+          z-10
+          flex
+          min-h-[calc(100svh-48px)]
+          flex-col
+          items-center
+          justify-center
+          pb-12
+          pt-20
+          text-center
+          sm:pb-16
+        "
+      >
+        {/* Kicker */}
+
+        <div
+          className="
+            hero-kicker
+            mb-6
+            flex
+            items-center
+            gap-3
+            font-mono
+            text-[9px]
+            uppercase
+            tracking-[0.22em]
+            text-[#4FD8E8]/75
+            sm:text-[10px]
+          "
+        >
+          <span className="h-px w-7 bg-[#4FD8E8]/40" />
+
+          <span>FIELD NOTES / COMPUTATIONAL SYSTEMS</span>
+
+          <span className="h-px w-7 bg-[#4FD8E8]/40" />
+        </div>
+
+        {/* ==================================================
+           TITLE
+        ================================================== */}
+
+        <h1
+          className="
+            max-w-[1100px]
+            font-sans
+            text-[clamp(3.35rem,9vw,8.5rem)]
+            font-medium
+            leading-[0.82]
+            tracking-[-0.075em]
+            text-[#ECECEC]
+          "
+        >
+          <span className="hero-title-line block">
+            UNDERSTAND
+          </span>
+
+          <span className="hero-title-line block text-[#AEB6BA]">
+            THE LOGIC
+          </span>
+
+          <span className="hero-title-line block">
+            BEHIND
+          </span>
+
+          <span className="hero-title-line block text-[#4FD8E8]">
+            COMPUTATION.
+          </span>
         </h1>
 
-        {/* Description */}
-        <p className="description font-sans text-[17px] md:text-[19px] leading-[1.5] max-w-[560px] text-[#8A9296] mt-5 md:mt-6">
-          Ideas, models, mathematics, and experiments for understanding how computation works.
+        {/* ==================================================
+           DESCRIPTION
+        ================================================== */}
+
+        <p
+          className="
+            hero-description
+            mt-8
+            max-w-[560px]
+            font-sans
+            text-[15px]
+            leading-[1.6]
+            text-[#7D878D]
+            sm:text-[17px]
+          "
+        >
+          Concepts, mathematics, models, and experiments
+          for understanding how computation actually works.
         </p>
 
-        {/* Action CTAs */}
-        <div className="cta-group flex flex-row items-center justify-center gap-6 sm:gap-8 mt-7 md:mt-9">
+        {/* ==================================================
+           ACTIONS
+        ================================================== */}
+
+        <div
+          className="
+            hero-actions
+            mt-9
+            flex
+            items-center
+            gap-8
+            font-mono
+            text-[10px]
+            font-medium
+            uppercase
+            tracking-[0.15em]
+            sm:text-[11px]
+          "
+        >
           <Link
             href="#featured"
-            className="inline-flex items-center justify-center px-5 py-2.5 rounded-[4px] border border-[#1C2830] bg-[#0E151B] text-[#ECECEC] font-mono text-xs uppercase tracking-[0.12em] font-semibold hover:border-[#4FD8E8]/60 hover:text-[#ECECEC] hover:bg-[#131C24] transition-all"
+            className="
+              group
+              relative
+              text-[#ECECEC]
+              transition-colors
+              duration-300
+              hover:text-[#4FD8E8]
+            "
           >
-            EXPLORE CONCEPTS →
+            Explore concepts
+            <span
+              className="
+                ml-2
+                inline-block
+                transition-transform
+                duration-300
+                group-hover:translate-x-1
+              "
+            >
+              →
+            </span>
+
+            <span
+              className="
+                absolute
+                -bottom-2
+                left-0
+                h-px
+                w-full
+                origin-left
+                bg-[#4FD8E8]/50
+                transition-transform
+                duration-300
+              "
+            />
           </Link>
+
           <Link
             href="#lab"
-            className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.12em] font-semibold text-[#8A9296] hover:text-[#4FD8E8] transition-colors"
+            className="
+              text-[#69737A]
+              transition-colors
+              duration-300
+              hover:text-[#ECECEC]
+            "
           >
-            ENTER LAB →
+            Enter the lab →
           </Link>
         </div>
       </div>
 
-      {/* Scroll to Field Notes Indicator */}
-      <div className="scroll-indicator font-mono text-[10px] md:text-[11px] uppercase tracking-[0.16em] text-[#8A9296] mt-8 sm:mt-10 mb-1 select-none">
-        ↓ SCROLL TO FIELD NOTES
+      {/* ==================================================
+         BOTTOM INFORMATION
+      ================================================== */}
+
+      <div
+        className="
+          bottom-meta
+          absolute
+          bottom-6
+          left-5
+          right-5
+          z-20
+          flex
+          items-end
+          justify-between
+          font-mono
+          text-[8px]
+          uppercase
+          tracking-[0.17em]
+          text-[#4F595F]
+          sm:left-8
+          sm:right-8
+          sm:text-[9px]
+          lg:left-12
+          lg:right-12
+        "
+      >
+        {/* Left */}
+
+        <div className="flex flex-col gap-1 text-left">
+          <span className="text-[#69747A]">
+            FIG. 01
+          </span>
+
+          <span>
+            COMPUTATIONAL FIELD
+          </span>
+        </div>
+
+        {/* Center */}
+
+        <div className="hidden flex-col items-center gap-1 md:flex">
+          <span className="text-[#69747A]">
+            ARTIFACT
+          </span>
+
+          <span>
+            ASCII / REAL-TIME
+          </span>
+        </div>
+
+        {/* Right */}
+
+        <div className="flex flex-col items-end gap-1 text-right">
+          <span className="text-[#69747A]">
+            MODE: ACTIVE
+          </span>
+
+          <span>
+            SCROLL TO EXPLORE ↓
+          </span>
+        </div>
       </div>
     </section>
   );
