@@ -220,6 +220,18 @@ export const FEATURED_CONTENT: ContentItem[] = [
     equationOrSnippet: 'P \\approx \\sum_{l=1}^L (d_{l-1}d_l + d_l)',
   },
   {
+    id: 'implicit-learning-article-005',
+    type: 'ARTICLE',
+    code: '05',
+    title: 'Can a Model Learn Something That Nobody Explicitly Taught It?',
+    subtitle: 'On implicit structure, emergent representations, compositional generalization, and the limits of learning without data.',
+    domain: 'AI / Machine Learning · Foundations',
+    difficulty: 'Intermediate',
+    durationOrReadTime: '11–13 min read',
+    slug: '/bytelogic/articles/can-a-model-learn-something-that-nobody-explicitly-taught-it',
+    equationOrSnippet: 'f_\\theta(x) \\sim \\mathcal{M}_{\\text{latent}} \\implies \\text{Structure Emerges}',
+  },
+  {
     id: 'pca-article',
     type: 'ARTICLE',
     code: '04',
