@@ -13,7 +13,6 @@ import {
   Copy,
   Check,
   ChevronDown,
-  ChevronRight,
   Code2,
   BookOpen,
 } from 'lucide-react';
@@ -94,20 +93,20 @@ export function ProblemStatementPanel({
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#1e1e1e] text-[#eff2f6] font-sans overflow-hidden">
+    <div className="flex flex-col h-full bg-surface text-fg font-sans overflow-hidden">
       {/* Tab Strip: Description | Editorial | Solutions | Submissions */}
-      <div className="flex items-center gap-1 px-4 py-2 border-b border-[#2e2e2e] bg-[#262626] text-xs font-medium text-[#a1a1aa] shrink-0">
+      <div className="flex items-center gap-1 px-4 py-2 border-b border-line bg-bg-2 text-xs font-medium text-fg-soft shrink-0">
         <button
           type="button"
           onClick={() => onTabChange('description')}
           className={cn(
-            'flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors cursor-pointer',
+            'flex items-center gap-1.5 px-3 py-1 rounded transition-colors cursor-pointer',
             activeTab === 'description'
-              ? 'bg-[#333333] text-white font-semibold'
-              : 'hover:text-white hover:bg-[#2d2d2d]'
+              ? 'bg-surface-2 text-fg font-semibold'
+              : 'hover:text-fg hover:bg-surface-2'
           )}
         >
-          <BookOpen className="w-3.5 h-3.5 text-[#38bdf8]" />
+          <BookOpen className="w-3.5 h-3.5 text-accent" />
           <span>Description</span>
         </button>
 
@@ -115,10 +114,10 @@ export function ProblemStatementPanel({
           type="button"
           onClick={() => onTabChange('editorial')}
           className={cn(
-            'flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors cursor-pointer',
+            'flex items-center gap-1.5 px-3 py-1 rounded transition-colors cursor-pointer',
             activeTab === 'editorial'
-              ? 'bg-[#333333] text-white font-semibold'
-              : 'hover:text-white hover:bg-[#2d2d2d]'
+              ? 'bg-surface-2 text-fg font-semibold'
+              : 'hover:text-fg hover:bg-surface-2'
           )}
         >
           <span>Editorial</span>
@@ -128,10 +127,10 @@ export function ProblemStatementPanel({
           type="button"
           onClick={() => onTabChange('solutions')}
           className={cn(
-            'flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors cursor-pointer',
+            'flex items-center gap-1.5 px-3 py-1 rounded transition-colors cursor-pointer',
             activeTab === 'solutions'
-              ? 'bg-[#333333] text-white font-semibold'
-              : 'hover:text-white hover:bg-[#2d2d2d]'
+              ? 'bg-surface-2 text-fg font-semibold'
+              : 'hover:text-fg hover:bg-surface-2'
           )}
         >
           <Code2 className="w-3.5 h-3.5 text-[#2cbb5d]" />
@@ -142,10 +141,10 @@ export function ProblemStatementPanel({
           type="button"
           onClick={() => onTabChange('submissions')}
           className={cn(
-            'flex items-center gap-1.5 px-3 py-1.5 rounded transition-colors cursor-pointer',
+            'flex items-center gap-1.5 px-3 py-1 rounded transition-colors cursor-pointer',
             activeTab === 'submissions'
-              ? 'bg-[#333333] text-white font-semibold'
-              : 'hover:text-white hover:bg-[#2d2d2d]'
+              ? 'bg-surface-2 text-fg font-semibold'
+              : 'hover:text-fg hover:bg-surface-2'
           )}
         >
           <span>Submissions</span>
@@ -159,7 +158,7 @@ export function ProblemStatementPanel({
           <div className="flex flex-col gap-5">
             {/* Header: Title + Solved Badge */}
             <div className="flex items-center justify-between gap-3">
-              <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              <h1 className="text-xl sm:text-2xl font-bold text-fg tracking-tight">
                 {problem.order}. {problem.title}
               </h1>
 
@@ -190,11 +189,11 @@ export function ProblemStatementPanel({
                 className={cn(
                   'flex items-center gap-1 px-2.5 py-1 rounded-full transition-colors cursor-pointer',
                   showTopics
-                    ? 'bg-[#333] text-white font-medium'
-                    : 'bg-[#282828] text-[#a1a1aa] hover:text-white hover:bg-[#323232]'
+                    ? 'bg-surface-2 text-fg font-medium'
+                    : 'bg-bg-2 text-fg-soft hover:text-fg hover:bg-surface-2'
                 )}
               >
-                <Tag className="w-3 h-3 text-[#a1a1aa]" />
+                <Tag className="w-3 h-3 text-fg-soft" />
                 <span>Topics</span>
                 <ChevronDown className={cn('w-3 h-3 transition-transform', showTopics && 'rotate-180')} />
               </button>
@@ -206,8 +205,8 @@ export function ProblemStatementPanel({
                 className={cn(
                   'flex items-center gap-1 px-2.5 py-1 rounded-full transition-colors cursor-pointer',
                   showCompanies
-                    ? 'bg-[#333] text-white font-medium'
-                    : 'bg-[#282828] text-[#a1a1aa] hover:text-white hover:bg-[#323232]'
+                    ? 'bg-surface-2 text-fg font-medium'
+                    : 'bg-bg-2 text-fg-soft hover:text-fg hover:bg-surface-2'
                 )}
               >
                 <Building2 className="w-3 h-3 text-[#ffa116]" />
@@ -222,13 +221,13 @@ export function ProblemStatementPanel({
                 className={cn(
                   'flex items-center gap-1 px-2.5 py-1 rounded-full transition-colors cursor-pointer',
                   showHints
-                    ? 'bg-[#333] text-white font-medium'
-                    : 'bg-[#282828] text-[#a1a1aa] hover:text-white hover:bg-[#323232]'
+                    ? 'bg-surface-2 text-fg font-medium'
+                    : 'bg-bg-2 text-fg-soft hover:text-fg hover:bg-surface-2'
                 )}
               >
-                <Lightbulb className="w-3 h-3 text-[#fde047]" />
+                <Lightbulb className="w-3 h-3 text-accent" />
                 <span>Hint</span>
-                <span className="text-[10px] text-[#71717a]">
+                <span className="text-[10px] text-fg-muted">
                   ({hintsRevealed}/{problem.hints?.length || 0})
                 </span>
               </button>
@@ -236,14 +235,14 @@ export function ProblemStatementPanel({
 
             {/* Expanded Topics Chips */}
             {showTopics && (
-              <div className="flex flex-wrap gap-1.5 p-3 rounded-lg bg-[#262626] border border-[#333]">
-                <span className="px-2 py-0.5 rounded bg-[#333] text-white text-xs font-medium">
+              <div className="flex flex-wrap gap-1.5 p-3 rounded-lg bg-bg-2 border border-line">
+                <span className="px-2 py-0.5 rounded bg-surface-2 text-fg text-xs font-medium">
                   {problem.topic}
                 </span>
                 {(problem.tags || []).map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-0.5 rounded bg-[#1f1f1f] text-[#a1a1aa] text-xs hover:text-white transition-colors"
+                    className="px-2 py-0.5 rounded bg-surface text-fg-soft text-xs hover:text-fg transition-colors"
                   >
                     {tag}
                   </span>
@@ -253,14 +252,14 @@ export function ProblemStatementPanel({
 
             {/* Expanded Companies Chips */}
             {showCompanies && (
-              <div className="flex flex-wrap gap-1.5 p-3 rounded-lg bg-[#262626] border border-[#333]">
-                <span className="text-xs text-[#a1a1aa] w-full mb-1">
+              <div className="flex flex-wrap gap-1.5 p-3 rounded-lg bg-bg-2 border border-line">
+                <span className="text-xs text-fg-soft w-full mb-1">
                   Frequently encountered at:
                 </span>
                 {companies.map((c) => (
                   <span
                     key={c}
-                    className="px-2.5 py-0.5 rounded-full bg-[#1e293b] text-[#38bdf8] text-xs font-medium border border-[#38bdf8]/20"
+                    className="px-2.5 py-0.5 rounded-full bg-surface-2 text-accent text-xs font-medium border border-accent/20"
                   >
                     {c}
                   </span>
@@ -270,16 +269,16 @@ export function ProblemStatementPanel({
 
             {/* Expanded Progressive Hints */}
             {showHints && (
-              <div className="flex flex-col gap-2 p-3.5 rounded-lg bg-[#262626] border border-[#333]">
+              <div className="flex flex-col gap-2 p-3.5 rounded-lg bg-bg-2 border border-line">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-white">
+                  <span className="text-xs font-semibold text-fg">
                     Progressive Hints ({hintsRevealed}/{(problem.hints?.length || 0)} Unlocked)
                   </span>
                   {hintsRevealed < (problem.hints?.length || 0) && (
                     <button
                       type="button"
                       onClick={onRevealHint}
-                      className="text-xs px-2.5 py-1 rounded bg-[#3b82f6] text-white hover:bg-[#2563eb] transition-colors cursor-pointer font-medium"
+                      className="text-xs px-2.5 py-1 rounded bg-accent text-accent-ink hover:opacity-90 transition-opacity cursor-pointer font-medium"
                     >
                       Unlock Hint {hintsRevealed + 1}
                     </button>
@@ -295,17 +294,17 @@ export function ProblemStatementPanel({
                         className={cn(
                           'p-2.5 rounded text-xs leading-relaxed border',
                           isUnlocked
-                            ? 'bg-[#1e1e1e] border-[#38bdf8]/40 text-[#d4d4d8]'
-                            : 'bg-[#181818] border-[#2e2e2e] text-[#71717a]'
+                            ? 'bg-surface border-accent-line text-fg-soft'
+                            : 'bg-bg border-line text-fg-muted'
                         )}
                       >
-                        <span className="font-semibold text-white block mb-0.5">
+                        <span className="font-semibold text-fg block mb-0.5">
                           Hint {hint.level}: {hint.title}
                         </span>
                         {isUnlocked ? (
                           hint.content
                         ) : (
-                          <span className="italic text-[#71717a]">
+                          <span className="italic text-fg-muted">
                             Locked. Click &quot;Unlock Hint&quot; to reveal key algorithmic insights.
                           </span>
                         )}
@@ -325,21 +324,21 @@ export function ProblemStatementPanel({
             <div className="flex flex-col gap-4 pt-1">
               {(problem.examples || []).map((ex, index) => (
                 <div key={index} className="flex flex-col gap-1.5">
-                  <span className="text-xs font-semibold text-white">
+                  <span className="text-xs font-semibold text-fg">
                     Example {index + 1}:
                   </span>
-                  <div className="p-3.5 sm:p-4 rounded-lg bg-[#282828] border border-[#333333] font-mono text-xs leading-relaxed text-[#eff2f6] flex flex-col gap-2">
+                  <div className="p-3.5 sm:p-4 rounded-lg bg-surface-2 border border-line font-mono text-xs leading-relaxed text-fg flex flex-col gap-2">
                     <div className="flex flex-col sm:flex-row sm:items-start gap-1.5">
-                      <strong className="text-white font-semibold shrink-0">Input:</strong>
-                      <pre className="font-mono text-[#eff2f6] whitespace-pre-wrap break-all m-0">{ex.input}</pre>
+                      <strong className="text-fg font-semibold shrink-0">Input:</strong>
+                      <pre className="font-mono text-fg whitespace-pre-wrap break-all m-0">{ex.input}</pre>
                     </div>
                     <div className="flex flex-col sm:flex-row sm:items-start gap-1.5">
-                      <strong className="text-white font-semibold shrink-0">Output:</strong>
-                      <pre className="font-mono text-[#eff2f6] whitespace-pre-wrap break-all m-0">{ex.output}</pre>
+                      <strong className="text-fg font-semibold shrink-0">Output:</strong>
+                      <pre className="font-mono text-fg whitespace-pre-wrap break-all m-0">{ex.output}</pre>
                     </div>
                     {ex.explanation && (
-                      <div className="mt-1 font-sans text-xs text-[#a1a1aa] pt-2 border-t border-[#383838]">
-                        <strong className="text-white font-semibold font-mono">Explanation: </strong>
+                      <div className="mt-1 font-sans text-xs text-fg-soft pt-2 border-t border-line">
+                        <strong className="text-fg font-semibold font-mono">Explanation: </strong>
                         <span>{ex.explanation}</span>
                       </div>
                     )}
@@ -350,13 +349,13 @@ export function ProblemStatementPanel({
 
             {/* Constraints */}
             <div className="flex flex-col gap-2 pt-2">
-              <span className="text-xs font-semibold text-white">
+              <span className="text-xs font-semibold text-fg">
                 Constraints:
               </span>
-              <ul className="list-disc list-inside space-y-1 text-xs text-[#d4d4d8] pl-1 font-mono">
+              <ul className="list-disc list-inside space-y-1 text-xs text-fg-soft pl-1 font-mono">
                 {(problem.constraints || []).map((c, idx) => (
                   <li key={idx} className="leading-relaxed">
-                    <code className="text-[#eff2f6] bg-[#282828] px-1.5 py-0.5 rounded border border-[#383838]">
+                    <code className="text-fg bg-surface px-1.5 py-0.5 rounded border border-line">
                       {c}
                     </code>
                   </li>
@@ -366,8 +365,8 @@ export function ProblemStatementPanel({
 
             {/* Follow-up Note if exists */}
             {problem.followUp && (
-              <div className="p-3 rounded-lg bg-[#282828] border border-[#383838] text-xs text-[#a1a1aa] leading-relaxed">
-                <strong className="text-[#ffa116] block mb-0.5">Follow up:</strong>
+              <div className="p-3 rounded-lg bg-surface border border-line text-xs text-fg-soft leading-relaxed">
+                <strong className="text-accent block mb-0.5">Follow up:</strong>
                 {problem.followUp}
               </div>
             )}
@@ -376,43 +375,43 @@ export function ProblemStatementPanel({
 
         {/* TAB 2: EDITORIAL */}
         {activeTab === 'editorial' && (
-          <div className="flex flex-col gap-5 text-xs sm:text-sm text-[#d4d4d8]">
-            <div className="border-b border-[#2e2e2e] pb-3">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#38bdf8] block">
+          <div className="flex flex-col gap-5 text-xs sm:text-sm text-fg-soft">
+            <div className="border-b border-line pb-3">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-accent block">
                 Official Editorial
               </span>
-              <h2 className="text-lg font-bold text-white mt-1">
+              <h2 className="text-lg font-bold text-fg mt-1">
                 {problem.title} — Solution Deep Dive
               </h2>
             </div>
 
             {/* Optimal Approach */}
             <div className="flex flex-col gap-3">
-              <h3 className="text-sm font-semibold text-white flex items-center gap-1.5">
+              <h3 className="text-sm font-semibold text-fg flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#2cbb5d]" />
                 Approach: Optimal Invariant
               </h3>
-              <div className="p-3.5 rounded-lg bg-[#262626] border border-[#333] flex flex-col gap-2.5">
-                <p className="text-xs text-[#eff2f6] font-medium">
+              <div className="p-3.5 rounded-lg bg-surface border border-line flex flex-col gap-2.5">
+                <p className="text-xs text-fg font-medium">
                   {problem.solution?.optimal?.keyObservation || 'Key algorithmic invariant and core observation.'}
                 </p>
-                <p className="text-xs text-[#a1a1aa] leading-relaxed">
+                <p className="text-xs text-fg-soft leading-relaxed">
                   {problem.solution?.optimal?.algorithm || 'Algorithmic breakdown for optimal solution.'}
                 </p>
 
                 {problem.solution?.optimal?.steps && (
-                  <div className="flex flex-col gap-2 mt-2 pt-2 border-t border-[#333]">
-                    <span className="text-xs font-semibold text-white">Algorithmic Sequence:</span>
+                  <div className="flex flex-col gap-2 mt-2 pt-2 border-t border-line">
+                    <span className="text-xs font-semibold text-fg">Algorithmic Sequence:</span>
                     {(problem.solution.optimal.steps || []).map((step, idx) => (
-                      <div key={idx} className="pl-3 border-l-2 border-[#38bdf8] text-xs">
-                        <strong className="text-white block">{step.title}</strong>
-                        <span className="text-[#a1a1aa]">{step.content}</span>
+                      <div key={idx} className="pl-3 border-l-2 border-accent text-xs">
+                        <strong className="text-fg block">{step.title}</strong>
+                        <span className="text-fg-soft">{step.content}</span>
                       </div>
                     ))}
                   </div>
                 )}
 
-                <div className="flex items-center gap-4 mt-2 pt-2 border-t border-[#333] text-xs font-mono text-[#a1a1aa]">
+                <div className="flex items-center gap-4 mt-2 pt-2 border-t border-line text-xs font-mono text-fg-soft">
                   <span>Time Complexity: <strong className="text-[#2cbb5d]">{problem.solution?.optimal?.timeComplexity || 'O(N)'}</strong></span>
                   <span>Space Complexity: <strong className="text-[#2cbb5d]">{problem.solution?.optimal?.spaceComplexity || 'O(1)'}</strong></span>
                 </div>
@@ -421,15 +420,15 @@ export function ProblemStatementPanel({
 
             {/* Brute Force Approach */}
             <div className="flex flex-col gap-3">
-              <h3 className="text-sm font-semibold text-white flex items-center gap-1.5">
+              <h3 className="text-sm font-semibold text-fg flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[#ffa116]" />
                 Alternative: Brute Force Baseline
               </h3>
-              <div className="p-3.5 rounded-lg bg-[#262626] border border-[#333] flex flex-col gap-2">
-                <p className="text-xs text-[#a1a1aa] leading-relaxed">
+              <div className="p-3.5 rounded-lg bg-surface border border-line flex flex-col gap-2">
+                <p className="text-xs text-fg-soft leading-relaxed">
                   {problem.solution?.bruteForce?.explanation || 'Direct naive simulation.'}
                 </p>
-                <div className="flex items-center gap-4 text-xs font-mono text-[#a1a1aa]">
+                <div className="flex items-center gap-4 text-xs font-mono text-fg-soft">
                   <span>Time: <strong className="text-[#ffa116]">{problem.solution?.bruteForce?.timeComplexity || 'O(N^2)'}</strong></span>
                   <span>Space: <strong className="text-[#ffa116]">{problem.solution?.bruteForce?.spaceComplexity || 'O(1)'}</strong></span>
                 </div>
@@ -441,12 +440,12 @@ export function ProblemStatementPanel({
         {/* TAB 3: SOLUTIONS */}
         {activeTab === 'solutions' && (
           <div className="flex flex-col gap-5 text-xs sm:text-sm">
-            <div className="flex items-center justify-between border-b border-[#2e2e2e] pb-3">
+            <div className="flex items-center justify-between border-b border-line pb-3">
               <div>
-                <h2 className="text-base font-bold text-white">
+                <h2 className="text-base font-bold text-fg">
                   Reference Implementations
                 </h2>
-                <span className="text-xs text-[#a1a1aa]">
+                <span className="text-xs text-fg-soft">
                   Production-grade verified solutions in C++ and Python
                 </span>
               </div>
@@ -459,7 +458,7 @@ export function ProblemStatementPanel({
                   setCopiedSolution(true);
                   setTimeout(() => setCopiedSolution(false), 2000);
                 }}
-                className="flex items-center gap-1 px-3 py-1.5 rounded bg-[#282828] hover:bg-[#333] border border-[#383838] text-xs font-mono text-[#a1a1aa] hover:text-white transition-colors cursor-pointer"
+                className="flex items-center gap-1 px-3 py-1.5 rounded bg-surface hover:bg-surface-2 border border-line text-xs font-mono text-fg-soft hover:text-fg transition-colors cursor-pointer"
               >
                 {copiedSolution ? (
                   <>
@@ -477,10 +476,10 @@ export function ProblemStatementPanel({
 
             {(problem.code || []).map((snippet) => (
               <div key={snippet.language} className="flex flex-col gap-2">
-                <span className="text-xs font-semibold text-white uppercase tracking-wider">
+                <span className="text-xs font-semibold text-fg uppercase tracking-wider">
                   {snippet.language === 'cpp' ? 'C++ Solution' : 'Python 3 Solution'}
                 </span>
-                <pre className="p-4 rounded-lg bg-[#141414] border border-[#2e2e2e] font-mono text-xs text-[#eff2f6] overflow-x-auto whitespace-pre leading-relaxed bl-scrollbar">
+                <pre className="p-4 rounded-lg bg-bg border border-line font-mono text-xs text-fg overflow-x-auto whitespace-pre leading-relaxed bl-scrollbar">
                   {snippet.source}
                 </pre>
               </div>
@@ -499,16 +498,16 @@ export function ProblemStatementPanel({
           </div>
         )}
 
-        {/* Bottom Bar: 👍 Likes, 👎 Dislikes, ⭐ Star, ↗ Share, 🟢 Online Count matching Image 2 */}
-        <div className="flex items-center justify-between pt-5 mt-6 border-t border-[#2e2e2e] text-xs text-[#a1a1aa] select-none">
+        {/* Bottom Bar: 👍 Likes, 👎 Dislikes, ⭐ Star, ↗ Share, 🟢 Online Count */}
+        <div className="flex items-center justify-between pt-5 mt-6 border-t border-line text-xs text-fg-soft select-none">
           <div className="flex items-center gap-3">
             {/* Like button */}
             <button
               type="button"
               onClick={handleLike}
               className={cn(
-                'flex items-center gap-1.5 px-2.5 py-1 rounded hover:bg-[#282828] transition-colors cursor-pointer',
-                hasLiked && 'text-[#38bdf8] font-semibold'
+                'flex items-center gap-1.5 px-2.5 py-1 rounded hover:bg-surface-2 transition-colors cursor-pointer',
+                hasLiked && 'text-accent font-semibold'
               )}
             >
               <ThumbsUp className="w-3.5 h-3.5" />
@@ -520,7 +519,7 @@ export function ProblemStatementPanel({
               type="button"
               onClick={handleDislike}
               className={cn(
-                'flex items-center gap-1.5 px-2.5 py-1 rounded hover:bg-[#282828] transition-colors cursor-pointer',
+                'flex items-center gap-1.5 px-2.5 py-1 rounded hover:bg-surface-2 transition-colors cursor-pointer',
                 hasDisliked && 'text-[#ef4444] font-semibold'
               )}
             >
@@ -533,8 +532,8 @@ export function ProblemStatementPanel({
               type="button"
               onClick={() => setIsStarred((prev) => !prev)}
               className={cn(
-                'p-1.5 rounded hover:bg-[#282828] transition-colors cursor-pointer',
-                isStarred ? 'text-[#facc15]' : 'hover:text-white'
+                'p-1.5 rounded hover:bg-surface-2 transition-colors cursor-pointer',
+                isStarred ? 'text-accent' : 'hover:text-fg'
               )}
               title="Bookmark question"
             >
@@ -550,7 +549,7 @@ export function ProblemStatementPanel({
                   alert('Problem link copied to clipboard!');
                 }
               }}
-              className="p-1.5 rounded hover:bg-[#282828] hover:text-white transition-colors cursor-pointer"
+              className="p-1.5 rounded hover:bg-surface-2 hover:text-fg transition-colors cursor-pointer"
               title="Share problem"
             >
               <Share2 className="w-3.5 h-3.5" />
@@ -558,7 +557,7 @@ export function ProblemStatementPanel({
           </div>
 
           {/* Online users status */}
-          <div className="flex items-center gap-1.5 text-xs text-[#a1a1aa]">
+          <div className="flex items-center gap-1.5 text-xs text-fg-soft">
             <span className="w-2 h-2 rounded-full bg-[#2cbb5d] animate-pulse" />
             <span>1,180 Online</span>
           </div>

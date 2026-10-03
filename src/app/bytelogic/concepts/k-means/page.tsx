@@ -248,34 +248,34 @@ class KMeans:
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-8 sm:pb-12">
       {/* Back to Concepts / Home Link */}
-      <div className="flex flex-wrap items-center justify-between gap-2 pb-4 sm:pb-6 mb-6 sm:mb-8 border-b border-[#1C2830] text-xs font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-2 pb-4 sm:pb-6 mb-6 sm:mb-8 border-b border-line text-xs font-mono">
         <Link
           href="/bytelogic"
-          className="flex items-center gap-2 text-[#A8B3BA] hover:text-[#019AA2] transition-colors py-1 inline-flex"
+          className="flex items-center gap-2 text-fg-soft hover:text-accent transition-colors py-1 inline-flex"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>BACK TO BYTELOGIC PLATFORM</span>
         </Link>
-        <span className="text-[#68747D]">DOSSIER: CONCEPT // 001</span>
+        <span className="text-fg-muted">DOSSIER: CONCEPT // 001</span>
       </div>
 
       {/* Hero Header */}
       <div className="space-y-4 mb-8 sm:mb-10">
         <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-          <span className="px-2.5 py-1 rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#019AA2] font-semibold">
+          <span className="px-2.5 py-1 rounded-[4px] bg-surface-2 border border-line text-accent font-semibold">
             MACHINE LEARNING · CLUSTERING
           </span>
-          <span className="text-[#68747D] hidden sm:inline">•</span>
-          <span className="text-[#A8B3BA]">INTERMEDIATE</span>
-          <span className="text-[#68747D] hidden sm:inline">•</span>
-          <span className="text-[#68747D]">LLOYD&apos;S ALGORITHM</span>
+          <span className="text-fg-muted hidden sm:inline">•</span>
+          <span className="text-fg-soft">INTERMEDIATE</span>
+          <span className="text-fg-muted hidden sm:inline">•</span>
+          <span className="text-fg-muted">LLOYD&apos;S ALGORITHM</span>
         </div>
 
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold font-sans tracking-tight text-[#F3F6F7]">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold font-sans tracking-tight text-fg">
           K-Means Clustering
         </h1>
 
-        <p className="text-sm sm:text-base md:text-lg text-[#A8B3BA] leading-relaxed font-sans max-w-3xl">
+        <p className="text-sm sm:text-base md:text-lg text-fg-soft leading-relaxed font-sans max-w-3xl">
           A visual and mathematical explanation of clustering through iterative expectation-maximization, Voronoi partitioning, and centroid displacement.
         </p>
 
@@ -283,30 +283,30 @@ class KMeans:
         <div className="pt-2 flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs font-mono">
           <a
             href="#mathematics"
-            className="px-3 py-1.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] flex items-center gap-1.5 transition-colors min-h-[36px] sm:min-h-0"
+            className="px-3 py-1.5 rounded-[4px] bg-surface border border-line hover:border-accent text-fg flex items-center gap-1.5 transition-colors min-h-[36px] sm:min-h-0"
           >
-            <BookOpen className="w-3.5 h-3.5 text-[#019AA2]" />
+            <BookOpen className="w-3.5 h-3.5 text-accent" />
             <span>03 Derivation</span>
           </a>
           <a
             href="#visualization"
-            className="px-3 py-1.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] flex items-center gap-1.5 transition-colors min-h-[36px] sm:min-h-0"
+            className="px-3 py-1.5 rounded-[4px] bg-surface border border-line hover:border-accent text-fg flex items-center gap-1.5 transition-colors min-h-[36px] sm:min-h-0"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#019AA2]" />
+            <Sparkles className="w-3.5 h-3.5 text-accent" />
             <span>05 Interactive Lab</span>
           </a>
           <a
             href="#implementation"
-            className="px-3 py-1.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] flex items-center gap-1.5 transition-colors min-h-[36px] sm:min-h-0"
+            className="px-3 py-1.5 rounded-[4px] bg-surface border border-line hover:border-accent text-fg flex items-center gap-1.5 transition-colors min-h-[36px] sm:min-h-0"
           >
-            <Code className="w-3.5 h-3.5 text-[#019AA2]" />
+            <Code className="w-3.5 h-3.5 text-accent" />
             <span>06 NumPy Implementation</span>
           </a>
         </div>
       </div>
 
       {/* Sticky Table of Contents Subnav */}
-      <nav aria-label="Section navigation" className="sticky top-14 sm:top-20 z-30 py-2 sm:py-2.5 my-6 sm:my-8 bg-[#05070A]/95 backdrop-blur-md border-y border-[#1C2830] max-w-full overflow-x-auto bl-scrollbar [touch-action:pan-x]">
+      <nav aria-label="Section navigation" className="sticky top-14 sm:top-20 z-30 py-2 sm:py-2.5 my-6 sm:my-8 bg-bg/95 backdrop-blur-md border-y border-line max-w-full overflow-x-auto bl-scrollbar [touch-action:pan-x]">
         <div className="flex items-center gap-1.5 sm:gap-2 text-xs font-mono whitespace-nowrap px-1">
           {navSections.map((sec) => (
             <a
@@ -316,8 +316,8 @@ class KMeans:
               className={cn(
                 'px-2.5 py-1.5 rounded-[4px] transition-colors min-h-[34px] sm:min-h-0 flex items-center',
                 activeSection === sec.id
-                  ? 'bg-[#019AA2]/15 border border-[#019AA2] text-[#019AA2] font-semibold'
-                  : 'text-[#68747D] hover:text-[#F3F6F7]'
+                  ? 'bg-accent/15 border border-accent text-accent font-semibold'
+                  : 'text-fg-muted hover:text-fg'
               )}
             >
               {sec.label}
@@ -327,26 +327,26 @@ class KMeans:
       </nav>
 
       {/* Main Content Articles & Interactive Demonstrations */}
-      <div className="space-y-16 sm:space-y-24 text-[#F3F6F7] font-sans">
+      <div className="space-y-16 sm:space-y-24 text-fg font-sans">
         {/* =========================================================================
             01 — THE PROBLEM
            ========================================================================= */}
         <section id="problem" className="space-y-4">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-            <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+          <div className="flex items-center gap-2 text-xs font-mono text-accent">
+            <span className="w-1.5 h-1.5 bg-accent" />
             <span>01 / THE FORMAL PROBLEM</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F3F6F7]">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg">
             Partitioning Continuous Feature Space
           </h2>
 
-          <div className="text-sm sm:text-base text-[#A8B3BA] leading-relaxed space-y-4">
+          <div className="text-sm sm:text-base text-fg-soft leading-relaxed space-y-4">
             <p>
               Given an unlabeled dataset of N observations{' '}
-              <span className="font-mono text-[#F3F6F7]">X = {'{x_1, x_2, ..., x_N}'}</span> where each observation{' '}
-              <span className="font-mono text-[#F3F6F7]">x_i ∈ ℝ^d</span> is a d-dimensional continuous vector, our goal is to partition the N observations into k non-empty, mutually disjoint subsets{' '}
-              <span className="font-mono text-[#F3F6F7]">S = {'{S_1, S_2, ..., S_k}'}</span> such that:
+              <span className="font-mono text-fg">X = {'{x_1, x_2, ..., x_N}'}</span> where each observation{' '}
+              <span className="font-mono text-fg">x_i ∈ ℝ^d</span> is a d-dimensional continuous vector, our goal is to partition the N observations into k non-empty, mutually disjoint subsets{' '}
+              <span className="font-mono text-fg">S = {'{S_1, S_2, ..., S_k}'}</span> such that:
             </p>
             <EquationBlock
               math="\bigcup_{j=1}^k S_j = X \quad \text{and} \quad S_a \cap S_b = \emptyset \quad \forall a \neq b"
@@ -362,17 +362,17 @@ class KMeans:
         {/* =========================================================================
             02 — INTUITION
            ========================================================================= */}
-        <section id="intuition" className="space-y-4 border-t border-[#1C2830] pt-12">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-            <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+        <section id="intuition" className="space-y-4 border-t border-line pt-12">
+          <div className="flex items-center gap-2 text-xs font-mono text-accent">
+            <span className="w-1.5 h-1.5 bg-accent" />
             <span>02 / GEOMETRIC INTUITION</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F3F6F7]">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg">
             Centers of Gravity and Gravitational Pull
           </h2>
 
-          <div className="text-sm sm:text-base text-[#A8B3BA] leading-relaxed space-y-4">
+          <div className="text-sm sm:text-base text-fg-soft leading-relaxed space-y-4">
             <p>
               Imagine placing $k$ anchors onto a plane covered with particles. Each particle feels an allegiance to whichever anchor is closest to it, forming distinct territories known as <strong>Voronoi cells</strong>.
             </p>
@@ -388,17 +388,17 @@ class KMeans:
         {/* =========================================================================
             03 — MATHEMATICS
            ========================================================================= */}
-        <section id="mathematics" className="space-y-6 border-t border-[#1C2830] pt-12">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-            <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+        <section id="mathematics" className="space-y-6 border-t border-line pt-12">
+          <div className="flex items-center gap-2 text-xs font-mono text-accent">
+            <span className="w-1.5 h-1.5 bg-accent" />
             <span>03 / MATHEMATICAL DERIVATION</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F3F6F7]">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg">
             Objective Function & Coordinate Descent
           </h2>
 
-          <p className="text-sm sm:text-base text-[#A8B3BA] leading-relaxed">
+          <p className="text-sm sm:text-base text-fg-soft leading-relaxed">
             The optimization objective minimizes the Within-Cluster Sum of Squares (WCSS), also referred to as inertia:
           </p>
 
@@ -418,8 +418,8 @@ class KMeans:
             ]}
           />
 
-          <div className="space-y-4 text-sm sm:text-base text-[#A8B3BA] leading-relaxed">
-            <h3 className="text-lg font-semibold text-[#F3F6F7]">
+          <div className="space-y-4 text-sm sm:text-base text-fg-soft leading-relaxed">
+            <h3 className="text-lg font-semibold text-fg">
               The Coordinate Descent Decomposition
             </h3>
             <p>
@@ -442,9 +442,9 @@ class KMeans:
               explanation="Holding assignments fixed, taking the derivative with respect to \mu_j and setting to zero yields the arithmetic mean of the assigned points."
             />
 
-            <div className="p-4 rounded-[4px] bg-[#0E151B] border border-[#1C2830] text-xs font-mono space-y-2">
-              <span className="text-[#019AA2] font-semibold block">THEOREM: MONOTONIC CONVERGENCE</span>
-              <p className="text-[#A8B3BA] font-sans">
+            <div className="p-4 rounded-[4px] bg-surface border border-line text-xs font-mono space-y-2">
+              <span className="text-accent font-semibold block">THEOREM: MONOTONIC CONVERGENCE</span>
+              <p className="text-fg-soft font-sans">
                 Because both Step 1 and Step 2 strictly decrease or preserve $J(S, \mu)$, and because the number of distinct partitions of $N$ points into $k$ subsets is finite (bounded by $k^N$), Lloyd&apos;s algorithm cannot cycle and must terminate at a local minimum in a finite number of iterations.
               </p>
             </div>
@@ -454,13 +454,13 @@ class KMeans:
         {/* =========================================================================
             04 — HOW IT WORKS (ALGORITHM FLOW)
            ========================================================================= */}
-        <section id="flow" className="space-y-6 border-t border-[#1C2830] pt-12">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-            <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+        <section id="flow" className="space-y-6 border-t border-line pt-12">
+          <div className="flex items-center gap-2 text-xs font-mono text-accent">
+            <span className="w-1.5 h-1.5 bg-accent" />
             <span>04 / ALGORITHM FLOW</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F3F6F7]">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg">
             The 5-Step Execution Cycle
           </h2>
 
@@ -474,18 +474,18 @@ class KMeans:
             ].map((step, idx) => (
               <div
                 key={step.num}
-                className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] flex flex-col justify-between bl-tick-box min-w-0"
+                className="p-4 rounded-[6px] bg-surface border border-line flex flex-col justify-between bl-tick-box min-w-0"
               >
                 <div>
-                  <div className="flex items-center justify-between text-[#019AA2] font-bold mb-2">
+                  <div className="flex items-center justify-between text-accent font-bold mb-2">
                     <span>{step.num}</span>
-                    <span className="text-[10px] text-[#68747D]">PHASE</span>
+                    <span className="text-[10px] text-fg-muted">PHASE</span>
                   </div>
-                  <div className="text-sm font-semibold text-[#F3F6F7] mb-1">{step.title}</div>
-                  <p className="text-[11px] font-sans text-[#A8B3BA] leading-relaxed">{step.desc}</p>
+                  <div className="text-sm font-semibold text-fg mb-1">{step.title}</div>
+                  <p className="text-[11px] font-sans text-fg-soft leading-relaxed">{step.desc}</p>
                 </div>
                 {idx < 4 && (
-                  <div className="mt-4 text-[#68747D] text-center hidden lg:block">→</div>
+                  <div className="mt-4 text-fg-muted text-center hidden lg:block">→</div>
                 )}
               </div>
             ))}
@@ -495,48 +495,48 @@ class KMeans:
         {/* =========================================================================
             05 — INTERACTIVE VISUALIZATION
            ========================================================================= */}
-        <section id="visualization" className="space-y-6 border-t border-[#1C2830] pt-12">
+        <section id="visualization" className="space-y-6 border-t border-line pt-12">
           <div className="flex items-center justify-between flex-wrap gap-2 text-xs font-mono">
-            <div className="flex items-center gap-2 text-[#019AA2]">
-              <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+            <div className="flex items-center gap-2 text-accent">
+              <span className="w-1.5 h-1.5 bg-accent" />
               <span>05 / INTERACTIVE LABORATORY VISUAL</span>
             </div>
-            <span className="text-[#68747D]">LIVE 2D CLUSTERING MANIFOLD</span>
+            <span className="text-fg-muted">LIVE 2D CLUSTERING MANIFOLD</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F3F6F7]">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg">
             Observe Centroids Traversing the Manifold
           </h2>
 
-          <p className="text-sm sm:text-base text-[#A8B3BA] leading-relaxed">
+          <p className="text-sm sm:text-base text-fg-soft leading-relaxed">
             Step through the alternating minimization phases. Watch the Voronoi partitioning update in real time as data points get captured by incoming centroids.
           </p>
 
           {/* Canvas Box */}
-          <div className="rounded-[6px] bg-[#070B0E] border border-[#1C2830] overflow-hidden bl-tick-box shadow-2xl min-w-0">
+          <div className="rounded-[6px] bg-bg border border-line overflow-hidden bl-tick-box shadow-2xl min-w-0">
             {/* Top Toolbar */}
-            <div className="px-3.5 sm:px-4 py-2.5 sm:py-3 bg-[#0E151B] border-b border-[#1C2830] flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs font-mono">
+            <div className="px-3.5 sm:px-4 py-2.5 sm:py-3 bg-surface border-b border-line flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 text-xs font-mono">
               <div className="flex items-center gap-2 sm:gap-3">
-                <span className="text-[#019AA2] font-semibold">STATE:</span>
-                <span className="px-2 py-0.5 rounded-[3px] bg-[#131C24] border border-[#1C2830] text-[#F3F6F7]">
+                <span className="text-accent font-semibold">STATE:</span>
+                <span className="px-2 py-0.5 rounded-[3px] bg-surface-2 border border-line text-fg">
                   {visStatus}
                 </span>
-                <span className="text-[#68747D]">|</span>
-                <span className="text-[#68747D]">ITER: {visIteration}</span>
+                <span className="text-fg-muted">|</span>
+                <span className="text-fg-muted">ITER: {visIteration}</span>
               </div>
 
               <div className="flex items-center gap-3 sm:gap-4">
-                <div className="flex items-center gap-1.5 text-[#A8B3BA] text-[11px] sm:text-xs">
+                <div className="flex items-center gap-1.5 text-fg-soft text-[11px] sm:text-xs">
                   <span>LOSS:</span>
-                  <span className="text-[#019AA2] font-semibold tabular-nums">{visLoss.toLocaleString()}</span>
+                  <span className="text-accent font-semibold tabular-nums">{visLoss.toLocaleString()}</span>
                 </div>
                 <button
                   onClick={() => setShowVoronoi(!showVoronoi)}
                   className={cn(
                     'px-2.5 py-1 rounded-[4px] border text-[11px] transition-colors cursor-pointer min-h-[32px] sm:min-h-0 flex items-center',
                     showVoronoi
-                      ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2]'
-                      : 'border-[#1C2830] bg-[#131C24] text-[#68747D]'
+                      ? 'border-accent bg-accent/15 text-accent'
+                      : 'border-line bg-surface-2 text-fg-muted'
                   )}
                 >
                   Rays: {showVoronoi ? 'ON' : 'OFF'}
@@ -574,7 +574,7 @@ class KMeans:
                   const ptColor =
                     pt.cluster !== undefined && visCentroids[pt.cluster]
                       ? visCentroids[pt.cluster].color
-                      : '#A8B3BA';
+                      : 'var(--fg-soft)';
                   return (
                     <circle
                       key={`pt-${idx}`}
@@ -582,7 +582,7 @@ class KMeans:
                       cy={pt.y}
                       r="3.5"
                       fill={ptColor}
-                      stroke="#070B0E"
+                      stroke="var(--bg)"
                       strokeWidth="1"
                     />
                   );
@@ -595,7 +595,7 @@ class KMeans:
                       cx={c.x}
                       cy={c.y}
                       r="9"
-                      fill="#0E151B"
+                      fill="var(--surface)"
                       stroke={c.color}
                       strokeWidth="2.5"
                       className="transition-all duration-300 ease-out"
@@ -611,7 +611,7 @@ class KMeans:
                       x={c.x}
                       y={c.y - 14}
                       textAnchor="middle"
-                      fill="#F3F6F7"
+                      fill="var(--fg)"
                       fontSize="9"
                       fontFamily="var(--font-jetbrains)"
                       fontWeight="bold"
@@ -624,10 +624,10 @@ class KMeans:
             </div>
 
             {/* Bottom Controls */}
-            <div className="px-3.5 sm:px-4 py-3 bg-[#0A0F14] border-t border-[#1C2830] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
+            <div className="px-3.5 sm:px-4 py-3 bg-bg-2 border-t border-line flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
               {/* K count selection */}
               <div className="flex items-center gap-2">
-                <span className="text-[#68747D]">K Clusters:</span>
+                <span className="text-fg-muted">K Clusters:</span>
                 {[2, 3, 4, 5].map((num) => (
                   <button
                     key={num}
@@ -635,8 +635,8 @@ class KMeans:
                     className={cn(
                       'px-2.5 py-1 sm:py-0.5 rounded-[3px] border transition-colors cursor-pointer min-h-[34px] sm:min-h-0 flex items-center justify-center',
                       k === num
-                        ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2] font-bold'
-                        : 'border-[#1C2830] bg-[#131C24] text-[#A8B3BA]'
+                        ? 'border-accent bg-accent/15 text-accent font-bold'
+                        : 'border-line bg-surface-2 text-fg-soft'
                     )}
                   >
                     {num}
@@ -649,21 +649,21 @@ class KMeans:
                 <button
                   onClick={stepVis}
                   disabled={visStatus === 'CONVERGED' || isAutoPlaying}
-                  className="px-3 py-1.5 rounded-[4px] bg-[#131C24] border border-[#1C2830] hover:border-[#019AA2] text-[#F3F6F7] transition-colors disabled:opacity-40 cursor-pointer min-h-[38px] sm:min-h-0"
+                  className="px-3 py-1.5 rounded-[4px] bg-surface-2 border border-line hover:border-accent text-fg transition-colors disabled:opacity-40 cursor-pointer min-h-[38px] sm:min-h-0"
                 >
                   Step
                 </button>
                 <button
                   onClick={() => setIsAutoPlaying(!isAutoPlaying)}
                   disabled={visStatus === 'CONVERGED'}
-                  className="px-3 py-1.5 rounded-[4px] bg-[#019AA2] text-[#05070A] font-semibold hover:bg-[#02b3bc] transition-colors disabled:opacity-40 flex items-center gap-1.5 cursor-pointer min-h-[38px] sm:min-h-0"
+                  className="px-3 py-1.5 rounded-[4px] bg-accent text-bg font-semibold hover:opacity-90 transition-colors disabled:opacity-40 flex items-center gap-1.5 cursor-pointer min-h-[38px] sm:min-h-0"
                 >
                   {isAutoPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
                   <span>{isAutoPlaying ? 'Pause' : 'Auto Run'}</span>
                 </button>
                 <button
                   onClick={resetVis}
-                  className="p-2 sm:p-1.5 rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] transition-colors cursor-pointer min-h-[38px] min-w-[38px] sm:min-h-0 sm:min-w-0 flex items-center justify-center"
+                  className="p-2 sm:p-1.5 rounded-[4px] bg-surface-2 border border-line text-fg-soft hover:text-fg transition-colors cursor-pointer min-h-[38px] min-w-[38px] sm:min-h-0 sm:min-w-0 flex items-center justify-center"
                   title="Reset Simulation"
                   aria-label="Reset Simulation"
                 >
@@ -677,17 +677,17 @@ class KMeans:
         {/* =========================================================================
             06 — IMPLEMENTATION FROM SCRATCH
            ========================================================================= */}
-        <section id="implementation" className="space-y-6 border-t border-[#1C2830] pt-12">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-            <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+        <section id="implementation" className="space-y-6 border-t border-line pt-12">
+          <div className="flex items-center gap-2 text-xs font-mono text-accent">
+            <span className="w-1.5 h-1.5 bg-accent" />
             <span>06 / IMPLEMENTATION FROM SCRATCH</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F3F6F7]">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg">
             Vectorized NumPy Lloyd Algorithm
           </h2>
 
-          <p className="text-sm sm:text-base text-[#A8B3BA] leading-relaxed">
+          <p className="text-sm sm:text-base text-fg-soft leading-relaxed">
             Production-grade Python code implementing vectorized pairwise distance broadcasting: $(N, 1, d) - (1, k, d) \to (N, k, d)$ without external machine learning dependencies.
           </p>
 
@@ -703,39 +703,39 @@ class KMeans:
         {/* =========================================================================
             07 — EXPERIMENT & BENCHMARK
            ========================================================================= */}
-        <section id="experiment" className="space-y-6 border-t border-[#1C2830] pt-12">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-            <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+        <section id="experiment" className="space-y-6 border-t border-line pt-12">
+          <div className="flex items-center gap-2 text-xs font-mono text-accent">
+            <span className="w-1.5 h-1.5 bg-accent" />
             <span>07 / EMPIRICAL EXPERIMENT</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F3F6F7]">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg">
             Random Initialization vs. K-Means++
           </h2>
 
-          <p className="text-sm sm:text-base text-[#A8B3BA] leading-relaxed">
+          <p className="text-sm sm:text-base text-fg-soft leading-relaxed">
             Standard Lloyd initialization randomly selects $k$ observations uniformly, which frequently places two centroids within the same true cluster. Arthur &amp; Vassilvitskii (2007) introduced K-Means++, choosing subsequent centroids with probability proportional to their squared distance $D(x)^2$ from already chosen centroids, guaranteeing an $O(\log k)$ competitive ratio.
           </p>
 
-          <div className="p-3.5 sm:p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] text-xs font-mono overflow-x-auto bl-scrollbar w-full max-w-full">
+          <div className="p-3.5 sm:p-4 rounded-[6px] bg-surface border border-line text-xs font-mono overflow-x-auto bl-scrollbar w-full max-w-full">
             <table className="w-full min-w-[540px] text-left">
               <thead>
-                <tr className="border-b border-[#1C2830] text-[#68747D]">
+                <tr className="border-b border-line text-fg-muted">
                   <th className="pb-2 font-medium">METHOD</th>
                   <th className="pb-2 font-medium">APPROXIMATION RATIO</th>
                   <th className="pb-2 font-medium">AVG RUNTIME ITERATIONS</th>
                   <th className="pb-2 font-medium">LOCAL MINIMA SENSITIVITY</th>
                 </tr>
               </thead>
-              <tbody className="text-[#F3F6F7]">
-                <tr className="border-b border-[#1C2830]/40">
-                  <td className="py-2.5 text-[#019AA2] font-semibold">K-Means++ (Arthur &amp; Vassilvitskii)</td>
+              <tbody className="text-fg">
+                <tr className="border-b border-line/40">
+                  <td className="py-2.5 text-accent font-semibold">K-Means++ (Arthur &amp; Vassilvitskii)</td>
                   <td className="py-2.5">O(log k) Guaranteed</td>
                   <td className="py-2.5 tabular-nums">7.8 steps</td>
                   <td className="py-2.5 text-[#10b981]">Very Low (Optimal dispersion)</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#A8B3BA]">Uniform Random Initialization</td>
+                  <td className="py-2.5 text-fg-soft">Uniform Random Initialization</td>
                   <td className="py-2.5">Unbounded (arbitrarily bad)</td>
                   <td className="py-2.5 tabular-nums">18.4 steps</td>
                   <td className="py-2.5 text-[#f59e0b]">High (Frequent local traps)</td>
@@ -748,53 +748,53 @@ class KMeans:
         {/* =========================================================================
             08 — LIMITATIONS & EDGE CASES
            ========================================================================= */}
-        <section id="limitations" className="space-y-6 border-t border-[#1C2830] pt-12">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-            <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+        <section id="limitations" className="space-y-6 border-t border-line pt-12">
+          <div className="flex items-center gap-2 text-xs font-mono text-accent">
+            <span className="w-1.5 h-1.5 bg-accent" />
             <span>08 / LIMITATIONS &amp; PATHOLOGIES</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F3F6F7]">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg">
             When K-Means Fails
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-            <div className="p-4 sm:p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box min-w-0">
+            <div className="p-4 sm:p-5 rounded-[6px] bg-surface border border-line space-y-2 bl-tick-box min-w-0">
               <div className="flex items-center gap-2 text-[#f59e0b] text-xs font-mono font-semibold">
                 <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                 <span>Non-Spherical Geometry</span>
               </div>
-              <p className="text-xs sm:text-sm text-[#A8B3BA] leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-fg-soft leading-relaxed font-sans">
                 Because distance is measured with isotropic Euclidean norms, K-Means assumes convex, spherical clusters. It completely fails on concentric circles, crescent moons, or manifold ribbons (DBSCAN or Spectral Clustering are required).
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box min-w-0">
+            <div className="p-4 sm:p-5 rounded-[6px] bg-surface border border-line space-y-2 bl-tick-box min-w-0">
               <div className="flex items-center gap-2 text-[#f59e0b] text-xs font-mono font-semibold">
                 <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                 <span>Varying Cluster Densities &amp; Sizes</span>
               </div>
-              <p className="text-xs sm:text-sm text-[#A8B3BA] leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-fg-soft leading-relaxed font-sans">
                 If one cluster contains 10,000 points and a neighboring cluster contains 100 points, K-Means will split the large cluster in half and merge the small cluster into the neighbor to minimize squared distance.
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box min-w-0">
+            <div className="p-4 sm:p-5 rounded-[6px] bg-surface border border-line space-y-2 bl-tick-box min-w-0">
               <div className="flex items-center gap-2 text-[#f59e0b] text-xs font-mono font-semibold">
                 <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                 <span>Scale Sensitivity</span>
               </div>
-              <p className="text-xs sm:text-sm text-[#A8B3BA] leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-fg-soft leading-relaxed font-sans">
                 Features with large numerical variances dominate the squared distance computation. Features must strictly be standardized ($\mu = 0, \sigma = 1$) prior to clustering.
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2 bl-tick-box min-w-0">
+            <div className="p-4 sm:p-5 rounded-[6px] bg-surface border border-line space-y-2 bl-tick-box min-w-0">
               <div className="flex items-center gap-2 text-[#f59e0b] text-xs font-mono font-semibold">
                 <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                 <span>Sensitivity to Extreme Outliers</span>
               </div>
-              <p className="text-xs sm:text-sm text-[#A8B3BA] leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-fg-soft leading-relaxed font-sans">
                 Because distances are squared in the objective function, a single rogue point far from the origin will drag a centroid away from legitimate data (K-Medoids / PAM provides an L1 robust alternative).
               </p>
             </div>
@@ -804,17 +804,17 @@ class KMeans:
         {/* =========================================================================
             09 — GO DEEPER & CONNECTED GRAPH
            ========================================================================= */}
-        <section id="godeeper" className="space-y-6 border-t border-[#1C2830] pt-12 pb-16">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-            <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+        <section id="godeeper" className="space-y-6 border-t border-line pt-12 pb-16">
+          <div className="flex items-center gap-2 text-xs font-mono text-accent">
+            <span className="w-1.5 h-1.5 bg-accent" />
             <span>09 / CONNECTED KNOWLEDGE GRAPH</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F3F6F7]">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-fg">
             Concepts Orbiting K-Means
           </h2>
 
-          <p className="text-sm sm:text-base text-[#A8B3BA] leading-relaxed">
+          <p className="text-sm sm:text-base text-fg-soft leading-relaxed">
             In ByteLogic, no concept lives in isolation. Explore the theoretical connections from K-Means to general latent variable models:
           </p>
 
@@ -845,17 +845,17 @@ class KMeans:
                 className="group p-4 sm:p-5 rounded-[6px] bl-card-interactive bl-tick-box flex flex-col justify-between min-w-0"
               >
                 <div>
-                  <span className="text-[10px] text-[#019AA2] uppercase tracking-wider block mb-1">
+                  <span className="text-[10px] text-accent uppercase tracking-wider block mb-1">
                     {item.rel}
                   </span>
-                  <div className="text-sm font-sans font-bold text-[#F3F6F7] group-hover:text-[#019AA2] transition-colors mb-2">
+                  <div className="text-sm font-sans font-bold text-fg group-hover:text-accent transition-colors mb-2">
                     {item.title}
                   </div>
-                  <p className="text-[11px] font-sans text-[#A8B3BA] leading-relaxed">
+                  <p className="text-[11px] font-sans text-fg-soft leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-[#1C2830] flex items-center justify-between text-[#019AA2]">
+                <div className="mt-4 pt-3 border-t border-line flex items-center justify-between text-accent">
                   <span>Explore Concept</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>

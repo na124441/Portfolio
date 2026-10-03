@@ -42,7 +42,7 @@ export const LabPreviewSection: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="py-16 sm:py-24 border-b border-white/10 relative">
+    <section className="py-16 sm:py-24 border-b border-line relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <SectionHeader
           number="04"
@@ -67,19 +67,19 @@ export const LabPreviewSection: React.FC = () => {
                   className="block p-6 glass-panel glass-panel-hover corner-brackets h-full group transition-all"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-8 h-8 rounded border border-white/10 bg-white/[0.02] flex items-center justify-center text-[#dfb15b] group-hover:border-[#d4af37]/40 transition-colors">
+                    <div className="w-8 h-8 rounded border border-line bg-surface-soft flex items-center justify-center text-accent group-hover:border-accent/40 transition-colors">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#dfb15b] bg-[#d4af37]/10 border border-[#d4af37]/20 px-2 py-0.5">
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-accent bg-accent-soft border border-accent/20 px-2 py-0.5">
                       {domain.status}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-base font-bold text-[#feffff] mb-2 group-hover:text-[#dfb15b] transition-colors">
+                  <h3 className="font-display text-base font-bold text-fg mb-2 group-hover:text-accent transition-colors">
                     {domain.title}
                   </h3>
 
-                  <p className="font-sans text-xs text-white/70 leading-relaxed">
+                  <p className="font-sans text-xs text-fg-soft leading-relaxed">
                     {domain.desc}
                   </p>
                 </Link>
@@ -91,10 +91,10 @@ export const LabPreviewSection: React.FC = () => {
         {/* Action Bar */}
         <div className="p-6 glass-panel corner-brackets flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
-            <div className="font-display text-sm font-bold text-[#feffff]">
+            <div className="font-display text-sm font-bold text-fg">
               Explore Interactive Experiments & Textbooks
             </div>
-            <p className="font-sans text-xs text-white/60">
+            <p className="font-sans text-xs text-fg-soft">
               Run simulations, explore Voronoi manifolds, and inspect mathematical derivations directly.
             </p>
           </div>

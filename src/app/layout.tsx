@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Comfortaa, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
@@ -22,6 +22,8 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
+
+export const viewport: Viewport = { themeColor: '#010a0b' };
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nayantsrivastava.in'),
@@ -74,9 +76,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-theme="site"
       className={`${comfortaa.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
+      style={{ '--font-display-face': 'var(--font-comfortaa)' } as React.CSSProperties}
     >
-      <body className="min-h-screen font-sans bg-[#010a0b] text-[#feffff]">
+      <body className="min-h-dvh bg-bg font-sans text-fg">
+        <div className="site-backdrop" aria-hidden />
         {children}
       </body>
     </html>

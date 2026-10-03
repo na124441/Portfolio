@@ -143,17 +143,17 @@ export function DsaWorkspace({
   };
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-[#1a1a1a] text-[#eff2f6] font-sans">
+    <div className="flex flex-col w-full min-h-dvh bg-bg text-fg font-sans">
       {/* Top Navigation Bar Matching Image 2 */}
-      <header className="h-12 border-b border-[#2e2e2e] bg-[#282828] sticky top-0 z-40 px-3 sm:px-4 flex items-center justify-between select-none">
+      <header className="h-12 border-b border-line bg-surface sticky top-0 z-40 px-3 sm:px-4 flex items-center justify-between select-none">
         {/* Left: ByteLogic / LeetCode Logo & Problem List Navigation */}
         <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/bytelogic/questions/dsa"
-            className="flex items-center gap-1.5 text-white font-bold text-sm hover:opacity-85 transition-opacity mr-1"
+            className="flex items-center gap-1.5 text-fg font-bold text-sm hover:opacity-85 transition-opacity mr-1"
             title="ByteLogic Problems"
           >
-            <span className="w-6 h-6 rounded bg-[#ffa116] flex items-center justify-center text-black font-extrabold text-xs">
+            <span className="w-6 h-6 rounded bg-accent flex items-center justify-center text-accent-ink font-extrabold text-xs">
               BL
             </span>
           </Link>
@@ -161,9 +161,9 @@ export function DsaWorkspace({
           {/* Problem List dropdown button */}
           <Link
             href="/bytelogic/questions/dsa"
-            className="flex items-center gap-1 px-2.5 py-1 rounded bg-[#333] hover:bg-[#3d3d3d] text-xs text-white font-medium transition-colors"
+            className="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-2 hover:bg-surface text-xs text-fg font-medium transition-colors"
           >
-            <List className="w-3.5 h-3.5 text-[#a1a1aa]" />
+            <List className="w-3.5 h-3.5 text-fg-soft" />
             <span className="hidden sm:inline">Problem List</span>
           </Link>
 
@@ -171,13 +171,13 @@ export function DsaWorkspace({
           {prevProblem ? (
             <Link
               href={`/bytelogic/questions/dsa/${prevProblem.slug}`}
-              className="p-1 rounded hover:bg-[#333] text-[#a1a1aa] hover:text-white transition-colors"
+              className="p-1 rounded hover:bg-surface-2 text-fg-soft hover:text-fg transition-colors"
               title={`Previous: ${prevProblem.title}`}
             >
               <ChevronLeft className="w-4 h-4" />
             </Link>
           ) : (
-            <span className="p-1 text-[#52525b] cursor-not-allowed">
+            <span className="p-1 text-fg-muted cursor-not-allowed">
               <ChevronLeft className="w-4 h-4" />
             </span>
           )}
@@ -186,13 +186,13 @@ export function DsaWorkspace({
           {nextProblem ? (
             <Link
               href={`/bytelogic/questions/dsa/${nextProblem.slug}`}
-              className="p-1 rounded hover:bg-[#333] text-[#a1a1aa] hover:text-white transition-colors"
+              className="p-1 rounded hover:bg-surface-2 text-fg-soft hover:text-fg transition-colors"
               title={`Next: ${nextProblem.title}`}
             >
               <ChevronRight className="w-4 h-4" />
             </Link>
           ) : (
-            <span className="p-1 text-[#52525b] cursor-not-allowed">
+            <span className="p-1 text-fg-muted cursor-not-allowed">
               <ChevronRight className="w-4 h-4" />
             </span>
           )}
@@ -201,7 +201,7 @@ export function DsaWorkspace({
           <button
             type="button"
             onClick={handleRandomProblem}
-            className="p-1 rounded hover:bg-[#333] text-[#a1a1aa] hover:text-white transition-colors cursor-pointer"
+            className="p-1 rounded hover:bg-surface-2 text-fg-soft hover:text-fg transition-colors cursor-pointer"
             title="Pick Random Problem"
           >
             <Shuffle className="w-3.5 h-3.5" />
@@ -214,18 +214,18 @@ export function DsaWorkspace({
           <button
             type="button"
             onClick={() => handleExecuteTrigger('run')}
-            className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#333333] hover:bg-[#3d3d3d] text-white text-xs font-medium transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1 rounded bg-surface-2 hover:bg-surface border border-line text-fg text-xs font-medium transition-colors cursor-pointer"
             title="Run solution (Ctrl+Enter)"
           >
             <Play className="w-3.5 h-3.5 fill-current" />
             <span className="hidden xs:inline">Run</span>
           </button>
 
-          {/* Submit Button (Green outline / background matching screenshot) */}
+          {/* Submit Button */}
           <button
             type="button"
             onClick={() => handleExecuteTrigger('submit')}
-            className="flex items-center gap-1.5 px-3.5 py-1 rounded bg-[#2cbb5d] hover:bg-[#27a852] text-white text-xs font-semibold transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 py-1 rounded bg-accent hover:opacity-90 text-accent-ink text-xs font-semibold transition-opacity cursor-pointer"
             title="Submit solution (Ctrl+Shift+Enter)"
           >
             <Send className="w-3.5 h-3.5" />
@@ -235,8 +235,8 @@ export function DsaWorkspace({
 
         {/* Right: Stopwatch, Settings, Avatar, Premium Badge */}
         <div className="flex items-center gap-2 text-xs">
-          {/* Timer / Stopwatch matching screenshot */}
-          <div className="flex items-center gap-1 text-[#a1a1aa]">
+          {/* Timer / Stopwatch */}
+          <div className="flex items-center gap-1 text-fg-soft">
             <button
               type="button"
               onClick={() => {
@@ -247,10 +247,10 @@ export function DsaWorkspace({
                   setIsTimerRunning((r) => !r);
                 }
               }}
-              className="flex items-center gap-1 px-1.5 py-1 rounded hover:bg-[#333] hover:text-white transition-colors cursor-pointer"
+              className="flex items-center gap-1 px-1.5 py-1 rounded hover:bg-surface-2 hover:text-fg transition-colors cursor-pointer"
               title={isTimerRunning ? 'Pause Timer' : 'Start Timer'}
             >
-              <Timer className="w-3.5 h-3.5 text-[#38bdf8]" />
+              <Timer className="w-3.5 h-3.5 text-accent" />
               <span>{isTimerVisible ? formatTimer(seconds) : '0'}</span>
             </button>
 
@@ -262,7 +262,7 @@ export function DsaWorkspace({
                   setIsTimerRunning(false);
                   setIsTimerVisible(false);
                 }}
-                className="p-1 rounded hover:bg-[#333] text-[#71717a] hover:text-white"
+                className="p-1 rounded hover:bg-surface-2 text-fg-muted hover:text-fg"
                 title="Reset Timer"
               >
                 <RotateCcw className="w-3 h-3" />
@@ -270,24 +270,24 @@ export function DsaWorkspace({
             )}
           </div>
 
-          <span className="text-[#3a3a3a] hidden sm:inline">|</span>
+          <span className="text-line hidden sm:inline">|</span>
 
           {/* Settings Icon */}
           <button
             type="button"
-            className="p-1.5 rounded hover:bg-[#333] text-[#a1a1aa] hover:text-white transition-colors"
+            className="p-1.5 rounded hover:bg-surface-2 text-fg-soft hover:text-fg transition-colors"
             title="Settings"
           >
             <Settings className="w-3.5 h-3.5" />
           </button>
 
           {/* User Avatar */}
-          <div className="w-6 h-6 rounded-full bg-[#3b82f6] text-white flex items-center justify-center font-bold text-[10px] ring-1 ring-white/20">
+          <div className="w-6 h-6 rounded-full bg-accent text-accent-ink flex items-center justify-center font-bold text-[10px] ring-1 ring-fg/20">
             U
           </div>
 
           {/* Premium / Pro Gold Badge matching Image 2 */}
-          <span className="hidden md:inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-[#f59e0b]/15 text-[#fbbf24] border border-[#f59e0b]/30">
+          <span className="hidden md:inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-accent-soft text-accent border border-accent-line">
             <Sparkles className="w-3 h-3" />
             <span>Pro</span>
           </span>
@@ -295,15 +295,15 @@ export function DsaWorkspace({
       </header>
 
       {/* Mobile Tab Switcher (< 1024px) */}
-      <div className="lg:hidden flex border-b border-[#2e2e2e] bg-[#222222] text-xs font-medium">
+      <div className="lg:hidden flex border-b border-line bg-surface text-xs font-medium">
         <button
           type="button"
           onClick={() => setMobileTab('problem')}
           className={cn(
             'flex-1 py-2 px-3 flex items-center justify-center gap-1.5 transition-colors border-b-2',
             mobileTab === 'problem'
-              ? 'border-[#38bdf8] text-[#38bdf8] font-semibold bg-[#2a2a2a]'
-              : 'border-transparent text-[#71717a] hover:text-[#d4d4d8]'
+              ? 'border-accent text-accent font-semibold bg-surface-2'
+              : 'border-transparent text-fg-muted hover:text-fg-soft'
           )}
         >
           <BookOpen className="w-3.5 h-3.5" />
@@ -315,8 +315,8 @@ export function DsaWorkspace({
           className={cn(
             'flex-1 py-2 px-3 flex items-center justify-center gap-1.5 transition-colors border-b-2',
             mobileTab === 'code'
-              ? 'border-[#38bdf8] text-[#38bdf8] font-semibold bg-[#2a2a2a]'
-              : 'border-transparent text-[#71717a] hover:text-[#d4d4d8]'
+              ? 'border-accent text-accent font-semibold bg-surface-2'
+              : 'border-transparent text-fg-muted hover:text-fg-soft'
           )}
         >
           <Code2 className="w-3.5 h-3.5" />
@@ -325,11 +325,11 @@ export function DsaWorkspace({
       </div>
 
       {/* Main Split-Screen Workspace (50% Left / 50% Right matching Image 2) */}
-      <div className="flex-1 flex flex-col lg:flex-row w-full overflow-hidden p-2 sm:p-2.5 gap-2 bg-[#1a1a1a]">
+      <div className="flex-1 flex flex-col lg:flex-row w-full overflow-hidden p-2 sm:p-2.5 gap-2 bg-bg">
         {/* Left Column: Problem Panel */}
         <div
           className={cn(
-            'w-full lg:w-1/2 flex flex-col rounded-lg overflow-hidden border border-[#2e2e2e] h-[calc(100vh-4.25rem)]',
+            'w-full lg:w-1/2 flex flex-col rounded-lg overflow-hidden border border-line h-[calc(100dvh-4.25rem)]',
             mobileTab !== 'problem' && 'hidden lg:flex'
           )}
         >
@@ -348,7 +348,7 @@ export function DsaWorkspace({
         {/* Right Column: Code Editor (Top) & Testcase Panel (Bottom) */}
         <div
           className={cn(
-            'w-full lg:w-1/2 flex flex-col gap-2 h-[calc(100vh-4.25rem)] overflow-hidden',
+            'w-full lg:w-1/2 flex flex-col gap-2 h-[calc(100dvh-4.25rem)] overflow-hidden',
             mobileTab !== 'code' && 'hidden lg:flex'
           )}
         >

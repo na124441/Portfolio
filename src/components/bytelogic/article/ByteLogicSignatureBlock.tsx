@@ -24,12 +24,12 @@ export const ByteLogicSignatureBlock: React.FC<ByteLogicSignatureBlockProps> = (
   return (
     <section
       className={cn(
-        'mt-16 sm:mt-24 pt-12 sm:pt-16 pb-12 sm:pb-16 border-t-2 border-[#019AA2]/40 relative',
+        'mt-16 sm:mt-24 pt-12 sm:pt-16 pb-12 sm:pb-16 border-t-2 border-accent/40 relative',
         className
       )}
     >
       {/* Background ambient gradient glow */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#019AA2]/[0.03] via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-accent/[0.03] via-transparent to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-2xl mx-auto text-center space-y-6">
         {/* Monogram / Brand mark */}
@@ -46,7 +46,7 @@ export const ByteLogicSignatureBlock: React.FC<ByteLogicSignatureBlockProps> = (
           </div>
         </div>
 
-        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[4px] bg-[#0E151B] border border-[#1C2830] text-[10px] font-mono tracking-widest text-[#019AA2] uppercase">
+        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-[4px] bg-surface border border-line text-[10px] font-mono tracking-widest text-accent uppercase">
           <Sparkles className="w-3 h-3" />
           <span>EDITORIAL SIGNATURE · {articleCode}</span>
         </div>
@@ -54,10 +54,10 @@ export const ByteLogicSignatureBlock: React.FC<ByteLogicSignatureBlockProps> = (
         {/* Core Statement */}
         <div className="space-y-4 px-4">
           {statementHeading || (
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-[#F3F6F7] leading-snug tracking-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-fg leading-snug tracking-tight">
               Data is not valuable because it is large.
               <br />
-              <span className="text-[#019AA2]">
+              <span className="text-accent">
                 It is valuable because it tells us something we didn&apos;t already know.
               </span>
             </h2>
@@ -66,7 +66,7 @@ export const ByteLogicSignatureBlock: React.FC<ByteLogicSignatureBlockProps> = (
           {statementDescription !== undefined ? (
             statementDescription
           ) : (
-            <p className="text-sm sm:text-base text-[#A8B3BA] font-sans leading-relaxed pt-2 max-w-xl mx-auto">
+            <p className="text-sm sm:text-base text-fg-soft font-sans leading-relaxed pt-2 max-w-xl mx-auto">
               If more data isn&apos;t necessarily more information, how do we find the data that
               actually matters? That question leads directly into our upcoming investigations on
               active learning, uncertainty quantification, and curriculum design.
@@ -78,22 +78,22 @@ export const ByteLogicSignatureBlock: React.FC<ByteLogicSignatureBlockProps> = (
         <div className="pt-6 flex flex-wrap items-center justify-center gap-3 text-xs font-mono">
           <Link
             href="/bytelogic/learn"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] bg-[#019AA2] text-[#05070A] font-semibold hover:bg-[#02b3bc] transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] bg-accent text-bg font-semibold hover:brightness-110 transition-colors"
           >
             <span>Explore All Concept Dossiers</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
           <Link
             href="/bytelogic#archive"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] hover:border-[#019AA2]/40 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] bg-surface border border-line text-fg-soft hover:text-fg hover:border-accent/40 transition-colors"
           >
-            <Compass className="w-3.5 h-3.5 text-[#019AA2]" />
+            <Compass className="w-3.5 h-3.5 text-accent" />
             <span>Research & Editorial Index</span>
           </Link>
         </div>
 
         {/* Editorial Colophon */}
-        <div className="pt-8 border-t border-[#1C2830]/60 flex items-center justify-between text-[11px] font-mono text-[#68747D]">
+        <div className="pt-8 border-t border-line/60 flex items-center justify-between text-[11px] font-mono text-fg-muted">
           <span>REF: {articleRef}</span>
           <span>COMPUTATIONAL EDITORIAL SYSTEM</span>
           <span>CURATED BY BYTELOGIC</span>

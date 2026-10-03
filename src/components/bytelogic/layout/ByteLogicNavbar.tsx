@@ -70,15 +70,15 @@ export const ByteLogicNavbar: React.FC = () => {
         className={cn(
           'fixed top-0 left-0 right-0 z-40 transition-all duration-200 border-b w-full max-w-full',
           isScrolled
-            ? 'bg-[#05070A]/94 backdrop-blur-md border-[#1C2830] py-2 sm:py-2.5 shadow-[0_4px_24px_rgba(0,0,0,0.6)]'
-            : 'bg-[#05070A]/80 backdrop-blur-sm border-transparent py-3 sm:py-4'
+            ? 'bg-bg/94 backdrop-blur-md border-line py-2 sm:py-2.5 shadow-[0_4px_24px_rgba(0,0,0,0.6)]'
+            : 'bg-bg/80 backdrop-blur-sm border-transparent py-3 sm:py-4'
         )}
       >
         <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
           {/* ByteLogic Authoritative Brand Identity */}
           <Link
             href="/bytelogic"
-            className="group flex items-center gap-2 sm:gap-3 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#019AA2] shrink-0"
+            className="group flex items-center gap-2 sm:gap-3 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent shrink-0"
             aria-label="ByteLogic Home"
           >
             {/* Authoritative Logo Image with Responsive Sizing down to 320px */}
@@ -93,7 +93,7 @@ export const ByteLogicNavbar: React.FC = () => {
                 className="h-6 sm:h-7 md:h-8 w-auto object-contain transition-opacity duration-200 group-hover:opacity-90"
               />
             </div>
-            <span className="hidden lg:inline-block font-mono text-[10px] tracking-widest uppercase text-[#68747D] border-l border-[#1C2830] pl-3 py-0.5">
+            <span className="hidden lg:inline-block font-mono text-[10px] tracking-widest uppercase text-fg-muted border-l border-line pl-3 py-0.5">
               PLATFORM V0.1
             </span>
           </Link>
@@ -109,15 +109,15 @@ export const ByteLogicNavbar: React.FC = () => {
                   key={link.label}
                   href={link.href}
                   className={cn(
-                    'font-mono text-xs uppercase tracking-wider transition-colors relative py-1 focus-visible:outline-none focus-visible:text-[#019AA2]',
+                    'font-mono text-xs uppercase tracking-wider transition-colors relative py-1 focus-visible:outline-none focus-visible:text-accent',
                     isActive
-                      ? 'text-[#019AA2] font-semibold'
-                      : 'text-[#A8B3BA] hover:text-[#F3F6F7]'
+                      ? 'text-accent font-semibold'
+                      : 'text-fg-soft hover:text-fg'
                   )}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#019AA2]" />
+                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-accent" />
                   )}
                 </Link>
               );
@@ -129,12 +129,12 @@ export const ByteLogicNavbar: React.FC = () => {
             {/* Search Trigger (⌘K) */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-2 lg:gap-3 px-2.5 lg:px-3 py-1.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2]/50 text-[#A8B3BA] hover:text-[#F3F6F7] transition-all text-xs font-mono cursor-pointer"
+              className="flex items-center gap-2 lg:gap-3 px-2.5 lg:px-3 py-1.5 rounded-[4px] bg-surface border border-line hover:border-accent/50 text-fg-soft hover:text-fg transition-all text-xs font-mono cursor-pointer"
               aria-label="Open search (Press Cmd+K)"
             >
-              <Search className="w-3.5 h-3.5 text-[#019AA2]" />
+              <Search className="w-3.5 h-3.5 text-accent" />
               <span className="text-xs hidden lg:inline">Search...</span>
-              <kbd className="text-[10px] bg-[#131C24] text-[#68747D] px-1.5 py-0.5 rounded border border-[#1C2830]">
+              <kbd className="text-[10px] bg-surface-2 text-fg-muted px-1.5 py-0.5 rounded border border-line">
                 ⌘K
               </kbd>
             </button>
@@ -142,7 +142,7 @@ export const ByteLogicNavbar: React.FC = () => {
             {/* Bridge to Parent Tech Hub */}
             <Link
               href="/"
-              className="flex items-center gap-1 px-2.5 lg:px-3 py-1.5 rounded-[4px] border border-[#1C2830] bg-transparent text-[#68747D] hover:text-[#019AA2] hover:border-[#019AA2]/40 text-xs font-mono transition-colors"
+              className="flex items-center gap-1 px-2.5 lg:px-3 py-1.5 rounded-[4px] border border-line bg-transparent text-fg-muted hover:text-accent hover:border-accent/40 text-xs font-mono transition-colors"
             >
               <span>← Hub</span>
             </Link>
@@ -153,23 +153,23 @@ export const ByteLogicNavbar: React.FC = () => {
             <button
               onClick={() => setSearchOpen(true)}
               aria-label="Open search"
-              className="min-h-[40px] min-w-[40px] flex items-center justify-center p-2 text-[#A8B3BA] hover:text-[#019AA2] rounded-[4px] border border-[#1C2830] bg-[#0E151B] active:bg-[#131C24]"
+              className="min-h-[40px] min-w-[40px] flex items-center justify-center p-2 text-fg-soft hover:text-accent rounded-[4px] border border-line bg-surface active:bg-surface-2"
             >
               <Search className="w-4 h-4" />
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-              className="min-h-[40px] flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-mono text-[#F3F6F7] rounded-[4px] border border-[#1C2830] bg-[#0E151B] hover:border-[#019AA2]/50 active:bg-[#131C24]"
+              className="min-h-[40px] flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 text-xs font-mono text-fg rounded-[4px] border border-line bg-surface hover:border-accent/50 active:bg-surface-2"
             >
               {mobileMenuOpen ? (
                 <>
-                  <X className="w-4 h-4 text-[#019AA2]" />
+                  <X className="w-4 h-4 text-accent" />
                   <span className="text-[11px] font-semibold">CLOSE</span>
                 </>
               ) : (
                 <>
-                  <Menu className="w-4 h-4 text-[#019AA2]" />
+                  <Menu className="w-4 h-4 text-accent" />
                   <span className="text-[11px] font-semibold">MENU</span>
                 </>
               )}
@@ -183,7 +183,7 @@ export const ByteLogicNavbar: React.FC = () => {
             role="dialog"
             aria-modal="true"
             aria-label="Mobile Navigation Menu"
-            className="md:hidden bg-[#05070A]/98 backdrop-blur-xl border-b border-[#1C2830] px-4 py-5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200 max-h-[calc(100dvh-60px)] overflow-y-auto bl-scrollbar shadow-2xl"
+            className="md:hidden bg-bg/98 backdrop-blur-xl border-b border-line px-4 py-5 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200 max-h-[calc(100dvh-60px)] overflow-y-auto bl-scrollbar shadow-2xl"
           >
             {/* Quick Search inside Drawer */}
             <button
@@ -191,13 +191,13 @@ export const ByteLogicNavbar: React.FC = () => {
                 setMobileMenuOpen(false);
                 setSearchOpen(true);
               }}
-              className="w-full min-h-[44px] flex items-center justify-between px-3.5 py-2.5 rounded-[4px] bg-[#0E151B] border border-[#1C2830] text-xs font-mono text-[#A8B3BA] active:border-[#019AA2]"
+              className="w-full min-h-[44px] flex items-center justify-between px-3.5 py-2.5 rounded-[4px] bg-surface border border-line text-xs font-mono text-fg-soft active:border-accent"
             >
               <div className="flex items-center gap-2">
-                <Search className="w-4 h-4 text-[#019AA2]" />
+                <Search className="w-4 h-4 text-accent" />
                 <span className="text-xs">Search all concepts...</span>
               </div>
-              <span className="text-[10px] text-[#019AA2] font-semibold px-1.5 py-0.5 rounded bg-[#019AA2]/10 border border-[#019AA2]/20">
+              <span className="text-[10px] text-accent font-semibold px-1.5 py-0.5 rounded bg-accent/10 border border-accent/20">
                 TAP
               </span>
             </button>
@@ -209,37 +209,37 @@ export const ByteLogicNavbar: React.FC = () => {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="min-h-[44px] flex items-center justify-between font-mono text-sm uppercase tracking-wider text-[#F3F6F7] hover:text-[#019AA2] p-3 rounded-[4px] hover:bg-[#0E151B] active:bg-[#131C24] transition-colors border-b border-[#1C2830]/40"
+                  className="min-h-[44px] flex items-center justify-between font-mono text-sm uppercase tracking-wider text-fg hover:text-accent p-3 rounded-[4px] hover:bg-surface active:bg-surface-2 transition-colors border-b border-line/40"
                 >
                   <div className="flex items-center gap-2.5">
-                    <span className="text-[#019AA2] text-xs font-semibold">0{idx + 1} /</span>
+                    <span className="text-accent text-xs font-semibold">0{idx + 1} /</span>
                     <span className="text-sm font-medium">{link.label}</span>
                   </div>
-                  <span className="text-xs text-[#68747D]">→</span>
+                  <span className="text-xs text-fg-muted">→</span>
                 </Link>
               ))}
             </div>
 
             {/* Quick Actions in Mobile Drawer */}
-            <div className="pt-2 border-t border-[#1C2830] flex flex-col gap-2.5">
+            <div className="pt-2 border-t border-line flex flex-col gap-2.5">
               <Link
                 href="/bytelogic/concepts/k-means"
                 onClick={() => setMobileMenuOpen(false)}
-                className="min-h-[44px] flex items-center justify-between p-3 rounded-[4px] bg-[#0E151B] border border-[#019AA2]/40 text-xs font-mono text-[#F3F6F7] active:border-[#019AA2]"
+                className="min-h-[44px] flex items-center justify-between p-3 rounded-[4px] bg-surface border border-accent/40 text-xs font-mono text-fg active:border-accent"
               >
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-3.5 h-3.5 text-[#019AA2]" />
+                  <Sparkles className="w-3.5 h-3.5 text-accent" />
                   <span className="font-sans font-medium">Featured: K-Means Clustering</span>
                 </div>
-                <span className="text-[#019AA2] font-semibold">Explore →</span>
+                <span className="text-accent font-semibold">Explore →</span>
               </Link>
 
               <div className="flex items-center justify-between text-xs font-mono pt-1">
-                <span className="text-[#68747D]">Return to base:</span>
+                <span className="text-fg-muted">Return to base:</span>
                 <Link
                   href="/"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="min-h-[36px] flex items-center gap-1 text-[#A8B3BA] hover:text-[#019AA2] py-1 px-2 rounded hover:bg-[#0E151B]"
+                  className="min-h-[36px] flex items-center gap-1 text-fg-soft hover:text-accent py-1 px-2 rounded hover:bg-surface"
                 >
                   <span>← Tech Hub</span>
                 </Link>

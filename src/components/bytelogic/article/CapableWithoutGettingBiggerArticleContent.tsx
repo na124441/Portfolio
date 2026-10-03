@@ -20,20 +20,20 @@ import {
 
 export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
   return (
-    <div className="space-y-12 sm:space-y-16 text-base sm:text-lg leading-relaxed text-[#A8B3BA] font-sans">
+    <div className="space-y-12 sm:space-y-16 text-base sm:text-lg leading-relaxed text-fg-soft font-sans">
       {/* ------------------------------------------------------------------- */}
       {/* Introduction */}
       {/* ------------------------------------------------------------------- */}
       <section id="introduction" className="space-y-6 pt-4">
-        <p className="text-lg sm:text-xl font-sans text-[#F3F6F7] leading-relaxed">
-          An AI model with <span className="text-[#019AA2] font-semibold">3 billion parameters</span> today can
+        <p className="text-lg sm:text-xl font-sans text-fg leading-relaxed">
+          An AI model with <span className="text-accent font-semibold">3 billion parameters</span> today can
           sometimes perform tasks that required a much larger model just a few years ago. Models are
           becoming more efficient, more accurate, and increasingly capable of running on consumer hardware.
         </p>
 
         <p>But this raises an interesting question:</p>
 
-        <blockquote className="my-4 pl-4 border-l-2 border-[#019AA2] text-[#F3F6F7] italic bg-[#0E151B]/60 py-3 pr-4 rounded-r-[4px] text-base sm:text-lg">
+        <blockquote className="my-4 pl-4 border-l-2 border-accent text-fg italic bg-surface/60 py-3 pr-4 rounded-r-[4px] text-base sm:text-lg">
           If bigger models have more parameters and more computational power, how can smaller models keep getting
           better without growing in size?
         </blockquote>
@@ -58,39 +58,39 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 01 // The Biggest Misconception */}
       {/* ------------------------------------------------------------------- */}
-      <section id="the-biggest-misconception" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+      <section id="the-biggest-misconception" className="space-y-6 pt-6 border-t border-line/60">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-1.5 h-1.5 bg-accent" />
           <span>SECTION 01 // CAPACITY VS INTELLIGENCE</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           1. The Biggest Misconception: More Parameters Means More Intelligence
         </h2>
 
         <p>Imagine two students preparing for an examination.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2">
-            <div className="text-xs font-mono text-[#68747D] uppercase tracking-wider">Student A</div>
-            <div className="text-sm font-semibold text-[#F3F6F7]">10,000 Pages Read</div>
-            <p className="text-xs text-[#A8B3BA] leading-relaxed">
+          <div className="p-4 rounded-[6px] bg-surface border border-line space-y-2">
+            <div className="text-xs font-mono text-fg-muted uppercase tracking-wider">Student A</div>
+            <div className="text-sm font-semibold text-fg">10,000 Pages Read</div>
+            <p className="text-xs text-fg-soft leading-relaxed">
               Reads 10,000 pages but remembers very little and struggles to apply what they have learned to
               unseen problems.
             </p>
           </div>
 
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#019AA2]/40 bg-gradient-to-br from-[#019AA2]/[0.05] to-transparent space-y-2">
-            <div className="text-xs font-mono text-[#019AA2] uppercase tracking-wider">Student B</div>
-            <div className="text-sm font-semibold text-[#F3F6F7]">2,000 Pages Mastered</div>
-            <p className="text-xs text-[#A8B3BA] leading-relaxed">
+          <div className="p-4 rounded-[6px] bg-surface border border-accent/40 bg-gradient-to-br from-accent/[0.05] to-transparent space-y-2">
+            <div className="text-xs font-mono text-accent uppercase tracking-wider">Student B</div>
+            <div className="text-sm font-semibold text-fg">2,000 Pages Mastered</div>
+            <p className="text-xs text-fg-soft leading-relaxed">
               Studies 2,000 pages, understands the underlying concepts, recognizes structural patterns, and
               effortlessly solves unfamiliar problems.
             </p>
           </div>
         </div>
 
-        <p className="text-[#F3F6F7] font-medium">Who performs better?</p>
+        <p className="text-fg font-medium">Who performs better?</p>
 
         <p>
           The number of pages studied does not directly determine how well either student performs. What matters is
@@ -134,14 +134,14 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           learn better representations or solve a particular task more accurately.
         </p>
 
-        <div className="my-6 rounded-[6px] bg-[#0E151B] border border-[#1C2830] overflow-hidden bl-tick-box">
-          <div className="p-3 bg-[#0A0F14] border-b border-[#1C2830] text-xs font-mono text-[#019AA2] font-semibold">
+        <div className="my-6 rounded-[6px] bg-surface border border-line overflow-hidden bl-tick-box">
+          <div className="p-3 bg-bg-2 border-b border-line text-xs font-mono text-accent font-semibold">
             TABLE 01 // IDENTICAL PARAMETER BUDGET WITH DIVERGENT UTILITY
           </div>
           <div className="overflow-x-auto p-4">
-            <table className="w-full text-left font-mono text-xs text-[#A8B3BA]">
+            <table className="w-full text-left font-mono text-xs text-fg-soft">
               <thead>
-                <tr className="border-b border-[#1C2830] text-[#F3F6F7]">
+                <tr className="border-b border-line text-fg">
                   <th className="pb-2.5">PROPERTY</th>
                   <th className="pb-2.5">MODEL A</th>
                   <th className="pb-2.5">MODEL B</th>
@@ -149,24 +149,24 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-[#1C2830]/60">
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7] font-semibold">Parameters</td>
+                  <td className="py-2.5 text-fg font-semibold">Parameters</td>
                   <td className="py-2.5">7 Billion</td>
-                  <td className="py-2.5 text-[#019AA2]">7 Billion</td>
+                  <td className="py-2.5 text-accent">7 Billion</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7] font-semibold">Training Data</td>
+                  <td className="py-2.5 text-fg font-semibold">Training Data</td>
                   <td className="py-2.5">Limited and repetitive</td>
-                  <td className="py-2.5 text-[#F3F6F7]">Diverse and high-quality</td>
+                  <td className="py-2.5 text-fg">Diverse and high-quality</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7] font-semibold">Training Process</td>
+                  <td className="py-2.5 text-fg font-semibold">Training Process</td>
                   <td className="py-2.5">Basic next-token prediction</td>
-                  <td className="py-2.5 text-[#F3F6F7]">Improved training and post-training</td>
+                  <td className="py-2.5 text-fg">Improved training and post-training</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7] font-semibold">Task Performance</td>
-                  <td className="py-2.5 text-[#68747D]">Moderate</td>
-                  <td className="py-2.5 text-[#019AA2] font-semibold">Potentially much higher</td>
+                  <td className="py-2.5 text-fg font-semibold">Task Performance</td>
+                  <td className="py-2.5 text-fg-muted">Moderate</td>
+                  <td className="py-2.5 text-accent font-semibold">Potentially much higher</td>
                 </tr>
               </tbody>
             </table>
@@ -179,8 +179,8 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           parameters were optimized, and how it was trained to use that knowledge.
         </p>
 
-        <div className="p-4 rounded-[6px] border border-[#019AA2]/30 bg-[#019AA2]/[0.06] text-[#F3F6F7] text-sm">
-          <strong className="text-[#019AA2] font-mono">FIRST PRINCIPLE:</strong> Model size determines part of what a
+        <div className="p-4 rounded-[6px] border border-accent/30 bg-accent/[0.06] text-fg text-sm">
+          <strong className="text-accent font-mono">FIRST PRINCIPLE:</strong> Model size determines part of what a
           model can represent. It does not determine everything the model will learn or how well it will perform.
         </div>
       </section>
@@ -188,13 +188,13 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 02 // Better Training Data */}
       {/* ------------------------------------------------------------------- */}
-      <section id="better-training-data" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+      <section id="better-training-data" className="space-y-6 pt-6 border-t border-line/60">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-1.5 h-1.5 bg-accent" />
           <span>SECTION 02 // DATA CURATION DYNAMICS</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           2. Better Training Data: Learning More from Every Example
         </h2>
 
@@ -210,7 +210,7 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
         </p>
 
         <p>
-          But there is a limitation. <strong className="text-[#F3F6F7]">More data is not automatically better data.</strong>
+          But there is a limitation. <strong className="text-fg">More data is not automatically better data.</strong>
         </p>
 
         <p>
@@ -219,11 +219,11 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           range of subjects and reasoning patterns.
         </p>
 
-        <p className="text-[#F3F6F7]">
+        <p className="text-fg">
           The second model may learn more useful representations, despite receiving fewer examples.
         </p>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           2.1 Data Quality Changes What the Model Learns
         </h3>
 
@@ -231,8 +231,8 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           During training, a language model attempts to predict the next token in a sequence. For example:
         </p>
 
-        <div className="p-3.5 sm:p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] font-mono text-center text-sm sm:text-base text-[#F3F6F7]">
-          The capital of France is <strong className="text-[#019AA2]">Paris</strong>
+        <div className="p-3.5 sm:p-4 rounded-[6px] bg-surface border border-line font-mono text-center text-sm sm:text-base text-fg">
+          The capital of France is <strong className="text-accent">Paris</strong>
         </div>
 
         <p>
@@ -251,25 +251,25 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-4">
-          <div className="p-3.5 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="text-xs font-mono text-[#019AA2] font-semibold mb-1">DEDUPLICATION</div>
-            <p className="text-xs text-[#A8B3BA]">Removing repeated or near-identical examples to prevent wasted parameter capacity.</p>
+          <div className="p-3.5 rounded-[6px] bg-surface border border-line">
+            <div className="text-xs font-mono text-accent font-semibold mb-1">DEDUPLICATION</div>
+            <p className="text-xs text-fg-soft">Removing repeated or near-identical examples to prevent wasted parameter capacity.</p>
           </div>
-          <div className="p-3.5 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="text-xs font-mono text-[#019AA2] font-semibold mb-1">DATA FILTERING</div>
-            <p className="text-xs text-[#A8B3BA]">Eliminating machine-generated spam, low-entropy noise, and factual incoherence.</p>
+          <div className="p-3.5 rounded-[6px] bg-surface border border-line">
+            <div className="text-xs font-mono text-accent font-semibold mb-1">DATA FILTERING</div>
+            <p className="text-xs text-fg-soft">Eliminating machine-generated spam, low-entropy noise, and factual incoherence.</p>
           </div>
-          <div className="p-3.5 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="text-xs font-mono text-[#019AA2] font-semibold mb-1">DATA CURATION</div>
-            <p className="text-xs text-[#A8B3BA]">Selecting dense demonstrations covering rigorous concepts and transferable skills.</p>
+          <div className="p-3.5 rounded-[6px] bg-surface border border-line">
+            <div className="text-xs font-mono text-accent font-semibold mb-1">DATA CURATION</div>
+            <p className="text-xs text-fg-soft">Selecting dense demonstrations covering rigorous concepts and transferable skills.</p>
           </div>
-          <div className="p-3.5 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="text-xs font-mono text-[#019AA2] font-semibold mb-1">DATA BALANCING</div>
-            <p className="text-xs text-[#A8B3BA]">Preventing hyper-representation of narrow domains at the expense of general reasoning.</p>
+          <div className="p-3.5 rounded-[6px] bg-surface border border-line">
+            <div className="text-xs font-mono text-accent font-semibold mb-1">DATA BALANCING</div>
+            <p className="text-xs text-fg-soft">Preventing hyper-representation of narrow domains at the expense of general reasoning.</p>
           </div>
-          <div className="p-3.5 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="text-xs font-mono text-[#019AA2] font-semibold mb-1">CONTAMINATION CONTROL</div>
-            <p className="text-xs text-[#A8B3BA]">Strictly scrubbing evaluation benchmarks to guarantee true out-of-sample generalization.</p>
+          <div className="p-3.5 rounded-[6px] bg-surface border border-line">
+            <div className="text-xs font-mono text-accent font-semibold mb-1">CONTAMINATION CONTROL</div>
+            <p className="text-xs text-fg-soft">Strictly scrubbing evaluation benchmarks to guarantee true out-of-sample generalization.</p>
           </div>
         </div>
 
@@ -278,7 +278,7 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           signal supplied to the model.
         </p>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           2.2 Why This Matters Mathematically
         </h3>
 
@@ -309,7 +309,7 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           performance. The data must also represent the tasks and distributions on which the model will be evaluated.
         </p>
 
-        <p className="text-[#F3F6F7]">
+        <p className="text-fg">
           The goal is not simply to feed a model more data. It is to give it better opportunities to learn.
         </p>
       </section>
@@ -317,13 +317,13 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 03 // Training Efficiency */}
       {/* ------------------------------------------------------------------- */}
-      <section id="training-efficiency" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+      <section id="training-efficiency" className="space-y-6 pt-6 border-t border-line/60">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-1.5 h-1.5 bg-accent" />
           <span>SECTION 03 // OPTIMIZATION TRAJECTORIES</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           3. Training Efficiency: Getting More Intelligence from the Same Model
         </h2>
 
@@ -338,7 +338,7 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           trained.
         </p>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           3.1 The Role of Gradient Descent
         </h3>
 
@@ -371,19 +371,19 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           results.
         </p>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           3.2 Training Recipes Matter
         </h3>
 
         <p>Imagine training two identical Transformer models with the same parameter count:</p>
 
-        <ul className="space-y-2 pl-4 border-l border-[#1C2830] text-sm">
+        <ul className="space-y-2 pl-4 border-l border-line text-sm">
           <li>
-            <strong className="text-[#F3F6F7]">Model 1:</strong> Trained using a poorly tuned learning rate, an
+            <strong className="text-fg">Model 1:</strong> Trained using a poorly tuned learning rate, an
             unsuitable data mixture, and an insufficient training budget.
           </li>
           <li>
-            <strong className="text-[#019AA2]">Model 2:</strong> Uses a carefully tuned learning-rate schedule,
+            <strong className="text-accent">Model 2:</strong> Uses a carefully tuned learning-rate schedule,
             appropriate data selection, stable optimization, and a well-designed training objective.
           </li>
         </ul>
@@ -400,13 +400,13 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 04 // Knowledge Distillation */}
       {/* ------------------------------------------------------------------- */}
-      <section id="knowledge-distillation" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+      <section id="knowledge-distillation" className="space-y-6 pt-6 border-t border-line/60">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-1.5 h-1.5 bg-accent" />
           <span>SECTION 04 // BEHAVIOR TRANSFER</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           4. Knowledge Distillation: Teaching a Small Model from a Larger One
         </h2>
 
@@ -418,45 +418,45 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
         <p>That is the idea behind knowledge distillation.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <span className="text-xs font-mono text-[#68747D] uppercase">Teacher Network</span>
-            <h4 className="text-base font-semibold text-[#F3F6F7] mt-1">Massive Foundation Model</h4>
-            <p className="text-xs text-[#A8B3BA] mt-2">
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <span className="text-xs font-mono text-fg-muted uppercase">Teacher Network</span>
+            <h4 className="text-base font-semibold text-fg mt-1">Massive Foundation Model</h4>
+            <p className="text-xs text-fg-soft mt-2">
               Deep, broad representational capacity that outputs rich probability distributions and detailed
               step-by-step rationales.
             </p>
           </div>
 
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#019AA2]/40 bg-[#019AA2]/[0.04]">
-            <span className="text-xs font-mono text-[#019AA2] uppercase">Student Network</span>
-            <h4 className="text-base font-semibold text-[#F3F6F7] mt-1">Compact Specialist Model</h4>
-            <p className="text-xs text-[#A8B3BA] mt-2">
+          <div className="p-4 rounded-[6px] bg-surface border border-accent/40 bg-accent/[0.04]">
+            <span className="text-xs font-mono text-accent uppercase">Student Network</span>
+            <h4 className="text-base font-semibold text-fg mt-1">Compact Specialist Model</h4>
+            <p className="text-xs text-fg-soft mt-2">
               Trained to mimic the teacher&apos;s soft logits, probability distributions, and reasoning traces
               without carrying its parameter footprint.
             </p>
           </div>
         </div>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           4.1 Learning from Probability Distributions
         </h3>
 
         <p>Suppose a teacher model predicts the next word in this sentence:</p>
 
-        <div className="p-3 rounded-[6px] bg-[#0E151B] border border-[#1C2830] font-mono text-sm text-center text-[#F3F6F7]">
+        <div className="p-3 rounded-[6px] bg-surface border border-line font-mono text-sm text-center text-fg">
           The animal sat on the ___
         </div>
 
         <p>The teacher might assign probabilities like these:</p>
 
-        <div className="my-6 rounded-[6px] bg-[#0E151B] border border-[#1C2830] overflow-hidden bl-tick-box">
-          <div className="p-3 bg-[#0A0F14] border-b border-[#1C2830] text-xs font-mono text-[#019AA2] font-semibold">
+        <div className="my-6 rounded-[6px] bg-surface border border-line overflow-hidden bl-tick-box">
+          <div className="p-3 bg-bg-2 border-b border-line text-xs font-mono text-accent font-semibold">
             TABLE 02 // TEACHER PREDICTION DISTRIBUTION (&ldquo;DARK KNOWLEDGE&rdquo;)
           </div>
           <div className="overflow-x-auto p-4">
-            <table className="w-full text-left font-mono text-xs text-[#A8B3BA]">
+            <table className="w-full text-left font-mono text-xs text-fg-soft">
               <thead>
-                <tr className="border-b border-[#1C2830] text-[#F3F6F7]">
+                <tr className="border-b border-line text-fg">
                   <th className="pb-2">CANDIDATE TOKEN</th>
                   <th className="pb-2">TEACHER PROBABILITY</th>
                   <th className="pb-2">SEMANTIC IMPLICATION</th>
@@ -464,29 +464,29 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-[#1C2830]/60">
                 <tr>
-                  <td className="py-2 text-[#019AA2] font-semibold">mat</td>
-                  <td className="py-2 text-[#F3F6F7]">0.60</td>
-                  <td className="py-2 text-[#68747D]">Primary target</td>
+                  <td className="py-2 text-accent font-semibold">mat</td>
+                  <td className="py-2 text-fg">0.60</td>
+                  <td className="py-2 text-fg-muted">Primary target</td>
                 </tr>
                 <tr>
-                  <td className="py-2 text-[#F3F6F7]">floor</td>
-                  <td className="py-2 text-[#F3F6F7]">0.20</td>
-                  <td className="py-2 text-[#68747D]">High semantic plausibility</td>
+                  <td className="py-2 text-fg">floor</td>
+                  <td className="py-2 text-fg">0.20</td>
+                  <td className="py-2 text-fg-muted">High semantic plausibility</td>
                 </tr>
                 <tr>
-                  <td className="py-2 text-[#F3F6F7]">chair</td>
-                  <td className="py-2 text-[#F3F6F7]">0.12</td>
-                  <td className="py-2 text-[#68747D]">Moderate semantic plausibility</td>
+                  <td className="py-2 text-fg">chair</td>
+                  <td className="py-2 text-fg">0.12</td>
+                  <td className="py-2 text-fg-muted">Moderate semantic plausibility</td>
                 </tr>
                 <tr>
-                  <td className="py-2 text-[#F3F6F7]">roof</td>
-                  <td className="py-2 text-[#F3F6F7]">0.03</td>
-                  <td className="py-2 text-[#68747D]">Unlikely physical context</td>
+                  <td className="py-2 text-fg">roof</td>
+                  <td className="py-2 text-fg">0.03</td>
+                  <td className="py-2 text-fg-muted">Unlikely physical context</td>
                 </tr>
                 <tr>
-                  <td className="py-2 text-[#68747D]">Other tokens</td>
-                  <td className="py-2 text-[#F3F6F7]">0.05</td>
-                  <td className="py-2 text-[#68747D]">Residual probability mass</td>
+                  <td className="py-2 text-fg-muted">Other tokens</td>
+                  <td className="py-2 text-fg">0.05</td>
+                  <td className="py-2 text-fg-muted">Residual probability mass</td>
                 </tr>
               </tbody>
             </table>
@@ -528,7 +528,7 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           ]}
         />
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           4.2 Does a Small Model Become as Intelligent as Its Teacher?
         </h3>
 
@@ -544,9 +544,9 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           instructions far more effectively than a model trained from scratch on raw code tokens.
         </p>
 
-        <div className="p-4 rounded-[6px] bg-[#0E151B] border-l-2 border-[#019AA2] text-sm">
-          <p className="text-[#F3F6F7] font-medium">Distillation transfers behavior, not complete capacity.</p>
-          <p className="text-xs text-[#A8B3BA] mt-1">
+        <div className="p-4 rounded-[6px] bg-surface border-l-2 border-accent text-sm">
+          <p className="text-fg font-medium">Distillation transfers behavior, not complete capacity.</p>
+          <p className="text-xs text-fg-soft mt-1">
             A smaller model can inherit valuable capabilities from a larger model, but it cannot automatically inherit
             the teacher&apos;s underlying generalized hypothesis space.
           </p>
@@ -556,13 +556,13 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 05 // Better Architectures */}
       {/* ------------------------------------------------------------------- */}
-      <section id="better-architectures" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+      <section id="better-architectures" className="space-y-6 pt-6 border-t border-line/60">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-1.5 h-1.5 bg-accent" />
           <span>SECTION 05 // STRUCTURAL COMPUTATION</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           5. Better Architectures: Doing More with the Same Number of Parameters
         </h2>
 
@@ -577,7 +577,7 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           also make a model more effective.
         </p>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           5.1 The Transformer Revolution
         </h3>
 
@@ -586,8 +586,8 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           context from all other tokens in a sequence:
         </p>
 
-        <div className="p-3 rounded-[6px] bg-[#0E151B] border border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
-          &ldquo;The robot picked up the battery because <strong className="text-[#019AA2]">it</strong> was discharged.&rdquo;
+        <div className="p-3 rounded-[6px] bg-surface border border-line font-mono text-sm text-fg">
+          &ldquo;The robot picked up the battery because <strong className="text-accent">it</strong> was discharged.&rdquo;
         </div>
 
         <p>
@@ -613,7 +613,7 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           embeddings (RoPE), and SwiGLU feed-forward networks to extract more capability per parameter.
         </p>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           5.2 Mixture of Experts: More Total Parameters, Less Computation per Token
         </h3>
 
@@ -636,19 +636,19 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
         />
 
         <p>
-          An illustrative MoE model could have <strong className="text-[#F3F6F7]">100 billion total parameters</strong>,
-          yet activate only <strong className="text-[#019AA2]">10 billion parameters</strong> for any given token forward
+          An illustrative MoE model could have <strong className="text-fg">100 billion total parameters</strong>,
+          yet activate only <strong className="text-accent">10 billion parameters</strong> for any given token forward
           pass.
         </p>
 
-        <div className="my-6 rounded-[6px] bg-[#0E151B] border border-[#1C2830] overflow-hidden bl-tick-box">
-          <div className="p-3 bg-[#0A0F14] border-b border-[#1C2830] text-xs font-mono text-[#019AA2] font-semibold">
+        <div className="my-6 rounded-[6px] bg-surface border border-line overflow-hidden bl-tick-box">
+          <div className="p-3 bg-bg-2 border-b border-line text-xs font-mono text-accent font-semibold">
             TABLE 03 // METRIC DISSECTION: WHAT &ldquo;SIZE&rdquo; REALLY MEASURES
           </div>
           <div className="overflow-x-auto p-4">
-            <table className="w-full text-left font-mono text-xs text-[#A8B3BA]">
+            <table className="w-full text-left font-mono text-xs text-fg-soft">
               <thead>
-                <tr className="border-b border-[#1C2830] text-[#F3F6F7]">
+                <tr className="border-b border-line text-fg">
                   <th className="pb-2">MEASUREMENT</th>
                   <th className="pb-2">SYSTEM MEANING</th>
                   <th className="pb-2">DEPLOYMENT IMPACT</th>
@@ -656,24 +656,24 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-[#1C2830]/60">
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7] font-semibold">Total Parameters</td>
+                  <td className="py-2.5 text-fg font-semibold">Total Parameters</td>
                   <td className="py-2.5">Overall parameter capacity</td>
-                  <td className="py-2.5 text-[#68747D]">Determines disk storage & VRAM footprint</td>
+                  <td className="py-2.5 text-fg-muted">Determines disk storage & VRAM footprint</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#019AA2] font-semibold">Active Parameters</td>
+                  <td className="py-2.5 text-accent font-semibold">Active Parameters</td>
                   <td className="py-2.5">Parameters in a given forward pass</td>
-                  <td className="py-2.5 text-[#F3F6F7]">Determines execution latency</td>
+                  <td className="py-2.5 text-fg">Determines execution latency</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7] font-semibold">FLOPs per Token</td>
+                  <td className="py-2.5 text-fg font-semibold">FLOPs per Token</td>
                   <td className="py-2.5">Computational work per token</td>
-                  <td className="py-2.5 text-[#68747D]">Determines energy consumption and silicon load</td>
+                  <td className="py-2.5 text-fg-muted">Determines energy consumption and silicon load</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7] font-semibold">Memory Footprint</td>
+                  <td className="py-2.5 text-fg font-semibold">Memory Footprint</td>
                   <td className="py-2.5">Weights + KV cache + runtime buffers</td>
-                  <td className="py-2.5 text-[#68747D]">Hardware compatibility barrier</td>
+                  <td className="py-2.5 text-fg-muted">Hardware compatibility barrier</td>
                 </tr>
               </tbody>
             </table>
@@ -688,13 +688,13 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 06 // Quantization */}
       {/* ------------------------------------------------------------------- */}
-      <section id="quantization" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+      <section id="quantization" className="space-y-6 pt-6 border-t border-line/60">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-1.5 h-1.5 bg-accent" />
           <span>SECTION 06 // NUMERICAL PRECISION</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           6. Quantization: Making the Same Model Smaller in Memory
         </h2>
 
@@ -705,33 +705,33 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
 
         <p>That is the goal of quantization.</p>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           6.1 Why Precision Matters
         </h3>
 
         <p>Consider a model containing 7 billion parameters:</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4 font-mono text-xs">
-          <div className="p-3.5 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="text-[#68747D] uppercase">FP32 (32-bit Float)</div>
-            <div className="text-lg font-bold text-[#F3F6F7] my-1">~28 GB</div>
-            <p className="text-[#A8B3BA]">7 × 10⁹ × 4 bytes</p>
+          <div className="p-3.5 rounded-[6px] bg-surface border border-line">
+            <div className="text-fg-muted uppercase">FP32 (32-bit Float)</div>
+            <div className="text-lg font-bold text-fg my-1">~28 GB</div>
+            <p className="text-fg-soft">7 × 10⁹ × 4 bytes</p>
           </div>
 
-          <div className="p-3.5 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="text-[#68747D] uppercase">FP16 / BF16 (16-bit)</div>
-            <div className="text-lg font-bold text-[#F3F6F7] my-1">~14 GB</div>
-            <p className="text-[#A8B3BA]">7 × 10⁹ × 2 bytes</p>
+          <div className="p-3.5 rounded-[6px] bg-surface border border-line">
+            <div className="text-fg-muted uppercase">FP16 / BF16 (16-bit)</div>
+            <div className="text-lg font-bold text-fg my-1">~14 GB</div>
+            <p className="text-fg-soft">7 × 10⁹ × 2 bytes</p>
           </div>
 
-          <div className="p-3.5 rounded-[6px] bg-[#0E151B] border border-[#019AA2]/50 bg-[#019AA2]/[0.05]">
-            <div className="text-[#019AA2] uppercase font-semibold">INT4 (4-bit Integer)</div>
-            <div className="text-lg font-bold text-[#019AA2] my-1">~3.5 GB</div>
-            <p className="text-[#A8B3BA]">7 × 10⁹ × 0.5 bytes</p>
+          <div className="p-3.5 rounded-[6px] bg-surface border border-accent/50 bg-accent/[0.05]">
+            <div className="text-accent uppercase font-semibold">INT4 (4-bit Integer)</div>
+            <div className="text-lg font-bold text-accent my-1">~3.5 GB</div>
+            <p className="text-fg-soft">7 × 10⁹ × 0.5 bytes</p>
           </div>
         </div>
 
-        <p className="text-xs text-[#68747D]">
+        <p className="text-xs text-fg-muted">
           *Note: These are idealized weight-storage estimates using decimal gigabytes. Actual runtime memory is higher
           because of quantization metadata, activation buffers, the KV cache, and runtime overhead.
         </p>
@@ -742,7 +742,7 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           represented.
         </p>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           6.2 How Lower Precision Preserves Useful Behavior
         </h3>
 
@@ -777,13 +777,13 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 07 // Better Post-Training */}
       {/* ------------------------------------------------------------------- */}
-      <section id="better-post-training" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+      <section id="better-post-training" className="space-y-6 pt-6 border-t border-line/60">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-1.5 h-1.5 bg-accent" />
           <span>SECTION 07 // BEHAVIORAL ALIGNMENT</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           7. Better Post-Training: Turning a Language Model into a Useful Assistant
         </h2>
 
@@ -798,13 +798,13 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           optimization (DPO, RLHF), and verifiable reward training.
         </p>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           7.1 Supervised Fine-Tuning (SFT)
         </h3>
 
         <p>Suppose a pretrained model is given this prompt:</p>
 
-        <div className="p-3 rounded-[6px] bg-[#0E151B] border border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
+        <div className="p-3 rounded-[6px] bg-surface border border-line font-mono text-sm text-fg">
           Explain binary search in C++ with an example.
         </div>
 
@@ -830,7 +830,7 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           substantially because its weights are aligned with human intent.
         </p>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           7.2 Preference Optimization and Reinforcement Learning
         </h3>
 
@@ -844,13 +844,13 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 08 // Test-Time Compute */}
       {/* ------------------------------------------------------------------- */}
-      <section id="test-time-compute" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+      <section id="test-time-compute" className="space-y-6 pt-6 border-t border-line/60">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-1.5 h-1.5 bg-accent" />
           <span>SECTION 08 // DYNAMIC INFERENCE COMPUTE</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           8. Test-Time Compute: What If the Model Thinks for Longer?
         </h2>
 
@@ -860,14 +860,14 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
         </p>
 
         <p>
-          Under the paradigm of <strong className="text-[#019AA2]">test-time compute</strong>, a model can generate
+          Under the paradigm of <strong className="text-accent">test-time compute</strong>, a model can generate
           intermediate reasoning tokens, explore alternative search paths, use tools, or verify candidate answers
           before returning a final answer.
         </p>
 
-        <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2">
-          <div className="text-xs font-mono text-[#019AA2] font-semibold">TEST-TIME INFERENCE VERIFICATION CYCLE</div>
-          <ol className="list-decimal list-inside space-y-1 text-sm text-[#A8B3BA] font-sans">
+        <div className="p-4 rounded-[6px] bg-surface border border-line space-y-2">
+          <div className="text-xs font-mono text-accent font-semibold">TEST-TIME INFERENCE VERIFICATION CYCLE</div>
+          <ol className="list-decimal list-inside space-y-1 text-sm text-fg-soft font-sans">
             <li>Break the complex task into decomposed intermediate steps.</li>
             <li>Generate candidate reasoning paths and draft solutions.</li>
             <li>Check calculations and verify intermediate constraints.</li>
@@ -878,34 +878,34 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
 
         <p>The parameter count does not change. The system is simply allowed to spend more compute on the problem.</p>
 
-        <h3 className="text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <h3 className="text-xl font-display font-semibold text-fg pt-2">
           8.1 More Inference Compute Is Not Always Better
         </h3>
 
-        <div className="my-6 rounded-[6px] bg-[#0E151B] border border-[#1C2830] overflow-hidden bl-tick-box">
-          <div className="p-3 bg-[#0A0F14] border-b border-[#1C2830] text-xs font-mono text-[#019AA2] font-semibold">
+        <div className="my-6 rounded-[6px] bg-surface border border-line overflow-hidden bl-tick-box">
+          <div className="p-3 bg-bg-2 border-b border-line text-xs font-mono text-accent font-semibold">
             TABLE 04 // THE TRADEOFF MATRIX OF TEST-TIME COMPUTE
           </div>
           <div className="overflow-x-auto p-4">
-            <table className="w-full text-left font-mono text-xs text-[#A8B3BA]">
+            <table className="w-full text-left font-mono text-xs text-fg-soft">
               <thead>
-                <tr className="border-b border-[#1C2830] text-[#F3F6F7]">
+                <tr className="border-b border-line text-fg">
                   <th className="pb-2">MORE TEST-TIME COMPUTE INCREASES</th>
                   <th className="pb-2">BUT IT ALSO INCREASES</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#1C2830]/60">
                 <tr>
-                  <td className="py-2.5 text-[#019AA2]">Opportunities to explore solution spaces</td>
-                  <td className="py-2.5 text-[#F3F6F7]">Response latency</td>
+                  <td className="py-2.5 text-accent">Opportunities to explore solution spaces</td>
+                  <td className="py-2.5 text-fg">Response latency</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#019AA2]">Chances of finding a valid, verified solution</td>
-                  <td className="py-2.5 text-[#F3F6F7]">Per-query inference cost</td>
+                  <td className="py-2.5 text-accent">Chances of finding a valid, verified solution</td>
+                  <td className="py-2.5 text-fg">Per-query inference cost</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#019AA2]">Ability to catch and revise subtle errors</td>
-                  <td className="py-2.5 text-[#F3F6F7]">Token and memory consumption</td>
+                  <td className="py-2.5 text-accent">Ability to catch and revise subtle errors</td>
+                  <td className="py-2.5 text-fg">Token and memory consumption</td>
                 </tr>
               </tbody>
             </table>
@@ -917,8 +917,8 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           task difficulty and rely on mechanisms that distinguish fruitful reasoning from unproductive drift.
         </p>
 
-        <div className="p-4 rounded-[6px] border border-[#1C2830] bg-[#0E151B] text-sm">
-          <span className="text-[#019AA2] font-mono font-semibold">THE INFERENCE PRINCIPLE:</span> The capability of an
+        <div className="p-4 rounded-[6px] border border-line bg-surface text-sm">
+          <span className="text-accent font-mono font-semibold">THE INFERENCE PRINCIPLE:</span> The capability of an
           AI system is not determined only by the weights stored in its neural network. It also depends on how much
           computation it can perform and how effectively that computation is organized.
         </div>
@@ -927,13 +927,13 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 09 // The Bigger Picture */}
       {/* ------------------------------------------------------------------- */}
-      <section id="the-bigger-picture" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+      <section id="the-bigger-picture" className="space-y-6 pt-6 border-t border-line/60">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-1.5 h-1.5 bg-accent" />
           <span>SECTION 09 // UNIFIED FRAMEWORK</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           9. The Bigger Picture: Intelligence Is an Engineering Trade-Off
         </h2>
 
@@ -944,62 +944,62 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
 
         {/* 6 Mechanisms Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <div className="flex items-center gap-2 text-xs font-mono text-accent">
               <Database className="w-4 h-4" />
               <span className="font-semibold">01 // BETTER DATA</span>
             </div>
-            <p className="text-xs text-[#A8B3BA] mt-2">
+            <p className="text-xs text-fg-soft mt-2">
               Higher-quality, curated, and diverse examples supply dense, high-entropy learning signals.
             </p>
           </div>
 
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <div className="flex items-center gap-2 text-xs font-mono text-accent">
               <Sliders className="w-4 h-4" />
               <span className="font-semibold">02 // BETTER OPTIMIZATION</span>
             </div>
-            <p className="text-xs text-[#A8B3BA] mt-2">
+            <p className="text-xs text-fg-soft mt-2">
               Adaptive algorithms, schedulers, and regularization guide weights toward superior local minima.
             </p>
           </div>
 
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <div className="flex items-center gap-2 text-xs font-mono text-accent">
               <Brain className="w-4 h-4" />
               <span className="font-semibold">03 // KNOWLEDGE DISTILLATION</span>
             </div>
-            <p className="text-xs text-[#A8B3BA] mt-2">
+            <p className="text-xs text-fg-soft mt-2">
               Compact models absorb the output distributions and reasoning traces of massive teacher networks.
             </p>
           </div>
 
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <div className="flex items-center gap-2 text-xs font-mono text-accent">
               <Layers className="w-4 h-4" />
               <span className="font-semibold">04 // BETTER ARCHITECTURES</span>
             </div>
-            <p className="text-xs text-[#A8B3BA] mt-2">
+            <p className="text-xs text-fg-soft mt-2">
               Innovations like RoPE, SwiGLU, and Mixture of Experts decouple parameter capacity from FLOP costs.
             </p>
           </div>
 
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <div className="flex items-center gap-2 text-xs font-mono text-accent">
               <Binary className="w-4 h-4" />
               <span className="font-semibold">05 // EFFICIENT NUMERICAL FORMATS</span>
             </div>
-            <p className="text-xs text-[#A8B3BA] mt-2">
+            <p className="text-xs text-fg-soft mt-2">
               INT4/INT8 quantization shrinks memory footprints by 70–85% without sacrificing functional fidelity.
             </p>
           </div>
 
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <div className="flex items-center gap-2 text-xs font-mono text-accent">
               <Zap className="w-4 h-4" />
               <span className="font-semibold">06 // MORE EFFECTIVE INFERENCE</span>
             </div>
-            <p className="text-xs text-[#A8B3BA] mt-2">
+            <p className="text-xs text-fg-soft mt-2">
               Test-time search, reasoning tokens, and validation expand reasoning power without modifying weights.
             </p>
           </div>
@@ -1013,13 +1013,13 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
 
         <p>The fundamental engineering question is not:</p>
 
-        <div className="p-3 rounded-[6px] bg-[#0E151B] border border-[#1C2830] font-mono text-sm text-[#68747D] line-through">
+        <div className="p-3 rounded-[6px] bg-surface border border-line font-mono text-sm text-fg-muted line-through">
           How many parameters does this model have?
         </div>
 
         <p>It is:</p>
 
-        <div className="p-3.5 rounded-[6px] bg-[#0E151B] border border-[#019AA2]/50 text-sm font-mono text-[#F3F6F7]">
+        <div className="p-3.5 rounded-[6px] bg-surface border border-accent/50 text-sm font-mono text-fg">
           How much useful capability does this system deliver for a given budget of memory, compute, latency, and watts?
         </div>
       </section>
@@ -1027,13 +1027,13 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 10 // What This Means for the Future of AI */}
       {/* ------------------------------------------------------------------- */}
-      <section id="what-this-means-for-the-future" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+      <section id="what-this-means-for-the-future" className="space-y-6 pt-6 border-t border-line/60">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-1.5 h-1.5 bg-accent" />
           <span>SECTION 10 // PRACTICAL IMPLICATIONS</span>
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           10. What This Means for the Future of AI
         </h2>
 
@@ -1048,9 +1048,9 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           or embedded chips with microsecond response times.
         </p>
 
-        <div className="space-y-2 pl-4 border-l border-[#019AA2]">
-          <h4 className="text-sm font-semibold text-[#F3F6F7] font-mono">FRONTIER ENGINEERING DIRECTIONS:</h4>
-          <ul className="space-y-1.5 text-xs text-[#A8B3BA] font-mono">
+        <div className="space-y-2 pl-4 border-l border-accent">
+          <h4 className="text-sm font-semibold text-fg font-mono">FRONTIER ENGINEERING DIRECTIONS:</h4>
+          <ul className="space-y-1.5 text-xs text-fg-soft font-mono">
             <li>• Parameter-Efficient Fine-Tuning (LoRA, QLoRA) for low-overhead adaptation</li>
             <li>• Post-Training Quantization (AWQ, GPTQ) for sub-4-bit memory footprints</li>
             <li>• Knowledge Distillation pipelines specialized for domain code & reasoning</li>
@@ -1069,17 +1069,17 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* Conclusion */}
       {/* ------------------------------------------------------------------- */}
-      <section id="conclusion" className="space-y-6 pt-8 border-t-2 border-[#019AA2]/40">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-2 h-2 rounded-[2px] bg-[#019AA2]" />
+      <section id="conclusion" className="space-y-6 pt-8 border-t-2 border-accent/40">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-2 h-2 rounded-[2px] bg-accent" />
           <span className="font-semibold tracking-wider uppercase">SYNTHESIS // THE HORIZON</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-display font-bold text-fg tracking-tight">
           Conclusion: Bigger Is an Advantage, Not the Measure of Intelligence
         </h2>
 
-        <p className="text-lg sm:text-xl text-[#F3F6F7] leading-relaxed">
+        <p className="text-lg sm:text-xl text-fg leading-relaxed">
           AI models become more capable without getting bigger because parameter count is only one component of the
           system.
         </p>
@@ -1090,14 +1090,14 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           Post-training and test-time compute unlock real-world utility.
         </p>
 
-        <blockquote className="my-6 py-6 px-6 sm:px-8 border-l-2 border-[#019AA2] bg-gradient-to-r from-[#019AA2]/[0.08] to-transparent rounded-r-[6px]">
-          <p className="text-xl sm:text-2xl font-display font-bold text-[#F3F6F7] leading-snug tracking-tight">
+        <blockquote className="my-6 py-6 px-6 sm:px-8 border-l-2 border-accent bg-gradient-to-r from-accent/[0.08] to-transparent rounded-r-[6px]">
+          <p className="text-xl sm:text-2xl font-display font-bold text-fg leading-snug tracking-tight">
             The real frontier is not simply building bigger AI. It is building AI that delivers more capability per
             parameter, per operation, and per watt.
           </p>
         </blockquote>
 
-        <p className="text-sm sm:text-base text-[#A8B3BA] pt-2">
+        <p className="text-sm sm:text-base text-fg-soft pt-2">
           And that is what makes efficient AI such an exciting field: the possibility of bringing increasingly
           powerful intelligence to hardware and applications that were previously out of reach.
         </p>
@@ -1107,16 +1107,16 @@ export const CapableWithoutGettingBiggerArticleContent: React.FC = () => {
           articleCode="ARTICLE 004"
           articleRef="BL-ART-004"
           statementHeading={
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-[#F3F6F7] leading-snug tracking-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-fg leading-snug tracking-tight">
               Scale provides capacity.
               <br />
-              <span className="text-[#019AA2]">
+              <span className="text-accent">
                 Engineering efficiency determines how much intelligence is actually realized.
               </span>
             </h2>
           }
           statementDescription={
-            <p className="text-sm sm:text-base text-[#A8B3BA] font-sans leading-relaxed pt-2 max-w-xl mx-auto">
+            <p className="text-sm sm:text-base text-fg-soft font-sans leading-relaxed pt-2 max-w-xl mx-auto">
               From data curation and knowledge distillation to quantization and inference compute: explore foundational
               benchmarks and mathematical analyses across ByteLogic.
             </p>

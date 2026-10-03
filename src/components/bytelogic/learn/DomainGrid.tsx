@@ -11,25 +11,25 @@ interface DomainGridProps {
 
 export const DomainGrid: React.FC<DomainGridProps> = ({ onSelectDomainFilter }) => {
   return (
-    <section id="domains" className="relative w-full border-b border-[#1C2830] bg-[#05070A] py-12 sm:py-16 md:py-20">
+    <section id="domains" className="relative w-full border-b border-line bg-bg py-12 sm:py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 pb-4 border-b border-[#1C2830]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 pb-4 border-b border-line">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-mono text-[#019AA2] font-semibold tracking-wider">
+              <span className="text-xs font-mono text-accent font-semibold tracking-wider">
                 02 //
               </span>
-              <span className="text-xs font-mono text-[#68747D] uppercase tracking-widest">
+              <span className="text-xs font-mono text-fg-muted uppercase tracking-widest">
                 PRIMARY KNOWLEDGE DOMAINS
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-sans tracking-tight text-[#F3F6F7] uppercase">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-sans tracking-tight text-fg uppercase">
               LEARNING DOMAINS
             </h2>
           </div>
 
-          <p className="mt-3 md:mt-0 text-xs sm:text-sm text-[#A8B3BA] font-sans max-w-md leading-relaxed">
+          <p className="mt-3 md:mt-0 text-xs sm:text-sm text-fg-soft font-sans max-w-md leading-relaxed">
             Eight foundational disciplines. Hover over any domain card to inspect its internal structure and subtopics.
           </p>
         </div>

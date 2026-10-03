@@ -87,13 +87,13 @@ export const LearnSearchAndFilter: React.FC<LearnSearchAndFilterProps> = ({
   }, [searchQuery, onSearchChange]);
 
   return (
-    <section id="search" className="relative w-full border-b border-[#1C2830] bg-[#0A0F14]/90 backdrop-blur-md py-6 sm:py-8 sticky top-14 sm:top-16 z-30 transition-all">
+    <section id="search" className="relative w-full border-b border-line bg-bg-2/90 backdrop-blur-md py-6 sm:py-8 sticky top-14 sm:top-16 z-30 transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Prominent Technical Command Search Input */}
         <div className="relative w-full">
-          <div className="relative flex items-center w-full rounded-[6px] bg-[#05070A] border border-[#1C2830] focus-within:border-[#019AA2] focus-within:ring-1 focus-within:ring-[#019AA2] transition-all shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
-            <div className="pl-4 pr-2 text-[#68747D] flex items-center pointer-events-none">
-              <Search className="w-4 h-4 sm:w-5 sm:h-5 text-[#019AA2]" />
+          <div className="relative flex items-center w-full rounded-[6px] bg-bg border border-line focus-within:border-accent focus-within:ring-1 focus-within:ring-accent transition-all shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
+            <div className="pl-4 pr-2 text-fg-muted flex items-center pointer-events-none">
+              <Search className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
             </div>
 
             <input
@@ -102,7 +102,7 @@ export const LearnSearchAndFilter: React.FC<LearnSearchAndFilterProps> = ({
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder="Search concepts, topics, algorithms, proofs, or implementations..."
-              className="w-full py-3 sm:py-3.5 px-2 bg-transparent text-xs sm:text-sm text-[#F3F6F7] placeholder-[#68747D] font-sans focus:outline-none"
+              className="w-full py-3 sm:py-3.5 px-2 bg-transparent text-xs sm:text-sm text-fg placeholder-fg-muted font-sans focus:outline-none"
               aria-label="Search ByteLogic concepts"
             />
 
@@ -112,13 +112,13 @@ export const LearnSearchAndFilter: React.FC<LearnSearchAndFilterProps> = ({
                 <button
                   type="button"
                   onClick={() => onSearchChange('')}
-                  className="p-1 text-[#68747D] hover:text-[#F3F6F7] transition-colors rounded hover:bg-[#131C24]"
+                  className="p-1 text-fg-muted hover:text-fg transition-colors rounded hover:bg-surface-2"
                   aria-label="Clear search input"
                 >
                   <X className="w-4 h-4" />
                 </button>
               ) : (
-                <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#131C24] border border-[#1C2830] text-[10px] font-mono text-[#68747D]">
+                <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-2 border border-line text-[10px] font-mono text-fg-muted">
                   /
                 </kbd>
               )}
@@ -130,7 +130,7 @@ export const LearnSearchAndFilter: React.FC<LearnSearchAndFilterProps> = ({
         <div className="mt-4 space-y-3">
           {/* Domain Category Filter Chips (Horizontally scrollable on mobile) */}
           <div className="flex items-center gap-2 overflow-x-auto bl-scrollbar pb-1 [touch-action:pan-x]">
-            <span className="text-[10px] font-mono text-[#68747D] uppercase tracking-wider shrink-0 mr-1">
+            <span className="text-[10px] font-mono text-fg-muted uppercase tracking-wider shrink-0 mr-1">
               DOMAIN:
             </span>
             {DOMAIN_OPTIONS.map((cat) => {
@@ -142,8 +142,8 @@ export const LearnSearchAndFilter: React.FC<LearnSearchAndFilterProps> = ({
                   className={cn(
                     'px-2.5 py-1 rounded-[4px] text-[11px] font-mono transition-all shrink-0 whitespace-nowrap',
                     active
-                      ? 'bg-[#019AA2]/15 text-[#019AA2] border border-[#019AA2] font-semibold'
-                      : 'bg-[#0E151B] text-[#A8B3BA] border border-[#1C2830] hover:text-[#F3F6F7] hover:border-[#68747D]'
+                      ? 'bg-accent/15 text-accent border border-accent font-semibold'
+                      : 'bg-surface text-fg-soft border border-line hover:text-fg hover:border-fg-muted'
                   )}
                 >
                   {cat}
@@ -153,10 +153,10 @@ export const LearnSearchAndFilter: React.FC<LearnSearchAndFilterProps> = ({
           </div>
 
           {/* Secondary Sub-filters: Difficulty & Format */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-[#1C2830]/60 text-xs font-mono">
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-line/60 text-xs font-mono">
             {/* Difficulty Group */}
             <div className="flex items-center gap-1.5 overflow-x-auto bl-scrollbar [touch-action:pan-x]">
-              <span className="text-[10px] text-[#68747D] uppercase tracking-wider shrink-0 mr-1">
+              <span className="text-[10px] text-fg-muted uppercase tracking-wider shrink-0 mr-1">
                 LEVEL:
               </span>
               {DIFFICULTY_OPTIONS.map((lvl) => {
@@ -168,8 +168,8 @@ export const LearnSearchAndFilter: React.FC<LearnSearchAndFilterProps> = ({
                     className={cn(
                       'px-2 py-0.5 rounded-[3px] text-[10px] transition-all shrink-0',
                       active
-                        ? 'bg-[#132279] text-[#F3F6F7] border border-[#019AA2]'
-                        : 'text-[#68747D] hover:text-[#A8B3BA]'
+                        ? 'bg-[#132279] text-fg border border-accent'
+                        : 'text-fg-muted hover:text-fg-soft'
                     )}
                   >
                     {lvl}
@@ -180,7 +180,7 @@ export const LearnSearchAndFilter: React.FC<LearnSearchAndFilterProps> = ({
 
             {/* Format Group */}
             <div className="flex items-center gap-1.5 overflow-x-auto bl-scrollbar [touch-action:pan-x]">
-              <span className="text-[10px] text-[#68747D] uppercase tracking-wider shrink-0 mr-1">
+              <span className="text-[10px] text-fg-muted uppercase tracking-wider shrink-0 mr-1">
                 FORMAT:
               </span>
               {FORMAT_OPTIONS.map((fmt) => {
@@ -192,8 +192,8 @@ export const LearnSearchAndFilter: React.FC<LearnSearchAndFilterProps> = ({
                     className={cn(
                       'px-2 py-0.5 rounded-[3px] text-[10px] transition-all shrink-0',
                       active
-                        ? 'bg-[#019AA2]/20 text-[#019AA2] border border-[#019AA2]'
-                        : 'text-[#68747D] hover:text-[#A8B3BA]'
+                        ? 'bg-accent/20 text-accent border border-accent'
+                        : 'text-fg-muted hover:text-fg-soft'
                     )}
                   >
                     {fmt}
@@ -205,7 +205,7 @@ export const LearnSearchAndFilter: React.FC<LearnSearchAndFilterProps> = ({
               {isFilterActive && (
                 <button
                   onClick={onResetFilters}
-                  className="ml-2 text-[10px] text-[#019AA2] hover:underline flex items-center gap-1 shrink-0"
+                  className="ml-2 text-[10px] text-accent hover:underline flex items-center gap-1 shrink-0"
                 >
                   <X className="w-3 h-3" />
                   <span>Reset</span>
@@ -217,17 +217,17 @@ export const LearnSearchAndFilter: React.FC<LearnSearchAndFilterProps> = ({
 
         {/* Live Filter / Search Active Notification Banner */}
         {isFilterActive && (
-          <div className="mt-4 pt-3 border-t border-[#1C2830] flex items-center justify-between text-xs font-mono text-[#A8B3BA]">
+          <div className="mt-4 pt-3 border-t border-line flex items-center justify-between text-xs font-mono text-fg-soft">
             <div className="flex items-center gap-2">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#019AA2]" />
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
               <span>
-                Found <strong className="text-[#F3F6F7]">{totalFilteredCount}</strong> matching{' '}
+                Found <strong className="text-fg">{totalFilteredCount}</strong> matching{' '}
                 {totalFilteredCount === 1 ? 'concept' : 'concepts'} in repository
               </span>
             </div>
 
             {searchQuery && (
-              <span className="text-[#68747D] hidden sm:inline">
+              <span className="text-fg-muted hidden sm:inline">
                 Query: &quot;{searchQuery}&quot;
               </span>
             )}

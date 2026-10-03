@@ -12,17 +12,17 @@ import { Visual05SystemsPipeline } from './visuals/smaller-models/Visual05System
 
 export const SmallerModelArticleContent: React.FC = () => {
   return (
-    <div className="space-y-12 sm:space-y-16 text-base sm:text-lg leading-relaxed text-[#A8B3BA] font-sans">
+    <div className="space-y-12 sm:space-y-16 text-base sm:text-lg leading-relaxed text-fg-soft font-sans">
       {/* ------------------------------------------------------------------- */}
       {/* 01 // The Anomaly in the Metric */}
       {/* ------------------------------------------------------------------- */}
       <section id="the-anomaly-in-the-metric" className="space-y-6 pt-4">
-        <p className="text-lg sm:text-xl font-sans text-[#F3F6F7] leading-relaxed">
+        <p className="text-lg sm:text-xl font-sans text-fg leading-relaxed">
           In the prevailing folklore of artificial intelligence, parameter count has long been
           treated as the primary currency of intelligence.
         </p>
 
-        <p className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <p className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           More parameters = more intelligence.
         </p>
 
@@ -34,15 +34,15 @@ export const SmallerModelArticleContent: React.FC = () => {
 
         <p>Yet inside production environments and research benchmarks alike, an empirical anomaly quietly disrupts the orthodoxy:</p>
 
-        <ul className="space-y-2.5 pl-4 border-l border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
+        <ul className="space-y-2.5 pl-4 border-l border-line font-mono text-sm text-fg">
           <li>
-            <span className="text-[#019AA2]">▸</span> A 7-billion parameter language model, fine-tuned on clean mathematical derivations, solves competitive programming challenges that stump a 70-billion parameter generalist.
+            <span className="text-accent">▸</span> A 7-billion parameter language model, fine-tuned on clean mathematical derivations, solves competitive programming challenges that stump a 70-billion parameter generalist.
           </li>
           <li>
-            <span className="text-[#019AA2]">▸</span> An 80-million parameter convolutional backbone, trained purely on high-frequency seismic telemetry, detects subsurface structural anomalies with higher precision and lower false-positive rates than a trillion-parameter multimodal foundation model prompted with the same data.
+            <span className="text-accent">▸</span> An 80-million parameter convolutional backbone, trained purely on high-frequency seismic telemetry, detects subsurface structural anomalies with higher precision and lower false-positive rates than a trillion-parameter multimodal foundation model prompted with the same data.
           </li>
           <li>
-            <span className="text-[#019AA2]">▸</span> A heavily compressed, 3-billion parameter edge student model matches the conversational instruction-following of the 70-billion parameter teacher that supervised it—while running locally on an off-the-shelf smartphone within a 4-watt thermal envelope.
+            <span className="text-accent">▸</span> A heavily compressed, 3-billion parameter edge student model matches the conversational instruction-following of the 70-billion parameter teacher that supervised it—while running locally on an off-the-shelf smartphone within a 4-watt thermal envelope.
           </li>
         </ul>
 
@@ -71,8 +71,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 02 // Parameters Are Capacity, Not an Intelligence Meter */}
       {/* ------------------------------------------------------------------- */}
-      <section id="parameters-are-capacity" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="parameters-are-capacity" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           02 // Parameters Are Capacity, Not an Intelligence Meter
         </h2>
 
@@ -83,8 +83,8 @@ export const SmallerModelArticleContent: React.FC = () => {
 
         <p>
           Mathematically, a parameter is simply an entry in a weight tensor{' '}
-          <span className="font-mono text-[#F3F6F7]">W &isin; &Ropf;^(d_out &times; d_in)</span> or bias
-          vector <span className="font-mono text-[#F3F6F7]">b &isin; &Ropf;^(d_out)</span>. In a
+          <span className="font-mono text-fg">W &isin; &Ropf;^(d_out &times; d_in)</span> or bias
+          vector <span className="font-mono text-fg">b &isin; &Ropf;^(d_out)</span>. In a
           feedforward or attention layer, these values parameterize continuous affine transformations
           followed by non-linear activations:
         </p>
@@ -100,7 +100,7 @@ export const SmallerModelArticleContent: React.FC = () => {
           A network with 70 billion parameters does not possess 70 billion ideas, facts, or logical
           rules. It possesses a parameterized function space capable of partitioning high-dimensional
           vector spaces into complex decision boundaries. Parameter count measures{' '}
-          <strong className="text-[#F3F6F7]">capacity</strong>—the upper bound on the complexity of the
+          <strong className="text-fg">capacity</strong>—the upper bound on the complexity of the
           function the network can theoretically compute.
         </p>
 
@@ -125,8 +125,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 03 // "Better" Is Always Conditional on the Task */}
       {/* ------------------------------------------------------------------- */}
-      <section id="better-depends-on-the-task" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="better-depends-on-the-task" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           03 // &ldquo;Better&rdquo; Is Always Conditional on the Task
         </h2>
 
@@ -142,44 +142,44 @@ export const SmallerModelArticleContent: React.FC = () => {
           its weight budget across thousands of disparate, often orthogonal, sub-manifolds.
         </p>
 
-        <div className="my-6 rounded-[6px] bg-[#0E151B] border border-[#1C2830] overflow-hidden bl-tick-box">
-          <div className="p-3 bg-[#0A0F14] border-b border-[#1C2830] text-xs font-mono text-[#019AA2] font-semibold">
+        <div className="my-6 rounded-[6px] bg-surface border border-line overflow-hidden bl-tick-box">
+          <div className="p-3 bg-[#0A0F14] border-b border-line text-xs font-mono text-accent font-semibold">
             TABLE 01 // CAPACITY ALLOCATION COMPARISON
           </div>
           <div className="overflow-x-auto p-4">
-            <table className="w-full text-left font-mono text-xs text-[#A8B3BA]">
+            <table className="w-full text-left font-mono text-xs text-fg-soft">
               <thead>
-                <tr className="border-b border-[#1C2830] text-[#F3F6F7]">
+                <tr className="border-b border-line text-fg">
                   <th className="pb-2">DIMENSION</th>
                   <th className="pb-2">MASSIVE GENERALIST (70B+)</th>
                   <th className="pb-2">COMPACT SPECIALIST (3B–8B)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#1C2830]/60">
+              <tbody className="divide-y divide-line/60">
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7]">Knowledge Breadth</td>
+                  <td className="py-2.5 text-fg">Knowledge Breadth</td>
                   <td className="py-2.5">Enormous (trivia, recipes, multilingual)</td>
-                  <td className="py-2.5 text-[#019AA2]">Narrow (confined to target domain)</td>
+                  <td className="py-2.5 text-accent">Narrow (confined to target domain)</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7]">Latent Allocation</td>
+                  <td className="py-2.5 text-fg">Latent Allocation</td>
                   <td className="py-2.5">Diffuse across orthogonal vector spaces</td>
-                  <td className="py-2.5 text-[#019AA2]">Concentrated on task-specific manifold</td>
+                  <td className="py-2.5 text-accent">Concentrated on task-specific manifold</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7]">Failure Modes</td>
+                  <td className="py-2.5 text-fg">Failure Modes</td>
                   <td className="py-2.5">Irrelevant associations, hallucinations</td>
                   <td className="py-2.5">Out-of-domain brittleness</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7]">Inference Cost</td>
+                  <td className="py-2.5 text-fg">Inference Cost</td>
                   <td className="py-2.5">~140 GFLOPS / token (dense)</td>
-                  <td className="py-2.5 text-[#019AA2]">~6–16 GFLOPS / token</td>
+                  <td className="py-2.5 text-accent">~6–16 GFLOPS / token</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#F3F6F7]">Arithmetic Bottleneck</td>
+                  <td className="py-2.5 text-fg">Arithmetic Bottleneck</td>
                   <td className="py-2.5">High memory bandwidth bound</td>
-                  <td className="py-2.5 text-[#019AA2]">Fits in fast SRAM / unified memory</td>
+                  <td className="py-2.5 text-accent">Fits in fast SRAM / unified memory</td>
                 </tr>
               </tbody>
             </table>
@@ -203,7 +203,7 @@ export const SmallerModelArticleContent: React.FC = () => {
           query planning, and syntactic constraints.
         </p>
 
-        <p className="font-semibold text-[#F3F6F7]">
+        <p className="font-semibold text-fg">
           Better on a task does not mean universally more capable. It simply demonstrates that allocating
           7 billion parameters exclusively to one task often yields a sharper decision boundary than
           allocating 1% of 70 billion parameters to that same task.
@@ -213,8 +213,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 04 // Data Quality Dominates Raw Scale */}
       {/* ------------------------------------------------------------------- */}
-      <section id="data-quality-dominates-scale" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="data-quality-dominates-scale" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           04 // Data Quality Dominates Raw Scale
         </h2>
 
@@ -222,7 +222,7 @@ export const SmallerModelArticleContent: React.FC = () => {
           The breakthrough empirical insight of modern machine learning research—formalized by Hoffmann
           et al. in the Chinchilla scaling laws (2022) and extended by synthetic data regimes like
           Microsoft&apos;s Phi series (<em>Textbooks Are All You Need</em>, 2023)—is that models have
-          historically been severely <strong className="text-[#F3F6F7]">data-starved relative to their parameter capacity</strong>.
+          historically been severely <strong className="text-fg">data-starved relative to their parameter capacity</strong>.
         </p>
 
         <p>
@@ -233,19 +233,19 @@ export const SmallerModelArticleContent: React.FC = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 font-mono text-xs">
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] space-y-2">
+          <div className="p-4 rounded-[6px] bg-surface border border-line space-y-2">
             <div className="text-[#68747D] uppercase tracking-wider text-[10px]">REGIME A</div>
-            <div className="text-sm font-bold text-[#F3F6F7]">Large Model + Unfiltered Data</div>
-            <p className="text-[#A8B3BA] font-sans text-xs leading-relaxed">
+            <div className="text-sm font-bold text-fg">Large Model + Unfiltered Data</div>
+            <p className="text-fg-soft font-sans text-xs leading-relaxed">
               30B parameters trained on 500B tokens of raw web text. Gradient updates cancel out across
               conflicting documents; vast capacity is squandered memorizing boilerplate HTML, comment
               wars, and SEO filler.
             </p>
           </div>
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#019AA2]/40 space-y-2">
-            <div className="text-[#019AA2] uppercase tracking-wider text-[10px]">REGIME B (OPTIMAL)</div>
-            <div className="text-sm font-bold text-[#019AA2]">Small Model + Synthetic Textbooks</div>
-            <p className="text-[#A8B3BA] font-sans text-xs leading-relaxed">
+          <div className="p-4 rounded-[6px] bg-surface border border-accent/40 space-y-2">
+            <div className="text-accent uppercase tracking-wider text-[10px]">REGIME B (OPTIMAL)</div>
+            <div className="text-sm font-bold text-accent">Small Model + Synthetic Textbooks</div>
+            <p className="text-fg-soft font-sans text-xs leading-relaxed">
               3B parameters trained on 1.5T tokens of filtered, textbook-grade derivations, clean
               codebases, and synthetic step-by-step reasoning chains. Every gradient step carves out
               invariant deductive structure.
@@ -256,7 +256,7 @@ export const SmallerModelArticleContent: React.FC = () => {
         <p>
           Model B consistently outperforms Model A on complex reasoning tasks despite possessing
           one-tenth the parameter capacity. The explanation lies in the{' '}
-          <strong className="text-[#F3F6F7]">useful information per unit of compute</strong>. A smaller
+          <strong className="text-fg">useful information per unit of compute</strong>. A smaller
           network trained on high-signal data extracts more functional constraints per parameter than a
           massive network saturated with low-grade entropy.
         </p>
@@ -265,8 +265,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 05 // The Training Recipe: Optimization and Alignment */}
       {/* ------------------------------------------------------------------- */}
-      <section id="the-training-recipe" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="the-training-recipe" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           05 // The Training Recipe: Optimization and Alignment
         </h2>
 
@@ -276,11 +276,11 @@ export const SmallerModelArticleContent: React.FC = () => {
         </p>
 
         <div className="space-y-4">
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <h3 className="font-display font-bold text-[#F3F6F7] text-base mb-1">
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <h3 className="font-display font-bold text-fg text-base mb-1">
               1. Optimization and Learning Rate Dynamics
             </h3>
-            <p className="text-sm text-[#A8B3BA] leading-relaxed">
+            <p className="text-sm text-fg-soft leading-relaxed">
               Larger models suffer from loss landscape instabilities that require conservative learning
               rates, aggressive gradient clipping, and short warmups. A smaller model, possessing a
               simpler loss surface with fewer degenerate saddle points, can be pushed along a much more
@@ -289,11 +289,11 @@ export const SmallerModelArticleContent: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <h3 className="font-display font-bold text-[#F3F6F7] text-base mb-1">
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <h3 className="font-display font-bold text-fg text-base mb-1">
               2. Annealing and Curricular Mixtures
             </h3>
-            <p className="text-sm text-[#A8B3BA] leading-relaxed">
+            <p className="text-sm text-fg-soft leading-relaxed">
               The composition of data across time matters as much as the total volume. In modern
               multi-stage training, a 500-billion-token high-quality annealing phase with formal math,
               complex code, and structured logic can allow a 7B model to leapfrog a 30B model whose
@@ -301,11 +301,11 @@ export const SmallerModelArticleContent: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <h3 className="font-display font-bold text-[#F3F6F7] text-base mb-1">
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <h3 className="font-display font-bold text-fg text-base mb-1">
               3. Post-Training and Policy Alignment
             </h3>
-            <p className="text-sm text-[#A8B3BA] leading-relaxed">
+            <p className="text-sm text-fg-soft leading-relaxed">
               Instruction tuning, Direct Preference Optimization (DPO), and Reinforcement Learning from
               Human/AI Feedback (RLHF) do not teach models vast new factual databases; they serve as an
               inductive lens. They suppress useless generative branches and align the model&apos;s raw
@@ -318,8 +318,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 06 // Specialization and the Geometry of Task Manifolds */}
       {/* ------------------------------------------------------------------- */}
-      <section id="specialization-and-task-manifolds" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="specialization-and-task-manifolds" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           06 // Specialization and the Geometry of Task Manifolds
         </h2>
 
@@ -336,8 +336,8 @@ export const SmallerModelArticleContent: React.FC = () => {
         </p>
 
         <p>
-          The true intrinsic dimensionality <span className="font-mono text-[#F3F6F7]">k</span> of the
-          bearing-failure manifold is small (<span className="font-mono text-[#F3F6F7]">k &ll; d</span>).
+          The true intrinsic dimensionality <span className="font-mono text-fg">k</span> of the
+          bearing-failure manifold is small (<span className="font-mono text-fg">k &ll; d</span>).
           An enormous generalist network operates across an observation space of immense dimensionality.
           To process telemetry, it must map sensor readings into tokens, pass them through dozens of
           self-attention layers trained to model human syntax, and output natural language predictions.
@@ -360,19 +360,19 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 07 // Knowledge Distillation: Compressing the Teacher’s Manifold */}
       {/* ------------------------------------------------------------------- */}
-      <section id="knowledge-distillation" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="knowledge-distillation" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           07 // Knowledge Distillation: Compressing the Teacher’s Manifold
         </h2>
 
         <p>
           Perhaps the most direct proof that smaller models can inherit the capability of larger models
-          without inheriting their scale is <strong className="text-[#F3F6F7]">Knowledge Distillation</strong> (Hinton et al., 2015).
+          without inheriting their scale is <strong className="text-fg">Knowledge Distillation</strong> (Hinton et al., 2015).
         </p>
 
         <p>
           In standard supervised learning, a network trains against hard one-hot targets{' '}
-          <span className="font-mono text-[#F3F6F7]">y &isin; &#123;0, 1&#125;^C</span>. If an image depicts a
+          <span className="font-mono text-fg">y &isin; &#123;0, 1&#125;^C</span>. If an image depicts a
           Siberian Husky, the target vector assigns 1.0 to <code>husky</code> and 0.0 to every other
           class. This throws away nearly all structural information about the problem space.
         </p>
@@ -380,7 +380,7 @@ export const SmallerModelArticleContent: React.FC = () => {
         <p>
           When a large, highly capable Teacher model processes that same image, its output logits before
           the final softmax contain rich, continuous geometric data—what Geoffrey Hinton termed{' '}
-          <strong className="text-[#019AA2]">&ldquo;dark knowledge.&rdquo;</strong>
+          <strong className="text-accent">&ldquo;dark knowledge.&rdquo;</strong>
         </p>
 
         <EquationBlock
@@ -415,8 +415,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 08 // Compression: Pruning, Factorization, and Structural Efficiency */}
       {/* ------------------------------------------------------------------- */}
-      <section id="compression-and-sparsity" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="compression-and-sparsity" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           08 // Compression: Pruning, Factorization, and Structural Efficiency
         </h2>
 
@@ -429,21 +429,21 @@ export const SmallerModelArticleContent: React.FC = () => {
 
         <p>Modern compression techniques exploit this redundancy directly:</p>
 
-        <ul className="space-y-3 pl-4 border-l border-[#1C2830] text-sm text-[#A8B3BA]">
+        <ul className="space-y-3 pl-4 border-l border-line text-sm text-fg-soft">
           <li>
-            <strong className="text-[#F3F6F7]">Structured Pruning:</strong> Entire attention heads, MLP
+            <strong className="text-fg">Structured Pruning:</strong> Entire attention heads, MLP
             intermediate channels, or transformer layers are removed based on sensitivity analyses. If a
             32-layer model can shed 8 intermediate layers with less than a 0.5% drop in benchmark
             accuracy, those 8 layers were performing near-identity mappings.
           </li>
           <li>
-            <strong className="text-[#F3F6F7]">Low-Rank Factorization (SVD):</strong> Decomposing large
+            <strong className="text-fg">Low-Rank Factorization (SVD):</strong> Decomposing large
             weight matrices into low-rank products reduces parameter count from{' '}
-            <span className="font-mono text-[#019AA2]">m &middot; n</span> to{' '}
-            <span className="font-mono text-[#019AA2]">k(m + n)</span>, radically cutting FLOPs per layer.
+            <span className="font-mono text-accent">m &middot; n</span> to{' '}
+            <span className="font-mono text-accent">k(m + n)</span>, radically cutting FLOPs per layer.
           </li>
           <li>
-            <strong className="text-[#F3F6F7]">Architectural Innovations:</strong> Grouped-Query Attention
+            <strong className="text-fg">Architectural Innovations:</strong> Grouped-Query Attention
             (GQA), Multi-Head Latent Attention (MLA), and linear-time state-space mechanisms (like Mamba)
             substantially reduce parameter overhead and KV cache memory while preserving long-range associative recall.
           </li>
@@ -453,8 +453,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 09 // Precision vs. Scale: The Mathematics of Quantization */}
       {/* ------------------------------------------------------------------- */}
-      <section id="precision-vs-scale-quantization" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="precision-vs-scale-quantization" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           09 // Precision vs. Scale: The Mathematics of Quantization
         </h2>
 
@@ -465,7 +465,7 @@ export const SmallerModelArticleContent: React.FC = () => {
         </p>
 
         <p>
-          Consider a baseline 7-billion parameter model (<span className="font-mono text-[#F3F6F7]">N = 7 &times; 10^9</span>):
+          Consider a baseline 7-billion parameter model (<span className="font-mono text-fg">N = 7 &times; 10^9</span>):
         </p>
 
         <EquationBlock
@@ -500,8 +500,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 10 // The Cost of Being Large: The Physics of Hardware Execution */}
       {/* ------------------------------------------------------------------- */}
-      <section id="the-cost-of-being-large" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="the-cost-of-being-large" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           10 // The Cost of Being Large: The Physics of Hardware Execution
         </h2>
 
@@ -512,7 +512,7 @@ export const SmallerModelArticleContent: React.FC = () => {
 
         <p>
           In autoregressive generation (token-by-token output), large language models are almost never
-          compute-bound; they are <strong className="text-[#F3F6F7]">memory-bandwidth bound</strong>.
+          compute-bound; they are <strong className="text-fg">memory-bandwidth bound</strong>.
         </p>
 
         <EquationBlock
@@ -549,8 +549,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 11 // Pareto Efficiency: The Performance-Compute Frontier */}
       {/* ------------------------------------------------------------------- */}
-      <section id="pareto-efficiency" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="pareto-efficiency" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           11 // Pareto Efficiency: The Performance-Compute Frontier
         </h2>
 
@@ -559,7 +559,7 @@ export const SmallerModelArticleContent: React.FC = () => {
           abstract?&rdquo;
         </p>
 
-        <p className="font-semibold text-[#F3F6F7]">
+        <p className="font-semibold text-fg">
           The question is always: Which model maximizes capability while satisfying the operational budget?
         </p>
 
@@ -582,8 +582,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 12 // Hardware Changes What "Better" Means */}
       {/* ------------------------------------------------------------------- */}
-      <section id="hardware-changes-what-better-means" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="hardware-changes-what-better-means" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           12 // Hardware Changes What &ldquo;Better&rdquo; Means
         </h2>
 
@@ -591,7 +591,7 @@ export const SmallerModelArticleContent: React.FC = () => {
           The environment where intelligence is deployed completely redefines the objective function:
         </p>
 
-        <ul className="space-y-2 pl-4 font-mono text-xs text-[#F3F6F7] border-l border-[#1C2830]">
+        <ul className="space-y-2 pl-4 font-mono text-xs text-fg border-l border-line">
           <li>Cloud Datacenter: Megawatts of power, distributed multi-node clusters.</li>
           <li>Edge Workstation: Hundreds of watts, 16GB–64GB unified memory.</li>
           <li>Drone / Embedded MCU: Single watts, 512MB–4GB RAM, zero cellular uplink.</li>
@@ -614,14 +614,14 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 13 // Mixture-of-Experts: Total Parameters vs. Active Parameters */}
       {/* ------------------------------------------------------------------- */}
-      <section id="mixture-of-experts" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="mixture-of-experts" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           13 // Mixture-of-Experts: Total Parameters vs. Active Parameters
         </h2>
 
         <p>
           The traditional equation equating parameter count with computational cost has been fundamentally
-          disrupted by sparse <strong className="text-[#F3F6F7]">Mixture-of-Experts (MoE)</strong> architectures.
+          disrupted by sparse <strong className="text-fg">Mixture-of-Experts (MoE)</strong> architectures.
         </p>
 
         <p>
@@ -646,8 +646,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 14 // Can a Smaller Model Actually Be "Smarter"? */}
       {/* ------------------------------------------------------------------- */}
-      <section id="can-a-smaller-model-be-smarter" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="can-a-smaller-model-be-smarter" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           14 // Can a Smaller Model Actually Be &ldquo;Smarter&rdquo;?
         </h2>
 
@@ -658,13 +658,13 @@ export const SmallerModelArticleContent: React.FC = () => {
         <p>
           If &ldquo;smart&rdquo; means possessing a massive encyclopedic memory capable of reciting 16th-century
           Ottoman treaties, translating rare dialects, and drafting contracts across 50 jurisdictions—
-          <strong className="text-[#F3F6F7]">no</strong>. A compact model lacks the raw capacity to store
+          <strong className="text-fg">no</strong>. A compact model lacks the raw capacity to store
           the sheer volume of factual Shannon entropy contained in a 400B+ parameter reservoir.
         </p>
 
         <p>However, if &ldquo;smart&rdquo; is defined operationally as:</p>
 
-        <ul className="space-y-2 pl-4 border-l border-[#019AA2] font-mono text-xs sm:text-sm text-[#F3F6F7]">
+        <ul className="space-y-2 pl-4 border-l border-accent font-mono text-xs sm:text-sm text-fg">
           <li>1. Deductive fidelity (executing logical steps without skipping).</li>
           <li>2. Syntactic adherence (producing strictly valid JSON matching an arbitrary schema).</li>
           <li>3. Context utilization (synthesizing facts within the prompt without hallucinating).</li>
@@ -672,7 +672,7 @@ export const SmallerModelArticleContent: React.FC = () => {
         </ul>
 
         <p>
-          Then <strong className="text-[#019AA2]">yes</strong>. By offloading factual storage to an external
+          Then <strong className="text-accent">yes</strong>. By offloading factual storage to an external
           database via Retrieval-Augmented Generation (RAG) and dedicating parameters purely to reasoning
           over the retrieved context, a 4B parameter model can regularly outperform a 70B parameter model
           relying on internal parametric memory alone.
@@ -682,8 +682,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 15 // A Rigorous Mental Model: Intelligence as Constrained Optimization */}
       {/* ------------------------------------------------------------------- */}
-      <section id="a-rigorous-mental-model" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="a-rigorous-mental-model" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           15 // A Rigorous Mental Model: Intelligence as Constrained Optimization
         </h2>
 
@@ -713,8 +713,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 16 // The Deeper Idea: The Compression of Intelligence */}
       {/* ------------------------------------------------------------------- */}
-      <section id="the-compression-of-intelligence" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="the-compression-of-intelligence" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           16 // The Deeper Idea: The Compression of Intelligence
         </h2>
 
@@ -727,7 +727,7 @@ export const SmallerModelArticleContent: React.FC = () => {
           Ray Solomonoff&apos;s theory of universal inductive inference establishes that the optimal
           prediction of future data is achieved by finding the most compact program capable of generating
           past observations. Learning is not the accumulation of parameters;{' '}
-          <strong className="text-[#019AA2]">learning is compression</strong>.
+          <strong className="text-accent">learning is compression</strong>.
         </p>
 
         <ArticlePullQuote
@@ -752,8 +752,8 @@ export const SmallerModelArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 17 // Conclusion: The Era of Efficient Intelligence */}
       {/* ------------------------------------------------------------------- */}
-      <section id="the-era-of-efficient-intelligence" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="the-era-of-efficient-intelligence" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           Conclusion // The Era of Efficient Intelligence
         </h2>
 
@@ -765,7 +765,7 @@ export const SmallerModelArticleContent: React.FC = () => {
 
         <p>
           The current frontier of machine learning engineering is entering a far more sophisticated phase:
-          the era of <strong className="text-[#F3F6F7]">efficient, structured intelligence</strong>.
+          the era of <strong className="text-fg">efficient, structured intelligence</strong>.
         </p>
 
         <p>
@@ -773,7 +773,7 @@ export const SmallerModelArticleContent: React.FC = () => {
           attempting to answer every query and control every device. It belongs to compound AI systems:
         </p>
 
-        <ul className="space-y-2 pl-4 border-l border-[#019AA2] font-mono text-xs sm:text-sm text-[#F3F6F7]">
+        <ul className="space-y-2 pl-4 border-l border-accent font-mono text-xs sm:text-sm text-fg">
           <li>Frontier reasoning models in data centers for scientific discovery and distillation supervision.</li>
           <li>Specialized 3B–8B domain experts operating with high precision in law, medicine, code, and finance.</li>
           <li>Ultra-fast local students running at single-digit millisecond latencies on phones and robotics.</li>
@@ -786,7 +786,7 @@ export const SmallerModelArticleContent: React.FC = () => {
           uncompromising boundaries of physics, cost, and latency.
         </p>
 
-        <p className="text-lg sm:text-xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <p className="text-lg sm:text-xl font-display font-semibold text-fg pt-2">
           A smaller model does not beat a larger model in spite of its size. It beats the larger model
           because its size allows it to be dense, fast, calibrated, and tailored precisely to the
           problem at hand.

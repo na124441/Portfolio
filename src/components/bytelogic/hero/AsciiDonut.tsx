@@ -99,6 +99,20 @@ export const AsciiDonut: React.FC<AsciiDonutProps> = ({ className = '' }) => {
     const resizeObserver = new ResizeObserver(() => resize());
     resizeObserver.observe(container);
 
+    let accentColor = '#019AA2';
+    let surface2Color = '#131C24';
+    let fgSoftColor = '#8A9296';
+    
+    if (typeof window !== 'undefined') {
+      const rootStyle = getComputedStyle(document.documentElement);
+      const acc = rootStyle.getPropertyValue('--accent').trim();
+      const s2 = rootStyle.getPropertyValue('--surface-2').trim();
+      const fs = rootStyle.getPropertyValue('--fg-soft').trim();
+      if (acc) accentColor = acc;
+      if (s2) surface2Color = s2;
+      if (fs) fgSoftColor = fs;
+    }
+
     const renderFrame = () => {
       if (!ctx || !canvas || cols <= 0 || rows <= 0) return;
 
@@ -182,13 +196,13 @@ export const AsciiDonut: React.FC<AsciiDonutProps> = ({ className = '' }) => {
           // lum >= 4: crisp light slate
           // lum < 4: deep structural slate
           if (lum >= 10) {
-            ctx.fillStyle = '#4FD8E8'; // Logic Cyan specular
+            ctx.fillStyle = accentColor; // Logic Cyan specular
           } else if (lum >= 7) {
-            ctx.fillStyle = '#019AA2'; // Logic Cyan
+            ctx.fillStyle = accentColor; // Logic Cyan
           } else if (lum >= 4) {
-            ctx.fillStyle = '#8A9296'; // Light slate
+            ctx.fillStyle = fgSoftColor; // Light slate
           } else {
-            ctx.fillStyle = '#3A444C'; // Dark structural slate
+            ctx.fillStyle = surface2Color; // Dark structural slate
           }
 
           ctx.fillText(ch, c * charW, r * charH);

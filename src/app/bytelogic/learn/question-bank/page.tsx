@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function ByteLogicQuestionBankPage() {
   return (
-    <div className="min-h-screen bg-[#05070A] pt-20 sm:pt-24 md:pt-28 pb-20 px-4 sm:px-6 md:px-8 lg:px-10">
+    <div className="min-h-dvh bg-bg pt-20 sm:pt-24 md:pt-28 pb-20 px-4 sm:px-6 md:px-8 lg:px-10">
       <QuestionBankPage />
     </div>
   );

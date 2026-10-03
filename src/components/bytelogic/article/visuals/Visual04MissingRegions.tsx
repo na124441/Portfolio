@@ -36,16 +36,16 @@ export const Visual04MissingRegions: React.FC<{ className?: string }> = ({ class
   return (
     <figure
       className={cn(
-        'my-10 sm:my-14 rounded-[8px] bg-[#0E151B] border border-[#1C2830] overflow-hidden bl-tick-box w-full',
+        'my-10 sm:my-14 rounded-[8px] bg-surface border border-line overflow-hidden bl-tick-box w-full',
         className
       )}
       aria-label="2D Problem space illustrating coverage vs unseen operational domains"
     >
       {/* Header bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-3 border-b border-[#1C2830] bg-[#0A0F14] text-xs font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-3 border-b border-line bg-bg-2 text-xs font-mono">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-[2px] bg-[#019AA2]" />
-          <span className="text-[#F3F6F7] font-semibold">VISUAL 04 // THE PROBLEM SPACE (COVERAGE HORIZON)</span>
+          <span className="w-2 h-2 rounded-[2px] bg-accent" />
+          <span className="text-fg font-semibold">VISUAL 04 // THE PROBLEM SPACE (COVERAGE HORIZON)</span>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -53,8 +53,8 @@ export const Visual04MissingRegions: React.FC<{ className?: string }> = ({ class
             className={cn(
               'px-2.5 py-1 rounded text-[11px] font-mono transition-colors cursor-pointer border',
               !showTargeted
-                ? 'bg-[#019AA2]/15 border-[#019AA2] text-[#019AA2] font-semibold'
-                : 'bg-[#131C24] border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7]'
+                ? 'bg-accent/15 border-accent text-accent font-semibold'
+                : 'bg-[#131C24] border-line text-fg-soft hover:text-fg'
             )}
           >
             Baseline Distribution
@@ -64,8 +64,8 @@ export const Visual04MissingRegions: React.FC<{ className?: string }> = ({ class
             className={cn(
               'flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-mono transition-colors cursor-pointer border',
               showTargeted
-                ? 'bg-[#019AA2]/15 border-[#019AA2] text-[#019AA2] font-semibold'
-                : 'bg-[#131C24] border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7]'
+                ? 'bg-accent/15 border-accent text-accent font-semibold'
+                : 'bg-[#131C24] border-line text-fg-soft hover:text-fg'
             )}
           >
             <Sparkles className="w-3 h-3" />
@@ -76,10 +76,10 @@ export const Visual04MissingRegions: React.FC<{ className?: string }> = ({ class
 
       {/* 2D Problem Space Canvas */}
       <div className="p-4 sm:p-8 flex flex-col items-center justify-center">
-        <div className="w-full max-w-2xl aspect-[16/9] sm:aspect-[2.1/1] relative bg-[#05070A] rounded-[6px] border border-[#1C2830] overflow-hidden p-2 sm:p-4">
+        <div className="w-full max-w-2xl aspect-[16/9] sm:aspect-[2.1/1] relative bg-[#05070A] rounded-[6px] border border-line overflow-hidden p-2 sm:p-4">
           <svg viewBox="0 0 600 280" className="w-full h-full select-none font-mono">
             {/* Subtle background grid ticks */}
-            <g stroke="#1C2830" strokeWidth="1" opacity="0.6">
+            <g stroke="var(--line)" strokeWidth="1" opacity="0.6">
               <line x1="50" y1="50" x2="550" y2="50" strokeDasharray="3 3" />
               <line x1="50" y1="140" x2="550" y2="140" strokeDasharray="3 3" />
               <line x1="50" y1="230" x2="550" y2="230" strokeDasharray="3 3" />
@@ -96,15 +96,15 @@ export const Visual04MissingRegions: React.FC<{ className?: string }> = ({ class
               height="90"
               rx="4"
               fill="rgba(1, 154, 162, 0.08)"
-              stroke="#019AA2"
+              stroke="var(--accent)"
               strokeWidth="1.2"
             />
-            <text x="155" y="42" fill="#019AA2" fontSize="10" textAnchor="middle" fontWeight="600">
+            <text x="155" y="42" fill="var(--accent)" fontSize="10" textAnchor="middle" fontWeight="600">
               Observed Frequently
             </text>
 
             {densePoints.map((pt, idx) => (
-              <circle key={idx} cx={pt.x} cy={pt.y} r="3" fill="#F3F6F7" opacity="0.85" />
+              <circle key={idx} cx={pt.x} cy={pt.y} r="3" fill="var(--fg)" opacity="0.85" />
             ))}
 
             {/* Region B: Underrepresented zone */}
@@ -115,16 +115,16 @@ export const Visual04MissingRegions: React.FC<{ className?: string }> = ({ class
               height="50"
               rx="4"
               fill="none"
-              stroke="#A8B3BA"
+              stroke="var(--fg-soft)"
               strokeWidth="1"
               strokeDasharray="3 3"
               opacity="0.4"
             />
-            <text x="250" y="165" fill="#A8B3BA" fontSize="9" textAnchor="middle">
+            <text x="250" y="165" fill="var(--fg-soft)" fontSize="9" textAnchor="middle">
               Underrepresented
             </text>
             {sparsePoints.map((pt, idx) => (
-              <circle key={idx} cx={pt.x} cy={pt.y} r="3" fill="#A8B3BA" opacity="0.6" />
+              <circle key={idx} cx={pt.x} cy={pt.y} r="3" fill="var(--fg-soft)" opacity="0.6" />
             ))}
 
             {/* Region C: Previously Unseen Realm (Large unexplored expanse) */}
@@ -154,10 +154,10 @@ export const Visual04MissingRegions: React.FC<{ className?: string }> = ({ class
 
             {!showTargeted && (
               <g opacity="0.4">
-                <text x="440" y="125" fill="#68747D" fontSize="11" textAnchor="middle">
+                <text x="440" y="125" fill="var(--fg-muted)" fontSize="11" textAnchor="middle">
                   Nighttime · Heavy Rain · Dense Fog
                 </text>
-                <text x="440" y="145" fill="#68747D" fontSize="9" textAnchor="middle">
+                <text x="440" y="145" fill="var(--fg-muted)" fontSize="9" textAnchor="middle">
                   Zero training observations in current dataset
                 </text>
               </g>
@@ -171,7 +171,7 @@ export const Visual04MissingRegions: React.FC<{ className?: string }> = ({ class
                     cx={pt.x}
                     cy={pt.y}
                     r="4.5"
-                    fill="#019AA2"
+                    fill="var(--accent)"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ delay: idx * 0.08, duration: 0.3 }}
@@ -179,7 +179,7 @@ export const Visual04MissingRegions: React.FC<{ className?: string }> = ({ class
                   <motion.text
                     x={pt.x}
                     y={pt.y - 8}
-                    fill="#019AA2"
+                    fill="var(--accent)"
                     fontSize="8.5"
                     textAnchor="middle"
                     initial={{ opacity: 0 }}
@@ -196,26 +196,26 @@ export const Visual04MissingRegions: React.FC<{ className?: string }> = ({ class
         {/* Legend row */}
         <div className="mt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs font-mono">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#F3F6F7]" />
-            <span className="text-[#A8B3BA]">Observed frequently</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-fg" />
+            <span className="text-fg-soft">Observed frequently</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#68747D]" />
-            <span className="text-[#A8B3BA]">Underrepresented</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-fg-muted" />
+            <span className="text-fg-soft">Underrepresented</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#019AA2]" />
-            <span className="text-[#019AA2]">Previously unseen</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-accent" />
+            <span className="text-accent">Previously unseen</span>
           </div>
         </div>
       </div>
 
       {/* Caption footer */}
-      <figcaption className="px-4 sm:px-6 py-3 border-t border-[#1C2830] bg-[#0A0F14] text-xs font-mono text-[#A8B3BA] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <figcaption className="px-4 sm:px-6 py-3 border-t border-line bg-bg-2 text-xs font-mono text-fg-soft flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <span>
-          <strong className="text-[#F3F6F7]">Figure 04:</strong> Exploring missing regions in operational problem space.
+          <strong className="text-fg">Figure 04:</strong> Exploring missing regions in operational problem space.
         </span>
-        <span className="text-[#68747D] text-[11px]">
+        <span className="text-fg-muted text-[11px]">
           Adding more daylight photos expands the left box; it never resolves the right void.
         </span>
       </figcaption>

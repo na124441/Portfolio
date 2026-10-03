@@ -42,19 +42,19 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   return (
     <div
       className={cn(
-        'my-5 sm:my-6 rounded-[6px] bg-[#0A0F14] border border-[#1C2830] overflow-hidden bl-tick-box min-w-0 w-full max-w-full',
+        'my-5 sm:my-6 rounded-[6px] bg-bg-2 border border-line overflow-hidden bl-tick-box min-w-0 w-full max-w-full',
         className
       )}
     >
       {/* Code Header */}
       {showHeader && (
-        <div className="flex flex-wrap items-center justify-between gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[#0E151B] border-b border-[#1C2830] text-xs font-mono">
+        <div className="flex flex-wrap items-center justify-between gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 bg-surface border-b border-line text-xs font-mono">
           <div className="flex items-center gap-2 sm:gap-2.5">
-            {sectionCode && <span className="text-[#019AA2] font-semibold">{sectionCode} /</span>}
+            {sectionCode && <span className="text-accent font-semibold">{sectionCode} /</span>}
             {title && (
-              <span className="text-[#F3F6F7] tracking-wider uppercase text-[11px] sm:text-xs">{title}</span>
+              <span className="text-fg tracking-wider uppercase text-[11px] sm:text-xs">{title}</span>
             )}
-            <span className="px-1.5 py-0.5 rounded-[3px] bg-[#131C24] text-[#A8B3BA] text-[10px] tracking-widest uppercase border border-[#1C2830]">
+            <span className="px-1.5 py-0.5 rounded-[3px] bg-surface-2 text-fg-soft text-[10px] tracking-widest uppercase border border-line">
               {language}
             </span>
           </div>
@@ -65,7 +65,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 text-[11px] text-[#A8B3BA] hover:text-[#019AA2] transition-colors py-1.5 px-2.5 hover:bg-[#131C24] rounded-[4px] min-h-[32px] sm:min-h-0"
+                className="flex items-center gap-1 text-[11px] text-fg-soft hover:text-accent transition-colors py-1.5 px-2.5 hover:bg-surface-2 rounded-[4px] min-h-[32px] sm:min-h-0"
               >
                 <span>GitHub</span>
                 <ExternalLink className="w-3 h-3" />
@@ -73,13 +73,13 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             )}
             <button
               onClick={handleCopy}
-              className="flex items-center gap-1.5 text-[11px] text-[#A8B3BA] hover:text-[#F3F6F7] transition-colors py-1.5 px-2.5 bg-[#131C24] border border-[#1C2830] hover:border-[#019AA2]/40 rounded-[4px] cursor-pointer min-h-[32px] sm:min-h-0"
+              className="flex items-center gap-1.5 text-[11px] text-fg-soft hover:text-fg transition-colors py-1.5 px-2.5 bg-surface-2 border border-line hover:border-accent/40 rounded-[4px] cursor-pointer min-h-[32px] sm:min-h-0"
               aria-label="Copy code to clipboard"
             >
               {copied ? (
                 <>
-                  <Check className="w-3 h-3 text-[#019AA2]" />
-                  <span className="text-[#019AA2]">Copied</span>
+                  <Check className="w-3 h-3 text-accent" />
+                  <span className="text-accent">Copied</span>
                 </>
               ) : (
                 <>
@@ -97,13 +97,13 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         {!showHeader && (
           <button
             onClick={handleCopy}
-            className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1 text-[10px] font-mono text-[#68747D] hover:text-[#F3F6F7] transition-colors py-1 px-2 bg-[#131C24]/80 border border-[#1C2830] hover:border-[#019AA2]/40 rounded-[3px] cursor-pointer"
+            className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1 text-[10px] font-mono text-fg-muted hover:text-fg transition-colors py-1 px-2 bg-surface-2/80 border border-line hover:border-accent/40 rounded-[3px] cursor-pointer"
             aria-label="Copy code to clipboard"
           >
             {copied ? (
               <>
-                <Check className="w-3 h-3 text-[#019AA2]" />
-                <span className="text-[#019AA2]">Copied</span>
+                <Check className="w-3 h-3 text-accent" />
+                <span className="text-accent">Copied</span>
               </>
             ) : (
               <>
@@ -113,7 +113,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             )}
           </button>
         )}
-        <pre className="font-mono text-xs sm:text-[13px] leading-relaxed text-[#F3F6F7]">
+        <pre className="font-mono text-xs sm:text-[13px] leading-relaxed text-fg">
           <code>
             {lines.map((line, index) => {
               // Lightweight syntax highlighting tokenization
@@ -122,14 +122,14 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
               const isDef = line.includes('def ') || line.includes('class ') || line.includes('return ');
               const isImport = line.includes('import ') || line.includes('from ');
 
-              let lineClass = 'text-[#F3F6F7]';
-              if (isComment) lineClass = 'text-[#68747D] italic';
-              else if (isDef) lineClass = 'text-[#019AA2] font-semibold';
-              else if (isImport) lineClass = 'text-[#A8B3BA]';
+              let lineClass = 'text-fg';
+              if (isComment) lineClass = 'text-fg-muted italic';
+              else if (isDef) lineClass = 'text-accent font-semibold';
+              else if (isImport) lineClass = 'text-fg-soft';
 
               if (!showLineNumbers) {
                 return (
-                  <div key={index} className="hover:bg-[#0E151B]/60 transition-colors py-0.5">
+                  <div key={index} className="hover:bg-surface/60 transition-colors py-0.5">
                     <span className={cn('whitespace-pre', lineClass)}>
                       {line || ' '}
                     </span>
@@ -138,8 +138,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
               }
 
               return (
-                <div key={index} className="table-row hover:bg-[#0E151B]/60 transition-colors">
-                  <span className="table-cell pr-3 sm:pr-4 text-right select-none text-[#68747D] font-mono text-[10px] sm:text-[11px] tabular-nums">
+                <div key={index} className="table-row hover:bg-surface/60 transition-colors">
+                  <span className="table-cell pr-3 sm:pr-4 text-right select-none text-fg-muted font-mono text-[10px] sm:text-[11px] tabular-nums">
                     {lineNum}
                   </span>
                   <span className={cn('table-cell whitespace-pre', lineClass)}>

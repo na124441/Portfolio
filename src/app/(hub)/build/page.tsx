@@ -54,7 +54,7 @@ export default function BuildPage() {
               {/* Header Bar */}
               <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
                 <div className="flex items-center gap-2.5">
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#dfb15b] px-2 py-0.5 border border-[#d4af37]/30 bg-[#d4af37]/5">
+                  <span className="font-mono text-xs uppercase tracking-wider text-accent px-2 py-0.5 border border-accent/30 bg-accent/5">
                     {item.category}
                   </span>
                   <span className="text-white/30 font-mono text-xs">·</span>
@@ -73,10 +73,10 @@ export default function BuildPage() {
 
               {/* Title & Tagline */}
               <div>
-                <h2 className="font-display text-2xl sm:text-3xl font-bold text-[#feffff] mb-1.5">
+                <h2 className="font-display text-2xl sm:text-3xl font-bold text-fg mb-1.5">
                   {item.name}
                 </h2>
-                <p className="font-mono text-xs sm:text-sm text-[#dfb15b] leading-relaxed">
+                <p className="font-mono text-xs sm:text-sm text-accent leading-relaxed">
                   {item.tagline}
                 </p>
               </div>
@@ -94,7 +94,7 @@ export default function BuildPage() {
                 <ul className="space-y-1.5 text-xs font-sans text-white/70">
                   {item.overview.map((pt, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-[#dfb15b] font-mono mt-0.5">▸</span>
+                      <span className="text-accent font-mono mt-0.5">▸</span>
                       <span>{pt}</span>
                     </li>
                   ))}
@@ -103,7 +103,7 @@ export default function BuildPage() {
 
               {/* Architecture Highlights */}
               <div className="space-y-2">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#dfb15b] block">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-accent block">
                   Technical Pillars:
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">

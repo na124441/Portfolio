@@ -29,18 +29,18 @@ export const Visual02DatasetVsInformation: React.FC<{ className?: string }> = ({
   return (
     <figure
       className={cn(
-        'my-10 sm:my-14 rounded-[8px] bg-[#0E151B] border border-[#1C2830] overflow-hidden bl-tick-box w-full',
+        'my-10 sm:my-14 rounded-[8px] bg-surface border border-line overflow-hidden bl-tick-box w-full',
         className
       )}
       aria-label="Comparison between Dataset A (large and repetitive) and Dataset B (large and diverse)"
     >
       {/* Header bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-3 border-b border-[#1C2830] bg-[#0A0F14] text-xs font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-3 border-b border-line bg-bg-2 text-xs font-mono">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-[2px] bg-[#019AA2]" />
-          <span className="text-[#F3F6F7] font-semibold">VISUAL 02 // DATASET SIZE VS. INFORMATION</span>
+          <span className="w-2 h-2 rounded-[2px] bg-accent" />
+          <span className="text-fg font-semibold">VISUAL 02 // DATASET SIZE VS. INFORMATION</span>
         </div>
-        <span className="text-[11px] text-[#68747D] uppercase tracking-wider">
+        <span className="text-[11px] text-fg-muted uppercase tracking-wider">
           FEATURE SPACE EXPLORATION
         </span>
       </div>
@@ -48,34 +48,34 @@ export const Visual02DatasetVsInformation: React.FC<{ className?: string }> = ({
       {/* Side-by-side visual panels */}
       <div className="p-4 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Panel A: Dataset A (Large + Repetitive) */}
-        <div className="p-4 sm:p-5 rounded-[6px] bg-[#05070A] border border-[#1C2830] flex flex-col justify-between">
+        <div className="p-4 sm:p-5 rounded-[6px] bg-[#05070A] border border-line flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between text-xs font-mono pb-3 mb-3 border-b border-[#1C2830]">
-              <span className="text-[#F3F6F7] font-semibold flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#68747D]" />
+            <div className="flex items-center justify-between text-xs font-mono pb-3 mb-3 border-b border-line">
+              <span className="text-fg font-semibold flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-fg-muted" />
                 DATASET A
               </span>
-              <span className="text-[11px] text-[#A8B3BA] bg-[#131C24] px-2 py-0.5 rounded border border-[#1C2830]">
+              <span className="text-[11px] text-fg-soft bg-[#131C24] px-2 py-0.5 rounded border border-line">
                 100,000 SAMPLES
               </span>
             </div>
 
-            <div className="text-xs text-[#A8B3BA] font-mono mb-3 space-y-1">
-              <div className="text-[11px] text-[#68747D]">Conditions:</div>
-              <div className="text-[#A8B3BA]">Same room · Same camera · Identical lighting</div>
+            <div className="text-xs text-fg-soft font-mono mb-3 space-y-1">
+              <div className="text-[11px] text-fg-muted">Conditions:</div>
+              <div className="text-fg-soft">Same room · Same camera · Identical lighting</div>
             </div>
 
             {/* Canvas representation */}
-            <div className="relative w-full aspect-[4/3] rounded bg-[#0A0F14] border border-[#1C2830]/80 overflow-hidden flex items-center justify-center p-3">
+            <div className="relative w-full aspect-[4/3] rounded bg-bg-2 border border-line/80 overflow-hidden flex items-center justify-center p-3">
               <svg viewBox="0 0 240 220" className="w-full h-full">
                 {/* Feature plane boundary */}
-                <rect x="15" y="15" width="210" height="190" fill="none" stroke="#1C2830" strokeDasharray="3 3" />
-                <text x="25" y="32" fill="#68747D" fontSize="9" fontFamily="monospace">
+                <rect x="15" y="15" width="210" height="190" fill="none" stroke="var(--line)" strokeDasharray="3 3" />
+                <text x="25" y="32" fill="var(--fg-muted)" fontSize="9" fontFamily="monospace">
                   Feature Space Ω
                 </text>
 
                 {/* Overly dense cluster zone */}
-                <circle cx="120" cy="110" r="45" fill="rgba(1, 154, 162, 0.08)" stroke="#019AA2" strokeWidth="1" strokeDasharray="2 2" />
+                <circle cx="120" cy="110" r="45" fill="rgba(1, 154, 162, 0.08)" stroke="var(--accent)" strokeWidth="1" strokeDasharray="2 2" />
 
                 {/* Dense stacked points */}
                 {datasetAPoints.map((pt) => (
@@ -84,50 +84,50 @@ export const Visual02DatasetVsInformation: React.FC<{ className?: string }> = ({
                     cx={pt.x}
                     cy={pt.y}
                     r="2.8"
-                    fill="#A8B3BA"
+                    fill="var(--fg-soft)"
                     opacity="0.85"
                   />
                 ))}
 
                 {/* High redundancy warning tag */}
-                <rect x="65" y="165" width="110" height="20" rx="3" fill="#0E151B" stroke="#1C2830" />
-                <text x="120" y="179" fill="#68747D" fontSize="9" fontFamily="monospace" textAnchor="middle">
+                <rect x="65" y="165" width="110" height="20" rx="3" fill="#0E151B" stroke="var(--line)" />
+                <text x="120" y="179" fill="var(--fg-muted)" fontSize="9" fontFamily="monospace" textAnchor="middle">
                   High Local Redundancy
                 </text>
               </svg>
             </div>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-[#1C2830] flex items-center justify-between text-xs font-mono">
-            <span className="text-[#68747D]">Status:</span>
-            <span className="text-[#F3F6F7] font-semibold">Large + Repetitive</span>
+          <div className="mt-4 pt-3 border-t border-line flex items-center justify-between text-xs font-mono">
+            <span className="text-fg-muted">Status:</span>
+            <span className="text-fg font-semibold">Large + Repetitive</span>
           </div>
         </div>
 
         {/* Panel B: Dataset B (Large + Diverse) */}
-        <div className="p-4 sm:p-5 rounded-[6px] bg-[#05070A] border border-[#019AA2]/40 flex flex-col justify-between relative">
+        <div className="p-4 sm:p-5 rounded-[6px] bg-[#05070A] border border-accent/40 flex flex-col justify-between relative">
           <div>
-            <div className="flex items-center justify-between text-xs font-mono pb-3 mb-3 border-b border-[#1C2830]">
-              <span className="text-[#019AA2] font-semibold flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#019AA2]" />
+            <div className="flex items-center justify-between text-xs font-mono pb-3 mb-3 border-b border-line">
+              <span className="text-accent font-semibold flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
                 DATASET B
               </span>
-              <span className="text-[11px] text-[#019AA2] bg-[#019AA2]/10 px-2 py-0.5 rounded border border-[#019AA2]/30">
+              <span className="text-[11px] text-accent bg-accent/10 px-2 py-0.5 rounded border border-accent/30">
                 100,000 SAMPLES
               </span>
             </div>
 
-            <div className="text-xs text-[#A8B3BA] font-mono mb-3 space-y-1">
-              <div className="text-[11px] text-[#68747D]">Conditions:</div>
-              <div className="text-[#019AA2]">Diverse angles · Multi-lighting · Occlusions</div>
+            <div className="text-xs text-fg-soft font-mono mb-3 space-y-1">
+              <div className="text-[11px] text-fg-muted">Conditions:</div>
+              <div className="text-accent">Diverse angles · Multi-lighting · Occlusions</div>
             </div>
 
             {/* Canvas representation */}
-            <div className="relative w-full aspect-[4/3] rounded bg-[#0A0F14] border border-[#1C2830]/80 overflow-hidden flex items-center justify-center p-3">
+            <div className="relative w-full aspect-[4/3] rounded bg-bg-2 border border-line/80 overflow-hidden flex items-center justify-center p-3">
               <svg viewBox="0 0 240 220" className="w-full h-full">
                 {/* Feature plane boundary */}
-                <rect x="15" y="15" width="210" height="190" fill="none" stroke="#1C2830" strokeDasharray="3 3" />
-                <text x="25" y="32" fill="#019AA2" fontSize="9" fontFamily="monospace">
+                <rect x="15" y="15" width="210" height="190" fill="none" stroke="var(--line)" strokeDasharray="3 3" />
+                <text x="25" y="32" fill="var(--accent)" fontSize="9" fontFamily="monospace">
                   Feature Space Ω (Broad Span)
                 </text>
 
@@ -135,7 +135,7 @@ export const Visual02DatasetVsInformation: React.FC<{ className?: string }> = ({
                 <polygon
                   points="35,40 180,35 215,55 210,125 215,190 135,190 35,195 30,120"
                   fill="rgba(1, 154, 162, 0.07)"
-                  stroke="#019AA2"
+                  stroke="var(--accent)"
                   strokeWidth="1"
                   strokeDasharray="2 2"
                 />
@@ -147,7 +147,7 @@ export const Visual02DatasetVsInformation: React.FC<{ className?: string }> = ({
                     cx={pt.x}
                     cy={pt.y}
                     r="3.2"
-                    fill="#019AA2"
+                    fill="var(--accent)"
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
@@ -156,31 +156,31 @@ export const Visual02DatasetVsInformation: React.FC<{ className?: string }> = ({
                 ))}
 
                 {/* High information coverage tag */}
-                <rect x="65" y="165" width="110" height="20" rx="3" fill="#0E151B" stroke="#019AA2" strokeWidth="0.75" />
-                <text x="120" y="179" fill="#019AA2" fontSize="9" fontFamily="monospace" textAnchor="middle" fontWeight="bold">
+                <rect x="65" y="165" width="110" height="20" rx="3" fill="#0E151B" stroke="var(--accent)" strokeWidth="0.75" />
+                <text x="120" y="179" fill="var(--accent)" fontSize="9" fontFamily="monospace" textAnchor="middle" fontWeight="bold">
                   Broad Domain Span
                 </text>
               </svg>
             </div>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-[#1C2830] flex items-center justify-between text-xs font-mono">
-            <span className="text-[#68747D]">Status:</span>
-            <span className="text-[#019AA2] font-semibold">Large + Diverse</span>
+          <div className="mt-4 pt-3 border-t border-line flex items-center justify-between text-xs font-mono">
+            <span className="text-fg-muted">Status:</span>
+            <span className="text-accent font-semibold">Large + Diverse</span>
           </div>
         </div>
       </div>
 
       {/* Synthesis footer callout */}
-      <div className="px-4 sm:px-6 py-4 bg-[#0A0F14] border-t border-[#1C2830] text-center">
-        <p className="text-sm sm:text-base font-sans font-semibold text-[#F3F6F7] tracking-tight">
-          Same number of samples <span className="text-[#019AA2] font-mono">≠</span> same amount of useful information
+      <div className="px-4 sm:px-6 py-4 bg-bg-2 border-t border-line text-center">
+        <p className="text-sm sm:text-base font-sans font-semibold text-fg tracking-tight">
+          Same number of samples <span className="text-accent font-mono">≠</span> same amount of useful information
         </p>
       </div>
 
       {/* Caption */}
-      <figcaption className="px-4 sm:px-6 py-3 border-t border-[#1C2830] bg-[#0E151B] text-xs font-mono text-[#68747D]">
-        <strong className="text-[#A8B3BA]">Figure 02:</strong> Comparing sample count against coverage in problem space. Dataset A concentrates 100,000 observations into a tiny subspace, whereas Dataset B distributes equal sample density across diverse environmental invariants.
+      <figcaption className="px-4 sm:px-6 py-3 border-t border-line bg-surface text-xs font-mono text-fg-muted">
+        <strong className="text-fg-soft">Figure 02:</strong> Comparing sample count against coverage in problem space. Dataset A concentrates 100,000 observations into a tiny subspace, whereas Dataset B distributes equal sample density across diverse environmental invariants.
       </figcaption>
     </figure>
   );

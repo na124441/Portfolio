@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { List, ChevronUp, ArrowLeft } from 'lucide-react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { List, ChevronUp, X } from 'lucide-react';
 import { ArticleSectionItem } from '@/types/bytelogic-article';
-import { ARTICLE_001_SECTIONS } from '@/data/bytelogic/articles/more-data';
 import { cn } from '@/lib/utils';
 
 export interface ArticleLayoutProps {
@@ -15,116 +13,215 @@ export interface ArticleLayoutProps {
 
 export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
   children,
-  sections,
+  sections = [],
   className,
 }) => {
-  const sectionsList = sections || ARTICLE_001_SECTIONS;
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const progressRef = useRef<HTMLDivElement>(null);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>('');
+  const [activeSection, setActiveSection] = useState<string>(sections[0]?.id ?? '');
   const [isTocOpen, setIsTocOpen] = useState(false);
 
+  /* Reading progress: write a transform straight to the DOM, no React re-render
+     and no layout. rAF-throttled. */
   useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        const currentProgress = (window.scrollY / totalHeight) * 100;
-        setScrollProgress(currentProgress);
-        setShowBackToTop(window.scrollY > 600);
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = total > 0 ? Math.min(1, Math.max(0, window.scrollY / total)) : 0;
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${ratio})`;
       }
-
-      // Check current active section
-      const sectionElements = sectionsList.map((s) => document.getElementById(s.id));
-      const scrollPos = window.scrollY + 200;
-
-      for (let i = sectionElements.length - 1; i >= 0; i--) {
-        const sec = sectionElements[i];
-        if (sec && sec.offsetTop <= scrollPos) {
-          setActiveSection(sectionsList[i].id);
-          break;
-        }
-      }
+      setShowBackToTop((prev) => {
+        const next = window.scrollY > 600;
+        return prev === next ? prev : next;
+      });
     };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [sectionsList]);
+  /* Active section: IntersectionObserver instead of offsetTop reads. The root
+     margin makes a section "active" once it crosses the top ~25% of the viewport. */
+  useEffect(() => {
+    if (sections.length === 0) return;
+    const visible = new Map<string, number>();
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.set(entry.target.id, entry.boundingClientRect.top);
+          else visible.delete(entry.target.id);
+        }
+        if (visible.size > 0) {
+          // topmost visible section wins
+          const [id] = [...visible.entries()].sort((a, b) => a[1] - b[1])[0];
+          setActiveSection(id);
+        }
+      },
+      { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+    );
+
+    sections.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [sections]);
+
+  /* Close the mobile drawer on Escape and lock body scroll while open. */
+  useEffect(() => {
+    if (!isTocOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setIsTocOpen(false);
+    document.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [isTocOpen]);
+
+  const scrollToTop = useCallback(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  }, []);
+
+  const tocLinks = (onNavigate?: () => void) =>
+    sections.map((section) => {
+      const isActive = activeSection === section.id;
+      return (
+        <a
+          key={section.id}
+          href={`#${section.id}`}
+          onClick={onNavigate}
+          aria-current={isActive ? 'location' : undefined}
+          className={cn(
+            'block rounded px-2 py-1.5 transition-colors duration-[var(--dur-micro)]',
+            isActive
+              ? 'bg-accent-soft font-semibold text-accent'
+              : 'text-fg-soft hover:text-fg'
+          )}
+        >
+          {section.number ? `${section.number}. ` : ''}
+          {section.title}
+        </a>
+      );
+    });
 
   return (
-    <div className="relative w-full min-h-screen text-[#F3F6F7]">
-      {/* Top Reading Progress Bar */}
+    <div
+      data-theme="lab"
+      className={cn('relative min-h-dvh w-full bg-bg text-fg', className)}
+    >
+      {/* Reading progress (transform only, compositor-friendly) */}
       <div
-        role="progressbar"
-        aria-valuenow={Math.round(scrollProgress)}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-label="Reading progress"
-        className="fixed top-0 left-0 right-0 h-[2.5px] bg-transparent z-50 pointer-events-none"
+        aria-hidden
+        className="fixed inset-x-0 top-0 z-50 h-[2.5px] bg-transparent"
       >
         <div
-          className="h-full bg-gradient-to-r from-[#019AA2] to-[#019AA2] transition-all duration-75"
-          style={{ width: `${scrollProgress}%` }}
+          ref={progressRef}
+          className="h-full origin-left bg-accent will-change-transform"
+          style={{ transform: 'scaleX(0)' }}
         />
       </div>
 
-      {/* Main Content Area */}
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-12 justify-center relative">
-          {/* Article Editorial Column: 680–760px optimized reading width */}
-          <article className="w-full max-w-[740px] py-8 sm:py-12 shrink-0">
-            {children}
-          </article>
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
+          {/* Reading column: capped line length for comfortable reading */}
+          <main className="min-w-0 lg:col-span-9">
+            <div className="max-w-[68ch]">{children}</div>
+          </main>
 
-          {/* Desktop Sticky Table of Contents (Right Margin) */}
-          <aside className="hidden xl:block w-64 shrink-0 pt-16 relative">
-            <div className="sticky top-28 p-4 rounded-[6px] bg-[#0E151B]/80 border border-[#1C2830] backdrop-blur-sm space-y-3 font-mono text-xs">
-              <div className="flex items-center justify-between pb-2 border-b border-[#1C2830] text-[#68747D]">
-                <span className="font-semibold text-[#019AA2] uppercase tracking-wider text-[11px]">
-                  INDEX // CONTENTS
-                </span>
-                <span className="text-[10px] tabular-nums">
-                  {Math.round(scrollProgress)}% READ
-                </span>
+          {/* Desktop TOC */}
+          <aside className="hidden lg:col-span-3 lg:block">
+            <div
+              className="surface-flat sticky space-y-4 rounded-[6px] p-5"
+              style={{ top: 'calc(var(--header-h) + 24px)' }}
+            >
+              <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-accent">
+                <List className="h-3.5 w-3.5" aria-hidden />
+                <span>Contents</span>
               </div>
-
-              <nav className="max-h-[calc(100vh-220px)] overflow-y-auto space-y-1 bl-scrollbar pr-1">
-                {sectionsList.map((sec) => {
-                  const isActive = activeSection === sec.id;
-                  return (
-                    <a
-                      key={sec.id}
-                      href={`#${sec.id}`}
-                      className={cn(
-                        'block py-1.5 px-2 rounded text-[11px] leading-tight transition-colors truncate',
-                        isActive
-                          ? 'bg-[#019AA2]/15 text-[#019AA2] font-semibold border-l-2 border-[#019AA2]'
-                          : 'text-[#68747D] hover:text-[#A8B3BA] hover:bg-[#131C24]'
-                      )}
-                    >
-                      <span className="text-[9px] mr-1.5 opacity-60">{sec.number}</span>
-                      {sec.title}
-                    </a>
-                  );
-                })}
+              <nav
+                aria-label="Table of contents"
+                className="max-h-[70vh] space-y-0.5 overflow-y-auto font-mono text-xs"
+              >
+                {tocLinks()}
               </nav>
             </div>
           </aside>
         </div>
       </div>
 
-      {/* Floating Back to Top Button */}
-      {showBackToTop && (
-        <button
-          onClick={scrollToTop}
-          aria-label="Back to top"
-          className="fixed bottom-6 right-6 z-40 p-2.5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2] text-[#A8B3BA] hover:text-[#019AA2] transition-all shadow-lg active:scale-95 cursor-pointer"
-        >
-          <ChevronUp className="w-4 h-4" />
-        </button>
+      {/* Mobile: floating buttons */}
+      <div className="fixed bottom-4 right-4 z-40 flex flex-col gap-2 pb-[env(safe-area-inset-bottom)] lg:hidden">
+        {sections.length > 0 && (
+          <button
+            type="button"
+            onClick={() => setIsTocOpen(true)}
+            aria-label="Open table of contents"
+            aria-expanded={isTocOpen}
+            className="surface-raised flex h-11 w-11 items-center justify-center rounded-full text-accent"
+          >
+            <List className="h-5 w-5" aria-hidden />
+          </button>
+        )}
+      </div>
+
+      {/* Back to top (all sizes) */}
+      <button
+        type="button"
+        onClick={scrollToTop}
+        aria-label="Back to top"
+        tabIndex={showBackToTop ? 0 : -1}
+        className={cn(
+          'surface-raised fixed bottom-4 left-4 z-40 flex h-11 w-11 items-center justify-center rounded-full text-fg-soft hover:text-accent',
+          'pb-[env(safe-area-inset-bottom)] transition-[opacity,transform] duration-[var(--dur-interface)]',
+          showBackToTop ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-2 opacity-0'
+        )}
+      >
+        <ChevronUp className="h-5 w-5" aria-hidden />
+      </button>
+
+      {/* Mobile TOC drawer */}
+      {isTocOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Table of contents">
+          <button
+            type="button"
+            aria-label="Close table of contents"
+            onClick={() => setIsTocOpen(false)}
+            className="absolute inset-0 bg-black/60"
+          />
+          <div className="surface-signature absolute inset-x-0 bottom-0 max-h-[75dvh] overflow-y-auto rounded-t-[12px] p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))]">
+            <div className="mb-3 flex items-center justify-between">
+              <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-accent">
+                <List className="h-3.5 w-3.5" aria-hidden />
+                Contents
+              </span>
+              <button
+                type="button"
+                onClick={() => setIsTocOpen(false)}
+                aria-label="Close"
+                className="rounded p-1 text-fg-soft hover:text-fg"
+              >
+                <X className="h-4 w-4" aria-hidden />
+              </button>
+            </div>
+            <nav aria-label="Table of contents" className="space-y-0.5 font-mono text-sm">
+              {tocLinks(() => setIsTocOpen(false))}
+            </nav>
+          </div>
+        </div>
       )}
     </div>
   );

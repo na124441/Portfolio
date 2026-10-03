@@ -47,17 +47,17 @@ export default function ContactPage() {
           className="md:col-span-5 space-y-4"
         >
           <div className="p-6 glass-panel corner-brackets space-y-4">
-            <div className="font-mono text-xs uppercase tracking-widest text-[#dfb15b]">
+            <div className="font-mono text-xs uppercase tracking-widest text-accent">
               Direct Coordinates
             </div>
 
             <div className="space-y-3 font-mono text-xs">
               <a
                 href={`mailto:${PORTFOLIO_METADATA.email}`}
-                className="p-3 border border-white/5 bg-white/[0.02] flex items-center justify-between text-white/80 hover:text-[#dfb15b] hover:border-[#d4af37]/40 transition-colors group"
+                className="p-3 border border-white/5 bg-white/[0.02] flex items-center justify-between text-white/80 hover:text-accent hover:border-accent/40 transition-colors group"
               >
                 <div className="flex items-center gap-2.5">
-                  <Mail className="w-4 h-4 text-[#dfb15b]" />
+                  <Mail className="w-4 h-4 text-accent" />
                   <span>{PORTFOLIO_METADATA.email}</span>
                 </div>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />
@@ -67,10 +67,10 @@ export default function ContactPage() {
                 href={PORTFOLIO_METADATA.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 border border-white/5 bg-white/[0.02] flex items-center justify-between text-white/80 hover:text-[#dfb15b] hover:border-[#d4af37]/40 transition-colors group"
+                className="p-3 border border-white/5 bg-white/[0.02] flex items-center justify-between text-white/80 hover:text-accent hover:border-accent/40 transition-colors group"
               >
                 <div className="flex items-center gap-2.5">
-                  <GithubIcon size={16} className="text-[#dfb15b]" />
+                  <GithubIcon size={16} className="text-accent" />
                   <span>github.com/nayantsrivastava</span>
                 </div>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />
@@ -80,10 +80,10 @@ export default function ContactPage() {
                 href={PORTFOLIO_METADATA.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 border border-white/5 bg-white/[0.02] flex items-center justify-between text-white/80 hover:text-[#dfb15b] hover:border-[#d4af37]/40 transition-colors group"
+                className="p-3 border border-white/5 bg-white/[0.02] flex items-center justify-between text-white/80 hover:text-accent hover:border-accent/40 transition-colors group"
               >
                 <div className="flex items-center gap-2.5">
-                  <LinkedinIcon size={16} className="text-[#dfb15b]" />
+                  <LinkedinIcon size={16} className="text-accent" />
                   <span>linkedin.com/in/nayantsrivastava</span>
                 </div>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />
@@ -112,10 +112,10 @@ export default function ContactPage() {
 
             {status === 'submitted' ? (
               <div className="py-8 text-center space-y-4 animate-in fade-in duration-200">
-                <div className="w-10 h-10 border border-[#d4af37] bg-[#d4af37]/10 text-[#dfb15b] flex items-center justify-center mx-auto shadow-[0_0_12px_rgba(212,175,55,0.2)]">
+                <div className="w-10 h-10 border border-accent bg-accent/10 text-accent flex items-center justify-center mx-auto shadow-[0_0_12px_var(--accent-glow)]">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
-                <h4 className="font-display text-lg font-bold text-[#feffff]">
+                <h4 className="font-display text-lg font-bold text-fg">
                   Transmission Received
                 </h4>
                 <p className="font-sans text-xs sm:text-sm text-white/70 max-w-sm mx-auto leading-relaxed">
@@ -141,7 +141,7 @@ export default function ContactPage() {
                     placeholder="e.g. Dr. Alan Turing"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-white/[0.03] border border-white/15 text-sm text-[#feffff] placeholder:text-white/20 focus:outline-none focus:border-[#d4af37] transition-colors font-sans"
+                    className="w-full px-3.5 py-2.5 bg-white/[0.03] border border-white/15 text-sm text-fg placeholder:text-white/20 focus:outline-none focus:border-accent transition-colors font-sans"
                   />
                 </div>
 
@@ -159,7 +159,7 @@ export default function ContactPage() {
                     placeholder="you@domain.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-white/[0.03] border border-white/15 text-sm text-[#feffff] placeholder:text-white/20 focus:outline-none focus:border-[#d4af37] transition-colors font-sans"
+                    className="w-full px-3.5 py-2.5 bg-white/[0.03] border border-white/15 text-sm text-fg placeholder:text-white/20 focus:outline-none focus:border-accent transition-colors font-sans"
                   />
                 </div>
 
@@ -177,7 +177,7 @@ export default function ContactPage() {
                     placeholder="Discussing engineering opportunities, reinforcement learning architectures, or technical collaboration..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-3.5 py-2.5 bg-white/[0.03] border border-white/15 text-sm text-[#feffff] placeholder:text-white/20 focus:outline-none focus:border-[#d4af37] transition-colors font-sans resize-none"
+                    className="w-full px-3.5 py-2.5 bg-white/[0.03] border border-white/15 text-sm text-fg placeholder:text-white/20 focus:outline-none focus:border-accent transition-colors font-sans resize-none"
                   />
                 </div>
 

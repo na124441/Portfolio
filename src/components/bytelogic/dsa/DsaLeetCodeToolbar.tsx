@@ -8,7 +8,6 @@ import {
   ArrowUpDown,
   Filter,
   Shuffle,
-  ChevronDown,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { DsaDifficulty, DsaStatus, DsaProblem } from '@/types/dsa-question';
@@ -93,8 +92,8 @@ export function DsaLeetCodeToolbar({
       {/* Left: Search Bar & Filter Buttons */}
       <div className="flex items-center gap-2 flex-1 max-w-xl">
         {/* Search Input Box */}
-        <div className="relative flex-1 rounded-md bg-[#1a1a1a] border border-[#2b2b2b] focus-within:border-[#38bdf8] focus-within:ring-1 focus-within:ring-[#38bdf8] transition-all">
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[#71717a] pointer-events-none">
+        <div className="relative flex-1 rounded-md bg-surface border border-line focus-within:border-accent focus-within:ring-1 focus-within:ring-accent transition-all">
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-fg-muted pointer-events-none">
             <Search className="w-4 h-4" />
           </div>
           <input
@@ -103,13 +102,13 @@ export function DsaLeetCodeToolbar({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search questions"
-            className="w-full bg-transparent pl-9 pr-8 py-2 text-xs sm:text-sm text-[#f4f4f5] placeholder-[#71717a] focus:outline-none"
+            className="w-full bg-transparent pl-9 pr-8 py-2 text-xs sm:text-sm text-fg placeholder:text-fg-muted focus:outline-none"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => onSearchChange('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#71717a] hover:text-white p-0.5"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-fg-muted hover:text-fg p-0.5"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -122,7 +121,7 @@ export function DsaLeetCodeToolbar({
           onClick={handleToggleSort}
           title={`Sort: ${sortOrder === 'asc' ? 'Ascending' : 'Descending'}`}
           className={cn(
-            'p-2 sm:px-2.5 rounded-md bg-[#1a1a1a] border border-[#2b2b2b] text-[#a1a1aa] hover:text-white hover:bg-[#262626] transition-colors cursor-pointer flex items-center gap-1.5'
+            'p-2 sm:px-2.5 rounded-md bg-surface border border-line text-fg-soft hover:text-fg hover:bg-surface-2 transition-colors cursor-pointer flex items-center gap-1.5'
           )}
         >
           <ArrowUpDown className="w-3.5 h-3.5" />
@@ -135,21 +134,21 @@ export function DsaLeetCodeToolbar({
             onClick={() => setIsFilterOpen((prev) => !prev)}
             title="Filter by Difficulty & Status"
             className={cn(
-              'p-2 sm:px-2.5 rounded-md bg-[#1a1a1a] border border-[#2b2b2b] text-[#a1a1aa] hover:text-white hover:bg-[#262626] transition-colors cursor-pointer flex items-center gap-1.5 relative',
-              hasActiveFilters && 'border-[#38bdf8] text-[#38bdf8]'
+              'p-2 sm:px-2.5 rounded-md bg-surface border border-line text-fg-soft hover:text-fg hover:bg-surface-2 transition-colors cursor-pointer flex items-center gap-1.5 relative',
+              hasActiveFilters && 'border-accent text-accent'
             )}
           >
             <Filter className="w-3.5 h-3.5" />
             {hasActiveFilters && (
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ef4444] absolute top-1 right-1" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent absolute top-1 right-1" />
             )}
           </button>
 
           {/* Filter Popover Menu */}
           {isFilterOpen && (
-            <div className="absolute left-0 sm:right-0 sm:left-auto top-full mt-1.5 w-64 rounded-lg bg-[#222222] border border-[#333333] shadow-xl p-3 z-40 flex flex-col gap-3 font-sans">
+            <div className="absolute left-0 sm:right-0 sm:left-auto top-full mt-1.5 w-64 rounded-lg bg-surface border border-line shadow-xl p-3 z-40 flex flex-col gap-3 font-sans">
               <div>
-                <span className="text-[11px] font-semibold text-[#a1a1aa] uppercase tracking-wider block mb-1.5">
+                <span className="text-[11px] font-semibold text-fg-muted uppercase tracking-wider block mb-1.5">
                   Difficulty
                 </span>
                 <div className="flex flex-wrap gap-1.5">
@@ -161,8 +160,8 @@ export function DsaLeetCodeToolbar({
                       className={cn(
                         'px-2.5 py-1 rounded text-xs transition-colors cursor-pointer',
                         selectedDifficulty === diff
-                          ? 'bg-[#3b82f6] text-white font-medium'
-                          : 'bg-[#18181b] text-[#d4d4d8] hover:bg-[#27272a]'
+                          ? 'bg-accent text-accent-ink font-medium'
+                          : 'bg-surface-2 text-fg-soft hover:bg-surface'
                       )}
                     >
                       {diff === 'ALL' ? 'All' : diff}
@@ -172,7 +171,7 @@ export function DsaLeetCodeToolbar({
               </div>
 
               <div>
-                <span className="text-[11px] font-semibold text-[#a1a1aa] uppercase tracking-wider block mb-1.5">
+                <span className="text-[11px] font-semibold text-fg-muted uppercase tracking-wider block mb-1.5">
                   Status
                 </span>
                 <div className="flex flex-wrap gap-1.5">
@@ -191,8 +190,8 @@ export function DsaLeetCodeToolbar({
                       className={cn(
                         'px-2.5 py-1 rounded text-xs transition-colors cursor-pointer',
                         selectedStatus === st.id
-                          ? 'bg-[#3b82f6] text-white font-medium'
-                          : 'bg-[#18181b] text-[#d4d4d8] hover:bg-[#27272a]'
+                          ? 'bg-accent text-accent-ink font-medium'
+                          : 'bg-surface-2 text-fg-soft hover:bg-surface'
                       )}
                     >
                       {st.label}
@@ -209,7 +208,7 @@ export function DsaLeetCodeToolbar({
                     onStatusChange('ALL');
                     setIsFilterOpen(false);
                   }}
-                  className="mt-1 text-center text-xs text-[#38bdf8] hover:underline"
+                  className="mt-1 text-center text-xs text-accent hover:underline"
                 >
                   Reset Filters
                 </button>
@@ -222,14 +221,14 @@ export function DsaLeetCodeToolbar({
       {/* Right: Solved Circular Progress Gauge + Random Shuffle Button */}
       <div className="flex items-center justify-end gap-3 shrink-0">
         {/* Solved Status Progress Gauge */}
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1a1a1a] border border-[#2b2b2b] text-xs font-sans text-[#d4d4d8]">
+        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-line text-xs font-sans text-fg-soft">
           <svg className="w-5 h-5 -rotate-90" viewBox="0 0 24 24">
             {/* Background Track */}
             <circle
               cx="12"
               cy="12"
               r={radius}
-              className="text-[#2e2e2e]"
+              className="text-line"
               strokeWidth="2.5"
               stroke="currentColor"
               fill="transparent"
@@ -248,7 +247,7 @@ export function DsaLeetCodeToolbar({
               fill="transparent"
             />
           </svg>
-          <span className="font-medium text-[#eff2f6]">
+          <span className="font-medium text-fg">
             {solvedCount}/{totalCount} Solved
           </span>
         </div>
@@ -257,7 +256,7 @@ export function DsaLeetCodeToolbar({
         <button
           type="button"
           onClick={handleRandomQuestion}
-          className="p-2 sm:px-2.5 rounded-md bg-[#1a1a1a] hover:bg-[#262626] border border-[#2b2b2b] text-[#a1a1aa] hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
+          className="p-2 sm:px-2.5 rounded-md bg-surface hover:bg-surface-2 border border-line text-fg-soft hover:text-fg transition-colors cursor-pointer flex items-center gap-1.5"
           title="Pick a Random Problem"
         >
           <Shuffle className="w-4 h-4" />

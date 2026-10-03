@@ -154,12 +154,12 @@ export const CommandPalette: React.FC<{
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl bg-[#010a0b] border border-[#d4af37]/40 shadow-[0_0_50px_rgba(0,0,0,0.9),0_0_20px_rgba(212,175,55,0.15)] corner-brackets overflow-hidden font-sans flex flex-col"
+        className="w-full max-w-2xl bg-bg border border-accent/40 shadow-[0_0_50px_rgba(0,0,0,0.9),0_0_20px_var(--accent-glow)] corner-brackets overflow-hidden font-sans flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
-        <div className="flex items-center gap-3 px-4 sm:px-5 py-3.5 border-b border-white/10 bg-white/[0.02]">
-          <Search className="w-4 h-4 text-[#dfb15b] shrink-0" />
+        <div className="flex items-center gap-3 px-4 sm:px-5 py-3.5 border-b border-line bg-surface-soft">
+          <Search className="w-4 h-4 text-accent shrink-0" />
           <input
             ref={inputRef}
             type="text"
@@ -169,30 +169,30 @@ export const CommandPalette: React.FC<{
               setSelectedIndex(0);
             }}
             placeholder="Search projects, experiments, initiatives, build logs, or commands..."
-            className="flex-1 bg-transparent border-none outline-none text-sm text-[#feffff] placeholder:text-white/30 font-mono"
+            className="flex-1 bg-transparent border-none outline-none text-sm text-fg placeholder:text-fg-muted font-mono"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="text-white/40 hover:text-white p-1 text-xs"
+              className="text-fg-muted hover:text-fg p-1 text-xs"
               aria-label="Clear query"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           )}
-          <kbd className="hidden sm:inline-block px-1.5 py-0.5 font-mono text-[10px] uppercase text-white/40 bg-white/5 border border-white/10">
+          <kbd className="hidden sm:inline-block px-1.5 py-0.5 font-mono text-[10px] uppercase text-fg-muted bg-surface-soft border border-line">
             ESC
           </kbd>
         </div>
 
         {/* Results List */}
-        <div className="max-h-[380px] overflow-y-auto divide-y divide-white/5 p-2">
+        <div className="max-h-[380px] overflow-y-auto divide-y divide-line/40 p-2">
           {filteredItems.length === 0 ? (
             <div className="p-8 text-center space-y-2">
-              <p className="font-mono text-xs text-white/40">
+              <p className="font-mono text-xs text-fg-muted">
                 No matching telemetry found for "{query}".
               </p>
-              <p className="font-sans text-xs text-white/30">
+              <p className="font-sans text-xs text-fg-muted">
                 Try searching for "ADCTM", "Vulkan", "MINDLITE", "Voronoi", or "Lab".
               </p>
             </div>
@@ -212,8 +212,8 @@ export const CommandPalette: React.FC<{
                   className={cn(
                     'p-3 sm:px-4 sm:py-3 rounded-none flex items-center justify-between gap-3 cursor-pointer transition-colors',
                     isSelected
-                      ? 'bg-white/[0.06] border-l-2 border-[#d4af37]'
-                      : 'hover:bg-white/[0.03] border-l-2 border-transparent'
+                      ? 'bg-surface border-l-2 border-accent'
+                      : 'hover:bg-surface-soft border-l-2 border-transparent'
                   )}
                 >
                   <div className="flex items-center gap-3 min-w-0">
@@ -221,31 +221,31 @@ export const CommandPalette: React.FC<{
                       className={cn(
                         'w-7 h-7 rounded-sm border flex items-center justify-center shrink-0',
                         isSelected
-                          ? 'border-[#d4af37]/60 bg-[#d4af37]/10 text-[#dfb15b]'
-                          : 'border-white/10 bg-white/[0.02] text-white/40'
+                          ? 'border-accent/60 bg-accent-soft text-accent'
+                          : 'border-line bg-surface-soft text-fg-muted'
                       )}
                     >
                       <Icon className="w-3.5 h-3.5" />
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="font-display text-sm font-bold text-[#feffff] truncate">
+                        <span className="font-display text-sm font-bold text-fg truncate">
                           {item.title}
                         </span>
-                        <span className="font-mono text-[10px] uppercase tracking-wider text-[#dfb15b] shrink-0">
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-accent shrink-0">
                           [{item.category}]
                         </span>
                       </div>
-                      <p className="font-sans text-xs text-white/50 truncate">
+                      <p className="font-sans text-xs text-fg-soft truncate">
                         {item.subtitle}
                       </p>
                     </div>
                   </div>
 
                   {isSelected && (
-                    <div className="hidden sm:flex items-center gap-1 font-mono text-[10px] text-white/50 shrink-0">
+                    <div className="hidden sm:flex items-center gap-1 font-mono text-[10px] text-fg-soft shrink-0">
                       <span>Jump</span>
-                      <CornerDownLeft className="w-3 h-3 text-[#dfb15b]" />
+                      <CornerDownLeft className="w-3 h-3 text-accent" />
                     </div>
                   )}
                 </div>
@@ -255,13 +255,13 @@ export const CommandPalette: React.FC<{
         </div>
 
         {/* Footer info */}
-        <div className="px-4 py-2 bg-black/60 border-t border-white/5 flex items-center justify-between font-mono text-[10px] text-white/40">
+        <div className="px-4 py-2 bg-bg/90 border-t border-line flex items-center justify-between font-mono text-[10px] text-fg-muted">
           <div className="flex items-center gap-3">
             <span>↑↓ Navigate</span>
             <span>↵ Select</span>
             <span>ESC Close</span>
           </div>
-          <span className="text-[#dfb15b]">Global Hub Palette</span>
+          <span className="text-accent">Global Hub Palette</span>
         </div>
       </div>
     </div>

@@ -1,21 +1,8 @@
 /* ==========================================================================
-   ByteLogic Technical Design System & Styling (Responsive V0.1)
-   Authoritative Colors:
-   Background: #05070A | Secondary: #0A0F14 | Surface: #0E151B | Elevated: #131C24
-   Primary Text: #F3F6F7 | Secondary: #A8B3BA | Muted: #68747D
-   Byte Blue: #132279 | Logic Cyan: #019AA2 | Border: #1C2830
+   ByteLogic Technical Design System & Styling (Responsive V0.2)
+   Colors now driven by [data-theme="lab"] in globals.css.
+   This file only contains ByteLogic-specific patterns.
    ========================================================================== */
-
-/* Strict Document & Viewport Overflow Containment */
-html.bl-html,
-body.bl-body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  position: relative;
-  text-rendering: optimizeLegibility;
-  -webkit-text-size-adjust: 100%;
-}
 
 /* Fluid Responsive Headline */
 .bl-hero-title {
@@ -28,10 +15,10 @@ body.bl-body {
 /* Subtle Cartesian Coordinate Drafting Grid */
 .bl-cartesian-grid {
   background-image:
-    linear-gradient(to right, rgba(1, 154, 162, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(1, 154, 162, 0.04) 1px, transparent 1px),
-    linear-gradient(to right, rgba(243, 246, 247, 0.015) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(243, 246, 247, 0.015) 1px, transparent 1px);
+    linear-gradient(to right, rgba(var(--accent-rgb), 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--accent-rgb), 0.04) 1px, transparent 1px),
+    linear-gradient(to right, rgba(254, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(254, 255, 255, 0.015) 1px, transparent 1px);
   background-size: 64px 64px, 64px 64px, 16px 16px, 16px 16px;
   background-position: -1px -1px;
 }
@@ -42,39 +29,39 @@ body.bl-body {
   -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 0%, #000 60%, transparent 100%);
 }
 
-/* Technical Instrumentation Surface */
+/* Technical Instrumentation Surface — now aliases semantic vars */
 .bl-surface {
-  background-color: #0E151B;
-  border: 1px solid #1C2830;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
 }
 
 .bl-surface-elevated {
-  background-color: #131C24;
-  border: 1px solid #1C2830;
+  background-color: var(--surface-2);
+  border: 1px solid var(--line);
 }
 
 /* Controlled Technical Card Hover & Touch Response */
 .bl-card-interactive {
-  background-color: #0E151B;
-  border: 1px solid #1C2830;
-  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  transition: border-color var(--dur-micro) var(--ease-out-expo),
+              background-color var(--dur-micro) var(--ease-out-expo),
+              transform var(--dur-micro) var(--ease-out-expo);
   min-width: 0;
   width: 100%;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .bl-card-interactive:hover {
-    border-color: rgba(1, 154, 162, 0.45);
-    background-color: #111A22;
+    border-color: var(--line-strong);
+    background-color: color-mix(in oklab, var(--surface) 85%, var(--surface-2));
     transform: translateY(-2px);
   }
 }
 
 .bl-card-interactive:active {
-  border-color: rgba(1, 154, 162, 0.6);
-  background-color: #111A22;
+  border-color: var(--accent-line);
+  background-color: color-mix(in oklab, var(--surface) 85%, var(--surface-2));
 }
 
 /* Micro Technical Marks / Corner Ticks */
@@ -89,7 +76,7 @@ body.bl-body {
   width: 4px;
   height: 4px;
   pointer-events: none;
-  border-color: rgba(1, 154, 162, 0.5);
+  border-color: rgba(var(--accent-rgb), 0.5);
   z-index: 2;
 }
 
@@ -107,33 +94,10 @@ body.bl-body {
   border-right: 1.5px solid;
 }
 
-/* ByteLogic Custom Minimal Scrollbar with Momentum Touch */
-.bl-scrollbar {
-  -webkit-overflow-scrolling: touch;
-}
-
-.bl-scrollbar::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-
-.bl-scrollbar::-webkit-scrollbar-track {
-  background: #05070A;
-}
-
-.bl-scrollbar::-webkit-scrollbar-thumb {
-  background: #1C2830;
-  border-radius: 2px;
-}
-
-.bl-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #019AA2;
-}
-
 /* KaTeX Math Formatting Overrides & Smooth Responsive Scrolling */
 .katex {
   font-size: 1.05em !important;
-  color: #F3F6F7;
+  color: var(--fg);
 }
 
 .katex-display {
@@ -154,7 +118,7 @@ body.bl-body {
 }
 
 .katex-display::-webkit-scrollbar-thumb {
-  background: #1C2830;
+  background: var(--line);
   border-radius: 2px;
 }
 
@@ -188,20 +152,14 @@ body.bl-body {
 
 .bl-glass-pillar-card {
   position: relative;
-  background: #0A0F14;
-  border: 1px solid #1C2830;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
-  transition: border-color 0.25s ease,
-              transform 0.25s ease,
-              background-color 0.25s ease;
-}
-
-@media (max-width: 639px) {
-  .bl-glass-pillar-card {
-    border-radius: 8px;
-  }
+  transition: border-color var(--dur-interface) ease,
+              transform var(--dur-interface) ease,
+              background-color var(--dur-interface) ease;
 }
 
 .bl-glass-pillar-card::before {
@@ -213,12 +171,12 @@ body.bl-body {
   pointer-events: none;
   z-index: 10;
   opacity: 0.6;
-  transition: opacity 0.25s ease;
+  transition: opacity var(--dur-interface) ease;
 }
 
 .bl-glass-pillar-card:hover {
   border-color: rgba(255, 255, 255, 0.22);
-  background: #0E151B;
+  background: var(--surface);
   transform: translateY(-3px);
   box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.7);
 }
@@ -237,16 +195,16 @@ body.bl-body {
 .bl-btn-shimmer {
   position: relative;
   border-radius: 6px;
-  background: #0E151B;
-  border: 1px solid #1C2830;
-  color: #F3F6F7;
-  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--fg);
+  transition: border-color var(--dur-micro) ease, background-color var(--dur-micro) ease, color var(--dur-micro) ease;
 }
 
 .bl-btn-shimmer:hover {
-  border-color: rgba(1, 154, 162, 0.5);
-  background-color: #131C24;
-  color: #FFFFFF;
+  border-color: rgba(var(--accent-rgb), 0.5);
+  background-color: var(--surface-2);
+  color: var(--fg);
 }
 
 /* ==========================================================================
@@ -260,14 +218,14 @@ body.bl-body {
   font-size: clamp(4rem, 8vw, 7rem);
   line-height: 1;
   letter-spacing: -0.04em;
-  color: rgba(243, 246, 247, 0.04);
+  color: color-mix(in oklab, var(--fg) 4%, transparent);
   user-select: none;
   pointer-events: none;
 }
 
 /* Active state — slightly more visible */
 .bl-stage-number-deco[data-active="true"] {
-  color: rgba(1, 154, 162, 0.07);
+  color: rgba(var(--accent-rgb), 0.07);
 }
 
 /* Editorial left-bar accent for active items */
@@ -282,10 +240,10 @@ body.bl-body {
   top: 4px;
   bottom: 4px;
   width: 3px;
-  background: #019AA2;
+  background: var(--accent);
   border-radius: 2px;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--dur-micro) ease;
 }
 
 .bl-editorial-bar-left[data-active="true"]::before {
@@ -312,7 +270,7 @@ body.bl-body {
   width: 1.5px;
   background: linear-gradient(
     to bottom,
-    rgba(1, 154, 162, 0.3),
+    rgba(var(--accent-rgb), 0.3),
     rgba(196, 112, 63, 0.3)
   );
 }
@@ -332,7 +290,7 @@ body.bl-body {
   height: 7px;
   border-radius: 50%;
   border: 1.5px solid currentColor;
-  background: #05070A;
+  background: var(--bg);
 }
 
 /* ==========================================================================
@@ -340,7 +298,6 @@ body.bl-body {
    ========================================================================== */
 
 .hero {
-  --bg: #010607;
   --grid-line: rgba(255, 255, 255, 0.03);
   --ink-primary: #ECECEC;
   --ink-muted: #8A9296;
@@ -366,7 +323,7 @@ body.bl-body {
   font-family: var(--font-jetbrains), ui-monospace, monospace;
   line-height: 1;
   color: var(--ink-dim);
-  transition: color 180ms ease, transform 180ms ease, opacity 180ms ease;
+  transition: color var(--dur-micro) ease, transform var(--dur-micro) ease, opacity var(--dur-micro) ease;
   user-select: none;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -378,7 +335,7 @@ body.bl-body {
   will-change: color, transform;
 }
 
-/* Globe logo wrapper (centered inside the sphere, commands ~65% of hero space) */
+/* Globe logo wrapper */
 .globe-logo-wrapper {
   position: absolute;
   top: 50%;
@@ -399,7 +356,7 @@ body.bl-body {
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 600;
   font-size: clamp(24px, 4.5vw, 52px);
-  background: linear-gradient(135deg, #132279 20%, #019AA2 80%);
+  background: linear-gradient(135deg, #132279 20%, var(--accent) 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

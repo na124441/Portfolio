@@ -45,7 +45,7 @@ export default function LabPage() {
             <div className="text-white/40 uppercase tracking-widest text-[10px] mb-1">
               Documented Sweeps
             </div>
-            <div className="text-[#dfb15b] text-sm font-semibold">{LAB_EXPERIMENTS.length} Published</div>
+            <div className="text-accent text-sm font-semibold">{LAB_EXPERIMENTS.length} Published</div>
           </div>
           <div>
             <div className="text-white/40 uppercase tracking-widest text-[10px] mb-1">
@@ -91,7 +91,7 @@ export default function LabPage() {
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-xs text-[#dfb15b] font-semibold">
+                  <span className="font-mono text-xs text-accent font-semibold">
                     // DOMAIN {domain.code}
                   </span>
                   <span className="font-mono text-[10px] uppercase tracking-wider text-white/40">
@@ -99,10 +99,10 @@ export default function LabPage() {
                   </span>
                 </div>
 
-                <h3 className="font-display text-lg font-bold text-[#feffff] mb-1.5">
+                <h3 className="font-display text-lg font-bold text-fg mb-1.5">
                   {domain.name}
                 </h3>
-                <p className="font-mono text-xs text-[#dfb15b]/80 mb-3">
+                <p className="font-mono text-xs text-accent/80 mb-3">
                   {domain.tagline}
                 </p>
                 <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-4">
@@ -132,12 +132,12 @@ export default function LabPage() {
       </section>
 
       {/* 03. Interactive Visual Textbook Bridge */}
-      <section className="p-6 sm:p-8 glass-panel corner-brackets border-[#019AA2]/30 space-y-4">
-        <div className="flex items-center gap-2 text-[#019AA2] font-mono text-xs uppercase tracking-widest">
+      <section className="p-6 sm:p-8 glass-panel corner-brackets border-accent/30 space-y-4">
+        <div className="flex items-center gap-2 text-accent font-mono text-xs uppercase tracking-widest">
           <Sparkles className="w-4 h-4" />
           <span>Interactive Computational Visualizer</span>
         </div>
-        <h3 className="font-display text-xl font-bold text-[#feffff]">
+        <h3 className="font-display text-xl font-bold text-fg">
           Interactive Experiments on ByteLogic
         </h3>
         <p className="font-sans text-sm text-white/75 leading-relaxed max-w-2xl">
@@ -146,7 +146,7 @@ export default function LabPage() {
         <div className="pt-2 flex flex-wrap gap-3">
           <Link
             href="/bytelogic/concepts/k-means"
-            className="px-4 py-2 border border-[#019AA2] bg-[#019AA2]/10 hover:bg-[#019AA2]/20 text-[#019AA2] font-mono text-xs uppercase tracking-wider flex items-center gap-2 transition-colors"
+            className="px-4 py-2 border border-accent bg-accent/10 hover:bg-accent/20 text-accent font-mono text-xs uppercase tracking-wider flex items-center gap-2 transition-colors"
           >
             Launch K-Means Manifold
             <ArrowRight className="w-3.5 h-3.5" />

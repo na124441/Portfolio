@@ -67,13 +67,13 @@ function RenderInline({ text }: { text: string }) {
             return (
               <span
                 key={idx}
-                className="inline-block px-0.5 text-[#f1f5f9] align-baseline"
+                className="inline-block px-0.5 text-fg align-baseline"
                 dangerouslySetInnerHTML={{ __html: html }}
               />
             );
           } catch {
             return (
-              <span key={idx} className="font-mono text-[#38bdf8] text-xs">
+              <span key={idx} className="font-mono text-accent text-xs">
                 {token.value}
               </span>
             );
@@ -84,7 +84,7 @@ function RenderInline({ text }: { text: string }) {
           return (
             <code
               key={idx}
-              className="px-1.5 py-0.5 rounded bg-[#27272a] text-[#38bdf8] font-mono text-xs border border-[#3f3f46]/50"
+              className="px-1.5 py-0.5 rounded bg-surface-2 text-accent font-mono text-xs border border-line"
             >
               {token.value}
             </code>
@@ -93,7 +93,7 @@ function RenderInline({ text }: { text: string }) {
 
         if (token.type === 'bold') {
           return (
-            <strong key={idx} className="font-semibold text-white">
+            <strong key={idx} className="font-semibold text-fg">
               {token.value}
             </strong>
           );
@@ -246,14 +246,13 @@ export const FormattedStatement: React.FC<FormattedStatementProps> = ({
   const blocks = useMemo(() => parseBlocks(content || ''), [content]);
 
   return (
-    <div className={cn('flex flex-col gap-3 text-sm leading-relaxed text-[#d4d4d8]', className)}>
+    <div className={cn('flex flex-col gap-3 text-sm leading-relaxed text-fg-soft', className)}>
       {blocks.map((block, idx) => {
         if (block.type === 'heading') {
-          // Clean bold section title without any ### characters!
           return (
             <div key={idx} className="pt-2.5 first:pt-0">
-              <h3 className="text-sm font-bold text-white tracking-wide flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] shrink-0" />
+              <h3 className="text-sm font-bold text-fg tracking-wide flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                 <span>
                   <RenderInline text={block.text} />
                 </span>
@@ -263,14 +262,14 @@ export const FormattedStatement: React.FC<FormattedStatementProps> = ({
         }
 
         if (block.type === 'divider') {
-          return <hr key={idx} className="border-t border-[#333333] my-1" />;
+          return <hr key={idx} className="border-t border-line my-1" />;
         }
 
         if (block.type === 'blockquote') {
           return (
             <div
               key={idx}
-              className="pl-3 py-1 border-l-2 border-[#38bdf8]/60 text-xs sm:text-sm text-[#a1a1aa] italic bg-[#262626]/50 rounded-r"
+              className="pl-3 py-1 border-l-2 border-accent-line text-xs sm:text-sm text-fg-soft italic bg-surface-2/50 rounded-r"
             >
               <RenderInline text={block.text} />
             </div>
@@ -281,8 +280,8 @@ export const FormattedStatement: React.FC<FormattedStatementProps> = ({
           return (
             <ul key={idx} className="flex flex-col gap-1.5 pl-1 my-0.5">
               {block.items.map((item, itemIdx) => (
-                <li key={itemIdx} className="flex items-start gap-2 text-xs sm:text-sm text-[#d4d4d8]">
-                  <span className="text-[#38bdf8] select-none text-base leading-4 shrink-0">•</span>
+                <li key={itemIdx} className="flex items-start gap-2 text-xs sm:text-sm text-fg-soft">
+                  <span className="text-accent select-none text-base leading-4 shrink-0">•</span>
                   <span className="flex-1">
                     <RenderInline text={item} />
                   </span>
@@ -296,8 +295,8 @@ export const FormattedStatement: React.FC<FormattedStatementProps> = ({
           return (
             <ol key={idx} className="flex flex-col gap-1.5 pl-1 my-0.5 counter-reset-item">
               {block.items.map((item, itemIdx) => (
-                <li key={itemIdx} className="flex items-start gap-2 text-xs sm:text-sm text-[#d4d4d8]">
-                  <span className="font-mono text-xs text-[#38bdf8] font-semibold shrink-0 pt-0.5">
+                <li key={itemIdx} className="flex items-start gap-2 text-xs sm:text-sm text-fg-soft">
+                  <span className="font-mono text-xs text-accent font-semibold shrink-0 pt-0.5">
                     {itemIdx + 1}.
                   </span>
                   <span className="flex-1">
@@ -313,7 +312,7 @@ export const FormattedStatement: React.FC<FormattedStatementProps> = ({
           return (
             <div
               key={idx}
-              className="p-3 rounded-lg bg-[#27272a] border border-[#3f3f46]/50 font-mono text-xs text-[#eff2f6] overflow-x-auto my-1"
+              className="p-3 rounded-lg bg-surface-2 border border-line font-mono text-xs text-fg overflow-x-auto my-1"
             >
               <pre className="whitespace-pre">{block.code}</pre>
             </div>
@@ -335,7 +334,7 @@ export const FormattedStatement: React.FC<FormattedStatementProps> = ({
             );
           } catch {
             return (
-              <div key={idx} className="p-2 text-center font-mono text-xs text-[#38bdf8]">
+              <div key={idx} className="p-2 text-center font-mono text-xs text-accent">
                 {block.math}
               </div>
             );
@@ -344,7 +343,7 @@ export const FormattedStatement: React.FC<FormattedStatementProps> = ({
 
         // Paragraph
         return (
-          <p key={idx} className="text-xs sm:text-sm leading-relaxed text-[#d4d4d8]">
+          <p key={idx} className="text-xs sm:text-sm leading-relaxed text-fg-soft">
             <RenderInline text={block.text} />
           </p>
         );
@@ -352,3 +351,5 @@ export const FormattedStatement: React.FC<FormattedStatementProps> = ({
     </div>
   );
 };
+
+export default FormattedStatement;

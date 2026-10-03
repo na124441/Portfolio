@@ -86,21 +86,21 @@ export function QuestionBankSidebar({
     <>
       {/* Mobile view (< 768px) - Dropdown selector */}
       <div className="md:hidden w-full mb-6">
-        <label className="block text-xs font-mono text-[#68747D] uppercase tracking-wider mb-2">
+        <label className="block text-xs font-mono text-fg-muted uppercase tracking-wider mb-2">
           Select Topic
         </label>
         <div className="relative">
           <select
             value={activeTopic.topicNumber}
             onChange={handleMobileChange}
-            className="w-full bg-[#0E151B] text-[#F3F6F7] border border-[#1C2830] rounded-lg px-4 py-3 font-sans text-sm focus:outline-none focus:border-[#019AA2] focus:ring-1 focus:ring-[#019AA2] appearance-none cursor-pointer"
+            className="w-full bg-surface text-fg border border-line rounded-lg px-4 py-3 font-sans text-sm focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent appearance-none cursor-pointer"
           >
             {QUESTION_BANK_CATEGORIES.map((category) => (
-              <optgroup key={category} label={category} className="bg-[#0A0F14] text-[#A8B3BA] font-mono">
+              <optgroup key={category} label={category} className="bg-bg-2 text-fg-soft font-mono">
                 {QUESTION_BANK_BY_CATEGORY[category]?.map((topic) => {
                   const p = topicProgressMap[topic.topicNumber];
                   return (
-                    <option key={topic.topicNumber} value={topic.topicNumber} className="bg-[#0E151B] text-[#F3F6F7]">
+                    <option key={topic.topicNumber} value={topic.topicNumber} className="bg-surface text-fg">
                       {topic.topicNumber}. {topic.name} {p ? `(${p.done}/${p.total})` : ''}
                     </option>
                   );
@@ -108,19 +108,19 @@ export function QuestionBankSidebar({
               </optgroup>
             ))}
           </select>
-          <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#68747D]">
+          <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-fg-muted">
             <ChevronDown className="w-4 h-4" />
           </div>
         </div>
       </div>
 
       {/* Desktop view (>= 768px) - Sticky rail */}
-      <aside className="hidden md:flex flex-col w-full bg-[#0A0F14] border border-[#1C2830] rounded-lg sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto overflow-x-hidden bl-scrollbar">
-        <div className="p-3.5 border-b border-[#1C2830] bg-[#070B0E]/60 flex items-center justify-between">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-[#68747D]">
+      <aside className="hidden md:flex flex-col w-full bg-bg-2 border border-line rounded-lg sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto overflow-x-hidden bl-scrollbar">
+        <div className="p-3.5 border-b border-line bg-bg/60 flex items-center justify-between">
+          <span className="font-mono text-[11px] uppercase tracking-widest text-fg-muted">
             Problem Topics
           </span>
-          <span className="font-mono text-[10px] text-[#019AA2] bg-[#019AA2]/10 px-2 py-0.5 rounded border border-[#019AA2]/20">
+          <span className="font-mono text-[10px] text-accent bg-accent/10 px-2 py-0.5 rounded border border-accent/20">
             {QUESTION_BANK_TOPICS.length} Topics
           </span>
         </div>
@@ -162,7 +162,7 @@ function CategoryGroup({
   onToggle: () => void;
 }) {
   const listRef = useRef<HTMLUListElement>(null);
-  const style = CATEGORY_STYLES[category] || { dot: 'bg-[#A8B3BA]', text: 'text-[#A8B3BA]', bg: 'bg-white/5' };
+  const style = CATEGORY_STYLES[category] || { dot: 'bg-fg-soft', text: 'text-fg-soft', bg: 'bg-white/5' };
 
   useEffect(() => {
     if (!listRef.current) return;
@@ -192,15 +192,15 @@ function CategoryGroup({
       <button
         type="button"
         onClick={onToggle}
-        className="flex items-center justify-between py-1.5 px-2 text-left group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#019AA2] rounded cursor-pointer hover:bg-white/[0.02]"
+        className="flex items-center justify-between py-1.5 px-2 text-left group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent rounded cursor-pointer hover:bg-white/[0.02]"
       >
         <div className="flex items-center gap-2 min-w-0">
           <div className={cn('w-1.5 h-1.5 rounded-full shrink-0', style.dot)} />
-          <span className="font-mono text-xs uppercase tracking-wider text-[#A8B3BA] group-hover:text-[#F3F6F7] transition-colors truncate">
+          <span className="font-mono text-xs uppercase tracking-wider text-fg-soft group-hover:text-fg transition-colors truncate">
             {category}
           </span>
         </div>
-        <div className="text-[#68747D] group-hover:text-[#F3F6F7] transition-colors shrink-0">
+        <div className="text-fg-muted group-hover:text-fg transition-colors shrink-0">
           {isExpanded ? (
             <ChevronDown className="w-3.5 h-3.5" />
           ) : (
@@ -223,17 +223,17 @@ function CategoryGroup({
                 className={cn(
                   'w-full text-left py-2 px-3 pl-5 flex justify-between items-center rounded transition-all text-xs font-sans relative cursor-pointer',
                   isActive
-                    ? 'text-[#019AA2] bg-[#111A22] font-medium'
-                    : 'text-[#A8B3BA] hover:text-[#F3F6F7] hover:bg-[#0E151B]'
+                    ? 'text-accent bg-surface-2 font-medium'
+                    : 'text-fg-soft hover:text-fg hover:bg-surface'
                 )}
               >
                 {/* Active indicator bar */}
                 {isActive && (
-                  <span className="absolute left-0 top-1 bottom-1 w-[3px] bg-[#019AA2] rounded-r" />
+                  <span className="absolute left-0 top-1 bottom-1 w-[3px] bg-accent rounded-r" />
                 )}
 
                 <span className="truncate pr-2">
-                  <span className="font-mono text-[#68747D] mr-1.5">{topic.topicNumber}.</span>
+                  <span className="font-mono text-fg-muted mr-1.5">{topic.topicNumber}.</span>
                   {topic.name}
                 </span>
 
@@ -244,8 +244,8 @@ function CategoryGroup({
                       isComplete
                         ? 'text-emerald-400 bg-emerald-500/10'
                         : isActive
-                        ? 'text-[#019AA2] bg-[#019AA2]/10'
-                        : 'text-[#68747D] bg-[#1C2830]/40'
+                        ? 'text-accent bg-accent/10'
+                        : 'text-fg-muted bg-line/40'
                     )}
                   >
                     {progress.done}/{progress.total}

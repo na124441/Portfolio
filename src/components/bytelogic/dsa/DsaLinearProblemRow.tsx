@@ -18,16 +18,16 @@ export function DsaLinearProblemRow({ problem, status, index }: DsaLinearProblem
   const acceptance = getAcceptanceRate(problem);
   const isEven = index % 2 === 0;
 
-  // Let problem order 1 or items with order % 29 === 0 be marked with the daily challenge calendar icon like Image 1
+  // Let problem order 1 or items with order % 29 === 0 be marked with the daily challenge calendar icon
   const isDailyChallenge = problem.order === 1 || problem.order % 37 === 0;
 
   return (
     <Link
       href={`/bytelogic/questions/dsa/${problem.slug}`}
       className={cn(
-        'group flex items-center justify-between px-3 sm:px-4 py-3 sm:py-3.5 transition-colors cursor-pointer text-xs sm:text-sm font-sans border-b border-[#2b2b2b]/40',
-        isEven ? 'bg-[#1a1a1a]' : 'bg-[#222222]',
-        'hover:bg-[#2c2c2c]'
+        'group flex items-center justify-between px-3 sm:px-4 py-3 sm:py-3.5 transition-colors cursor-pointer text-xs sm:text-sm font-sans border-b border-line/40',
+        isEven ? 'bg-surface' : 'bg-bg-2',
+        'hover:bg-surface-2'
       )}
     >
       {/* Left: Status Check & Title */}
@@ -47,12 +47,12 @@ export function DsaLinearProblemRow({ problem, status, index }: DsaLinearProblem
 
         {/* Daily icon if featured */}
         {isDailyChallenge && (
-          <Calendar className="w-3.5 h-3.5 text-[#3b82f6] shrink-0 hidden xs:inline" />
+          <Calendar className="w-3.5 h-3.5 text-accent shrink-0 hidden xs:inline" />
         )}
 
         {/* Title */}
-        <div className="truncate flex items-center gap-1.5 font-medium text-[#eff2f6] group-hover:text-[#38bdf8] transition-colors">
-          <span className="font-semibold text-[#eff2f6]">
+        <div className="truncate flex items-center gap-1.5 font-medium text-fg group-hover:text-accent transition-colors">
+          <span className="font-semibold text-fg">
             {problem.order}.
           </span>
           <span className="truncate">
@@ -64,7 +64,7 @@ export function DsaLinearProblemRow({ problem, status, index }: DsaLinearProblem
       {/* Right Columns: Acceptance, Difficulty, Lock / Frequency */}
       <div className="flex items-center gap-4 sm:gap-8 shrink-0 text-right font-mono text-xs">
         {/* Acceptance Rate */}
-        <span className="text-[#9ca3af] hidden sm:inline-block w-14">
+        <span className="text-fg-soft hidden sm:inline-block w-14">
           {acceptance}
         </span>
 
@@ -79,9 +79,9 @@ export function DsaLinearProblemRow({ problem, status, index }: DsaLinearProblem
         </span>
 
         {/* Lock / Action Icons */}
-        <div className="w-8 flex items-center justify-end gap-1 text-[#6b7280]">
-          <Lock className="w-3.5 h-3.5 text-[#52525b]" />
-          <BarChart2 className="w-3.5 h-3.5 text-[#52525b]" />
+        <div className="w-8 flex items-center justify-end gap-1 text-fg-muted">
+          <Lock className="w-3.5 h-3.5" />
+          <BarChart2 className="w-3.5 h-3.5" />
         </div>
       </div>
     </Link>

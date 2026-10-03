@@ -49,17 +49,17 @@ export const ContactSection: React.FC = () => {
             className="md:col-span-5 space-y-4"
           >
             <div className="p-6 glass-panel corner-brackets space-y-4">
-              <div className="font-mono text-xs uppercase tracking-widest text-[#dfb15b]">
+              <div className="font-mono text-xs uppercase tracking-widest text-accent">
                 Direct Coordinates
               </div>
 
               <div className="space-y-3 font-mono text-xs">
                 <a
                   href={`mailto:${PORTFOLIO_METADATA.email}`}
-                  className="p-3 border border-white/5 bg-white/[0.02] flex items-center justify-between text-white/80 hover:text-[#dfb15b] hover:border-[#d4af37]/40 transition-colors group"
+                  className="p-3 border border-line bg-surface-soft flex items-center justify-between text-fg-soft hover:text-accent hover:border-accent/40 transition-colors group"
                 >
                   <div className="flex items-center gap-2.5">
-                    <Mail className="w-4 h-4 text-[#dfb15b]" />
+                    <Mail className="w-4 h-4 text-accent" />
                     <span>{PORTFOLIO_METADATA.email}</span>
                   </div>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />
@@ -69,10 +69,10 @@ export const ContactSection: React.FC = () => {
                   href={PORTFOLIO_METADATA.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 border border-white/5 bg-white/[0.02] flex items-center justify-between text-white/80 hover:text-[#dfb15b] hover:border-[#d4af37]/40 transition-colors group"
+                  className="p-3 border border-line bg-surface-soft flex items-center justify-between text-fg-soft hover:text-accent hover:border-accent/40 transition-colors group"
                 >
                   <div className="flex items-center gap-2.5">
-                    <GithubIcon size={16} className="text-[#dfb15b]" />
+                    <GithubIcon size={16} className="text-accent" />
                     <span>github.com/nayantsrivastava</span>
                   </div>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />
@@ -82,17 +82,17 @@ export const ContactSection: React.FC = () => {
                   href={PORTFOLIO_METADATA.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 border border-white/5 bg-white/[0.02] flex items-center justify-between text-white/80 hover:text-[#dfb15b] hover:border-[#d4af37]/40 transition-colors group"
+                  className="p-3 border border-line bg-surface-soft flex items-center justify-between text-fg-soft hover:text-accent hover:border-accent/40 transition-colors group"
                 >
                   <div className="flex items-center gap-2.5">
-                    <LinkedinIcon size={16} className="text-[#dfb15b]" />
+                    <LinkedinIcon size={16} className="text-accent" />
                     <span>linkedin.com/in/nayantsrivastava</span>
                   </div>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-opacity" />
                 </a>
               </div>
 
-              <div className="pt-2 text-[11px] font-mono text-white/40 leading-relaxed border-t border-white/5">
+              <div className="pt-2 text-[11px] font-mono text-fg-muted leading-relaxed border-t border-line">
                 Typical response latency: &lt; 24h for technical & recruitment inquiries.
               </div>
             </div>
@@ -107,20 +107,20 @@ export const ContactSection: React.FC = () => {
             className="md:col-span-7"
           >
             <div className="p-6 sm:p-7 glass-panel corner-brackets">
-              <div className="font-mono text-xs uppercase tracking-widest text-white/50 mb-4 pb-2 border-b border-white/10 flex items-center justify-between">
+              <div className="font-mono text-xs uppercase tracking-widest text-fg-muted mb-4 pb-2 border-b border-line flex items-center justify-between">
                 <span>Message Transmission</span>
-                <span className="text-[10px] text-white/30">[v0.1 Mock Handler]</span>
+                <span className="text-[10px] text-fg-muted">[v0.1 Mock Handler]</span>
               </div>
 
               {status === 'submitted' ? (
                 <div className="py-8 text-center space-y-4 animate-in fade-in duration-200">
-                  <div className="w-10 h-10 border border-[#d4af37] bg-[#d4af37]/10 text-[#dfb15b] flex items-center justify-center mx-auto shadow-[0_0_12px_rgba(212,175,55,0.2)]">
+                  <div className="w-10 h-10 border border-accent bg-accent-soft text-accent flex items-center justify-center mx-auto shadow-[0_0_12px_var(--accent-glow)]">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
-                  <h4 className="font-display text-lg font-bold text-[#feffff]">
+                  <h4 className="font-display text-lg font-bold text-fg">
                     Transmission Received
                   </h4>
-                  <p className="font-sans text-xs sm:text-sm text-white/70 max-w-sm mx-auto leading-relaxed">
+                  <p className="font-sans text-xs sm:text-sm text-fg-soft max-w-sm mx-auto leading-relaxed">
                     Thank you for reaching out. In this v0.1 prototype, submission is client-side simulated. Feel free to connect directly via email or LinkedIn.
                   </p>
                   <Button variant="outline" size="sm" onClick={handleReset}>
@@ -132,7 +132,7 @@ export const ContactSection: React.FC = () => {
                   <div>
                     <label
                       htmlFor="contact-name"
-                      className="block font-mono text-xs text-white/60 mb-1.5 uppercase tracking-wider"
+                      className="block font-mono text-xs text-fg-soft mb-1.5 uppercase tracking-wider"
                     >
                       Name
                     </label>
@@ -143,14 +143,14 @@ export const ContactSection: React.FC = () => {
                       placeholder="e.g. Dr. Alan Turing"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-white/[0.03] border border-white/15 text-sm text-[#feffff] placeholder:text-white/20 focus:outline-none focus:border-[#d4af37] transition-colors font-sans"
+                      className="w-full px-3.5 py-2.5 bg-surface-soft border border-line text-sm text-fg placeholder:text-fg-muted focus:outline-none focus:border-accent transition-colors font-sans"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="contact-email"
-                      className="block font-mono text-xs text-white/60 mb-1.5 uppercase tracking-wider"
+                      className="block font-mono text-xs text-fg-soft mb-1.5 uppercase tracking-wider"
                     >
                       Email
                     </label>
@@ -161,14 +161,14 @@ export const ContactSection: React.FC = () => {
                       placeholder="you@domain.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-white/[0.03] border border-white/15 text-sm text-[#feffff] placeholder:text-white/20 focus:outline-none focus:border-[#d4af37] transition-colors font-sans"
+                      className="w-full px-3.5 py-2.5 bg-surface-soft border border-line text-sm text-fg placeholder:text-fg-muted focus:outline-none focus:border-accent transition-colors font-sans"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="contact-message"
-                      className="block font-mono text-xs text-white/60 mb-1.5 uppercase tracking-wider"
+                      className="block font-mono text-xs text-fg-soft mb-1.5 uppercase tracking-wider"
                     >
                       Message / Inquiry
                     </label>
@@ -179,7 +179,7 @@ export const ContactSection: React.FC = () => {
                       placeholder="Discussing engineering opportunities, reinforcement learning architectures, or technical collaboration..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-3.5 py-2.5 bg-white/[0.03] border border-white/15 text-sm text-[#feffff] placeholder:text-white/20 focus:outline-none focus:border-[#d4af37] transition-colors font-sans resize-none"
+                      className="w-full px-3.5 py-2.5 bg-surface-soft border border-line text-sm text-fg placeholder:text-fg-muted focus:outline-none focus:border-accent transition-colors font-sans resize-none"
                     />
                   </div>
 

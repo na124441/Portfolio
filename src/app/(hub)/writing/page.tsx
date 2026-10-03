@@ -33,7 +33,7 @@ export default function WritingPage() {
             onClick={() => setSelectedCategory(cat)}
             className={`px-3 py-1 border transition-colors ${
               selectedCategory === cat
-                ? 'border-[#d4af37] bg-[#d4af37]/10 text-[#dfb15b]'
+                ? 'border-accent bg-accent/10 text-accent'
                 : 'border-white/10 bg-white/[0.02] text-white/60 hover:text-white hover:border-white/20'
             }`}
           >
@@ -52,7 +52,7 @@ export default function WritingPage() {
             {/* Metadata Bar */}
             <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-white/10">
               <div className="flex items-center gap-2.5">
-                <span className="font-mono text-xs font-semibold text-[#dfb15b]">
+                <span className="font-mono text-xs font-semibold text-accent">
                   {entry.date}
                 </span>
                 <span className="text-white/30 font-mono text-xs">·</span>
@@ -69,7 +69,7 @@ export default function WritingPage() {
             </div>
 
             {/* Title */}
-            <h2 className="font-display text-lg sm:text-xl font-bold text-[#feffff]">
+            <h2 className="font-display text-lg sm:text-xl font-bold text-fg">
               {entry.title}
             </h2>
 
@@ -81,13 +81,13 @@ export default function WritingPage() {
             {/* Bulleted Technical Details */}
             {entry.details && entry.details.length > 0 && (
               <div className="p-4 bg-white/[0.02] border border-white/5 space-y-2">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#dfb15b] block">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-accent block">
                   Key Technical Observations:
                 </span>
                 <ul className="space-y-1.5 text-xs font-sans text-white/70">
                   {entry.details.map((detail, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="text-[#dfb15b] font-mono mt-0.5">▸</span>
+                      <span className="text-accent font-mono mt-0.5">▸</span>
                       <span>{detail}</span>
                     </li>
                   ))}

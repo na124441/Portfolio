@@ -8,31 +8,31 @@ import { ByteLogicSignatureBlock } from './ByteLogicSignatureBlock';
 
 export const ModelLearningArticleContent: React.FC = () => {
   return (
-    <div className="space-y-12 sm:space-y-16 text-base sm:text-lg leading-relaxed text-[#A8B3BA] font-sans">
+    <div className="space-y-12 sm:space-y-16 text-base sm:text-lg leading-relaxed text-fg-soft font-sans">
       {/* ------------------------------------------------------------------- */}
       {/* Introduction */}
       {/* ------------------------------------------------------------------- */}
       <section id="introduction" className="space-y-6 pt-4">
-        <p className="text-lg sm:text-xl font-sans text-[#F3F6F7] leading-relaxed">
+        <p className="text-lg sm:text-xl font-sans text-fg leading-relaxed">
           We say it constantly:
         </p>
 
         <div className="space-y-3 pl-1">
-          <blockquote className="my-2 pl-4 border-l-2 border-[#019AA2] text-[#F3F6F7] italic bg-[#0E151B]/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
+          <blockquote className="my-2 pl-4 border-l-2 border-accent text-fg italic bg-surface/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
             &ldquo;The model learned the pattern.&rdquo;
           </blockquote>
 
-          <blockquote className="my-2 pl-4 border-l-2 border-[#019AA2] text-[#F3F6F7] italic bg-[#0E151B]/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
+          <blockquote className="my-2 pl-4 border-l-2 border-accent text-fg italic bg-surface/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
             &ldquo;The neural network learned to recognize cats.&rdquo;
           </blockquote>
 
-          <blockquote className="my-2 pl-4 border-l-2 border-[#019AA2] text-[#F3F6F7] italic bg-[#0E151B]/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
+          <blockquote className="my-2 pl-4 border-l-2 border-accent text-fg italic bg-surface/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
             &ldquo;The model learned language.&rdquo;
           </blockquote>
         </div>
 
         <p>
-          But what does <em className="text-[#F3F6F7] not-italic font-medium">learn</em> actually mean here?
+          But what does <em className="text-fg not-italic font-medium">learn</em> actually mean here?
         </p>
 
         <p>
@@ -41,7 +41,7 @@ export const ModelLearningArticleContent: React.FC = () => {
 
         <p>Something much more mechanical happens.</p>
 
-        <p className="text-xl sm:text-2xl font-display font-semibold text-[#F3F6F7]">
+        <p className="text-xl sm:text-2xl font-display font-semibold text-fg">
           Numbers change.
         </p>
 
@@ -60,8 +60,8 @@ export const ModelLearningArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       {/* 01 // A Model Starts With Almost Nothing */}
       {/* ------------------------------------------------------------------- */}
-      <section id="a-model-starts-with-almost-nothing" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="a-model-starts-with-almost-nothing" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           1. A Model Starts With Almost Nothing
         </h2>
 
@@ -69,7 +69,7 @@ export const ModelLearningArticleContent: React.FC = () => {
 
         <p>We give it information such as:</p>
 
-        <ul className="space-y-1.5 pl-4 border-l border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
+        <ul className="space-y-1.5 pl-4 border-l border-line font-mono text-sm text-fg">
           <li>• area</li>
           <li>• number of bedrooms</li>
           <li>• location</li>
@@ -94,8 +94,8 @@ export const ModelLearningArticleContent: React.FC = () => {
 
         <p>Then we show it an example:</p>
 
-        <div className="p-3.5 sm:p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] font-mono text-center text-sm sm:text-base text-[#F3F6F7]">
-          <strong className="text-[#019AA2]">2000 sq ft</strong> → <strong className="text-[#019AA2]">₹80 lakh</strong>
+        <div className="p-3.5 sm:p-4 rounded-[6px] bg-surface border border-line font-mono text-center text-sm sm:text-base text-fg">
+          <strong className="text-accent">2000 sq ft</strong> → <strong className="text-accent">₹80 lakh</strong>
         </div>
 
         <p>The model predicts something else.</p>
@@ -118,16 +118,16 @@ export const ModelLearningArticleContent: React.FC = () => {
           Millions of parameter updates later, the model behaves very differently from where it started.
         </p>
 
-        <p className="text-lg sm:text-xl font-display font-semibold text-[#F3F6F7]">
-          That change is what we call <strong className="text-[#019AA2]">learning</strong>.
+        <p className="text-lg sm:text-xl font-display font-semibold text-fg">
+          That change is what we call <strong className="text-accent">learning</strong>.
         </p>
       </section>
 
       {/* ------------------------------------------------------------------- */}
       {/* 02 // Learning Is Not the Same as Memorizing */}
       {/* ------------------------------------------------------------------- */}
-      <section id="learning-is-not-the-same-as-memorizing" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="learning-is-not-the-same-as-memorizing" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           2. Learning Is Not the Same as Memorizing
         </h2>
 
@@ -164,12 +164,12 @@ Image 3 = Cat`}
         <p>That would just be memorization.</p>
 
         <p>
-          We want it to discover some structure that allows it to make predictions about images it has <strong className="text-[#F3F6F7]">never seen before</strong>.
+          We want it to discover some structure that allows it to make predictions about images it has <strong className="text-fg">never seen before</strong>.
         </p>
 
         <p>Perhaps it learns representations related to:</p>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 border-l border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 border-l border-line font-mono text-sm text-fg">
           <li>• edges</li>
           <li>• textures</li>
           <li>• shapes</li>
@@ -184,7 +184,7 @@ Image 3 = Cat`}
 
         <p>We cannot simply open the model and point to one parameter and say:</p>
 
-        <blockquote className="my-3 pl-4 border-l-2 border-[#019AA2] text-[#F3F6F7] italic bg-[#0E151B]/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
+        <blockquote className="my-3 pl-4 border-l-2 border-accent text-fg italic bg-surface/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
           &ldquo;This parameter represents a cat.&rdquo;
         </blockquote>
 
@@ -198,8 +198,8 @@ Image 3 = Cat`}
       {/* ------------------------------------------------------------------- */}
       {/* 03 // So What Is Actually Changing? */}
       {/* ------------------------------------------------------------------- */}
-      <section id="so-what-is-actually-changing" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="so-what-is-actually-changing" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           3. So What Is Actually Changing?
         </h2>
 
@@ -240,32 +240,32 @@ Paris → France
 
         <p>So when we say:</p>
 
-        <blockquote className="my-3 pl-4 border-l-2 border-[#019AA2] text-[#F3F6F7] font-semibold bg-[#0E151B]/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
+        <blockquote className="my-3 pl-4 border-l-2 border-accent text-fg font-semibold bg-surface/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
           &ldquo;The model learned cats.&rdquo;
         </blockquote>
 
         <p>a more precise statement would be:</p>
 
-        <blockquote className="my-3 pl-4 border-l-2 border-[#019AA2] text-[#F3F6F7] font-semibold bg-[#0E151B]/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
+        <blockquote className="my-3 pl-4 border-l-2 border-accent text-fg font-semibold bg-surface/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
           &ldquo;The optimization process changed the model&apos;s parameters so that its internal representations and output behavior became useful for distinguishing patterns associated with cats.&rdquo;
         </blockquote>
 
         <p>Less catchy.</p>
 
-        <p className="text-[#F3F6F7] font-medium">Much more accurate.</p>
+        <p className="text-fg font-medium">Much more accurate.</p>
       </section>
 
       {/* ------------------------------------------------------------------- */}
       {/* 04 // The Loss Function Defines What “Learning” Means */}
       {/* ------------------------------------------------------------------- */}
-      <section id="the-loss-function-defines-what-learning-means" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="the-loss-function-defines-what-learning-means" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           4. The Loss Function Defines What “Learning” Means
         </h2>
 
         <p>Here&apos;s one of the deepest ideas in machine learning:</p>
 
-        <p className="text-xl sm:text-2xl font-display font-bold text-[#F3F6F7]">
+        <p className="text-xl sm:text-2xl font-display font-bold text-fg">
           A model doesn&apos;t decide what to learn.
         </p>
 
@@ -285,14 +285,14 @@ Paris → France
 
         <p>It only receives a numerical signal telling it:</p>
 
-        <blockquote className="my-3 pl-4 border-l-2 border-[#019AA2] text-[#F3F6F7] italic bg-[#0E151B]/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
+        <blockquote className="my-3 pl-4 border-l-2 border-accent text-fg italic bg-surface/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
           &ldquo;Your prediction was this far from the target.&rdquo;
         </blockquote>
 
         <p>Optimization then tries to reduce that number.</p>
 
         <p>
-          This means that what a model learns is deeply connected to the <strong className="text-[#F3F6F7]">objective we give it</strong>.
+          This means that what a model learns is deeply connected to the <strong className="text-fg">objective we give it</strong>.
         </p>
 
         <p>Change the objective, and you can change what the model considers useful.</p>
@@ -301,8 +301,8 @@ Paris → France
       {/* ------------------------------------------------------------------- */}
       {/* 05 // Gradient Descent: How Learning Happens */}
       {/* ------------------------------------------------------------------- */}
-      <section id="gradient-descent-how-learning-happens" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="gradient-descent-how-learning-happens" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           5. Gradient Descent: How Learning Happens
         </h2>
 
@@ -320,7 +320,7 @@ Paris → France
 
         <p>where:</p>
 
-        <ul className="space-y-2 pl-4 border-l border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
+        <ul className="space-y-2 pl-4 border-l border-line font-mono text-sm text-fg">
           <li>• <EquationBlock math="\theta" inline /> = model parameters</li>
           <li>• <EquationBlock math="\eta" inline /> = learning rate</li>
           <li>• <EquationBlock math="\nabla_\theta L" inline /> = gradient of the loss with respect to the parameters</li>
@@ -328,7 +328,7 @@ Paris → France
 
         <p>The gradient tells us approximately:</p>
 
-        <blockquote className="my-3 pl-4 border-l-2 border-[#019AA2] text-[#F3F6F7] font-semibold bg-[#0E151B]/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
+        <blockquote className="my-3 pl-4 border-l-2 border-accent text-fg font-semibold bg-surface/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
           &ldquo;If you change this parameter in this direction, the loss will increase or decrease.&rdquo;
         </blockquote>
 
@@ -338,16 +338,16 @@ Paris → France
 
         <p>Repeat this enough times and the model&apos;s behavior changes.</p>
 
-        <p className="text-lg sm:text-xl font-display font-semibold text-[#F3F6F7]">
-          That is the machinery underneath the word <strong className="text-[#019AA2]">learning</strong>.
+        <p className="text-lg sm:text-xl font-display font-semibold text-fg">
+          That is the machinery underneath the word <strong className="text-accent">learning</strong>.
         </p>
       </section>
 
       {/* ------------------------------------------------------------------- */}
       {/* 06 // But Where Does the Knowledge Go? */}
       {/* ------------------------------------------------------------------- */}
-      <section id="but-where-does-the-knowledge-go" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="but-where-does-the-knowledge-go" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           6. But Where Does the Knowledge Go?
         </h2>
 
@@ -359,13 +359,13 @@ Paris → France
 
         <p>After training, we might ask:</p>
 
-        <blockquote className="my-2 pl-4 border-l-2 border-[#1C2830] text-[#F3F6F7] italic">
+        <blockquote className="my-2 pl-4 border-l-2 border-line text-fg italic">
           &ldquo;What is the capital of France?&rdquo;
         </blockquote>
 
         <p>and it can produce:</p>
 
-        <blockquote className="my-2 pl-4 border-l-2 border-[#019AA2] text-[#019AA2] font-semibold">
+        <blockquote className="my-2 pl-4 border-l-2 border-accent text-accent font-semibold">
           Paris.
         </blockquote>
 
@@ -378,7 +378,7 @@ Paris → France
         </p>
 
         <p>
-          A useful mental model is to think of the network as constructing a complicated <strong className="text-[#F3F6F7]">energy landscape</strong>.
+          A useful mental model is to think of the network as constructing a complicated <strong className="text-fg">energy landscape</strong>.
         </p>
 
         <p>Different parameter configurations produce different behaviors.</p>
@@ -399,8 +399,8 @@ Paris → France
       {/* ------------------------------------------------------------------- */}
       {/* 07 // Models Learn Relationships */}
       {/* ------------------------------------------------------------------- */}
-      <section id="models-learn-relationships" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="models-learn-relationships" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           7. Models Learn Relationships
         </h2>
 
@@ -442,7 +442,7 @@ chair
 
         <p>Words interact with:</p>
 
-        <ul className="space-y-1.5 pl-4 border-l border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
+        <ul className="space-y-1.5 pl-4 border-l border-line font-mono text-sm text-fg">
           <li>• surrounding words</li>
           <li>• syntax</li>
           <li>• semantics</li>
@@ -466,8 +466,8 @@ chair
       {/* ------------------------------------------------------------------- */}
       {/* 08 // Features Are Not Always Human-Readable */}
       {/* ------------------------------------------------------------------- */}
-      <section id="features-are-not-always-human-readable" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="features-are-not-always-human-readable" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           8. Features Are Not Always Human-Readable
         </h2>
 
@@ -489,7 +489,7 @@ Neuron 4 → detects cats`}
 
         <p>Representations can be:</p>
 
-        <ul className="space-y-1.5 pl-4 border-l border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
+        <ul className="space-y-1.5 pl-4 border-l border-line font-mono text-sm text-fg">
           <li>• distributed</li>
           <li>• overlapping</li>
           <li>• hierarchical</li>
@@ -506,15 +506,15 @@ Neuron 4 → detects cats`}
         <p>We can inspect the numbers.</p>
 
         <p>
-          But understanding what those numbers <em className="text-[#F3F6F7] not-italic font-medium">mean</em> can be much harder.
+          But understanding what those numbers <em className="text-fg not-italic font-medium">mean</em> can be much harder.
         </p>
       </section>
 
       {/* ------------------------------------------------------------------- */}
       {/* 09 // Learning Happens at Different Levels */}
       {/* ------------------------------------------------------------------- */}
-      <section id="learning-happens-at-different-levels" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="learning-happens-at-different-levels" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           9. Learning Happens at Different Levels
         </h2>
 
@@ -579,8 +579,8 @@ task-relevant representations`}
       {/* ------------------------------------------------------------------- */}
       {/* 10 // The Dataset Shapes the Mind of the Model */}
       {/* ------------------------------------------------------------------- */}
-      <section id="the-dataset-shapes-the-mind-of-the-model" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="the-dataset-shapes-the-mind-of-the-model" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           10. The Dataset Shapes the Mind of the Model
         </h2>
 
@@ -616,7 +616,7 @@ task-relevant representations`}
 
         <p>So does:</p>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 border-l border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 border-l border-line font-mono text-sm text-fg">
           <li>• data quality</li>
           <li>• data quantity</li>
           <li>• labels</li>
@@ -636,8 +636,8 @@ task-relevant representations`}
       {/* ------------------------------------------------------------------- */}
       {/* 11 // A Model Can Learn the Wrong Thing */}
       {/* ------------------------------------------------------------------- */}
-      <section id="a-model-can-learn-the-wrong-thing" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="a-model-can-learn-the-wrong-thing" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           11. A Model Can Learn the Wrong Thing
         </h2>
 
@@ -670,7 +670,7 @@ Dog → grass`}
 
         <p>instead of:</p>
 
-        <blockquote className="my-2 pl-4 border-l-2 border-[#019AA2] text-[#019AA2] font-mono text-base sm:text-lg">
+        <blockquote className="my-2 pl-4 border-l-2 border-accent text-accent font-mono text-base sm:text-lg">
           Wolf → Wolf
         </blockquote>
 
@@ -681,7 +681,7 @@ Dog → grass`}
         <p>The dataset allowed the shortcut.</p>
 
         <p>
-          This phenomenon is often called <strong className="text-[#F3F6F7]">spurious correlation</strong>.
+          This phenomenon is often called <strong className="text-fg">spurious correlation</strong>.
         </p>
 
         <p>
@@ -692,15 +692,15 @@ Dog → grass`}
       {/* ------------------------------------------------------------------- */}
       {/* 12 // Then What Does “Understanding” Mean? */}
       {/* ------------------------------------------------------------------- */}
-      <section id="then-what-does-understanding-mean" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="then-what-does-understanding-mean" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           12. Then What Does “Understanding” Mean?
         </h2>
 
         <p>This is where terminology gets philosophical.</p>
 
         <p>
-          If a model can translate a sentence, write code, solve equations, or describe an image, does it <strong className="text-[#F3F6F7]">understand</strong> those things?
+          If a model can translate a sentence, write code, solve equations, or describe an image, does it <strong className="text-fg">understand</strong> those things?
         </p>
 
         <p>There isn&apos;t a single universally accepted answer.</p>
@@ -712,17 +712,17 @@ Dog → grass`}
         </p>
 
         <p>
-          Whether that deserves the word <em className="text-[#F3F6F7] not-italic font-medium">understanding</em> depends on what definition of understanding we choose.
+          Whether that deserves the word <em className="text-fg not-italic font-medium">understanding</em> depends on what definition of understanding we choose.
         </p>
 
         <p>And that&apos;s an important distinction.</p>
 
         <div className="space-y-2 pt-2">
-          <p className="text-xl sm:text-2xl font-display font-bold text-[#F3F6F7]">
+          <p className="text-xl sm:text-2xl font-display font-bold text-fg">
             Capability is measurable.
           </p>
 
-          <p className="text-xl sm:text-2xl font-display font-bold text-[#019AA2]">
+          <p className="text-xl sm:text-2xl font-display font-bold text-accent">
             Interpretation is harder.
           </p>
         </div>
@@ -731,8 +731,8 @@ Dog → grass`}
       {/* ------------------------------------------------------------------- */}
       {/* 13 // Generalization Is the Real Test */}
       {/* ------------------------------------------------------------------- */}
-      <section id="generalization-is-the-real-test" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="generalization-is-the-real-test" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           13. Generalization Is the Real Test
         </h2>
 
@@ -764,7 +764,7 @@ Dog → grass`}
         </p>
 
         <p>
-          That&apos;s <strong className="text-[#F3F6F7]">generalization</strong>.
+          That&apos;s <strong className="text-fg">generalization</strong>.
         </p>
 
         <p>But generalization has limits.</p>
@@ -775,7 +775,7 @@ Dog → grass`}
 
         <p>This is why:</p>
 
-        <blockquote className="my-3 pl-4 border-l-2 border-[#019AA2] text-[#F3F6F7] font-semibold bg-[#0E151B]/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
+        <blockquote className="my-3 pl-4 border-l-2 border-accent text-fg font-semibold bg-surface/40 py-2.5 pr-4 rounded-r-[4px] text-base sm:text-lg">
           &ldquo;Low training error does not automatically mean useful learning.&rdquo;
         </blockquote>
 
@@ -799,8 +799,8 @@ Dog → grass`}
       {/* ------------------------------------------------------------------- */}
       {/* 14 // The Strange Part: We Don't Program the Final Behavior */}
       {/* ------------------------------------------------------------------- */}
-      <section id="the-strange-part-we-dont-program-the-final-behavior" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="the-strange-part-we-dont-program-the-final-behavior" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           14. The Strange Part: We Don&apos;t Program the Final Behavior
         </h2>
 
@@ -834,7 +834,7 @@ optimization`}
         <p>and allow the model to discover parameters that produce useful behavior.</p>
 
         <p>
-          We specify the <strong className="text-[#F3F6F7]">learning process</strong>.
+          We specify the <strong className="text-fg">learning process</strong>.
         </p>
 
         <p>The final internal representation is largely discovered through optimization.</p>
@@ -845,20 +845,20 @@ optimization`}
       {/* ------------------------------------------------------------------- */}
       {/* 15 // So What Does a Model Actually Learn? */}
       {/* ------------------------------------------------------------------- */}
-      <section id="so-what-does-a-model-actually-learn" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="so-what-does-a-model-actually-learn" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           15. So What Does a Model Actually Learn?
         </h2>
 
         <p>We can now answer the original question.</p>
 
         <p>
-          A machine-learning model learns <strong className="text-[#F3F6F7]">parameters and internal representations that encode statistical structure useful for minimizing its training objective</strong>.
+          A machine-learning model learns <strong className="text-fg">parameters and internal representations that encode statistical structure useful for minimizing its training objective</strong>.
         </p>
 
         <p>Those structures can correspond to things such as:</p>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 border-l border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 border-l border-line font-mono text-sm text-fg">
           <li>• correlations</li>
           <li>• features</li>
           <li>• relationships</li>
@@ -895,8 +895,8 @@ optimization`}
       {/* ------------------------------------------------------------------- */}
       {/* 16 // The Most Important Mental Model */}
       {/* ------------------------------------------------------------------- */}
-      <section id="the-most-important-mental-model" className="space-y-6 pt-6 border-t border-[#1C2830]/60">
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+      <section id="the-most-important-mental-model" className="space-y-6 pt-6 border-t border-line/60">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           16. The Most Important Mental Model
         </h2>
 
@@ -940,7 +940,7 @@ new behavior`}
 
         <p>Eventually, something interesting emerges:</p>
 
-        <p className="text-lg sm:text-xl font-display font-semibold text-[#F3F6F7]">
+        <p className="text-lg sm:text-xl font-display font-semibold text-fg">
           the model becomes capable of doing things it couldn&apos;t reliably do before.
         </p>
 
@@ -950,17 +950,17 @@ new behavior`}
       {/* ------------------------------------------------------------------- */}
       {/* The Bigger Question */}
       {/* ------------------------------------------------------------------- */}
-      <section id="the-bigger-question" className="space-y-6 pt-8 border-t-2 border-[#019AA2]/40">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#019AA2]">
-          <span className="w-2 h-2 rounded-[2px] bg-[#019AA2]" />
+      <section id="the-bigger-question" className="space-y-6 pt-8 border-t-2 border-accent/40">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent">
+          <span className="w-2 h-2 rounded-[2px] bg-accent" />
           <span className="font-semibold tracking-wider uppercase">SYNTHESIS // THE HORIZON</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-display font-bold text-fg tracking-tight">
           The Bigger Question
         </h2>
 
-        <p className="text-lg sm:text-xl text-[#F3F6F7] leading-relaxed">
+        <p className="text-lg sm:text-xl text-fg leading-relaxed">
           And this leaves us with an even more interesting question:
         </p>
 
@@ -968,15 +968,15 @@ new behavior`}
           If learning is the process of reshaping an internal mathematical system until it captures useful structure from data...
         </p>
 
-        <blockquote className="my-6 py-6 px-6 sm:px-8 border-l-2 border-[#019AA2] bg-gradient-to-r from-[#019AA2]/[0.08] to-transparent rounded-r-[6px]">
-          <p className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-[#F3F6F7] leading-snug tracking-tight">
+        <blockquote className="my-6 py-6 px-6 sm:px-8 border-l-2 border-accent bg-gradient-to-r from-accent/[0.08] to-transparent rounded-r-[6px]">
+          <p className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-fg leading-snug tracking-tight">
             how much of the structure we call &ldquo;intelligence&rdquo; can emerge from that process alone?
           </p>
         </blockquote>
 
         <p>That&apos;s a much harder question.</p>
 
-        <p className="text-lg sm:text-xl font-display text-[#A8B3BA] pt-2">
+        <p className="text-lg sm:text-xl font-display text-fg-soft pt-2">
           And perhaps that&apos;s where machine learning stops being just about models—and starts becoming a question about intelligence itself.
         </p>
 
@@ -985,16 +985,16 @@ new behavior`}
           articleCode="ARTICLE 003"
           articleRef="BL-ART-003"
           statementHeading={
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-[#F3F6F7] leading-snug tracking-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-fg leading-snug tracking-tight">
               Training doesn&apos;t put answers into a model.
               <br />
-              <span className="text-[#019AA2]">
+              <span className="text-accent">
                 It changes the model so that certain answers become easier for it to produce.
               </span>
             </h2>
           }
           statementDescription={
-            <p className="text-sm sm:text-base text-[#A8B3BA] font-sans leading-relaxed pt-2 max-w-xl mx-auto">
+            <p className="text-sm sm:text-base text-fg-soft font-sans leading-relaxed pt-2 max-w-xl mx-auto">
               If intelligence emerges from optimization over statistical structure, where does the boundary between mechanical pattern matching and genuine understanding lie? Explore foundational ML proofs and interactive computational simulations across ByteLogic.
             </p>
           }

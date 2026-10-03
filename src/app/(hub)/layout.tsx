@@ -9,12 +9,12 @@ export default function HubLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#010a0b] text-[#feffff] font-sans relative flex flex-col justify-between selection:bg-[#d4af37] selection:text-[#010a0b]">
+    <div className="min-h-dvh bg-bg text-fg font-sans relative flex flex-col justify-between">
       {/* Background Technical Grid Canvas with radial fade */}
       <div className="fixed inset-0 pointer-events-none technical-grid-canvas hero-texture z-0" />
 
       <SmoothScroll>
-        <div className="relative z-10 flex flex-col min-h-screen">
+        <div className="relative z-10 flex flex-col min-h-dvh">
           <Navbar />
           <main className="flex-1 w-full">{children}</main>
           <Footer />

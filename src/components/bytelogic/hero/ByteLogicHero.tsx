@@ -227,8 +227,8 @@ export const ByteLogicHero: React.FC = () => {
         w-full
         overflow-hidden
         border-b
-        border-[#1C2830]
-        bg-[#080C10]
+        border-line
+        bg-bg
         px-5
         sm:px-8
         lg:px-12
@@ -264,7 +264,7 @@ export const ByteLogicHero: React.FC = () => {
           -translate-x-1/2
           -translate-y-1/2
           rounded-full
-          bg-[#4FD8E8]/[0.025]
+          bg-accent/[0.025]
           blur-[120px]
         "
       />
@@ -288,7 +288,7 @@ export const ByteLogicHero: React.FC = () => {
           text-[9px]
           uppercase
           tracking-[0.2em]
-          text-[#566168]
+          text-fg-muted
           sm:left-8
           sm:right-8
           sm:text-[10px]
@@ -344,7 +344,7 @@ export const ByteLogicHero: React.FC = () => {
               bottom-0
               h-[28%]
               bg-gradient-to-t
-              from-[#080C10]
+              from-bg
               to-transparent
             "
           />
@@ -359,7 +359,7 @@ export const ByteLogicHero: React.FC = () => {
               left-0
               w-[20%]
               bg-gradient-to-r
-              from-[#080C10]
+              from-bg
               to-transparent
             "
           />
@@ -372,7 +372,7 @@ export const ByteLogicHero: React.FC = () => {
               right-0
               w-[20%]
               bg-gradient-to-l
-              from-[#080C10]
+              from-bg
               to-transparent
             "
           />
@@ -412,15 +412,15 @@ export const ByteLogicHero: React.FC = () => {
             text-[9px]
             uppercase
             tracking-[0.22em]
-            text-[#4FD8E8]/75
+            text-accent/75
             sm:text-[10px]
           "
         >
-          <span className="h-px w-7 bg-[#4FD8E8]/40" />
+          <span className="h-px w-7 bg-accent/40" />
 
           <span>FIELD NOTES / COMPUTATIONAL SYSTEMS</span>
 
-          <span className="h-px w-7 bg-[#4FD8E8]/40" />
+          <span className="h-px w-7 bg-accent/40" />
         </div>
 
         {/* ==================================================
@@ -435,14 +435,14 @@ export const ByteLogicHero: React.FC = () => {
             font-medium
             leading-[0.82]
             tracking-[-0.075em]
-            text-[#ECECEC]
+            text-fg
           "
         >
           <span className="hero-title-line block">
             UNDERSTAND
           </span>
 
-          <span className="hero-title-line block text-[#AEB6BA]">
+          <span className="hero-title-line block text-fg-soft">
             THE LOGIC
           </span>
 
@@ -450,7 +450,7 @@ export const ByteLogicHero: React.FC = () => {
             BEHIND
           </span>
 
-          <span className="hero-title-line block text-[#4FD8E8]">
+          <span className="hero-title-line block text-accent">
             COMPUTATION.
           </span>
         </h1>
@@ -467,7 +467,7 @@ export const ByteLogicHero: React.FC = () => {
             font-sans
             text-[15px]
             leading-[1.6]
-            text-[#7D878D]
+            text-fg-muted
             sm:text-[17px]
           "
         >
@@ -499,10 +499,10 @@ export const ByteLogicHero: React.FC = () => {
             className="
               group
               relative
-              text-[#ECECEC]
+              text-fg
               transition-colors
               duration-300
-              hover:text-[#4FD8E8]
+              hover:text-accent
             "
           >
             Explore concepts
@@ -526,7 +526,7 @@ export const ByteLogicHero: React.FC = () => {
                 h-px
                 w-full
                 origin-left
-                bg-[#4FD8E8]/50
+                bg-accent/50
                 transition-transform
                 duration-300
               "
@@ -536,10 +536,10 @@ export const ByteLogicHero: React.FC = () => {
           <Link
             href="#lab"
             className="
-              text-[#69737A]
+              text-fg-muted
               transition-colors
               duration-300
-              hover:text-[#ECECEC]
+              hover:text-fg
             "
           >
             Enter the lab →
@@ -566,7 +566,7 @@ export const ByteLogicHero: React.FC = () => {
           text-[8px]
           uppercase
           tracking-[0.17em]
-          text-[#4F595F]
+          text-fg-muted
           sm:left-8
           sm:right-8
           sm:text-[9px]
@@ -577,7 +577,7 @@ export const ByteLogicHero: React.FC = () => {
         {/* Left */}
 
         <div className="flex flex-col gap-1 text-left">
-          <span className="text-[#69747A]">
+          <span className="text-fg-muted">
             FIG. 01
           </span>
 
@@ -589,7 +589,7 @@ export const ByteLogicHero: React.FC = () => {
         {/* Center */}
 
         <div className="hidden flex-col items-center gap-1 md:flex">
-          <span className="text-[#69747A]">
+          <span className="text-fg-muted">
             ARTIFACT
           </span>
 
@@ -601,7 +601,7 @@ export const ByteLogicHero: React.FC = () => {
         {/* Right */}
 
         <div className="flex flex-col items-end gap-1 text-right">
-          <span className="text-[#69747A]">
+          <span className="text-fg-muted">
             MODE: ACTIVE
           </span>
 

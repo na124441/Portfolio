@@ -65,7 +65,7 @@ export default async function DsaProblemWorkspacePage({ params }: PageProps) {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#1a1a1a]">
+    <div className="w-full min-h-dvh bg-bg">
       <DsaWorkspace
         problem={clientProblem}
         prevProblem={prev}

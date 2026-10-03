@@ -1,284 +1,171 @@
 @import "tailwindcss";
 
-@theme {
-  --color-obsidian: #010a0b;
-  --color-editorial-white: #feffff;
-  --color-gold-accent: #d4af37;
-  --color-gold-light: #edd899;
-  --color-gold-mid: #dfb15b;
-  --color-gold-dark: #997328;
+/* ==========================================================================
+   1. TOKENS
+   Single source of truth. Two themes share one set of variable NAMES:
+     [data-theme="site"]  gold  = the person (portfolio, hero, about, contact)
+     [data-theme="lab"]   cyan  = the lab (ByteLogic, articles, experiments)
+   Components only use semantic utilities: bg-bg, bg-surface, text-accent,
+   border-line, text-fg, text-fg-muted ... and never raw hex values.
+   ========================================================================== */
 
-  --font-display: var(--font-comfortaa), system-ui, -apple-system, sans-serif;
-  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
+:root,
+[data-theme="site"] {
+  --bg: #010a0b;
+  --bg-rgb: 1, 10, 11;
+  --bg-2: #04131a;
+  --surface: #07141a;
+  --surface-2: #0c1c24;
+  --fg: #feffff;
+  --fg-soft: rgba(254, 255, 255, 0.72);
+  --fg-muted: #7c8891; /* AA on --bg for small text */
+  --line: rgba(254, 255, 255, 0.08);
+  --line-strong: rgba(254, 255, 255, 0.16);
 
-:root {
-  --background: #010a0b;
-  --foreground: #feffff;
   --accent: #d4af37;
   --accent-rgb: 212, 175, 55;
-  --accent-light: #edd899;
-  --accent-mid: #dfb15b;
-  --accent-dark: #997328;
-  --accent-warm: #C4703F;
-  --accent-warm-rgb: 196, 112, 63;
-  --bg-rgb: 1, 10, 11;
-  --white-rgb: 254, 255, 255;
-  --border-muted: rgba(254, 255, 255, 0.08);
-  --border-active: rgba(212, 175, 55, 0.45);
+  --accent-ink: #010a0b; /* text on solid accent */
 
-  /* Glass surface */
-  --glass-bg: rgba(254, 255, 255, 0.04);
-  --glass-bg-hover: rgba(254, 255, 255, 0.07);
-  --glass-border: rgba(246, 208, 9, 0.15);   /* gold-tinted, not generic white */
-  --glass-border-hover: rgba(246, 208, 9, 0.35);
+  --header-h: 72px;
+}
 
-  /* Blur scale — intentionally small */
+[data-theme="lab"] {
+  --bg: #05070a;
+  --bg-rgb: 5, 7, 10;
+  --bg-2: #0a0f14;
+  --surface: #0e151b;
+  --surface-2: #131c24;
+  --fg: #f3f6f7;
+  --fg-soft: #a8b3ba;
+  --fg-muted: #7c8891;
+  --line: #1c2830;
+  --line-strong: rgba(1, 154, 162, 0.45);
+
+  --accent: #019aa2;
+  --accent-rgb: 1, 154, 162;
+  --accent-ink: #05070a;
+}
+
+/* Everything else is derived from --accent. One gold, many tints. */
+:root {
+  --surface-soft: color-mix(in oklab, var(--surface) 45%, transparent);
+  --accent-soft: color-mix(in oklab, var(--accent) 12%, transparent);
+  --accent-line: color-mix(in oklab, var(--accent) 35%, transparent);
+  --accent-glow: color-mix(in oklab, var(--accent) 22%, transparent);
+  --accent-hi: color-mix(in oklab, var(--accent) 55%, white);
+  --accent-lo: color-mix(in oklab, var(--accent) 60%, black);
+
   --blur-sm: 6px;
   --blur-md: 12px;
 
-  /* Shadow */
-  --glass-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
-  --glass-shadow-hover: 0 4px 18px rgba(0, 0, 0, 0.3);
-
-  /* Motion */
-  --glass-transition: 150ms ease;
+  --dur-micro: 180ms;
+  --dur-interface: 320ms;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ==========================================================================
-   Glass / Blur Surface System (Restrained Interactive Accents)
-   ========================================================================== */
-.glass-surface {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(var(--blur-sm));
-  -webkit-backdrop-filter: blur(var(--blur-sm));
-  box-shadow: var(--glass-shadow);
-  transition: background var(--glass-transition),
-              border-color var(--glass-transition),
-              box-shadow var(--glass-transition);
-}
+/* `inline` makes utilities reference the live variable, so swapping
+   data-theme re-skins every component with no class changes. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-soft: var(--surface-soft);
+  --color-fg: var(--fg);
+  --color-fg-soft: var(--fg-soft);
+  --color-fg-muted: var(--fg-muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-hi: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-line: var(--accent-line);
+  --color-accent-glow: var(--accent-glow);
+  --color-accent-hi: var(--accent-hi);
+  --color-accent-lo: var(--accent-lo);
+  --color-accent-ink: var(--accent-ink);
 
-.glass-surface:hover {
-  background: var(--glass-bg-hover);
-  border-color: var(--glass-border-hover);
-  box-shadow: var(--glass-shadow-hover);
-}
+  --font-display: var(--font-display-face), var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-@supports not (backdrop-filter: blur(1px)) {
-  .glass-surface {
-    background: rgba(1, 10, 11, 0.85); /* solid near-black fallback */
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .glass-surface {
-    transition: none;
-  }
-}
-
-/* Card Hover-Only Glass Treatment (Phase 2) */
-.project-card {
-  transition: transform var(--glass-transition),
-              border-color var(--glass-transition),
-              background var(--glass-transition);
-}
-
-.project-card:hover {
-  transform: translateY(-2px);
-  background: var(--glass-bg);
-  border-color: var(--glass-border);
-  backdrop-filter: blur(var(--blur-sm));
-  -webkit-backdrop-filter: blur(var(--blur-sm));
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .project-card {
-    transition: none;
-  }
-  .project-card:hover {
-    transform: none;
-  }
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ==========================================================================
-   Hero Visual Fixes (Texture, Gradient, CTAs, Portrait Mask, Spacing)
+   2. BASE
    ========================================================================== */
-.hero-texture {
-  opacity: 0.06;              /* was effectively ~0.3-0.4 */
-  filter: grayscale(100%);    /* remove any stray color flecks */
-  mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
-  pointer-events: none;
-}
 
-.hero-headline {
-  background: linear-gradient(90deg, #feffff 0%, #feffff 60%, #f6d009 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-role-line {
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  color: rgba(246, 208, 9, 0.8);
-}
-
-.hero-tagline,
-.hero-subline {
-  font-weight: 400;
-  color: rgba(254, 255, 255, 0.65);
-}
-
-/* Spacing Scale (8px rhythm) */
-.hero-badge-wrap { margin-bottom: 24px; }
-.hero-headline-wrap { margin-bottom: 20px; }
-.hero-role-wrap { margin-bottom: 20px; }
-.hero-subline-wrap { margin-bottom: 36px; }
-
-/* Primary CTA — Explore Work */
-.hero-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: rgba(246, 208, 9, 0.08);
-  border: 1px solid rgba(246, 208, 9, 0.45);
-  color: #feffff;
-  padding: 14px 28px;
-  border-radius: 8px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  transition: background 150ms ease, border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
-}
-.hero-btn-primary:hover {
-  background: rgba(246, 208, 9, 0.16);
-  border-color: rgba(246, 208, 9, 0.7);
-  box-shadow: 0 0 20px rgba(246, 208, 9, 0.15);
-}
-.hero-btn-primary:active {
-  transform: translateY(1px);
-}
-
-/* Secondary CTA — Enter the Lab (Understated Editorial Text Link) */
-.hero-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: transparent;
-  border: 1px solid transparent;
-  color: rgba(254, 255, 255, 0.65);
-  padding: 14px 18px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: color 150ms ease, transform 150ms ease;
-}
-.hero-btn-secondary:hover {
-  color: #feffff;
-  transform: translateX(3px);
-}
-.hero-btn-secondary:active {
-  transform: translateY(1px);
-}
-
-/* Portrait Edge Blend */
-.portrait-image {
-  mask-image: radial-gradient(ellipse 85% 85% at center, black 60%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 85% at center, black 60%, transparent 100%);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-btn-primary,
-  .hero-btn-secondary {
-    transition: none;
-  }
-}
-
-/* ==========================================================================
-   Metallic Gold Material Primitives
-   ========================================================================== */
-.text-metallic-gold {
-  background: linear-gradient(180deg, #fff8e1 0%, #dfb15b 45%, #a67c1e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
-.text-metallic-gold-subtle {
-  background: linear-gradient(180deg, #fffaed 0%, #c5a059 50%, #9e782f 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
-.bg-metallic-gold {
-  background: linear-gradient(135deg, #c5a059 0%, #fdf0cd 35%, #d4af37 65%, #997328 100%);
-  color: #010a0b;
-  box-shadow: 0 0 16px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(253, 240, 205, 0.4);
-}
-
-.bg-metallic-gold:hover {
-  background: linear-gradient(135deg, #d4af37 0%, #ffffff 35%, #e5c158 65%, #ab822e 100%);
-  box-shadow: 0 0 24px rgba(212, 175, 55, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.7);
-}
-
-/* ==========================================================================
-   Smooth Scrolling (Lenis + Native fallback)
-   ========================================================================== */
 html {
-  background-color: #010a0b;
-  color: #feffff;
+  background-color: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
-}
-
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  color-scheme: dark;
 }
 
 body {
-  background-color: #010a0b;
-  color: #feffff;
+  background-color: var(--bg);
+  color: var(--fg);
   min-height: 100vh;
+  min-height: 100dvh; /* no jump on mobile browser chrome */
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip; /* keeps position: sticky working, unlike hidden */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  background: var(--accent-glow);
+  color: var(--fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 /* ==========================================================================
-   Technical Blueprint Grids & Overlays
+   3. BACKDROP: gives the glass something to blur
+   Mount once: <div className="site-backdrop" aria-hidden />
    ========================================================================== */
+
+.site-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 45% at 50% -10%, var(--accent-glow), transparent 70%),
+    radial-gradient(40% 35% at 90% 20%, color-mix(in oklab, var(--accent) 6%, transparent), transparent 70%),
+    var(--bg);
+}
+
+.site-backdrop::before {
+  /* blueprint grid, fades out downward */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(254, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(254, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 55%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 55%, transparent 100%);
+}
+
+.site-backdrop::after {
+  /* film grain, ~3% */
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* Standalone helpers if you need the grid elsewhere */
 .technical-grid-canvas {
   background-image:
     linear-gradient(to right, rgba(254, 255, 255, 0.03) 1px, transparent 1px),
@@ -288,120 +175,111 @@ body {
   background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
   background-position: -1px -1px;
 }
-
 .grid-mask-radial {
   mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 65%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 65%, transparent 100%);
 }
-
-/* Dot matrix pattern */
 .dot-matrix {
   background-image: radial-gradient(rgba(254, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 /* ==========================================================================
-   Glassmorphism & Technical Panel Primitives
+   4. SURFACES: three levels instead of four
+   flat       no blur, hairline border. Default for most content.
+   raised     small blur + border. Cards, nav, panels.
+   signature  accent border + glow. ONE per screen (hero element).
+   Keep total backdrop-filter elements to ~3 per viewport.
    ========================================================================== */
-.glass-panel {
-  background: rgba(1, 10, 11, 0.72);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(254, 255, 255, 0.09);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5),
-              inset 0 1px 0 0 rgba(254, 255, 255, 0.12);
+
+.surface-flat {
+  background: var(--surface);
+  border: 1px solid var(--line);
 }
 
-.glass-panel-hover {
-  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+.surface-raised,
+.glass-surface,
+.glass-panel,
+.surface-workspace {
+  background: color-mix(in oklab, var(--surface) 72%, transparent);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(var(--blur-md)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(160%);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  transition:
+    background var(--dur-micro) ease,
+    border-color var(--dur-micro) ease,
+    box-shadow var(--dur-micro) ease,
+    transform var(--dur-micro) ease;
+}
+.surface-raised:hover,
+.glass-surface:hover,
+.glass-panel:hover,
+.surface-workspace:hover {
+  background: color-mix(in oklab, var(--surface-2) 78%, transparent);
+  border-color: var(--accent-line);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
 }
 
-.glass-panel-hover:hover {
-  border-color: rgba(212, 175, 55, 0.45);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7),
-              0 0 20px rgba(212, 175, 55, 0.12),
-              inset 0 1px 0 0 rgba(212, 175, 55, 0.25);
+.surface-signature {
+  background: color-mix(in oklab, var(--surface) 85%, transparent);
+  border: 1px solid var(--accent-line);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  box-shadow:
+    0 8px 36px rgba(0, 0, 0, 0.7),
+    0 0 24px var(--accent-soft),
+    inset 0 1px 0 0 rgba(254, 255, 255, 0.12);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .surface-raised,
+  .glass-surface,
+  .glass-panel,
+  .surface-workspace,
+  .surface-signature {
+    background: color-mix(in oklab, var(--bg) 92%, transparent);
+  }
+}
+
+/* Legacy class names (.glass-surface, .glass-panel, .surface-workspace) are
+   aliased onto .surface-raised above. Migrate, then delete the aliases. */
+
+/* Spotlight: set --mx / --my from onMouseMove (see SpotlightCard pattern). */
+.spotlight {
+  position: relative;
+  background:
+    radial-gradient(240px circle at var(--mx, 50%) var(--my, -20%), rgba(var(--accent-rgb), 0.12), transparent 70%),
+    var(--surface);
+  border: 1px solid var(--line);
+  transition: border-color var(--dur-micro) ease, transform var(--dur-micro) ease;
+}
+.spotlight:hover {
+  border-color: var(--accent-line);
   transform: translateY(-2px);
 }
 
-/* ==========================================================================
-   3-Tier Elevation Surface System
-   ========================================================================== */
-/* Level 01: Signature Focal Glass (Reserved for Tier S & HUD boundaries) */
-.surface-signature {
-  background: rgba(1, 10, 11, 0.85);
-  backdrop-filter: blur(20px) saturate(190%);
-  -webkit-backdrop-filter: blur(20px) saturate(190%);
-  border: 1px solid rgba(212, 175, 55, 0.28);
-  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.75),
-              0 0 24px rgba(212, 175, 55, 0.08),
-              inset 0 1px 0 0 rgba(254, 255, 255, 0.15);
+/* Project card: blur is permanent, only cheap properties transition. */
+.project-card {
+  background: color-mix(in oklab, var(--surface) 60%, transparent);
+  border: 1px solid transparent;
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+  transition:
+    transform var(--dur-micro) ease,
+    border-color var(--dur-micro) ease,
+    background var(--dur-micro) ease;
+}
+.project-card:hover {
+  transform: translateY(-2px);
+  background: var(--surface);
+  border-color: var(--accent-line);
 }
 
-/* Level 02: Laboratory Workspace Deck (Standard interactive zones) */
-.surface-workspace {
-  background: rgba(1, 10, 11, 0.65);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border: 1px solid rgba(254, 255, 255, 0.07);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
-}
-
-.surface-workspace-hover {
-  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.surface-workspace-hover:hover {
-  border-color: rgba(254, 255, 255, 0.16);
-  background: rgba(1, 10, 11, 0.78);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
-}
-
-/* Level 03: Inset Telemetry & Borderless Trays (Data streams, code chips) */
-.surface-telemetry {
-  background: rgba(254, 255, 255, 0.02);
-  border-top: 1px solid rgba(254, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(254, 255, 255, 0.04);
-}
-
-/* ==========================================================================
-   Interactive Cursor Spotlight & Glow
-   ========================================================================== */
-.spotlight-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.spotlight-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(212, 175, 55, 0.1),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.spotlight-card:hover::before {
-  opacity: 1;
-}
-
-/* ==========================================================================
-   Technical Corner Brackets & Cad Elements
-   ========================================================================== */
+/* CAD corner brackets */
 .corner-brackets {
   position: relative;
 }
-
 .corner-brackets::before,
 .corner-brackets::after {
   content: "";
@@ -409,17 +287,16 @@ body {
   width: 6px;
   height: 6px;
   pointer-events: none;
-  border-color: rgba(212, 175, 55, 0.65);
+  border-color: var(--accent);
+  opacity: 0.65;
   z-index: 2;
 }
-
 .corner-brackets::before {
   top: -1px;
   left: -1px;
   border-top: 1.5px solid;
   border-left: 1.5px solid;
 }
-
 .corner-brackets::after {
   bottom: -1px;
   right: -1px;
@@ -428,101 +305,255 @@ body {
 }
 
 /* ==========================================================================
-   Typography & Number Alignment
+   5. TYPOGRAPHY
+   Fluid hero scale + gradient text WITH a solid fallback colour.
    ========================================================================== */
-h1, h2, h3, h4, h5, h6 {
-  text-wrap: balance;
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 600;
 }
 
-p {
-  text-wrap: pretty;
+.hero-headline {
+  color: var(--fg); /* fallback */
+}
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .hero-headline {
+    background: linear-gradient(90deg, var(--fg) 0%, var(--fg) 60%, var(--accent) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
+.hero-role-line {
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: color-mix(in oklab, var(--accent) 85%, transparent);
+}
+.hero-tagline,
+.hero-subline {
+  font-weight: 400;
+  color: var(--fg-soft);
 }
 
-/* Custom Text Selection in Metallic Gold */
-::selection {
-  background-color: #d4af37;
-  color: #010a0b;
+.hero-badge-wrap { margin-bottom: 24px; }
+.hero-headline-wrap { margin-bottom: 20px; }
+.hero-role-wrap { margin-bottom: 20px; }
+.hero-subline-wrap { margin-bottom: 36px; }
+
+.hero-texture {
+  opacity: 0.06;
+  filter: grayscale(100%);
+  mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, transparent 30%, black 80%);
+  pointer-events: none;
+}
+
+.portrait-image {
+  mask-image: radial-gradient(ellipse 85% 85% at center, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at center, black 60%, transparent 100%);
+}
+
+/* Metallic accent: derived from --accent, so it turns cyan in the lab. */
+.text-metallic-gold,
+.text-metallic-gold-subtle {
+  color: var(--accent-hi); /* fallback */
+  display: inline-block;
+}
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .text-metallic-gold {
+    background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 20%, white) 0%, var(--accent) 45%, var(--accent-lo) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-metallic-gold-subtle {
+    background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 30%, white) 0%, var(--accent) 50%, var(--accent-lo) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.bg-metallic-gold {
+  background: linear-gradient(135deg, var(--accent-hi) 0%, color-mix(in oklab, var(--accent) 30%, white) 35%, var(--accent) 65%, var(--accent-lo) 100%);
+  color: var(--accent-ink);
+  box-shadow: 0 0 16px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid color-mix(in oklab, var(--accent) 30%, white);
+}
+.bg-metallic-gold:hover {
+  background: linear-gradient(135deg, var(--accent) 0%, #fff 35%, var(--accent-hi) 65%, var(--accent-lo) 100%);
+  box-shadow: 0 0 24px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Specular gold (legacy) */
+.text-specular-gold {
+  color: var(--accent-hi);
+  display: inline-block;
+}
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .text-specular-gold {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 35%, color-mix(in oklab, var(--accent) 90%, transparent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 /* ==========================================================================
-   Custom Minimalist Scrollbar
+   6. BUTTONS
    ========================================================================== */
+
+.hero-btn-primary,
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.hero-btn-primary {
+  background: color-mix(in oklab, var(--accent) 8%, transparent);
+  border: 1px solid var(--accent-line);
+  color: var(--fg);
+  padding: 14px 28px;
+  border-radius: 8px;
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition:
+    background var(--dur-micro) ease,
+    border-color var(--dur-micro) ease,
+    transform var(--dur-micro) ease,
+    box-shadow var(--dur-micro) ease;
+}
+.hero-btn-primary:hover {
+  background: color-mix(in oklab, var(--accent) 16%, transparent);
+  border-color: color-mix(in oklab, var(--accent) 70%, transparent);
+  box-shadow: 0 0 20px var(--accent-soft);
+}
+.hero-btn-primary:active {
+  transform: translateY(1px);
+}
+
+.hero-btn-secondary {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--fg-soft);
+  padding: 14px 18px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: color var(--dur-micro) ease, transform var(--dur-micro) ease;
+}
+.hero-btn-secondary:hover {
+  color: var(--fg);
+  transform: translateX(3px);
+}
+.hero-btn-secondary:active {
+  transform: translateY(1px);
+}
+
+/* ==========================================================================
+   7. SCROLLBAR
+   ========================================================================== */
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #010a0b;
+  background: var(--bg);
 }
-
 ::-webkit-scrollbar-thumb {
   background: rgba(254, 255, 255, 0.15);
-  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #d4af37;
+/* ByteLogic article scrollbar variant */
+.bl-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.bl-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.bl-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 2px;
+}
+
+/* ByteLogic tick-box (legacy helper) */
+.bl-tick-box {
+  position: relative;
+}
+
+/* Lenis smooth scroll (if installed) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 /* ==========================================================================
-   Animations: Pulsing Radar & Shimmer
+   8. ANIMATIONS
    ========================================================================== */
+
 @keyframes radar-ping {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.8;
-  }
-  70% {
-    transform: scale(2.2);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(2.4);
-    opacity: 0;
-  }
+  0% { transform: scale(0.95); opacity: 0.8; }
+  70% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
 }
 
 .radar-dot {
   position: relative;
 }
-
 .radar-dot::after {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 9999px;
-  background-color: #d4af37;
+  background-color: var(--accent);
   animation: radar-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-/* Metallic specular light sweep across headings */
 @keyframes metallic-text-sweep {
-  0% {
-    background-position: -150% 0;
-  }
-  50% {
-    background-position: 150% 0;
-  }
-  100% {
-    background-position: 150% 0;
-  }
+  0% { background-position: -150% 0; }
+  50% { background-position: 150% 0; }
+  100% { background-position: 150% 0; }
 }
 
 .metallic-text-sweep {
   background: linear-gradient(
     90deg,
-    #feffff 0%,
-    #feffff 35%,
-    #fdf0cd 46%,
-    #d4af37 50%,
-    #edd899 54%,
-    #feffff 65%,
-    #feffff 100%
+    var(--fg) 0%,
+    var(--fg) 35%,
+    color-mix(in oklab, var(--accent) 30%, white) 46%,
+    var(--accent) 50%,
+    var(--accent-hi) 54%,
+    var(--fg) 65%,
+    var(--fg) 100%
   );
   background-size: 250% 100%;
   -webkit-background-clip: text;
@@ -530,48 +561,53 @@ p {
   animation: metallic-text-sweep 6s infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Specular Metallic Gold Gradient Mask */
-.text-specular-gold {
-  background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 35%, rgba(223, 177, 91, 0.9) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
-/* Animated SVG Conduit Signal Pulse */
 @keyframes signal-flow {
-  0% {
-    stroke-dashoffset: 64;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
+  0% { stroke-dashoffset: 64; }
+  100% { stroke-dashoffset: 0; }
 }
-
 .animate-signal-pulse {
   stroke-dasharray: 6 14;
   animation: signal-flow 2.2s linear infinite;
 }
-
 .animate-signal-pulse-fast {
   stroke-dasharray: 4 10;
   animation: signal-flow 1.2s linear infinite;
 }
 
-/* Focus Ring Token */
+/* Focus ring token */
 .focus-ring-gold:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #010a0b, 0 0 0 4px #d4af37;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
 }
 
+/* Typography defaults */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
 
-/* Reduced Motion Override */
+/* ==========================================================================
+   9. MOTION: one global switch
+   ========================================================================== */
+
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .spotlight:hover,
+  .project-card:hover,
+  .hero-btn-secondary:hover {
+    transform: none;
   }
   .radar-dot::after {
     animation: none;

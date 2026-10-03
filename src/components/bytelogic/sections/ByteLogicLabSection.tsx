@@ -224,73 +224,73 @@ export const ByteLogicLabSection: React.FC = () => {
   }, [isRunning, status, points, centroids]);
 
   return (
-    <section id="lab" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 border-t border-[#1C2830] relative z-10">
+    <section id="lab" className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 border-t border-line relative z-10">
       {/* Section Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-8 sm:mb-12 border-b border-[#1C2830] text-xs font-mono">
-        <div className="flex items-center gap-2 text-[#019AA2]">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-8 sm:mb-12 border-b border-line text-xs font-mono">
+        <div className="flex items-center gap-2 text-accent">
           <Terminal className="w-4 h-4" />
           <span className="font-semibold tracking-wider">06 / RUN AN EXPERIMENT</span>
         </div>
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[#68747D] text-[11px]">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-fg-muted text-[11px]">
           <span>COMPUTATIONAL INSTRUMENTATION</span>
           <span className="hidden sm:inline">•</span>
-          <span className="text-[#A8B3BA]">INTERACTIVE BENCHMARK</span>
+          <span className="text-fg-soft">INTERACTIVE BENCHMARK</span>
         </div>
       </div>
 
       {/* Narrative Headline */}
       <div className="max-w-3xl mb-8 sm:mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold font-sans tracking-tight text-[#F3F6F7]">
+        <h2 className="text-3xl sm:text-4xl font-bold font-sans tracking-tight text-fg">
           ByteLogic Lab: Don&apos;t Just Read It. Run It.
         </h2>
-        <p className="mt-3 text-sm sm:text-base text-[#A8B3BA] leading-relaxed font-sans">
+        <p className="mt-3 text-sm sm:text-base text-fg-soft leading-relaxed font-sans">
           An interactive algorithm instrumentation sandbox. Stress-test K-Means against non-convex manifolds, tune cluster parameters in real time, and compare K-Means++ vs. standard random initialization.
         </p>
       </div>
 
       {/* Main Lab Instrument Chassis */}
-      <div className="rounded-[6px] bg-[#0A0F14] border border-[#1C2830] overflow-hidden bl-tick-box shadow-2xl">
+      <div className="rounded-[6px] bg-[#0A0F14] border border-line overflow-hidden bl-tick-box shadow-2xl">
         {/* Instrument Title Bar */}
-        <div className="p-4 sm:px-5 sm:py-3.5 bg-[#0E151B] border-b border-[#1C2830] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
+        <div className="p-4 sm:px-5 sm:py-3.5 bg-[#0E151B] border-b border-line flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
           <div className="flex items-center gap-2.5 sm:gap-3">
-            <span className="text-[#019AA2] font-bold tracking-wider">LAB // 023</span>
-            <span className="text-[#68747D]">|</span>
-            <span className="text-[#F3F6F7] font-medium text-[11px] sm:text-xs">K-MEANS++ CONVERGENCE BENCHMARK</span>
+            <span className="text-accent font-bold tracking-wider">LAB // 023</span>
+            <span className="text-fg-muted">|</span>
+            <span className="text-fg font-medium text-[11px] sm:text-xs">K-MEANS++ CONVERGENCE BENCHMARK</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-[11px]">
             <div className="flex items-center gap-1.5">
-              <span className="text-[#68747D]">STATUS:</span>
+              <span className="text-fg-muted">STATUS:</span>
               <span
                 className={cn(
                   'font-semibold px-2 py-0.5 rounded-[3px] border text-[10px]',
                   status === 'CONVERGED'
-                    ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2]'
+                    ? 'border-[#019AA2] bg-accent/15 text-accent'
                     : status === 'RUNNING'
                     ? 'border-[#f59e0b] bg-[#f59e0b]/15 text-[#f59e0b]'
-                    : 'border-[#1C2830] bg-[#131C24] text-[#A8B3BA]'
+                    : 'border-line bg-[#131C24] text-fg-soft'
                 )}
               >
                 {status}
               </span>
             </div>
-            <div className="flex items-center gap-1.5 text-[#68747D]">
+            <div className="flex items-center gap-1.5 text-fg-muted">
               <span>ITERATIONS:</span>
-              <span className="text-[#F3F6F7] font-semibold tabular-nums">{iteration}</span>
+              <span className="text-fg font-semibold tabular-nums">{iteration}</span>
             </div>
-            <div className="flex items-center gap-1.5 text-[#68747D]">
+            <div className="flex items-center gap-1.5 text-fg-muted">
               <span>WCSS LOSS:</span>
-              <span className="text-[#019AA2] font-semibold tabular-nums">{wcss.toLocaleString()}</span>
+              <span className="text-accent font-semibold tabular-nums">{wcss.toLocaleString()}</span>
             </div>
           </div>
         </div>
 
         {/* Instrument Body: Left Controls, Center Canvas, Right Metrics */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border-b border-[#1C2830]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 border-b border-line">
           {/* Left Parameter Panel (4 cols) */}
-          <div className="lg:col-span-4 p-4 sm:p-6 bg-[#0E151B] border-b lg:border-b-0 lg:border-r border-[#1C2830] space-y-5 text-xs font-mono">
+          <div className="lg:col-span-4 p-4 sm:p-6 bg-[#0E151B] border-b lg:border-b-0 lg:border-r border-line space-y-5 text-xs font-mono">
             <div>
-              <label className="text-[#68747D] uppercase tracking-wider block mb-2 font-semibold">
+              <label className="text-fg-muted uppercase tracking-wider block mb-2 font-semibold">
                 01 / Dataset Topology
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -306,8 +306,8 @@ export const ByteLogicLabSection: React.FC = () => {
                     className={cn(
                       'p-2 sm:p-2.5 rounded-[4px] border text-left text-[11px] transition-all cursor-pointer min-h-[38px]',
                       dataset === d.id
-                        ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2] font-semibold'
-                        : 'border-[#1C2830] bg-[#0A0F14] text-[#A8B3BA] hover:text-[#F3F6F7]'
+                        ? 'border-[#019AA2] bg-accent/15 text-accent font-semibold'
+                        : 'border-line bg-[#0A0F14] text-fg-soft hover:text-fg'
                     )}
                   >
                     {d.label}
@@ -318,10 +318,10 @@ export const ByteLogicLabSection: React.FC = () => {
 
             <div>
               <div className="flex items-center justify-between mb-2">
-                <label className="text-[#68747D] uppercase tracking-wider font-semibold">
+                <label className="text-fg-muted uppercase tracking-wider font-semibold">
                   02 / Cluster Count (K)
                 </label>
-                <span className="text-[#019AA2] font-bold text-sm tabular-nums">{k}</span>
+                <span className="text-accent font-bold text-sm tabular-nums">{k}</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2">
                 {[2, 3, 4, 5, 6].map((num) => (
@@ -331,8 +331,8 @@ export const ByteLogicLabSection: React.FC = () => {
                     className={cn(
                       'flex-1 py-2 sm:py-1.5 rounded-[4px] border text-center text-xs font-mono transition-all cursor-pointer min-h-[38px] sm:min-h-0 flex items-center justify-center',
                       k === num
-                        ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2] font-bold'
-                        : 'border-[#1C2830] bg-[#0A0F14] text-[#A8B3BA] hover:text-[#F3F6F7]'
+                        ? 'border-[#019AA2] bg-accent/15 text-accent font-bold'
+                        : 'border-line bg-[#0A0F14] text-fg-soft hover:text-fg'
                     )}
                   >
                     {num}
@@ -342,7 +342,7 @@ export const ByteLogicLabSection: React.FC = () => {
             </div>
 
             <div>
-              <label className="text-[#68747D] uppercase tracking-wider block mb-2 font-semibold">
+              <label className="text-fg-muted uppercase tracking-wider block mb-2 font-semibold">
                 03 / Initializer Strategy
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -356,27 +356,27 @@ export const ByteLogicLabSection: React.FC = () => {
                     className={cn(
                       'p-2.5 rounded-[4px] border text-left transition-all cursor-pointer min-h-[44px]',
                       initMethod === init.id
-                        ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2]'
-                        : 'border-[#1C2830] bg-[#0A0F14] text-[#A8B3BA] hover:text-[#F3F6F7]'
+                        ? 'border-[#019AA2] bg-accent/15 text-accent'
+                        : 'border-line bg-[#0A0F14] text-fg-soft hover:text-fg'
                     )}
                   >
                     <div className="font-semibold text-[11px]">{init.label}</div>
-                    <div className="text-[9px] text-[#68747D] mt-0.5">{init.desc}</div>
+                    <div className="text-[9px] text-fg-muted mt-0.5">{init.desc}</div>
                   </button>
                 ))}
               </div>
             </div>
 
             {/* Execution Controls */}
-            <div className="pt-3 border-t border-[#1C2830] space-y-2">
-              <label className="text-[#68747D] uppercase tracking-wider block mb-2 font-semibold">
+            <div className="pt-3 border-t border-line space-y-2">
+              <label className="text-fg-muted uppercase tracking-wider block mb-2 font-semibold">
                 Control Pipeline
               </label>
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setIsRunning(!isRunning)}
                   disabled={status === 'CONVERGED'}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 min-h-[44px] rounded-[4px] bg-[#019AA2] text-[#05070A] font-semibold text-xs hover:bg-[#02b3bc] transition-colors disabled:opacity-40 cursor-pointer"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 min-h-[44px] rounded-[4px] bg-accent text-[#05070A] font-semibold text-xs hover:bg-[#02b3bc] transition-colors disabled:opacity-40 cursor-pointer"
                 >
                   {isRunning ? (
                     <>
@@ -393,7 +393,7 @@ export const ByteLogicLabSection: React.FC = () => {
                 <button
                   onClick={performStep}
                   disabled={status === 'CONVERGED' || isRunning}
-                  className="flex items-center justify-center p-2.5 min-h-[44px] min-w-[44px] rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#A8B3BA] hover:text-[#019AA2] hover:border-[#019AA2] transition-colors disabled:opacity-40 cursor-pointer"
+                  className="flex items-center justify-center p-2.5 min-h-[44px] min-w-[44px] rounded-[4px] bg-[#131C24] border border-line text-fg-soft hover:text-accent hover:border-[#019AA2] transition-colors disabled:opacity-40 cursor-pointer"
                   title="Step 1 Iteration"
                   aria-label="Step 1 Iteration"
                 >
@@ -401,7 +401,7 @@ export const ByteLogicLabSection: React.FC = () => {
                 </button>
                 <button
                   onClick={resetExperiment}
-                  className="flex items-center justify-center p-2.5 min-h-[44px] min-w-[44px] rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#A8B3BA] hover:text-[#F3F6F7] hover:border-[#A8B3BA] transition-colors cursor-pointer"
+                  className="flex items-center justify-center p-2.5 min-h-[44px] min-w-[44px] rounded-[4px] bg-[#131C24] border border-line text-fg-soft hover:text-fg hover:border-[#A8B3BA] transition-colors cursor-pointer"
                   title="Reset Points & Centroids"
                   aria-label="Reset Points & Centroids"
                 >
@@ -515,15 +515,15 @@ export const ByteLogicLabSection: React.FC = () => {
             </div>
 
             {/* Bottom Real-time Telemetry Bar */}
-            <div className="relative z-10 pt-4 border-t border-[#1C2830] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 text-[11px] sm:text-xs font-mono text-[#68747D]">
+            <div className="relative z-10 pt-4 border-t border-line flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 text-[11px] sm:text-xs font-mono text-fg-muted">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#019AA2]" />
+                <span className="w-2 h-2 rounded-full bg-accent" />
                 <span>OBSERVATIONS: N = {points.length}</span>
               </div>
               <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                 <span>CONVERGENCE CRITERION: Δμ &lt; 0.5px</span>
                 <span className="hidden sm:inline">•</span>
-                <span className="text-[#A8B3BA]">MANIFOLD: 2D EUCLIDEAN</span>
+                <span className="text-fg-soft">MANIFOLD: 2D EUCLIDEAN</span>
               </div>
             </div>
           </div>
@@ -531,18 +531,18 @@ export const ByteLogicLabSection: React.FC = () => {
 
         {/* Experiment Benchmark Results Table */}
         <div className="p-4 sm:p-6 bg-[#0E151B] text-xs font-mono">
-          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-[#1C2830]">
-            <span className="text-[#A8B3BA] uppercase tracking-wider font-semibold flex items-center gap-2">
-              <Activity className="w-3.5 h-3.5 text-[#019AA2]" />
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-line">
+            <span className="text-fg-soft uppercase tracking-wider font-semibold flex items-center gap-2">
+              <Activity className="w-3.5 h-3.5 text-accent" />
               Comparative Empirical Benchmark
             </span>
-            <span className="text-[#68747D] text-[11px]">N = 100 Runs Monte-Carlo</span>
+            <span className="text-fg-muted text-[11px]">N = 100 Runs Monte-Carlo</span>
           </div>
 
           <div className="w-full overflow-x-auto bl-scrollbar">
             <table className="w-full min-w-[560px] text-left">
               <thead>
-                <tr className="text-[#68747D] border-b border-[#1C2830] text-[11px]">
+                <tr className="text-fg-muted border-b border-line text-[11px]">
                   <th className="pb-2 font-medium">STRATEGY</th>
                   <th className="pb-2 font-medium">AVG ITERATIONS</th>
                   <th className="pb-2 font-medium">LOCAL MINIMA TRAP RATE</th>
@@ -550,20 +550,20 @@ export const ByteLogicLabSection: React.FC = () => {
                   <th className="pb-2 font-medium">CONVERGENCE SPEED</th>
                 </tr>
               </thead>
-              <tbody className="text-[#F3F6F7]">
-                <tr className="border-b border-[#1C2830]/40">
-                  <td className="py-2.5 text-[#019AA2] font-semibold">K-Means++ (D² Probability)</td>
-                  <td className="py-2.5 tabular-nums text-[#F3F6F7]">8.4 ± 1.2</td>
-                  <td className="py-2.5 tabular-nums text-[#019AA2]">3.2% (Low)</td>
-                  <td className="py-2.5 tabular-nums text-[#F3F6F7]">± 1.4%</td>
+              <tbody className="text-fg">
+                <tr className="border-b border-line/40">
+                  <td className="py-2.5 text-accent font-semibold">K-Means++ (D² Probability)</td>
+                  <td className="py-2.5 tabular-nums text-fg">8.4 ± 1.2</td>
+                  <td className="py-2.5 tabular-nums text-accent">3.2% (Low)</td>
+                  <td className="py-2.5 tabular-nums text-fg">± 1.4%</td>
                   <td className="py-2.5 text-[#10b981]">2.4x Faster</td>
                 </tr>
                 <tr>
-                  <td className="py-2.5 text-[#A8B3BA]">Standard Random (Lloyd)</td>
-                  <td className="py-2.5 tabular-nums text-[#A8B3BA]">17.8 ± 4.5</td>
+                  <td className="py-2.5 text-fg-soft">Standard Random (Lloyd)</td>
+                  <td className="py-2.5 tabular-nums text-fg-soft">17.8 ± 4.5</td>
                   <td className="py-2.5 tabular-nums text-[#f59e0b]">24.8% (High)</td>
-                  <td className="py-2.5 tabular-nums text-[#A8B3BA]">± 12.6%</td>
-                  <td className="py-2.5 text-[#68747D]">Baseline</td>
+                  <td className="py-2.5 tabular-nums text-fg-soft">± 12.6%</td>
+                  <td className="py-2.5 text-fg-muted">Baseline</td>
                 </tr>
               </tbody>
             </table>

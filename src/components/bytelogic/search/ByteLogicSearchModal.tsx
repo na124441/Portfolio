@@ -108,27 +108,27 @@ export const ByteLogicSearchModal: React.FC<ByteLogicSearchModalProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-[#05070A]/85 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-bg/85 backdrop-blur-md animate-in fade-in duration-200"
     >
       <div
-        className="w-full max-w-2xl bg-[#0E151B] border border-[#1C2830] shadow-2xl rounded-[6px] overflow-hidden bl-tick-box"
+        className="w-full max-w-2xl bg-surface border border-line shadow-2xl rounded-[6px] overflow-hidden bl-tick-box"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 py-3.5 border-b border-[#1C2830] bg-[#0A0F14]">
-          <Search className="w-4 h-4 text-[#019AA2] shrink-0 mr-3" />
+        <div className="flex items-center px-4 py-3.5 border-b border-line bg-bg-2">
+          <Search className="w-4 h-4 text-accent shrink-0 mr-3" />
           <input
             type="text"
             placeholder="Search concepts, algorithms, derivations, code, labs..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             autoFocus
-            className="w-full bg-transparent text-sm font-mono text-[#F3F6F7] placeholder-[#68747D] focus:outline-none"
+            className="w-full bg-transparent text-sm font-mono text-fg placeholder-fg-muted focus:outline-none"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="text-[#68747D] hover:text-[#F3F6F7] mr-2"
+              className="text-fg-muted hover:text-fg mr-2"
               aria-label="Clear query"
             >
               <X className="w-4 h-4" />
@@ -136,7 +136,7 @@ export const ByteLogicSearchModal: React.FC<ByteLogicSearchModalProps> = ({
           )}
           <button
             onClick={onClose}
-            className="text-xs font-mono text-[#A8B3BA] hover:text-[#F3F6F7] px-2 py-1 bg-[#131C24] border border-[#1C2830] rounded-[4px]"
+            className="text-xs font-mono text-fg-soft hover:text-fg px-2 py-1 bg-surface-2 border border-line rounded-[4px]"
             aria-label="Close search"
           >
             ESC
@@ -144,7 +144,7 @@ export const ByteLogicSearchModal: React.FC<ByteLogicSearchModalProps> = ({
         </div>
 
         {/* Filter Pills */}
-        <div className="flex items-center gap-1.5 px-4 py-2 border-b border-[#1C2830] bg-[#0E151B] overflow-x-auto text-xs font-mono bl-scrollbar">
+        <div className="flex items-center gap-1.5 px-4 py-2 border-b border-line bg-surface overflow-x-auto text-xs font-mono bl-scrollbar">
           {[
             { key: 'all', label: 'All Items' },
             { key: 'concepts', label: 'Concepts & Derivations' },
@@ -157,8 +157,8 @@ export const ByteLogicSearchModal: React.FC<ByteLogicSearchModalProps> = ({
               className={cn(
                 'px-2.5 py-1 rounded-[4px] border text-[11px] whitespace-nowrap transition-colors cursor-pointer',
                 activeFilter === tab.key
-                  ? 'border-[#019AA2] bg-[#019AA2]/15 text-[#019AA2] font-semibold'
-                  : 'border-transparent text-[#A8B3BA] hover:text-[#F3F6F7] hover:bg-[#131C24]'
+                  ? 'border-accent bg-accent/15 text-accent font-semibold'
+                  : 'border-transparent text-fg-soft hover:text-fg hover:bg-surface-2'
               )}
             >
               {tab.label}
@@ -169,7 +169,7 @@ export const ByteLogicSearchModal: React.FC<ByteLogicSearchModalProps> = ({
         {/* Search Results List */}
         <div className="max-h-[380px] overflow-y-auto p-2 bl-scrollbar">
           {filteredItems.length === 0 ? (
-            <div className="py-12 text-center text-xs font-mono text-[#68747D]">
+            <div className="py-12 text-center text-xs font-mono text-fg-muted">
               No technical resources matched &ldquo;{query}&rdquo;
             </div>
           ) : (
@@ -179,10 +179,10 @@ export const ByteLogicSearchModal: React.FC<ByteLogicSearchModalProps> = ({
                   key={item.id}
                   href={item.href}
                   onClick={onClose}
-                  className="group flex items-start justify-between p-3 rounded-[4px] hover:bg-[#131C24] border border-transparent hover:border-[#1C2830] transition-colors"
+                  className="group flex items-start justify-between p-3 rounded-[4px] hover:bg-surface-2 border border-transparent hover:border-line transition-colors"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="p-1.5 mt-0.5 rounded-[4px] bg-[#0A0F14] border border-[#1C2830] text-[#019AA2] shrink-0">
+                    <div className="p-1.5 mt-0.5 rounded-[4px] bg-bg-2 border border-line text-accent shrink-0">
                       {item.type === 'lab' ? (
                         <Terminal className="w-3.5 h-3.5" />
                       ) : item.category === 'LEARNING PATH' ? (
@@ -193,22 +193,22 @@ export const ByteLogicSearchModal: React.FC<ByteLogicSearchModalProps> = ({
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono text-[#019AA2] font-semibold">
+                        <span className="text-xs font-mono text-accent font-semibold">
                           {item.category}
                         </span>
-                        <span className="text-[11px] font-mono text-[#68747D]">
+                        <span className="text-[11px] font-mono text-fg-muted">
                           • {item.badge}
                         </span>
                       </div>
-                      <h4 className="text-sm font-sans font-medium text-[#F3F6F7] group-hover:text-[#019AA2] transition-colors mt-0.5">
+                      <h4 className="text-sm font-sans font-medium text-fg group-hover:text-accent transition-colors mt-0.5">
                         {item.title}
                       </h4>
-                      <p className="text-xs text-[#A8B3BA] line-clamp-1 mt-0.5 font-sans">
+                      <p className="text-xs text-fg-soft line-clamp-1 mt-0.5 font-sans">
                         {item.subtitle}
                       </p>
                     </div>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-[#68747D] group-hover:text-[#019AA2] group-hover:translate-x-1 transition-all shrink-0 mt-2" />
+                  <ArrowRight className="w-4 h-4 text-fg-muted group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0 mt-2" />
                 </Link>
               ))}
             </div>
@@ -216,7 +216,7 @@ export const ByteLogicSearchModal: React.FC<ByteLogicSearchModalProps> = ({
         </div>
 
         {/* Footer Hint */}
-        <div className="px-4 py-2 border-t border-[#1C2830] bg-[#0A0F14] flex items-center justify-between text-[11px] font-mono text-[#68747D]">
+        <div className="px-4 py-2 border-t border-line bg-bg-2 flex items-center justify-between text-[11px] font-mono text-fg-muted">
           <span>Use ⌘K anytime to open search</span>
           <span>ByteLogic Knowledge Index</span>
         </div>

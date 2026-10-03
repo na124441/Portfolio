@@ -1,33 +1,54 @@
 /**
- * ByteLogic Authoritative Design Tokens
- * 
- * Aesthetic: PRECISE, VISUAL, COMPUTATIONAL, EDITORIAL, TECHNICAL, CALM, CURIOUS.
- * Technical Publication + Visual Textbook + Computational Laboratory + Engineering Notebook.
+ * ByteLogic non-visual tokens.
+ *
+ * Colors live in globals.css under [data-theme="lab"] and are consumed through
+ * Tailwind utilities (bg-bg, bg-surface, text-accent, border-line ...).
+ * This file holds only constants and types that CSS can't express.
  */
-
-export const BYTELOGIC_COLORS = {
-  background: '#05070A',
-  secondaryBackground: '#0A0F14',
-  surface: '#0E151B',
-  elevatedSurface: '#131C24',
-  primaryText: '#F3F6F7',
-  secondaryText: '#A8B3BA',
-  mutedText: '#68747D',
-  byteBlue: '#132279',
-  logicCyan: '#019AA2',
-  border: '#1C2830',
-  borderHover: 'rgba(1, 154, 162, 0.45)',
-  cyanTint: 'rgba(1, 154, 162, 0.12)',
-  blueTint: 'rgba(19, 34, 121, 0.25)',
-} as const;
 
 export const SPACING_SCALE = [4, 8, 12, 16, 24, 32, 48, 64, 96, 128] as const;
 export const RADIUS_SCALE = [4, 6, 8, 12] as const;
 
+/** Seconds, for Framer Motion. Keep in sync with --dur-* in globals.css. */
 export const MOTION_DURATIONS = {
-  micro: 0.18, // 180ms
-  interface: 0.32, // 320ms
+  micro: 0.18,
+  interface: 0.32,
 } as const;
+
+/** Matches --ease-out-expo in globals.css. */
+export const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
+
+/**
+ * For canvas/WebGL/chart code that needs a resolved color string.
+ * Reads the live CSS variable so it follows the active data-theme.
+ */
+export function cssVar(name: `--${string}`, el: HTMLElement = document.documentElement): string {
+  return getComputedStyle(el).getPropertyValue(name).trim();
+}
+
+export type ContentFormat =
+  | 'CONCEPT'
+  | 'ARTICLE'
+  | 'VIDEO'
+  | 'VISUAL'
+  | 'IMPLEMENTATION'
+  | 'EXPERIMENT';
+
+export type Difficulty = 'Foundational' | 'Intermediate' | 'Advanced';
+
+export interface ContentItem {
+  id: string;
+  type: ContentFormat;
+  code: string;
+  title: string;
+  subtitle: string;
+  domain: string;
+  difficulty: Difficulty;
+  durationOrReadTime: string;
+  slug: string;
+  equationOrSnippet?: string;
+  hasInteractiveLab?: boolean;
+}
 
 export interface LearningPath {
   id: string;
@@ -98,52 +119,36 @@ export const LEARNING_PATHS: LearningPath[] = [
     tagline: 'Data structures, computational complexity, and heuristics.',
     description: 'Graph algorithms, dynamic programming, randomized algorithms, amortized analysis, and NP-completeness.',
     modulesCount: 16,
-    conceptsCount: 54,
+    conceptsCount: 55,
     difficulty: 'Intermediate',
-    topics: ['Graph Traversal', 'Dynamic Programming', 'Flow Networks', 'Disjoint Sets', 'Approximation'],
-    equationPreview: 'T(n) = aT(n/b) + \\Theta(n^d)',
-  },
-  {
-    id: 'computer-science',
-    code: '06',
-    title: 'Computer Science',
-    tagline: 'Core computational models, automata, and memory models.',
-    description: 'Turing machines, type theory, lambda calculus, memory hierarchies, and concurrency semantics.',
-    modulesCount: 11,
-    conceptsCount: 32,
-    difficulty: 'Comprehensive',
-    topics: ['Turing Machines', 'Lambda Calculus', 'Cache Coherence', 'Virtual Memory', 'Type Systems'],
-    equationPreview: '(\\lambda x. e_1) e_2 \\to_\\beta e_1[x \\mapsto e_2]',
+    topics: ['Graph Search', 'DP Tables', 'Greedy Algorithms', 'Randomized Methods', 'NP-Completeness'],
+    equationPreview: 'T(n) = 2T(n/2) + O(n)',
   },
   {
     id: 'systems',
-    code: '07',
+    code: '06',
     title: 'Systems',
-    tagline: 'Software, hardware architecture, and distributed engineering.',
-    description: 'GPU compute pipelines, SIMD vectorization, distributed consensus, low-latency kernels, and kernel drivers.',
-    modulesCount: 13,
-    conceptsCount: 40,
+    tagline: 'Operating systems, networking, compilers, and architecture.',
+    description: 'Process scheduling, virtual memory, TCP/IP, compiler passes, GPU pipelines, and distributed systems.',
+    modulesCount: 14,
+    conceptsCount: 42,
     difficulty: 'Advanced',
-    topics: ['CUDA Kernels', 'Distributed Consensus', 'Cache Alignment', 'Lock-Free Queues', 'SIMD'],
-    equationPreview: '\\text{Speedup} = \\frac{1}{(1-p) + \\frac{p}{s}}',
+    topics: ['Virtual Memory', 'Schedulers', 'TCP/IP', 'Compiler Passes', 'GPU Pipelines'],
+    equationPreview: '\\text{CPI} = \\sum_{i} \\text{IC}_i \\times \\text{CPI}_i',
+  },
+  {
+    id: 'graphics',
+    code: '07',
+    title: 'Graphics',
+    tagline: 'Real-time rendering, shaders, and computational geometry.',
+    description: 'Rasterization pipelines, ray tracing, PBR materials, Vulkan/WebGPU, and signed distance fields.',
+    modulesCount: 10,
+    conceptsCount: 30,
+    difficulty: 'Comprehensive',
+    topics: ['Rasterization', 'Ray Tracing', 'PBR', 'Vulkan', 'SDF Rendering'],
+    equationPreview: 'L_o = \\int_{\\Omega} f_r \\cdot L_i \\cdot (\\omega_i \\cdot n) \\, d\\omega_i',
   },
 ];
-
-export type ContentFormat = 'CONCEPT' | 'ARTICLE' | 'VIDEO' | 'VISUAL' | 'IMPLEMENTATION' | 'EXPERIMENT';
-
-export interface ContentItem {
-  id: string;
-  type: ContentFormat;
-  code: string;
-  title: string;
-  subtitle: string;
-  domain: string;
-  difficulty: 'Foundational' | 'Intermediate' | 'Advanced';
-  durationOrReadTime: string;
-  slug: string;
-  equationOrSnippet?: string;
-  hasInteractiveLab?: boolean;
-}
 
 export const FEATURED_CONTENT: ContentItem[] = [
   {
@@ -168,7 +173,7 @@ export const FEATURED_CONTENT: ContentItem[] = [
     domain: 'Optimization · Deep Learning',
     difficulty: 'Foundational',
     durationOrReadTime: '18 min video',
-    slug: '/bytelogic/concepts/k-means', // preview links
+    slug: '/bytelogic/concepts/k-means',
     equationOrSnippet: '\\theta_{t+1} = \\theta_t - \\eta \\nabla L(\\theta_t)',
   },
   {
@@ -200,7 +205,7 @@ export const FEATURED_CONTENT: ContentItem[] = [
     type: 'ARTICLE',
     code: '03',
     title: 'What Does a Model Actually Learn?',
-    subtitle: 'An exploration of parameters, representations, optimization, generalization, and what “learning” really means inside a model.',
+    subtitle: 'An exploration of parameters, representations, optimization, generalization, and what "learning" really means inside a model.',
     domain: 'AI / Machine Learning · Foundations',
     difficulty: 'Intermediate',
     durationOrReadTime: '10–12 min read',

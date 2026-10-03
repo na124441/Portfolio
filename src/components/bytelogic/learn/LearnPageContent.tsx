@@ -96,7 +96,7 @@ export const LearnPageContent: React.FC = () => {
   }, [searchQuery, domainFilter, difficultyFilter, formatFilter]);
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-[#05070A] text-[#F3F6F7]">
+    <div className="flex flex-col w-full min-h-dvh bg-bg text-fg">
       {/* 01 — Hero Section with Knowledge Graph Visual */}
       <LearnHero />
 

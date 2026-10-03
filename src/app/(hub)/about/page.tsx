@@ -26,17 +26,17 @@ export default function AboutPage() {
         />
         <div className="p-6 sm:p-8 surface-signature corner-brackets space-y-4">
           <div className="flex flex-wrap items-baseline gap-3">
-            <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#feffff]">
+            <h1 className="font-display text-2xl sm:text-3xl font-bold text-fg">
               {PORTFOLIO_METADATA.name}
             </h1>
-            <span className="font-mono text-xs text-[#dfb15b]">
+            <span className="font-mono text-xs text-accent">
               // {PORTFOLIO_METADATA.role}
             </span>
           </div>
-          <p className="font-sans text-base text-white/80 leading-relaxed max-w-2xl">
+          <p className="font-sans text-base text-fg-soft leading-relaxed max-w-2xl">
             {PORTFOLIO_METADATA.tagline}
           </p>
-          <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono text-white/70">
+          <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono text-fg-soft">
             <span className="px-2.5 py-1 bg-white/5 border border-white/10">Location: {PORTFOLIO_METADATA.location}</span>
             <span className="px-2.5 py-1 bg-white/5 border border-white/10">Status: {PORTFOLIO_METADATA.statusBadge}</span>
           </div>
@@ -62,10 +62,10 @@ export default function AboutPage() {
               className="p-6 sm:p-7 surface-workspace surface-workspace-hover"
             >
               <div className="flex flex-wrap items-center gap-3 mb-3">
-                <span className="font-mono text-xs font-semibold text-[#dfb15b]">
+                <span className="font-mono text-xs font-semibold text-accent">
                   0{idx + 1}.
                 </span>
-                <h3 className="font-display text-lg font-bold text-[#feffff]">
+                <h3 className="font-display text-lg font-bold text-fg">
                   {layer.title}
                 </h3>
                 <span className="text-white/30 font-mono text-xs">/</span>
@@ -73,7 +73,7 @@ export default function AboutPage() {
                   {layer.subtitle}
                 </span>
               </div>
-              <p className="font-sans text-sm sm:text-base text-white/80 leading-relaxed max-w-3xl">
+              <p className="font-sans text-sm sm:text-base text-fg-soft leading-relaxed max-w-3xl">
                 {layer.content}
               </p>
             </motion.div>
@@ -102,17 +102,17 @@ export default function AboutPage() {
               }`}
             >
               <div className="flex items-center justify-between mb-3">
-                <span className="font-mono text-xs font-bold text-[#dfb15b] tracking-wider">
+                <span className="font-mono text-xs font-bold text-accent tracking-wider">
                   // 0{index + 1}
                 </span>
                 <span className="font-mono text-[11px] uppercase tracking-widest text-white/60">
                   {principle.subtitle}
                 </span>
               </div>
-              <h3 className="font-display text-lg font-bold text-[#feffff] mb-2 group-hover:text-[#dfb15b] transition-colors">
+              <h3 className="font-display text-lg font-bold text-fg mb-2 group-hover:text-accent transition-colors">
                 {principle.title}
               </h3>
-              <p className="font-sans text-sm text-white/70 leading-relaxed">
+              <p className="font-sans text-sm text-fg-soft leading-relaxed">
                 {principle.description}
               </p>
             </motion.div>
@@ -128,7 +128,7 @@ export default function AboutPage() {
           title="Experience & Trajectory"
           subtitle="Academic path, community leadership, and autonomous systems research."
         />
-        <div className="relative border-l-2 border-[#dfb15b]/30 pl-6 sm:pl-8 ml-3 sm:ml-4 space-y-10">
+        <div className="relative border-l-2 border-accent/30 pl-6 sm:pl-8 ml-3 sm:ml-4 space-y-10">
           {JOURNEY_ITEMS.map((item, idx) => (
             <motion.div
               key={idx}
@@ -138,12 +138,12 @@ export default function AboutPage() {
               transition={{ duration: 0.3, delay: idx * 0.08 }}
               className="relative group p-5 surface-workspace surface-workspace-hover"
             >
-              <div className="absolute -left-[32px] sm:-left-[41px] top-5 w-3.5 h-3.5 bg-[#010a0b] border-2 border-[#dfb15b] group-hover:bg-[#dfb15b] transition-all shadow-[0_0_10px_rgba(223,177,91,0.5)] flex items-center justify-center">
-                <span className="w-1 h-1 bg-[#dfb15b] group-hover:bg-[#010a0b] block" />
+              <div className="absolute -left-[32px] sm:-left-[41px] top-5 w-3.5 h-3.5 bg-bg border-2 border-accent group-hover:bg-accent transition-all shadow-[0_0_10px_var(--accent-glow)] flex items-center justify-center">
+                <span className="w-1 h-1 bg-accent group-hover:bg-bg block" />
               </div>
               <div className="space-y-2">
                 <div className="flex flex-wrap items-center gap-2.5">
-                  <span className="font-mono text-xs font-semibold text-[#dfb15b]">
+                  <span className="font-mono text-xs font-semibold text-accent">
                     {item.period}
                   </span>
                   <span className="text-white/30 font-mono text-xs">·</span>
@@ -152,7 +152,7 @@ export default function AboutPage() {
                   </Badge>
                 </div>
                 <div className="flex flex-wrap items-baseline gap-2">
-                  <h3 className="font-display text-lg font-bold text-[#feffff]">
+                  <h3 className="font-display text-lg font-bold text-fg">
                     {item.role}
                   </h3>
                   <span className="font-mono text-xs text-white/65">

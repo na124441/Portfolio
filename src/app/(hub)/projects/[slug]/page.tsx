@@ -73,7 +73,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
             ))}
           </div>
 
-          <h1 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-[#feffff] leading-tight mb-4">
+          <h1 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-fg leading-tight mb-4">
             {project.title}
           </h1>
 
@@ -139,7 +139,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
           />
 
           <div className="space-y-6">
-            <h3 className="font-display text-xl font-bold text-[#feffff]">
+            <h3 className="font-display text-xl font-bold text-fg">
               {sections.problem.title}
             </h3>
 
@@ -148,14 +148,14 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
             </p>
 
             <div className="p-6 bg-white/[0.02] border border-white/10 space-y-4">
-              <h4 className="font-mono text-xs uppercase tracking-widest text-[#dfb15b] flex items-center gap-2">
+              <h4 className="font-mono text-xs uppercase tracking-widest text-accent flex items-center gap-2">
                 <AlertTriangle className="w-3.5 h-3.5" />
                 Why This Problem Is Difficult
               </h4>
               <ul className="space-y-3 font-sans text-xs sm:text-sm text-white/70">
                 {sections.problem.whyDifficult.map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5">
-                    <span className="font-mono text-[#dfb15b] text-xs mt-0.5">[{i + 1}]</span>
+                    <span className="font-mono text-accent text-xs mt-0.5">[{i + 1}]</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -168,7 +168,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
                   key={i}
                   className="p-4 border border-white/5 bg-white/[0.01] font-mono text-xs text-white/60"
                 >
-                  <span className="text-[#dfb15b] block mb-1 text-[10px]">
+                  <span className="text-accent block mb-1 text-[10px]">
                     CONSTRAINT #{i + 1}
                   </span>
                   {constraint}
@@ -193,8 +193,8 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
               {sections.motivation.whyBuilt}
             </p>
 
-            <div className="p-5 border-l-2 border-[#d4af37] bg-white/[0.02]">
-              <span className="font-mono text-xs uppercase tracking-wider text-[#dfb15b] block mb-1">
+            <div className="p-5 border-l-2 border-accent bg-white/[0.02]">
+              <span className="font-mono text-xs uppercase tracking-wider text-accent block mb-1">
                 Target Real-World Impact
               </span>
               <p className="font-sans text-sm text-white/90 leading-relaxed">
@@ -220,7 +220,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
             </p>
 
             <div className="p-6 border border-white/10 bg-white/[0.02]">
-              <div className="font-mono text-xs uppercase tracking-widest text-[#dfb15b] mb-2 flex items-center gap-2">
+              <div className="font-mono text-xs uppercase tracking-widest text-accent mb-2 flex items-center gap-2">
                 <Lightbulb className="w-3.5 h-3.5" />
                 Core Working Hypothesis
               </div>
@@ -236,10 +236,10 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
                   className="p-5 border border-white/10 bg-[#010a0b] flex flex-col justify-between"
                 >
                   <div>
-                    <span className="font-mono text-xs text-[#dfb15b] block mb-1">
+                    <span className="font-mono text-xs text-accent block mb-1">
                       TENET 0{idx + 1}
                     </span>
-                    <h4 className="font-display text-sm font-bold text-[#feffff] mb-2">
+                    <h4 className="font-display text-sm font-bold text-fg mb-2">
                       {tenet.title}
                     </h4>
                     <p className="font-sans text-xs text-white/70 leading-relaxed">
@@ -294,8 +294,8 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
                 className="p-6 border border-white/10 bg-white/[0.02] space-y-4"
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-white/10 pb-3">
-                  <h3 className="font-mono text-sm font-bold text-[#feffff] flex items-center gap-2">
-                    <span className="text-[#dfb15b]">05.{idx + 1}</span>
+                  <h3 className="font-mono text-sm font-bold text-fg flex items-center gap-2">
+                    <span className="text-accent">05.{idx + 1}</span>
                     {item.title}
                   </h3>
                   <span className="font-mono text-xs text-white/40 uppercase tracking-wider">
@@ -304,7 +304,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
                 </div>
 
                 {item.mathOrFormula && (
-                  <div className="p-4 bg-[#010a0b] border border-white/10 overflow-x-auto text-center font-mono text-xs sm:text-sm text-[#dfb15b] py-3">
+                  <div className="p-4 bg-[#010a0b] border border-white/10 overflow-x-auto text-center font-mono text-xs sm:text-sm text-accent py-3">
                     <code>{item.mathOrFormula}</code>
                   </div>
                 )}
@@ -330,10 +330,10 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
 
           <div className="p-6 sm:p-8 border border-white/15 bg-white/[0.02] space-y-6">
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-[#dfb15b] block mb-2">
+              <span className="font-mono text-xs uppercase tracking-widest text-accent block mb-2">
                 Primary Core Bottleneck
               </span>
-              <h3 className="font-display text-xl font-bold text-[#feffff]">
+              <h3 className="font-display text-xl font-bold text-fg">
                 {sections.theHardPart.challenge}
               </h3>
             </div>
@@ -347,8 +347,8 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
               </p>
             </div>
 
-            <div className="p-5 border-l-2 border-[#d4af37] bg-[#010a0b] space-y-2">
-              <h4 className="font-mono text-xs uppercase tracking-wider text-[#dfb15b]">
+            <div className="p-5 border-l-2 border-accent bg-[#010a0b] space-y-2">
+              <h4 className="font-mono text-xs uppercase tracking-wider text-accent">
                 Resolution Mechanism:
               </h4>
               <p className="font-sans text-xs sm:text-sm text-white/90 leading-relaxed">
@@ -380,7 +380,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
                 className="p-5 border border-white/10 bg-white/[0.02] space-y-3"
               >
                 <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2">
-                  <span className="font-mono text-xs text-[#dfb15b]">
+                  <span className="font-mono text-xs text-accent">
                     EXPERIMENT #{idx + 1}
                   </span>
                   <Badge
@@ -452,7 +452,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
 
           {/* Comparison Table */}
           <div className="border border-white/10 bg-white/[0.02] overflow-x-auto">
-            <div className="p-4 border-b border-white/10 font-mono text-xs uppercase tracking-widest text-[#dfb15b]">
+            <div className="p-4 border-b border-white/10 font-mono text-xs uppercase tracking-widest text-accent">
               Baseline Benchmark Comparisons
             </div>
             <table className="w-full text-left font-mono text-xs">
@@ -469,8 +469,8 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
                   <tr key={comp.metric} className="hover:bg-white/[0.02]">
                     <td className="p-3 font-medium text-white/90">{comp.metric}</td>
                     <td className="p-3 text-white/50">{comp.baseline}</td>
-                    <td className="p-3 text-[#feffff] font-semibold">{comp.ourSystem}</td>
-                    <td className="p-3 text-right font-bold text-[#dfb15b]">
+                    <td className="p-3 text-fg font-semibold">{comp.ourSystem}</td>
+                    <td className="p-3 text-right font-bold text-accent">
                       {comp.delta}
                     </td>
                   </tr>
@@ -518,7 +518,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
 
             {/* Step 3: Diagnosis */}
             <div className="p-5 flex flex-col sm:flex-row gap-4 sm:items-start">
-              <div className="w-32 flex-shrink-0 font-mono text-xs uppercase tracking-widest text-[#dfb15b]">
+              <div className="w-32 flex-shrink-0 font-mono text-xs uppercase tracking-widest text-accent">
                 03. Diagnosis
               </div>
               <p className="font-sans text-xs sm:text-sm text-white/80 leading-relaxed">
@@ -528,7 +528,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
 
             {/* Step 4: Modification */}
             <div className="p-5 flex flex-col sm:flex-row gap-4 sm:items-start">
-              <div className="w-32 flex-shrink-0 font-mono text-xs uppercase tracking-widest text-[#dfb15b]">
+              <div className="w-32 flex-shrink-0 font-mono text-xs uppercase tracking-widest text-accent">
                 04. Modification
               </div>
               <p className="font-sans text-xs sm:text-sm text-white/80 leading-relaxed">
@@ -537,8 +537,8 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
             </div>
 
             {/* Step 5: Result */}
-            <div className="p-5 flex flex-col sm:flex-row gap-4 sm:items-start bg-[#d4af37]/[0.05]">
-              <div className="w-32 flex-shrink-0 font-mono text-xs uppercase tracking-widest text-[#dfb15b] font-bold">
+            <div className="p-5 flex flex-col sm:flex-row gap-4 sm:items-start bg-accent/[0.05]">
+              <div className="w-32 flex-shrink-0 font-mono text-xs uppercase tracking-widest text-accent font-bold">
                 05. Result
               </div>
               <p className="font-sans text-xs sm:text-sm text-white font-medium leading-relaxed">
@@ -567,13 +567,13 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
               >
                 <div className="space-y-1 sm:max-w-xs">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-[#dfb15b]">
+                    <span className="font-mono text-xs font-bold text-accent">
                       {stage.version}
                     </span>
                     <span className="text-white/30 font-mono text-xs">·</span>
                     <span className="font-mono text-xs text-white/50">{stage.timeline}</span>
                   </div>
-                  <h4 className="font-display text-base font-bold text-[#feffff]">
+                  <h4 className="font-display text-base font-bold text-fg">
                     {stage.title}
                   </h4>
                 </div>
@@ -586,7 +586,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
                     <p className="text-white/80">{stage.architecture}</p>
                   </div>
                   <div>
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#dfb15b] block mb-0.5">
+                    <span className="font-mono text-[10px] uppercase tracking-wider text-accent block mb-0.5">
                       Outcome:
                     </span>
                     <p className="text-white/90">{stage.outcome}</p>
@@ -615,13 +615,13 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 border border-white/10 bg-white/[0.02] space-y-4">
-              <h4 className="font-mono text-xs uppercase tracking-widest text-[#dfb15b]">
+              <h4 className="font-mono text-xs uppercase tracking-widest text-accent">
                 Machine Learning Engineering
               </h4>
               <ul className="space-y-3 font-sans text-xs sm:text-sm text-white/70">
                 {sections.lessons.engineeringLessons.map((lesson, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="font-mono text-[#dfb15b] mt-0.5">▸</span>
+                    <span className="font-mono text-accent mt-0.5">▸</span>
                     <span>{lesson}</span>
                   </li>
                 ))}
@@ -629,13 +629,13 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
             </div>
 
             <div className="p-6 border border-white/10 bg-white/[0.02] space-y-4">
-              <h4 className="font-mono text-xs uppercase tracking-widest text-[#dfb15b]">
+              <h4 className="font-mono text-xs uppercase tracking-widest text-accent">
                 Systems & Infrastructure
               </h4>
               <ul className="space-y-3 font-sans text-xs sm:text-sm text-white/70">
                 {sections.lessons.systemsLessons.map((lesson, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="font-mono text-[#dfb15b] mt-0.5">▸</span>
+                    <span className="font-mono text-accent mt-0.5">▸</span>
                     <span>{lesson}</span>
                   </li>
                 ))}
@@ -662,7 +662,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
               <ul className="space-y-2.5 font-sans text-xs sm:text-sm text-white/75">
                 {sections.future.upcomingMilestones.map((m, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="font-mono text-[#dfb15b]">0{idx + 1}.</span>
+                    <span className="font-mono text-accent">0{idx + 1}.</span>
                     <span>{m}</span>
                   </li>
                 ))}
@@ -670,7 +670,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
             </div>
 
             <div className="p-6 border border-white/10 bg-white/[0.02] space-y-3">
-              <h4 className="font-mono text-xs uppercase tracking-widest text-[#dfb15b]">
+              <h4 className="font-mono text-xs uppercase tracking-widest text-accent">
                 Open Research Questions
               </h4>
               <ul className="space-y-2.5 font-sans text-xs sm:text-sm text-white/75">
@@ -700,7 +700,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
                 key={group.domain}
                 className="p-5 border border-white/10 bg-white/[0.02] flex flex-col sm:flex-row sm:items-center justify-between gap-3"
               >
-                <span className="font-mono text-xs uppercase tracking-widest text-[#dfb15b] sm:w-48">
+                <span className="font-mono text-xs uppercase tracking-widest text-accent sm:w-48">
                   {group.domain}
                 </span>
                 <div className="flex flex-wrap gap-2 flex-1">
@@ -726,7 +726,7 @@ export default async function ProjectCaseStudyPage({ params }: ProjectPageProps)
 
           <div className="p-6 sm:p-8 border border-white/10 bg-[#010a0b] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="space-y-1">
-              <h4 className="font-display text-base font-bold text-[#feffff]">
+              <h4 className="font-display text-base font-bold text-fg">
                 Explore Source Repositories & Artifacts
               </h4>
               <p className="font-sans text-xs text-white/60 max-w-md leading-relaxed">

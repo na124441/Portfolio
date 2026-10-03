@@ -19,7 +19,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-mono text-xs uppercase tracking-wider transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:opacity-50 disabled:pointer-events-none select-none rounded-none cursor-pointer';
+  const baseStyles = 'inline-flex items-center justify-center font-mono text-xs uppercase tracking-wider transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:opacity-50 disabled:pointer-events-none select-none rounded-none cursor-pointer';
 
   const sizeStyles = {
     sm: 'px-3.5 py-1.5 text-[11px] gap-1.5',
@@ -29,15 +29,15 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variantStyles = {
     primary:
-      'bg-gold font-bold active:translate-y-[1px] text-bg hover:bg-gold-light tracking-wider',
+      'bg-accent font-bold active:translate-y-[1px] text-accent-ink hover:bg-accent-hi tracking-wider',
     glass:
-      'glass-surface text-text hover:text-gold active:translate-y-[1px]',
+      'surface-raised text-fg hover:text-accent active:translate-y-[1px]',
     outline:
-      'border border-white/20 bg-transparent text-text hover:border-gold/60 hover:text-gold active:translate-y-[1px]',
+      'border border-line bg-transparent text-fg hover:border-accent/60 hover:text-accent active:translate-y-[1px]',
     secondary:
-      'bg-white/10 text-text border border-white/10 hover:bg-white/15 hover:border-white/25 active:translate-y-[1px]',
+      'bg-surface-soft text-fg border border-line hover:bg-surface hover:border-line-hi active:translate-y-[1px]',
     ghost:
-      'bg-transparent text-white/70 hover:text-gold hover:bg-white/5 active:translate-y-[1px]',
+      'bg-transparent text-fg-soft hover:text-accent hover:bg-surface-soft active:translate-y-[1px]',
   };
 
   const combinedClasses = cn(baseStyles, sizeStyles[size], variantStyles[variant], className);

@@ -43,15 +43,15 @@ export function TopicPanel({
     return () => ctx.revert();
   }, [topic.topicNumber]);
 
-  const categoryStyle = CATEGORY_BADGE_STYLES[topic.category] || 'bg-[#1C2830] text-[#A8B3BA] border-[#1C2830]';
+  const categoryStyle = CATEGORY_BADGE_STYLES[topic.category] || 'bg-line text-fg-soft border-line';
 
   return (
     <div ref={containerRef} className="flex flex-col gap-6 w-full">
       {/* Topic Header */}
-      <div className="relative overflow-hidden bg-[#0A0F14] border border-[#1C2830] rounded-lg p-5 sm:p-7 bl-tick-box">
+      <div className="relative overflow-hidden bg-bg-2 border border-line rounded-lg p-5 sm:p-7 bl-tick-box">
         {/* Background Watermark Topic Number */}
         <span
-          className="absolute -right-2 -bottom-6 font-mono font-extralight text-7xl sm:text-9xl text-[#F3F6F7]/[0.03] select-none pointer-events-none"
+          className="absolute -right-2 -bottom-6 font-mono font-extralight text-7xl sm:text-9xl text-fg/[0.03] select-none pointer-events-none"
           aria-hidden="true"
         >
           {topic.topicNumber}
@@ -59,7 +59,7 @@ export function TopicPanel({
 
         <div className="relative z-10 flex flex-col gap-3">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="font-mono text-xs text-[#019AA2] font-semibold tracking-wider">
+            <span className="font-mono text-xs text-accent font-semibold tracking-wider">
               TOPIC {topic.topicNumber} //
             </span>
             <span
@@ -72,7 +72,7 @@ export function TopicPanel({
             </span>
           </div>
 
-          <h2 className="font-sans text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#F3F6F7]">
+          <h2 className="font-sans text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-fg">
             {topic.name}
           </h2>
         </div>
@@ -80,7 +80,7 @@ export function TopicPanel({
 
       {/* Dataset Card (pill/chip style with external link) */}
       <div className="flex flex-col gap-2">
-        <span className="text-[11px] font-mono uppercase tracking-widest text-[#68747D]">
+        <span className="text-[11px] font-mono uppercase tracking-widest text-fg-muted">
           Matched Real-World Dataset
         </span>
         <DatasetCard dataset={topic.dataset} />
@@ -89,10 +89,10 @@ export function TopicPanel({
       {/* 5 Difficulty Tiers Accordion */}
       <div className="flex flex-col gap-1 mt-2">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-[11px] font-mono uppercase tracking-widest text-[#68747D]">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-fg-muted">
             Difficulty Tiers &amp; Hands-On Problem Set
           </span>
-          <span className="text-[11px] font-mono text-[#68747D]">
+          <span className="text-[11px] font-mono text-fg-muted">
             5 Tiers · {topic.tiers.reduce((acc, t) => acc + t.questions.length, 0)} Questions
           </span>
         </div>

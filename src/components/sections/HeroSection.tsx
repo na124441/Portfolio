@@ -174,20 +174,20 @@ export const HeroSection: React.FC = () => {
     <section
       id="top"
       ref={stageRef}
-      className="relative min-h-screen lg:min-h-[100dvh] w-full flex flex-col justify-between bg-[#010a0b] text-[#feffff] border-b border-white/[0.08] overflow-hidden pt-24 sm:pt-28 pb-6 sm:pb-8 px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 z-10 select-none"
+      className="relative min-h-dvh lg:min-h-[100dvh] w-full flex flex-col justify-between bg-bg text-fg border-b border-line overflow-hidden pt-24 sm:pt-28 pb-6 sm:pb-8 px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 z-10 select-none"
     >
       {/* Atmospheric Background Layer: Subtle Environmental ASCII Donut */}
       <div className="absolute inset-0 w-full pointer-events-none z-0 overflow-hidden opacity-90 sm:opacity-95 lg:opacity-100">
         <AsciiDonutBackground widthFraction={1.0} opacity={0.22} className="z-0" />
         <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(1,10,11,0.45)_75%,rgba(1,10,11,0.85)_100%)] pointer-events-none"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(var(--bg-rgb),0.45)_75%,rgba(var(--bg-rgb),0.85)_100%)] pointer-events-none"
           aria-hidden="true"
         />
       </div>
 
       {/* Editorial Publication Metadata at Top Right */}
-      <div className="absolute top-24 right-6 sm:right-10 lg:right-12 xl:right-16 2xl:right-20 hidden md:flex flex-col items-end font-mono text-[11px] text-white/40 tracking-[0.2em] pointer-events-none space-y-1">
-        <span className="text-white/70 font-medium">ENGINEERING / 01</span>
+      <div className="absolute top-24 right-6 sm:right-10 lg:right-12 xl:right-16 2xl:right-20 hidden md:flex flex-col items-end font-mono text-[11px] text-fg-muted tracking-[0.2em] pointer-events-none space-y-1">
+        <span className="text-fg-soft font-medium">ENGINEERING / 01</span>
         <span>GREATER NOIDA, IN</span>
       </div>
 
@@ -201,9 +201,9 @@ export const HeroSection: React.FC = () => {
             className="md:col-span-7 flex flex-col items-center justify-center text-center z-10 will-change-transform"
           >
             {/* Status Pill */}
-            <div className="hero-badge-wrap inline-flex items-center justify-center gap-2 px-3 py-1 bg-white/[0.04] border border-white/10 rounded-full font-mono text-[11px] text-white/80 shadow-sm backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-[#f6d009] shadow-[0_0_10px_rgba(246,208,9,0.8)] radar-dot inline-block" />
-              <span className="text-[#feffff] font-medium">
+            <div className="hero-badge-wrap inline-flex items-center justify-center gap-2 px-3 py-1 bg-surface-soft border border-line rounded-full font-mono text-[11px] text-fg-soft shadow-sm backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-accent shadow-[0_0_10px_var(--accent-glow)] radar-dot inline-block" />
+              <span className="text-fg font-medium">
                 {PORTFOLIO_METADATA.statusBadge}
               </span>
             </div>
@@ -252,14 +252,14 @@ export const HeroSection: React.FC = () => {
 
               {/* Ambient Glow */}
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[125%] h-[125%] rounded-full bg-[radial-gradient(circle,rgba(246,208,9,0.06)_0%,rgba(246,208,9,0.015)_50%,transparent_70%)] blur-3xl pointer-events-none z-0"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[125%] h-[125%] rounded-full bg-[radial-gradient(circle,var(--accent-glow)_0%,transparent_70%)] blur-3xl pointer-events-none z-0"
                 aria-hidden="true"
               />
 
               {/* Gold Halo */}
               <div
                 ref={haloRef}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%] rounded-full bg-[radial-gradient(circle,rgba(246,208,9,0.14)_0%,rgba(246,208,9,0.04)_45%,transparent_70%)] blur-2xl pointer-events-none z-10 will-change-transform"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[115%] h-[115%] rounded-full bg-[radial-gradient(circle,var(--accent-glow)_0%,transparent_70%)] blur-2xl pointer-events-none z-10 will-change-transform"
                 aria-hidden="true"
               />
 
@@ -298,28 +298,28 @@ export const HeroSection: React.FC = () => {
         ref={scrollIndicatorRef}
         href="#currently-building"
         title="Jump directly to active initiatives and systems"
-        className="absolute bottom-16 sm:bottom-20 right-8 sm:right-12 hidden lg:flex flex-col items-center gap-2 font-mono text-[10px] tracking-[0.2em] text-white/40 hover:text-white select-none will-change-transform transition-colors group cursor-pointer z-20"
+        className="absolute bottom-16 sm:bottom-20 right-8 sm:right-12 hidden lg:flex flex-col items-center gap-2 font-mono text-[10px] tracking-[0.2em] text-fg-muted hover:text-fg select-none will-change-transform transition-colors group cursor-pointer z-20"
       >
-        <span className="uppercase group-hover:text-[#f6d009] transition-colors">Work ↓</span>
-        <div className="w-[1px] h-7 bg-gradient-to-b from-[#f6d009] to-transparent group-hover:from-white transition-colors" />
-        <ArrowDown className="w-3 h-3 text-[#f6d009] group-hover:translate-y-1 transition-transform" />
+        <span className="uppercase group-hover:text-accent transition-colors">Work ↓</span>
+        <div className="w-[1px] h-7 bg-gradient-to-b from-accent to-transparent group-hover:from-fg transition-colors" />
+        <ArrowDown className="w-3 h-3 text-accent group-hover:translate-y-1 transition-transform" />
       </a>
 
       {/* Publication-Style Engineering Index */}
       <div
         ref={bottomBarRef}
-        className="w-full pt-4 sm:pt-6 border-t border-white/[0.08] z-20 will-change-transform"
+        className="w-full pt-4 sm:pt-6 border-t border-line z-20 will-change-transform"
       >
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/35 flex-shrink-0">
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg-muted flex-shrink-0">
             ENGINEERING INDEX
           </span>
           <div className="flex flex-wrap items-center gap-x-6 sm:gap-x-8 gap-y-2 text-xs font-mono">
             {technicalPillars.map((item) => (
               <span key={item.index} className="flex items-center gap-2">
-                <span className="text-[#f6d009] font-medium">{item.index}</span>
-                <span className="text-white/30">—</span>
-                <span className="text-white/65 hover:text-white transition-colors tracking-wide">
+                <span className="text-accent font-medium">{item.index}</span>
+                <span className="text-fg-muted">—</span>
+                <span className="text-fg-soft hover:text-fg transition-colors tracking-wide">
                   {item.title}
                 </span>
               </span>

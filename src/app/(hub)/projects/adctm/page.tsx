@@ -53,9 +53,9 @@ export default function AdctmProjectPage() {
   };
 
   return (
-    <article className="min-h-screen bg-[#010a0b] text-[#feffff]">
+    <article className="min-h-screen bg-bg text-fg">
       {/* Top Back Navigation Bar */}
-      <div className="border-b border-white/10 bg-[#010a0b]/80 backdrop-blur-md sticky top-0 z-40">
+      <div className="border-b border-white/10 bg-bg/80 backdrop-blur-md sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between text-xs font-mono">
           <Link
             href="/work"
@@ -67,7 +67,7 @@ export default function AdctmProjectPage() {
 
           <div className="flex items-center gap-3">
             <span className="text-white/40 hidden sm:inline">ADCTM // AUTONOMOUS THERMAL CONTROL</span>
-            <span className="text-[#dfb15b]">LIVE DEMO</span>
+            <span className="text-accent">LIVE DEMO</span>
           </div>
         </div>
       </div>

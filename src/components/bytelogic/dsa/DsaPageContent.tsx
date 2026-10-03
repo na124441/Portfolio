@@ -207,7 +207,7 @@ export function DsaPageContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#121212] text-[#e4e4e7] pt-14 sm:pt-16 pb-20 font-sans selection:bg-[#38bdf8]/30">
+    <div className="min-h-dvh bg-bg text-fg pt-14 sm:pt-16 pb-20 font-sans">
       <div className="max-w-[1240px] mx-auto px-3 sm:px-6 lg:px-8 flex flex-col gap-4">
         {/* Top Topic Filter Pills */}
         <DsaTopicPills
@@ -234,10 +234,10 @@ export function DsaPageContent() {
         {/* Linear Scrollable Problem List Table */}
         <div
           ref={tableTopRef}
-          className="rounded-lg overflow-hidden border border-[#2b2b2b] shadow-xl bg-[#1a1a1a]"
+          className="rounded-lg overflow-hidden border border-line shadow-xl bg-surface"
         >
           {/* Table Header Row */}
-          <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 bg-[#202020] border-b border-[#2e2e2e] text-xs font-medium text-[#a1a1aa] select-none">
+          <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 bg-bg-2 border-b border-line text-xs font-medium text-fg-soft select-none">
             <div className="flex items-center gap-3 sm:gap-4 flex-1">
               <span className="w-5 text-center">Status</span>
               <span>Title</span>
@@ -251,9 +251,9 @@ export function DsaPageContent() {
 
           {/* Problem Rows (Zebra striped matching Image 1) */}
           {paginatedProblems.length === 0 ? (
-            <div className="py-16 text-center text-[#71717a] flex flex-col items-center justify-center gap-2">
+            <div className="py-16 text-center text-fg-muted flex flex-col items-center justify-center gap-2">
               <BookOpen className="w-8 h-8 opacity-40 mb-1" />
-              <p className="text-sm font-medium text-[#d4d4d8]">No questions match your criteria</p>
+              <p className="text-sm font-medium text-fg-soft">No questions match your criteria</p>
               <button
                 type="button"
                 onClick={() => {
@@ -262,13 +262,13 @@ export function DsaPageContent() {
                   setSelectedDifficulty('ALL');
                   setSelectedStatus('ALL');
                 }}
-                className="text-xs text-[#38bdf8] hover:underline mt-1 cursor-pointer"
+                className="text-xs text-accent hover:underline mt-1 cursor-pointer"
               >
                 Clear all filters
               </button>
             </div>
           ) : (
-            <div className="divide-y divide-[#2b2b2b]/30">
+            <div className="divide-y divide-line/30">
               {paginatedProblems.map((problem, idx) => (
                 <DsaLinearProblemRow
                   key={problem.slug}
@@ -282,14 +282,14 @@ export function DsaPageContent() {
         </div>
 
         {/* Bottom Pagination Controls & Per-Page Selector */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-4 text-xs font-sans text-[#a1a1aa]">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-4 text-xs font-sans text-fg-soft">
           {/* Items info */}
           <div className="flex items-center gap-2">
             <span>
               Showing {sortedProblems.length === 0 ? 0 : (safeCurrentPage - 1) * itemsPerPage + 1}–
               {Math.min(safeCurrentPage * itemsPerPage, sortedProblems.length)} of {sortedProblems.length} questions
             </span>
-            <span className="text-[#52525b]">|</span>
+            <span className="text-fg-muted">|</span>
             <div className="flex items-center gap-1.5">
               <span>Per page:</span>
               <select
@@ -298,7 +298,7 @@ export function DsaPageContent() {
                   setItemsPerPage(Number(e.target.value));
                   setCurrentPage(1);
                 }}
-                className="bg-[#1f1f1f] text-[#f4f4f5] border border-[#333] rounded px-2 py-0.5 focus:outline-none cursor-pointer"
+                className="bg-bg-2 text-fg border border-line rounded px-2 py-0.5 focus:outline-none cursor-pointer"
               >
                 <option value={50}>50</option>
                 <option value={100}>100</option>
@@ -315,7 +315,7 @@ export function DsaPageContent() {
                 type="button"
                 onClick={() => goToPage(1)}
                 disabled={safeCurrentPage === 1}
-                className="p-1.5 rounded bg-[#1c1c1c] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                className="p-1.5 rounded bg-bg-2 border border-line text-fg-soft hover:text-fg disabled:opacity-30 disabled:pointer-events-none transition-colors"
                 title="First Page"
               >
                 <ChevronsLeft className="w-3.5 h-3.5" />
@@ -325,7 +325,7 @@ export function DsaPageContent() {
                 type="button"
                 onClick={() => goToPage(safeCurrentPage - 1)}
                 disabled={safeCurrentPage === 1}
-                className="p-1.5 rounded bg-[#1c1c1c] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                className="p-1.5 rounded bg-bg-2 border border-line text-fg-soft hover:text-fg disabled:opacity-30 disabled:pointer-events-none transition-colors"
                 title="Previous Page"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
@@ -340,14 +340,14 @@ export function DsaPageContent() {
                     className={cn(
                       'min-w-7 h-7 px-2 rounded text-xs font-medium transition-colors',
                       safeCurrentPage === num
-                        ? 'bg-[#3b82f6] text-white font-semibold'
-                        : 'bg-[#1c1c1c] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white'
+                        ? 'bg-accent text-accent-ink font-semibold'
+                        : 'bg-bg-2 border border-line text-fg-soft hover:text-fg'
                     )}
                   >
                     {num}
                   </button>
                 ) : (
-                  <span key={i} className="px-1 text-[#71717a] select-none">
+                  <span key={i} className="px-1 text-fg-muted select-none">
                     ...
                   </span>
                 )
@@ -357,7 +357,7 @@ export function DsaPageContent() {
                 type="button"
                 onClick={() => goToPage(safeCurrentPage + 1)}
                 disabled={safeCurrentPage === totalPages}
-                className="p-1.5 rounded bg-[#1c1c1c] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                className="p-1.5 rounded bg-bg-2 border border-line text-fg-soft hover:text-fg disabled:opacity-30 disabled:pointer-events-none transition-colors"
                 title="Next Page"
               >
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -367,7 +367,7 @@ export function DsaPageContent() {
                 type="button"
                 onClick={() => goToPage(totalPages)}
                 disabled={safeCurrentPage === totalPages}
-                className="p-1.5 rounded bg-[#1c1c1c] border border-[#2e2e2e] text-[#a1a1aa] hover:text-white disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                className="p-1.5 rounded bg-bg-2 border border-line text-fg-soft hover:text-fg disabled:opacity-30 disabled:pointer-events-none transition-colors"
                 title="Last Page"
               >
                 <ChevronsRight className="w-3.5 h-3.5" />
@@ -384,31 +384,31 @@ export function DsaPageContent() {
           <button
             type="button"
             onClick={scrollToTop}
-            className="w-10 h-10 rounded-full bg-[#27272a] hover:bg-[#3f3f46] text-[#e4e4e7] border border-[#3f3f46] shadow-lg flex items-center justify-center transition-all cursor-pointer hover:scale-105"
+            className="surface-raised w-10 h-10 rounded-full text-fg-soft hover:text-fg border border-line shadow-lg flex items-center justify-center transition-all cursor-pointer hover:scale-105"
             title="Scroll to Top"
           >
             <ArrowUp className="w-4 h-4" />
           </button>
         )}
 
-        {/* Daily Challenge Button (Green Circle matching screenshot) */}
+        {/* Daily Challenge Button */}
         <button
           type="button"
           onClick={handleJumpToDaily}
-          className="w-11 h-11 rounded-full bg-[#22c55e] hover:bg-[#16a34a] text-black shadow-xl flex items-center justify-center transition-all cursor-pointer hover:scale-105"
+          className="w-11 h-11 rounded-full bg-[#22c55e] hover:bg-[#16a34a] text-bg shadow-xl flex items-center justify-center transition-all cursor-pointer hover:scale-105"
           title="Daily Challenge: Jump to Featured Problem"
         >
-          <Calendar className="w-5 h-5 text-white" />
+          <Calendar className="w-5 h-5 text-fg" />
         </button>
 
-        {/* Quick Problem List Button (Amber/Gold Circle matching screenshot) */}
+        {/* Quick Problem List Button */}
         <button
           type="button"
           onClick={scrollToTop}
-          className="w-11 h-11 rounded-full bg-[#fde047] hover:bg-[#facc15] text-black shadow-xl flex items-center justify-center transition-all cursor-pointer hover:scale-105"
+          className="w-11 h-11 rounded-full bg-accent hover:opacity-90 text-accent-ink shadow-xl flex items-center justify-center transition-all cursor-pointer hover:scale-105"
           title="Scroll to Question List"
         >
-          <Layers className="w-5 h-5 text-black" />
+          <Layers className="w-5 h-5" />
         </button>
       </div>
     </div>

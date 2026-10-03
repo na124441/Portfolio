@@ -31,7 +31,7 @@ export const ByteLogicButton: React.FC<ByteLogicButtonProps> = ({
   type = 'button',
 }) => {
   const baseStyles =
-    'inline-flex items-center justify-center font-mono font-medium transition-all duration-200 select-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#019AA2] cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed group';
+    'inline-flex items-center justify-center font-mono font-medium transition-all duration-200 select-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed group';
 
   const sizeStyles = {
     sm: 'text-xs px-3 py-1.5 rounded-[4px] gap-1.5',
@@ -41,15 +41,15 @@ export const ByteLogicButton: React.FC<ByteLogicButtonProps> = ({
 
   const variantStyles = {
     primary:
-      'bg-[#019AA2] text-[#05070A] hover:bg-[#02b3bc] font-semibold active:translate-y-[1px]',
+      'bg-accent text-accent-ink hover:brightness-110 font-semibold active:translate-y-[1px]',
     secondary:
-      'bg-[#132279] text-[#F3F6F7] hover:bg-[#1a2f9e] border border-[#132279] active:translate-y-[1px]',
+      'bg-[#132279] text-fg hover:bg-[#1a2f9e] border border-[#132279] active:translate-y-[1px]',
     outline:
-      'bg-transparent text-[#F3F6F7] border border-[#1C2830] hover:border-[#019AA2]/60 hover:text-[#019AA2] hover:bg-[#0E151B]',
+      'bg-transparent text-fg border border-line hover:border-accent-line hover:text-accent hover:bg-surface',
     ghost:
-      'bg-transparent text-[#A8B3BA] hover:text-[#F3F6F7] hover:bg-[#0E151B]',
+      'bg-transparent text-fg-soft hover:text-fg hover:bg-surface',
     lab:
-      'bg-[#0E151B] text-[#019AA2] border border-[#019AA2]/40 hover:border-[#019AA2] hover:bg-[#019AA2]/10',
+      'bg-surface text-accent border border-accent-line hover:border-accent hover:bg-accent-soft',
   };
 
   const content = (

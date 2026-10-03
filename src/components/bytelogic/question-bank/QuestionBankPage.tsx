@@ -77,48 +77,48 @@ export function QuestionBankPage() {
   const progressPercentage = totalQuestions === 0 ? 0 : Math.round((doneCount / totalQuestions) * 100);
 
   return (
-    <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto text-[#F3F6F7]">
+    <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto text-fg">
       {/* Top Header & Breadcrumb */}
       <div ref={headerRef} className="flex flex-col gap-4">
-        <div className="gsap-breadcrumb flex items-center gap-2 text-xs font-mono text-[#68747D]">
+        <div className="gsap-breadcrumb flex items-center gap-2 text-xs font-mono text-fg-muted">
           <Link
             href="/bytelogic/learn"
-            className="flex items-center gap-1 hover:text-[#019AA2] transition-colors"
+            className="flex items-center gap-1 hover:text-accent transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Learn</span>
           </Link>
           <span>/</span>
-          <span className="text-[#A8B3BA]">Question Bank</span>
+          <span className="text-fg-soft">Question Bank</span>
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <span className="gsap-eyebrow font-mono text-xs text-[#019AA2] font-semibold tracking-wider uppercase">
+          <span className="gsap-eyebrow font-mono text-xs text-accent font-semibold tracking-wider uppercase">
             01 // QUESTION BANK
           </span>
-          <h1 className="gsap-title font-sans text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F3F6F7]">
+          <h1 className="gsap-title font-sans text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-fg">
             ML Hands-On Problem Set
           </h1>
-          <p className="gsap-subtitle text-sm sm:text-base text-[#A8B3BA] max-w-3xl leading-relaxed">
+          <p className="gsap-subtitle text-sm sm:text-base text-fg-soft max-w-3xl leading-relaxed">
             20 comprehensive machine learning topics across 4 disciplines. Work through 5 progressive difficulty
             tiers per topic with real-world Kaggle, Hugging Face, and benchmark datasets.
           </p>
         </div>
 
         {/* Global Progress Bar */}
-        <div className="gsap-progress-bar flex flex-col gap-2 mt-2 p-4 bg-[#0A0F14] border border-[#1C2830] rounded-lg bl-tick-box">
+        <div className="gsap-progress-bar flex flex-col gap-2 mt-2 p-4 bg-bg-2 border border-line rounded-lg bl-tick-box">
           <div className="flex items-center justify-between text-xs font-mono">
-            <span className="text-[#A8B3BA] flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#019AA2]" />
+            <span className="text-fg-soft flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-accent" />
               <span>Overall Curriculum Completion</span>
             </span>
-            <span className="text-[#019AA2] font-semibold">
+            <span className="text-accent font-semibold">
               {doneCount} / {totalQuestions} completed ({progressPercentage}%)
             </span>
           </div>
-          <div className="w-full h-2 bg-[#131C24] rounded-full overflow-hidden border border-[#1C2830]">
+          <div className="w-full h-2 bg-surface-2 rounded-full overflow-hidden border border-line">
             <div
-              className="h-full bg-gradient-to-r from-[#019AA2] to-[#20BEFF] transition-all duration-300 ease-out rounded-full"
+              className="h-full bg-gradient-to-r from-accent to-[#20BEFF] transition-all duration-300 ease-out rounded-full"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>

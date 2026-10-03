@@ -63,7 +63,7 @@ export const KnowledgeGraphVisual: React.FC<{ className?: string }> = ({ classNa
   return (
     <div
       className={cn(
-        'relative w-full max-w-[440px] rounded-[6px] border border-[#1C2830] bg-[#0A0F14]/90 backdrop-blur-md p-4 sm:p-5 text-[#F3F6F7] shadow-[0_12px_36px_rgba(0,0,0,0.65)] select-none overflow-hidden group',
+        'relative w-full max-w-[440px] rounded-[6px] border border-line bg-bg-2/90 backdrop-blur-md p-4 sm:p-5 text-fg shadow-[0_12px_36px_rgba(0,0,0,0.65)] select-none overflow-hidden group',
         className
       )}
     >
@@ -71,13 +71,13 @@ export const KnowledgeGraphVisual: React.FC<{ className?: string }> = ({ classNa
       <div className="absolute inset-0 pointer-events-none opacity-30 bl-cartesian-grid" />
 
       {/* Header bar / Telemetry */}
-      <div className="relative z-10 flex items-center justify-between border-b border-[#1C2830] pb-2.5 mb-3 text-[10px] font-mono tracking-widest text-[#68747D]">
+      <div className="relative z-10 flex items-center justify-between border-b border-line pb-2.5 mb-3 text-[10px] font-mono tracking-widest text-fg-muted">
         <div className="flex items-center gap-2">
-          <span className="inline-block w-2 h-2 rounded-full bg-[#019AA2] animate-pulse" />
-          <span className="text-[#A8B3BA] font-semibold">KNOWLEDGE GRAPH</span>
-          <span className="text-[#68747D]">SYS.01</span>
+          <span className="inline-block w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <span className="text-fg-soft font-semibold">KNOWLEDGE GRAPH</span>
+          <span className="text-fg-muted">SYS.01</span>
         </div>
-        <div className="flex items-center gap-1 text-[#68747D]">
+        <div className="flex items-center gap-1 text-fg-muted">
           <span>RELATIONS // 12</span>
         </div>
       </div>
@@ -102,9 +102,9 @@ export const KnowledgeGraphVisual: React.FC<{ className?: string }> = ({ classNa
 
             {/* Subtle line gradient */}
             <linearGradient id="edgeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#1C2830" />
-              <stop offset="50%" stopColor="#019AA2" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#1C2830" />
+              <stop offset="0%" stopColor="var(--line)" />
+              <stop offset="50%" stopColor="var(--accent)" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="var(--line)" />
             </linearGradient>
           </defs>
 
@@ -121,7 +121,7 @@ export const KnowledgeGraphVisual: React.FC<{ className?: string }> = ({ classNa
                   y1={edge.from.y}
                   x2={edge.to.x}
                   y2={edge.to.y}
-                  stroke={isConnectedToActive ? '#019AA2' : '#1C2830'}
+                  stroke={isConnectedToActive ? 'var(--accent)' : 'var(--line)'}
                   strokeWidth={isConnectedToActive ? 1.75 : 1}
                   strokeOpacity={isConnectedToActive ? 0.85 : 0.6}
                   strokeDasharray={isConnectedToActive ? 'none' : '3 3'}
@@ -130,7 +130,7 @@ export const KnowledgeGraphVisual: React.FC<{ className?: string }> = ({ classNa
 
                 {/* Animated traveling signal particle if connected to active or pulsed */}
                 {isConnectedToActive && (
-                  <circle r="2.5" fill="#019AA2">
+                  <circle r="2.5" fill="var(--accent)">
                     <animateMotion
                       path={`M ${edge.from.x} ${edge.from.y} L ${edge.to.x} ${edge.to.y}`}
                       dur="3s"
@@ -162,7 +162,7 @@ export const KnowledgeGraphVisual: React.FC<{ className?: string }> = ({ classNa
                     cy={node.y}
                     r="20"
                     fill="none"
-                    stroke="#019AA2"
+                    stroke="var(--accent)"
                     strokeWidth="1"
                     strokeOpacity="0.3"
                     className="animate-ping"
@@ -175,8 +175,8 @@ export const KnowledgeGraphVisual: React.FC<{ className?: string }> = ({ classNa
                   cx={node.x}
                   cy={node.y}
                   r="15"
-                  fill="#0E151B"
-                  stroke={isActive ? '#019AA2' : isConnected ? '#132279' : '#1C2830'}
+                  fill="var(--surface)"
+                  stroke={isActive ? 'var(--accent)' : isConnected ? '#132279' : 'var(--line)'}
                   strokeWidth={isActive ? 2 : 1.25}
                   filter={isActive ? 'url(#cyanGlow)' : undefined}
                   className="transition-colors duration-200"
@@ -187,7 +187,7 @@ export const KnowledgeGraphVisual: React.FC<{ className?: string }> = ({ classNa
                   cx={node.x}
                   cy={node.y}
                   r="4"
-                  fill={isActive ? '#019AA2' : isConnected ? '#F3F6F7' : '#68747D'}
+                  fill={isActive ? 'var(--accent)' : isConnected ? 'var(--fg)' : 'var(--fg-muted)'}
                   className="transition-colors duration-200"
                 />
 
@@ -196,7 +196,7 @@ export const KnowledgeGraphVisual: React.FC<{ className?: string }> = ({ classNa
                   x={node.x}
                   y={node.y + 26}
                   textAnchor="middle"
-                  fill={isActive ? '#019AA2' : isConnected ? '#F3F6F7' : '#68747D'}
+                  fill={isActive ? 'var(--accent)' : isConnected ? 'var(--fg)' : 'var(--fg-muted)'}
                   fontSize="9.5"
                   fontFamily="'JetBrains Mono', monospace"
                   fontWeight={isActive ? '700' : '500'}
@@ -210,7 +210,7 @@ export const KnowledgeGraphVisual: React.FC<{ className?: string }> = ({ classNa
                 <text
                   x={node.x + 18}
                   y={node.y - 8}
-                  fill="#68747D"
+                  fill="var(--fg-muted)"
                   fontSize="7.5"
                   fontFamily="'JetBrains Mono', monospace"
                   opacity="0.8"
@@ -224,18 +224,18 @@ export const KnowledgeGraphVisual: React.FC<{ className?: string }> = ({ classNa
       </div>
 
       {/* Active Node Telemetry Footer */}
-      <div className="relative z-10 mt-3 pt-2.5 border-t border-[#1C2830] flex items-center justify-between text-xs font-mono">
+      <div className="relative z-10 mt-3 pt-2.5 border-t border-line flex items-center justify-between text-xs font-mono">
         <div className="flex flex-col">
-          <span className="text-[10px] text-[#68747D] uppercase tracking-wider">
+          <span className="text-[10px] text-fg-muted uppercase tracking-wider">
             Active Node // {activeNodeData?.code}
           </span>
-          <span className="text-xs font-bold text-[#F3F6F7] mt-0.5">
-            {activeNodeData?.label} — <span className="text-[#019AA2] font-normal">{activeNodeData?.domain}</span>
+          <span className="text-xs font-bold text-fg mt-0.5">
+            {activeNodeData?.label} — <span className="text-accent font-normal">{activeNodeData?.domain}</span>
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5 px-2 py-1 rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[10px] text-[#A8B3BA]">
-          <Cpu className="w-3 h-3 text-[#019AA2]" />
+        <div className="flex items-center gap-1.5 px-2 py-1 rounded-[4px] bg-surface-2 border border-line text-[10px] text-fg-soft">
+          <Cpu className="w-3 h-3 text-accent" />
           <span>{activeNodeData?.connections.length} Links</span>
         </div>
       </div>

@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Play, Pause, SkipForward, RotateCcw, ArrowRight, Sparkles, Compass } from 'lucide-react';
+import { Play, Pause, SkipForward, RotateCcw, Compass } from 'lucide-react';
 import { ByteLogicButton } from '@/components/bytelogic/ui/ByteLogicButton';
 
 export const ConceptShowcaseSection: React.FC = () => {
@@ -25,7 +24,7 @@ export const ConceptShowcaseSection: React.FC = () => {
       step: 0,
       status: 'INITIALIZING',
       centroids: [
-        { x: 90, y: 140, color: '#019AA2', name: 'μ₁' },
+        { x: 90, y: 140, color: 'var(--accent)', name: 'μ₁' },
         { x: 180, y: 75, color: '#3b82f6', name: 'μ₂' },
         { x: 240, y: 180, color: '#10b981', name: 'μ₃' },
       ],
@@ -35,7 +34,7 @@ export const ConceptShowcaseSection: React.FC = () => {
       step: 1,
       status: 'PARTITIONING',
       centroids: [
-        { x: 76, y: 92, color: '#019AA2', name: 'μ₁' },
+        { x: 76, y: 92, color: 'var(--accent)', name: 'μ₁' },
         { x: 228, y: 82, color: '#3b82f6', name: 'μ₂' },
         { x: 168, y: 178, color: '#10b981', name: 'μ₃' },
       ],
@@ -45,7 +44,7 @@ export const ConceptShowcaseSection: React.FC = () => {
       step: 2,
       status: 'CONVERGED',
       centroids: [
-        { x: 73, y: 76, color: '#019AA2', name: 'μ₁' },
+        { x: 73, y: 76, color: 'var(--accent)', name: 'μ₁' },
         { x: 249, y: 82, color: '#3b82f6', name: 'μ₂' },
         { x: 161, y: 203, color: '#10b981', name: 'μ₃' },
       ],
@@ -69,63 +68,63 @@ export const ConceptShowcaseSection: React.FC = () => {
   return (
     <section
       id="concept"
-      className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 border-t border-[#1C2830] relative z-10"
+      className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 border-t border-line relative z-10"
     >
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-8 sm:mb-12 border-b border-[#1C2830] text-xs font-mono">
-        <div className="flex items-center gap-2 text-[#019AA2]">
-          <span className="w-2 h-2 rounded-[2px] bg-[#019AA2]" />
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-8 sm:mb-12 border-b border-line text-xs font-mono">
+        <div className="flex items-center gap-2 text-accent">
+          <span className="w-2 h-2 rounded-[2px] bg-accent" />
           <span className="font-semibold tracking-wider">03 / SEE A CONCEPT</span>
         </div>
-        <div className="flex items-center gap-3 text-[#68747D] text-[11px]">
+        <div className="flex items-center gap-3 text-fg-muted text-[11px]">
           <span>INTERACTIVE VISUAL PREVIEW</span>
           <span className="hidden sm:inline">•</span>
-          <span className="text-[#A8B3BA]">MACHINE LEARNING // CLUSTERING</span>
+          <span className="text-fg-soft">MACHINE LEARNING // CLUSTERING</span>
         </div>
       </div>
 
       {/* Main Grid */}
-      <div className="rounded-[6px] bg-[#0E151B] border border-[#1C2830] p-6 sm:p-8 lg:p-10 bl-tick-box">
+      <div className="rounded-[6px] bg-surface border border-line p-6 sm:p-8 lg:p-10 bl-tick-box">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Narrative & Dossier Invitation */}
           <div className="lg:col-span-6 space-y-6">
             <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-              <span className="px-2.5 py-1 rounded-[4px] bg-[#131C24] border border-[#1C2830] text-[#019AA2] font-semibold">
+              <span className="px-2.5 py-1 rounded-[4px] bg-surface-2 border border-line text-accent font-semibold">
                 K-MEANS CLUSTERING
               </span>
-              <span className="text-[#68747D]">•</span>
-              <span className="text-[#A8B3BA]">12 MIN DEEP DIVE</span>
+              <span className="text-fg-muted">•</span>
+              <span className="text-fg-soft">12 MIN DEEP DIVE</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-bold font-sans tracking-tight text-[#F3F6F7]">
+            <h2 className="text-3xl sm:text-4xl font-bold font-sans tracking-tight text-fg">
               Watch Geometry Settle Into Order.
             </h2>
 
-            <p className="text-sm sm:text-base text-[#A8B3BA] leading-relaxed font-sans">
+            <p className="text-sm sm:text-base text-fg-soft leading-relaxed font-sans">
               K-Means partitions continuous space into Voronoi cells through an elegant dance between assignment and centroid relocation. What looks like intuition on the surface is governed by monotonic reduction in within-cluster variance.
             </p>
 
             {/* Micro What's Inside Callout */}
-            <div className="p-4 rounded-[6px] bg-[#070B0E] border border-[#1C2830] space-y-2.5 text-xs font-mono">
-              <div className="text-[#F3F6F7] font-semibold flex items-center gap-2">
-                <Compass className="w-3.5 h-3.5 text-[#019AA2]" />
+            <div className="p-4 rounded-[6px] bg-bg border border-line space-y-2.5 text-xs font-mono">
+              <div className="text-fg font-semibold flex items-center gap-2">
+                <Compass className="w-3.5 h-3.5 text-accent" />
                 <span>Inside the Full Concept Dossier:</span>
               </div>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#A8B3BA]">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-fg-soft">
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+                  <span className="w-1.5 h-1.5 bg-accent" />
                   <span>Monotonic convergence proof</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+                  <span className="w-1.5 h-1.5 bg-accent" />
                   <span>Voronoi boundary geometry</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+                  <span className="w-1.5 h-1.5 bg-accent" />
                   <span>NumPy broadcasting from scratch</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#019AA2]" />
+                  <span className="w-1.5 h-1.5 bg-accent" />
                   <span>K-Means++ D² initialization</span>
                 </li>
               </ul>
@@ -142,7 +141,7 @@ export const ConceptShowcaseSection: React.FC = () => {
               >
                 Explore Full Concept Dossier
               </ByteLogicButton>
-              <span className="text-xs text-[#68747D] font-mono text-center sm:text-left">
+              <span className="text-xs text-fg-muted font-mono text-center sm:text-left">
                 Includes full derivation & interactive laboratory
               </span>
             </div>
@@ -150,24 +149,24 @@ export const ConceptShowcaseSection: React.FC = () => {
 
           {/* Right Column: Interactive Coordinate Canvas Preview */}
           <div className="lg:col-span-6">
-            <div className="rounded-[6px] bg-[#070B0E] border border-[#1C2830] overflow-hidden bl-tick-box">
+            <div className="rounded-[6px] bg-bg border border-line overflow-hidden bl-tick-box">
               {/* Canvas Header & Status */}
-              <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 bg-[#0A0F14] border-b border-[#1C2830] text-xs font-mono">
+              <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 bg-bg-2 border-b border-line text-xs font-mono">
                 <div className="flex items-center gap-2">
                   <span
                     className={`w-2 h-2 rounded-full ${
-                      current.step === 2 ? 'bg-[#10b981]' : 'bg-[#019AA2] animate-pulse'
+                      current.step === 2 ? 'bg-[#10b981]' : 'bg-accent animate-pulse'
                     }`}
                   />
-                  <span className="text-[#F3F6F7] font-medium">LLOYD PARTITIONING</span>
+                  <span className="text-fg font-medium">LLOYD PARTITIONING</span>
                 </div>
-                <div className="flex items-center gap-3 text-[#68747D] text-[11px]">
+                <div className="flex items-center gap-3 text-fg-muted text-[11px]">
                   <span>ITERATION: {current.step} / 2</span>
                   <span
                     className={
                       current.step === 2
                         ? 'text-[#10b981] font-semibold'
-                        : 'text-[#019AA2]'
+                        : 'text-accent'
                     }
                   >
                     {current.status}
@@ -176,7 +175,7 @@ export const ConceptShowcaseSection: React.FC = () => {
               </div>
 
               {/* 2D Coordinate SVG Stage */}
-              <div className="relative h-[260px] sm:h-[300px] w-full p-4 flex items-center justify-center bg-[#05070A]">
+              <div className="relative h-[260px] sm:h-[300px] w-full p-4 flex items-center justify-center bg-bg">
                 <div className="absolute inset-0 bl-cartesian-grid opacity-30 pointer-events-none" />
 
                 <svg className="w-full h-full" viewBox="0 0 320 260">
@@ -228,7 +227,7 @@ export const ConceptShowcaseSection: React.FC = () => {
                         r="3.5"
                         fill={nearest.color}
                         fillOpacity="0.8"
-                        stroke="#0E151B"
+                        stroke="var(--surface)"
                         strokeWidth="1"
                         className="transition-colors duration-300"
                       />
@@ -252,7 +251,7 @@ export const ConceptShowcaseSection: React.FC = () => {
                         cx={c.x}
                         cy={c.y}
                         r="6"
-                        fill="#0E151B"
+                        fill="var(--surface)"
                         stroke={c.color}
                         strokeWidth="2.5"
                       />
@@ -261,7 +260,7 @@ export const ConceptShowcaseSection: React.FC = () => {
                         x={c.x}
                         y={c.y - 14}
                         textAnchor="middle"
-                        fill="#F3F6F7"
+                        fill="var(--fg)"
                         fontSize="10"
                         fontFamily="var(--font-jetbrains)"
                         fontWeight="600"
@@ -274,16 +273,16 @@ export const ConceptShowcaseSection: React.FC = () => {
               </div>
 
               {/* Dynamic Step Explanation */}
-              <div className="px-4 py-2.5 bg-[#0A0F14] border-t border-[#1C2830] text-xs font-mono text-[#A8B3BA] min-h-[44px] flex items-center">
+              <div className="px-4 py-2.5 bg-bg-2 border-t border-line text-xs font-mono text-fg-soft min-h-[44px] flex items-center">
                 <span>{current.desc}</span>
               </div>
 
               {/* Interactive Playback Controls Toolbar */}
-              <div className="px-4 py-3 bg-[#0E151B] border-t border-[#1C2830] flex items-center justify-between gap-3 text-xs font-mono">
+              <div className="px-4 py-3 bg-surface border-t border-line flex items-center justify-between gap-3 text-xs font-mono">
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setIsPlaying(!isPlaying)}
-                    className="px-3 py-1.5 rounded-[4px] bg-[#019AA2] hover:bg-[#02b3bc] text-[#05070A] font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                    className="px-3 py-1.5 rounded-[4px] bg-accent hover:opacity-90 text-accent-ink font-semibold flex items-center gap-1.5 transition-opacity cursor-pointer"
                   >
                     {isPlaying ? (
                       <>
@@ -303,7 +302,7 @@ export const ConceptShowcaseSection: React.FC = () => {
                       setIsPlaying(false);
                       setIteration((prev) => (prev + 1) % states.length);
                     }}
-                    className="px-3 py-1.5 rounded-[4px] bg-[#131C24] hover:bg-[#1C2830] border border-[#1C2830] text-[#F3F6F7] flex items-center gap-1.5 transition-colors cursor-pointer"
+                    className="px-3 py-1.5 rounded-[4px] bg-surface-2 hover:bg-surface border border-line text-fg flex items-center gap-1.5 transition-colors cursor-pointer"
                   >
                     <SkipForward className="w-3.5 h-3.5" />
                     <span>Next Step</span>
@@ -314,14 +313,14 @@ export const ConceptShowcaseSection: React.FC = () => {
                       setIsPlaying(false);
                       setIteration(0);
                     }}
-                    className="p-1.5 rounded-[4px] bg-[#131C24] hover:bg-[#1C2830] border border-[#1C2830] text-[#68747D] hover:text-[#F3F6F7] transition-colors cursor-pointer"
+                    className="p-1.5 rounded-[4px] bg-surface-2 hover:bg-surface border border-line text-fg-muted hover:text-fg transition-colors cursor-pointer"
                     title="Reset to Step 0"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
-                <div className="hidden sm:flex items-center gap-2 text-[11px] text-[#68747D]">
+                <div className="hidden sm:flex items-center gap-2 text-[11px] text-fg-muted">
                   <span>SPACE: 2D EUCLIDEAN</span>
                   <span>•</span>
                   <span>K = 3</span>

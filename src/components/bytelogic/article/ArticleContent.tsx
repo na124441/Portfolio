@@ -16,16 +16,16 @@ import { Visual09InformationFunnel } from './visuals/Visual09InformationFunnel';
 
 export const ArticleContent: React.FC = () => {
   return (
-    <div className="space-y-12 sm:space-y-16 text-base sm:text-lg leading-relaxed text-[#A8B3BA] font-sans">
+    <div className="space-y-12 sm:space-y-16 text-base sm:text-lg leading-relaxed text-fg-soft font-sans">
       {/* ------------------------------------------------------------------- */}
       {/* 01 // Introduction & The First Few Examples Matter a Lot */}
       {/* ------------------------------------------------------------------- */}
       <section id="the-first-few-examples-matter-a-lot" className="space-y-6 pt-4">
-        <p className="text-lg sm:text-xl font-sans text-[#F3F6F7] leading-relaxed">
+        <p className="text-lg sm:text-xl font-sans text-fg leading-relaxed">
           We have been taught a remarkably simple idea about data:
         </p>
 
-        <p className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <p className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           More data is better.
         </p>
 
@@ -41,14 +41,14 @@ export const ArticleContent: React.FC = () => {
           Give a model too little data and it may struggle to discover the patterns hidden inside it. Give it more representative examples and its performance can improve dramatically.
         </p>
 
-        <p className="font-medium text-[#F3F6F7]">
+        <p className="font-medium text-fg">
           But eventually, something strange can happen.
         </p>
 
         {/* Visual 01 placed immediately after "something strange can happen" */}
         <Visual01DiminishingReturns />
 
-        <ul className="space-y-2 pl-4 border-l border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
+        <ul className="space-y-2 pl-4 border-l border-line font-mono text-sm text-fg">
           <li>You keep adding data.</li>
           <li>The dataset becomes larger.</li>
           <li>The training process becomes more expensive.</li>
@@ -59,7 +59,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>Sometimes, under the wrong conditions, it can even get worse.</p>
 
-        <p className="text-xl sm:text-2xl font-display font-semibold text-[#F3F6F7] pt-2">
+        <p className="text-xl sm:text-2xl font-display font-semibold text-fg pt-2">
           So what happened?
         </p>
 
@@ -70,8 +70,8 @@ export const ArticleContent: React.FC = () => {
           attribution="ByteLogic Foundational Principle"
         />
 
-        <div className="pt-6 border-t border-[#1C2830]/60 space-y-6">
-          <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <div className="pt-6 border-t border-line/60 space-y-6">
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
             The First Few Examples Matter a Lot
           </h2>
 
@@ -87,27 +87,27 @@ export const ArticleContent: React.FC = () => {
 
           <p>Suddenly, the system encounters many more:</p>
 
-          <ul className="grid grid-cols-2 gap-2 pl-4 font-mono text-xs sm:text-sm text-[#F3F6F7]">
+          <ul className="grid grid-cols-2 gap-2 pl-4 font-mono text-xs sm:text-sm text-fg">
             <li className="flex items-center gap-2">
-              <span className="text-[#019AA2]">▸</span> poses
+              <span className="text-accent">▸</span> poses
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-[#019AA2]">▸</span> backgrounds
+              <span className="text-accent">▸</span> backgrounds
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-[#019AA2]">▸</span> lighting conditions
+              <span className="text-accent">▸</span> lighting conditions
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-[#019AA2]">▸</span> breeds
+              <span className="text-accent">▸</span> breeds
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-[#019AA2]">▸</span> camera angles
+              <span className="text-accent">▸</span> camera angles
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-[#019AA2]">▸</span> sizes
+              <span className="text-accent">▸</span> sizes
             </li>
             <li className="flex items-center gap-2">
-              <span className="text-[#019AA2]">▸</span> environments
+              <span className="text-accent">▸</span> environments
             </li>
           </ul>
 
@@ -126,10 +126,10 @@ export const ArticleContent: React.FC = () => {
           <p>Each additional amount of data contributed less than the previous amount.</p>
 
           <p>
-            This is the basic intuition behind <strong className="text-[#F3F6F7]">diminishing returns</strong>.
+            This is the basic intuition behind <strong className="text-fg">diminishing returns</strong>.
           </p>
 
-          <p className="font-semibold text-[#F3F6F7]">But why does it happen?</p>
+          <p className="font-semibold text-fg">But why does it happen?</p>
 
           {/* Mathematical Callout */}
           <ArticleMathCallout />
@@ -141,30 +141,30 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="a-dataset-can-become-larger-without-becoming-more-informative"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           A Dataset Can Become Larger Without Becoming More Informative
         </h2>
 
         <p>Consider two datasets.</p>
 
         {/* Code representation of Dataset A */}
-        <div className="p-4 sm:p-5 rounded-[6px] bg-[#0E151B] border border-[#1C2830] font-mono text-xs sm:text-sm text-[#F3F6F7] space-y-1">
-          <div className="text-[11px] text-[#019AA2] font-semibold mb-2 uppercase tracking-wider">
+        <div className="p-4 sm:p-5 rounded-[6px] bg-surface border border-line font-mono text-xs sm:text-sm text-fg space-y-1">
+          <div className="text-[11px] text-accent font-semibold mb-2 uppercase tracking-wider">
             // DATASET A (HOMOGENEOUS ARCHIVE)
           </div>
           <div>cat_001.jpg</div>
           <div>cat_002.jpg</div>
           <div>cat_003.jpg</div>
           <div>cat_004.jpg</div>
-          <div className="text-[#68747D]">...</div>
+          <div className="text-fg-muted">...</div>
           <div>cat_100000.jpg</div>
         </div>
 
         <p>Imagine that almost all of these photographs were taken:</p>
 
-        <ul className="space-y-1.5 pl-4 font-mono text-xs sm:text-sm text-[#A8B3BA]">
+        <ul className="space-y-1.5 pl-4 font-mono text-xs sm:text-sm text-fg-soft">
           <li>• with the same camera</li>
           <li>• in the same room</li>
           <li>• under similar lighting</li>
@@ -180,7 +180,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>But these images come from:</p>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 font-mono text-xs sm:text-sm text-[#A8B3BA]">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 font-mono text-xs sm:text-sm text-fg-soft">
           <li>• different cameras</li>
           <li>• different environments</li>
           <li>• different lighting</li>
@@ -196,7 +196,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>
           But they don&apos;t necessarily contain the same amount of{' '}
-          <strong className="text-[#F3F6F7]">useful variation</strong>.
+          <strong className="text-fg">useful variation</strong>.
         </p>
 
         {/* Visual 02 */}
@@ -204,7 +204,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>This is an important distinction.</p>
 
-        <div className="p-4 sm:p-6 rounded-[6px] bg-[#0A0F14] border-l-2 border-[#019AA2] border-[#1C2830] text-[#F3F6F7] text-base sm:text-lg font-sans">
+        <div className="p-4 sm:p-6 rounded-[6px] bg-bg-2 border-l-2 border-accent border-line text-fg text-base sm:text-lg font-sans">
           <p className="font-medium leading-snug">
             Dataset size measures how many examples we have. It does not directly measure how much new information those examples contain.
           </p>
@@ -216,9 +216,9 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="the-problem-with-repetition"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           The Problem With Repetition
         </h2>
 
@@ -226,19 +226,19 @@ export const ArticleContent: React.FC = () => {
 
         <p>If someone shows us:</p>
 
-        <div className="p-3.5 rounded bg-[#0E151B] border border-[#1C2830] font-mono text-center tracking-[0.4em] text-lg sm:text-xl text-[#F3F6F7]">
+        <div className="p-3.5 rounded bg-surface border border-line font-mono text-center tracking-[0.4em] text-lg sm:text-xl text-fg">
           1 1 1 1 1 1 1 1 1 1
         </div>
 
         <p>we have received ten examples.</p>
 
         <p>
-          But the tenth <code className="text-[#019AA2] font-mono px-1.5 py-0.5 rounded bg-[#0E151B] border border-[#1C2830]">1</code> doesn&apos;t tell us much that the first <code className="text-[#019AA2] font-mono px-1.5 py-0.5 rounded bg-[#0E151B] border border-[#1C2830]">1</code> didn&apos;t already tell us.
+          But the tenth <code className="text-accent font-mono px-1.5 py-0.5 rounded bg-surface border border-line">1</code> doesn&apos;t tell us much that the first <code className="text-accent font-mono px-1.5 py-0.5 rounded bg-surface border border-line">1</code> didn&apos;t already tell us.
         </p>
 
         <p>Now compare that with:</p>
 
-        <div className="p-3.5 rounded bg-[#0E151B] border border-[#019AA2]/40 font-mono text-center tracking-[0.4em] text-lg sm:text-xl text-[#019AA2]">
+        <div className="p-3.5 rounded bg-surface border border-accent/40 font-mono text-center tracking-[0.4em] text-lg sm:text-xl text-accent">
           0 1 2 3 4 5 6 7 8 9
         </div>
 
@@ -274,9 +274,9 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="what-if-we-are-missing-entire-regions-of-the-problem"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           What If We Are Missing Entire Regions of the Problem?
         </h2>
 
@@ -286,7 +286,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>But almost every photograph was captured:</p>
 
-        <ul className="space-y-1.5 pl-4 font-mono text-xs sm:text-sm text-[#A8B3BA]">
+        <ul className="space-y-1.5 pl-4 font-mono text-xs sm:text-sm text-fg-soft">
           <li>• during the day</li>
           <li>• in clear weather</li>
           <li>• from one type of camera</li>
@@ -297,15 +297,15 @@ export const ArticleContent: React.FC = () => {
 
         <p>Then the system encounters:</p>
 
-        <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] font-mono text-xs sm:text-sm text-[#F3F6F7] space-y-1 text-center max-w-sm mx-auto">
+        <div className="p-4 rounded-[6px] bg-surface border border-line font-mono text-xs sm:text-sm text-fg space-y-1 text-center max-w-sm mx-auto">
           <div>heavy rain</div>
-          <div className="text-[#019AA2] font-bold">+</div>
+          <div className="text-accent font-bold">+</div>
           <div>night</div>
-          <div className="text-[#019AA2] font-bold">+</div>
+          <div className="text-accent font-bold">+</div>
           <div>fog</div>
-          <div className="text-[#019AA2] font-bold">+</div>
+          <div className="text-accent font-bold">+</div>
           <div>unusual camera angle</div>
-          <div className="text-[#019AA2] font-bold">+</div>
+          <div className="text-accent font-bold">+</div>
           <div>poor visibility</div>
         </div>
 
@@ -316,7 +316,7 @@ export const ArticleContent: React.FC = () => {
         <p>The issue wasn&apos;t necessarily that the dataset was too small.</p>
 
         <p>
-          It was that the dataset did not adequately <strong className="text-[#F3F6F7]">cover the situations the system needed to understand</strong>.
+          It was that the dataset did not adequately <strong className="text-fg">cover the situations the system needed to understand</strong>.
         </p>
 
         {/* Visual 04 */}
@@ -337,9 +337,9 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="more-data-can-also-mean-more-noise"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           More Data Can Also Mean More Noise
         </h2>
 
@@ -349,7 +349,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>Real-world datasets can contain:</p>
 
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 font-mono text-xs sm:text-sm text-[#A8B3BA]">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 font-mono text-xs sm:text-sm text-fg-soft">
           <li>• incorrect labels</li>
           <li>• corrupted samples</li>
           <li>• duplicates</li>
@@ -361,13 +361,13 @@ export const ArticleContent: React.FC = () => {
 
         <p>Suppose we start with:</p>
 
-        <div className="p-3 rounded bg-[#0E151B] border border-[#1C2830] font-mono text-xs sm:text-sm text-[#10b981] text-center">
+        <div className="p-3 rounded bg-surface border border-line font-mono text-xs sm:text-sm text-[#10b981] text-center">
           1,000,000 useful examples
         </div>
 
         <p>and then add another:</p>
 
-        <div className="p-3 rounded bg-[#0E151B] border border-[#1C2830] font-mono text-xs sm:text-sm text-[#ef4444] text-center">
+        <div className="p-3 rounded bg-surface border border-line font-mono text-xs sm:text-sm text-[#ef4444] text-center">
           9,000,000 noisy examples
         </div>
 
@@ -385,10 +385,10 @@ export const ArticleContent: React.FC = () => {
         <p>This creates an important distinction between:</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-center text-sm">
-          <div className="p-3 rounded bg-[#0E151B] border border-[#1C2830] text-[#A8B3BA]">
+          <div className="p-3 rounded bg-surface border border-line text-fg-soft">
             DATA QUANTITY
           </div>
-          <div className="p-3 rounded bg-[#0E151B] border border-[#019AA2]/40 text-[#019AA2] font-semibold">
+          <div className="p-3 rounded bg-surface border border-accent/40 text-accent font-semibold">
             DATA QUALITY
           </div>
         </div>
@@ -401,9 +401,9 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="the-model-can-become-the-bottleneck"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           The Model Can Become the Bottleneck
         </h2>
 
@@ -413,16 +413,16 @@ export const ArticleContent: React.FC = () => {
 
         <p>Imagine this pipeline:</p>
 
-        <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830] font-mono text-xs sm:text-sm text-center space-y-1.5 max-w-xs mx-auto">
-          <div className="text-[#A8B3BA]">DATA</div>
-          <div className="text-[#68747D]">│</div>
-          <div className="text-[#68747D]">▼</div>
-          <div className="p-2 rounded bg-[#131C24] border border-[#019AA2]/40 text-[#019AA2] font-bold">
+        <div className="p-4 rounded-[6px] bg-surface border border-line font-mono text-xs sm:text-sm text-center space-y-1.5 max-w-xs mx-auto">
+          <div className="text-fg-soft">DATA</div>
+          <div className="text-fg-muted">│</div>
+          <div className="text-fg-muted">▼</div>
+          <div className="p-2 rounded bg-[#131C24] border border-accent/40 text-accent font-bold">
             MODEL
           </div>
-          <div className="text-[#68747D]">│</div>
-          <div className="text-[#68747D]">▼</div>
-          <div className="text-[#F3F6F7]">PREDICTION</div>
+          <div className="text-fg-muted">│</div>
+          <div className="text-fg-muted">▼</div>
+          <div className="text-fg">PREDICTION</div>
         </div>
 
         <p>We keep improving the data.</p>
@@ -437,15 +437,15 @@ export const ArticleContent: React.FC = () => {
           At that point, adding more examples can produce increasingly small improvements.
         </p>
 
-        <p className="font-semibold text-[#F3F6F7]">The bottleneck has moved.</p>
+        <p className="font-semibold text-fg">The bottleneck has moved.</p>
 
-        <div className="p-4 rounded-[6px] bg-[#0A0F14] border border-[#1C2830] space-y-2 text-sm sm:text-base">
-          <p className="text-[#68747D]">Instead of:</p>
-          <p className="text-[#A8B3BA] font-mono pl-3 border-l border-[#68747D]">
+        <div className="p-4 rounded-[6px] bg-bg-2 border border-line space-y-2 text-sm sm:text-base">
+          <p className="text-fg-muted">Instead of:</p>
+          <p className="text-fg-soft font-mono pl-3 border-l border-[#68747D]">
             &ldquo;We don&apos;t have enough data.&rdquo;
           </p>
-          <p className="text-[#68747D] pt-1">the problem may become:</p>
-          <p className="text-[#019AA2] font-mono pl-3 border-l border-[#019AA2] font-semibold">
+          <p className="text-fg-muted pt-1">the problem may become:</p>
+          <p className="text-accent font-mono pl-3 border-l border-accent font-semibold">
             &ldquo;Our current model isn&apos;t extracting enough from the data we already have.&rdquo;
           </p>
         </div>
@@ -467,9 +467,9 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="the-data-we-add-may-not-be-the-data-we-need"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           The Data We Add May Not Be the Data We Need
         </h2>
 
@@ -485,7 +485,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>Now suppose instead we identify a specific weakness:</p>
 
-        <div className="p-3.5 rounded bg-[#0E151B] border-l-2 border-[#f59e0b] border-[#1C2830] font-mono text-xs sm:text-sm text-[#F3F6F7]">
+        <div className="p-3.5 rounded bg-surface border-l-2 border-[#f59e0b] border-line font-mono text-xs sm:text-sm text-fg">
           &gt; The model struggles when objects are partially hidden.
         </div>
 
@@ -493,7 +493,7 @@ export const ArticleContent: React.FC = () => {
           Instead of collecting another million ordinary photographs, we deliberately collect examples containing:
         </p>
 
-        <ul className="space-y-1.5 pl-4 font-mono text-xs sm:text-sm text-[#A8B3BA]">
+        <ul className="space-y-1.5 pl-4 font-mono text-xs sm:text-sm text-fg-soft">
           <li>• objects behind trees</li>
           <li>• objects behind people</li>
           <li>• objects partially outside the frame</li>
@@ -505,7 +505,7 @@ export const ArticleContent: React.FC = () => {
           The second million examples may be far more valuable than the first.
         </p>
 
-        <p className="font-semibold text-[#F3F6F7]">Why?</p>
+        <p className="font-semibold text-fg">Why?</p>
 
         <p>
           Because they target a region where the model is uncertain or weak.
@@ -516,8 +516,8 @@ export const ArticleContent: React.FC = () => {
 
         <p>This suggests a more useful strategy than blindly increasing dataset size:</p>
 
-        <div className="p-4 sm:p-6 rounded-[6px] bg-[#0A0F14] border border-[#019AA2]/40 text-[#F3F6F7] text-base sm:text-lg">
-          <p className="font-medium text-[#019AA2]">
+        <div className="p-4 sm:p-6 rounded-[6px] bg-bg-2 border border-accent/40 text-fg text-base sm:text-lg">
+          <p className="font-medium text-accent">
             Find what the model doesn&apos;t understand, then collect data that addresses that weakness.
           </p>
         </div>
@@ -528,9 +528,9 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="more-data-doesnt-mean-more-coverage"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           More Data Doesn&apos;t Mean More Coverage
         </h2>
 
@@ -540,7 +540,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>Imagine a dataset containing:</p>
 
-        <div className="p-3 rounded bg-[#0E151B] border border-[#1C2830] font-mono text-center text-sm sm:text-base text-[#F3F6F7]">
+        <div className="p-3 rounded bg-surface border border-line font-mono text-center text-sm sm:text-base text-fg">
           10,000,000 samples
         </div>
 
@@ -568,7 +568,7 @@ export const ArticleContent: React.FC = () => {
         <Visual08QuantityVsCoverage />
 
         <p>
-          This is why <strong className="text-[#F3F6F7]">coverage</strong> can matter more than raw count.
+          This is why <strong className="text-fg">coverage</strong> can matter more than raw count.
         </p>
       </section>
 
@@ -577,9 +577,9 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="so-when-does-more-data-stop-helping"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           So When Does More Data Stop Helping?
         </h2>
 
@@ -589,61 +589,61 @@ export const ArticleContent: React.FC = () => {
 
         <div className="space-y-4 pt-2">
           {/* Factor 1 */}
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <h3 className="font-mono text-sm font-bold text-[#F3F6F7] uppercase tracking-wider mb-1 flex items-center gap-2">
-              <span className="text-[#019AA2]">1.</span> The Task
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <h3 className="font-mono text-sm font-bold text-fg uppercase tracking-wider mb-1 flex items-center gap-2">
+              <span className="text-accent">1.</span> The Task
             </h3>
-            <p className="text-sm text-[#A8B3BA]">
+            <p className="text-sm text-fg-soft">
               A simple classification problem and an open-ended perception problem have very different data requirements.
             </p>
           </div>
 
           {/* Factor 2 */}
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <h3 className="font-mono text-sm font-bold text-[#F3F6F7] uppercase tracking-wider mb-1 flex items-center gap-2">
-              <span className="text-[#019AA2]">2.</span> The Diversity of the Data
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <h3 className="font-mono text-sm font-bold text-fg uppercase tracking-wider mb-1 flex items-center gap-2">
+              <span className="text-accent">2.</span> The Diversity of the Data
             </h3>
-            <p className="text-sm text-[#A8B3BA]">
+            <p className="text-sm text-fg-soft">
               A dataset containing many genuinely different situations can provide more useful information than one containing mostly repetitive examples.
             </p>
           </div>
 
           {/* Factor 3 */}
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <h3 className="font-mono text-sm font-bold text-[#F3F6F7] uppercase tracking-wider mb-1 flex items-center gap-2">
-              <span className="text-[#019AA2]">3.</span> Data Quality
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <h3 className="font-mono text-sm font-bold text-fg uppercase tracking-wider mb-1 flex items-center gap-2">
+              <span className="text-accent">3.</span> Data Quality
             </h3>
-            <p className="text-sm text-[#A8B3BA]">
+            <p className="text-sm text-fg-soft">
               Incorrect labels and systematic noise can limit the value of additional data.
             </p>
           </div>
 
           {/* Factor 4 */}
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <h3 className="font-mono text-sm font-bold text-[#F3F6F7] uppercase tracking-wider mb-1 flex items-center gap-2">
-              <span className="text-[#019AA2]">4.</span> Model Capacity
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <h3 className="font-mono text-sm font-bold text-fg uppercase tracking-wider mb-1 flex items-center gap-2">
+              <span className="text-accent">4.</span> Model Capacity
             </h3>
-            <p className="text-sm text-[#A8B3BA]">
+            <p className="text-sm text-fg-soft">
               A model may eventually become the limiting factor.
             </p>
           </div>
 
           {/* Factor 5 */}
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <h3 className="font-mono text-sm font-bold text-[#F3F6F7] uppercase tracking-wider mb-1 flex items-center gap-2">
-              <span className="text-[#019AA2]">5.</span> Distribution
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <h3 className="font-mono text-sm font-bold text-fg uppercase tracking-wider mb-1 flex items-center gap-2">
+              <span className="text-accent">5.</span> Distribution
             </h3>
-            <p className="text-sm text-[#A8B3BA]">
+            <p className="text-sm text-fg-soft">
               The training data needs to be relevant to the situations in which the model will actually be used.
             </p>
           </div>
 
           {/* Factor 6 */}
-          <div className="p-4 rounded-[6px] bg-[#0E151B] border border-[#1C2830]">
-            <h3 className="font-mono text-sm font-bold text-[#F3F6F7] uppercase tracking-wider mb-1 flex items-center gap-2">
-              <span className="text-[#019AA2]">6.</span> The Remaining Errors
+          <div className="p-4 rounded-[6px] bg-surface border border-line">
+            <h3 className="font-mono text-sm font-bold text-fg uppercase tracking-wider mb-1 flex items-center gap-2">
+              <span className="text-accent">6.</span> The Remaining Errors
             </h3>
-            <p className="text-sm text-[#A8B3BA]">
+            <p className="text-sm text-fg-soft">
               If the model is already performing well on most common cases, the next useful examples may need to target rare or difficult cases.
             </p>
           </div>
@@ -651,12 +651,12 @@ export const ArticleContent: React.FC = () => {
 
         <p className="pt-2">So &ldquo;enough data&rdquo; isn&apos;t simply:</p>
 
-        <p className="text-xl sm:text-2xl font-display font-bold text-[#F3F6F7]">
+        <p className="text-xl sm:text-2xl font-display font-bold text-fg">
           a number.
         </p>
 
         <p>
-          It is a relationship between the <strong className="text-[#019AA2]">task, data, model, and desired performance</strong>.
+          It is a relationship between the <strong className="text-accent">task, data, model, and desired performance</strong>.
         </p>
       </section>
 
@@ -665,9 +665,9 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="the-interesting-part-isnt-the-plateau"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           The Interesting Part Isn&apos;t the Plateau
         </h2>
 
@@ -675,7 +675,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>The more interesting question is:</p>
 
-        <div className="p-4 rounded-[6px] bg-[#0A0F14] border-l-2 border-[#019AA2] text-xl font-display font-bold text-[#F3F6F7]">
+        <div className="p-4 rounded-[6px] bg-bg-2 border-l-2 border-accent text-xl font-display font-bold text-fg">
           Why did the plateau happen?
         </div>
 
@@ -683,7 +683,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>There are several possible explanations.</p>
 
-        <ul className="space-y-2 pl-4 border-l border-[#1C2830] font-mono text-sm text-[#A8B3BA]">
+        <ul className="space-y-2 pl-4 border-l border-line font-mono text-sm text-fg-soft">
           <li>Maybe the new data is redundant.</li>
           <li>Maybe the labels are noisy.</li>
           <li>Maybe the new samples don&apos;t represent the deployment environment.</li>
@@ -706,9 +706,9 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="the-hidden-resource-information"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           The Hidden Resource: Information
         </h2>
 
@@ -720,7 +720,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>we can ask:</p>
 
-        <div className="p-4 rounded-[6px] bg-[#0A0F14] border border-[#019AA2]/40 text-lg sm:text-xl font-display font-bold text-[#019AA2]">
+        <div className="p-4 rounded-[6px] bg-bg-2 border border-accent/40 text-lg sm:text-xl font-display font-bold text-accent">
           &ldquo;How much useful uncertainty has this data removed?&rdquo;
         </div>
 
@@ -739,17 +739,17 @@ export const ArticleContent: React.FC = () => {
 
         <p>The objective isn&apos;t necessarily:</p>
 
-        <div className="p-3 rounded bg-[#0E151B] border border-[#1C2830] font-mono text-center text-sm text-[#A8B3BA]">
+        <div className="p-3 rounded bg-surface border border-line font-mono text-center text-sm text-fg-soft">
           MORE DATA
         </div>
 
         <p>It is:</p>
 
-        <div className="p-3 rounded bg-[#019AA2]/15 border border-[#019AA2] font-mono text-center text-sm font-bold text-[#019AA2]">
+        <div className="p-3 rounded bg-accent/15 border border-accent font-mono text-center text-sm font-bold text-accent">
           MORE USEFUL INFORMATION
         </div>
 
-        <p className="font-semibold text-[#F3F6F7]">Those are not the same thing.</p>
+        <p className="font-semibold text-fg">Those are not the same thing.</p>
       </section>
 
       {/* ------------------------------------------------------------------- */}
@@ -757,9 +757,9 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="so-what-should-we-do-instead"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           So What Should We Do Instead?
         </h2>
 
@@ -771,7 +771,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>Ask:</p>
 
-        <div className="space-y-2.5 pl-4 border-l-2 border-[#019AA2] font-mono text-sm sm:text-base text-[#F3F6F7]">
+        <div className="space-y-2.5 pl-4 border-l-2 border-accent font-mono text-sm sm:text-base text-fg">
           <div>What kind of examples are we adding?</div>
           <div>Are they actually different?</div>
           <div>Where does the model still fail?</div>
@@ -791,15 +791,15 @@ export const ArticleContent: React.FC = () => {
       {/* ------------------------------------------------------------------- */}
       <section
         id="the-bigger-lesson"
-        className="space-y-6 pt-8 border-t border-[#1C2830]"
+        className="space-y-6 pt-8 border-t border-line"
       >
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#F3F6F7] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-fg tracking-tight">
           The Bigger Lesson
         </h2>
 
         <p>Machine learning often encourages simple intuitions.</p>
 
-        <ul className="space-y-1.5 pl-4 font-mono text-xs sm:text-sm text-[#A8B3BA]">
+        <ul className="space-y-1.5 pl-4 font-mono text-xs sm:text-sm text-fg-soft">
           <li>• More compute should help.</li>
           <li>• More parameters should help.</li>
           <li>• More data should help.</li>
@@ -809,7 +809,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>But real systems eventually expose the limits of those rules.</p>
 
-        <ul className="space-y-2 pl-4 border-l border-[#1C2830] font-mono text-sm text-[#F3F6F7]">
+        <ul className="space-y-2 pl-4 border-l border-line font-mono text-sm text-fg">
           <li>More data can become redundant.</li>
           <li>More data can contain more noise.</li>
           <li>More data can fail to cover the situations that matter.</li>
@@ -823,7 +823,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>So perhaps the better question was never:</p>
 
-        <p className="text-lg sm:text-xl font-display font-medium text-[#A8B3BA]">
+        <p className="text-lg sm:text-xl font-display font-medium text-fg-soft">
           &ldquo;How much data do we need?&rdquo;
         </p>
 
@@ -836,7 +836,7 @@ export const ArticleContent: React.FC = () => {
 
         <p>That is a much harder question.</p>
 
-        <p className="font-semibold text-[#F3F6F7]">
+        <p className="font-semibold text-fg">
           And usually, a much more useful one.
         </p>
       </section>

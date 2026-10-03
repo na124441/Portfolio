@@ -71,7 +71,7 @@ export const LearningLoopSection: React.FC = () => {
       description:
         'Every concept begins with the exact problem statement. Deconstruct the objective function, identify mathematical invariants, and derive convergence boundaries before touching code.',
       color: '#019AA2',
-      accentClass: 'text-[#019AA2]',
+      accentClass: 'text-accent',
     },
     {
       step: '02',
@@ -87,7 +87,7 @@ export const LearningLoopSection: React.FC = () => {
       description:
         'Equations become intuitive when rendered spatially. Observe how boundaries warp, gradients flow along manifolds, and optimization trajectories settle into local minima.',
       color: '#019AA2',
-      accentClass: 'text-[#019AA2]',
+      accentClass: 'text-accent',
     },
     {
       step: '03',
@@ -133,7 +133,7 @@ export const LearningLoopSection: React.FC = () => {
       description:
         'No algorithm exists in isolation. Connect K-Means to Expectation-Maximization, Gaussian Mixture Models with spherical covariance, and spectral projections in the global knowledge graph.',
       color: '#019AA2',
-      accentClass: 'text-[#019AA2]',
+      accentClass: 'text-accent',
     },
   ];
 
@@ -176,10 +176,10 @@ export const LearningLoopSection: React.FC = () => {
           <p className="text-sm sm:text-base font-sans text-[#C4703F] font-medium tracking-wide mb-3">
             How it teaches
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold font-sans tracking-tight text-[#F3F6F7] leading-[1.1]">
+          <h2 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-bold font-sans tracking-tight text-fg leading-[1.1]">
             The First-Principles Loop
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#A8B3BA]/80 leading-relaxed font-sans max-w-2xl">
+          <p className="mt-4 text-base sm:text-lg text-fg-soft/80 leading-relaxed font-sans max-w-2xl">
             Five stages, one cycle. Derive the math, see it spatially,
             build it from nothing, break it on purpose, then connect it to everything else.
           </p>
@@ -211,7 +211,7 @@ export const LearningLoopSection: React.FC = () => {
                   <span
                     className={cn(
                       'text-2xl sm:text-3xl font-sans font-extralight tabular-nums transition-colors',
-                      isActive ? stage.accentClass : 'text-[#68747D]/60'
+                      isActive ? stage.accentClass : 'text-fg-muted/60'
                     )}
                   >
                     {stage.step}
@@ -219,14 +219,14 @@ export const LearningLoopSection: React.FC = () => {
                   <StageIcon
                     className={cn(
                       'w-4 h-4 transition-colors',
-                      isActive ? stage.accentClass : 'text-[#68747D]/40 group-hover:text-[#68747D]'
+                      isActive ? stage.accentClass : 'text-fg-muted/40 group-hover:text-fg-muted'
                     )}
                   />
                 </div>
                 <div
                   className={cn(
                     'text-sm font-sans font-semibold transition-colors leading-tight',
-                    isActive ? 'text-[#F3F6F7]' : 'text-[#A8B3BA]/70 group-hover:text-[#A8B3BA]'
+                    isActive ? 'text-fg' : 'text-fg-soft/70 group-hover:text-fg-soft'
                   )}
                 >
                   {stage.title}
@@ -234,7 +234,7 @@ export const LearningLoopSection: React.FC = () => {
                 <div
                   className={cn(
                     'text-[11px] font-sans mt-0.5 transition-colors',
-                    isActive ? 'text-[#A8B3BA]' : 'text-[#68747D]/50'
+                    isActive ? 'text-fg-soft' : 'text-fg-muted/50'
                   )}
                 >
                   {stage.category}
@@ -272,7 +272,7 @@ export const LearningLoopSection: React.FC = () => {
                   {current.step}
                 </span>
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold font-sans text-[#F3F6F7] tracking-tight leading-tight">
+                  <h3 className="text-xl sm:text-2xl font-bold font-sans text-fg tracking-tight leading-tight">
                     {current.title}
                   </h3>
                   <p className="text-sm font-sans mt-0.5" style={{ color: current.color }}>
@@ -281,7 +281,7 @@ export const LearningLoopSection: React.FC = () => {
                 </div>
               </div>
 
-              <p className="text-sm sm:text-[15px] text-[#A8B3BA]/90 leading-relaxed font-sans">
+              <p className="text-sm sm:text-[15px] text-fg-soft/90 leading-relaxed font-sans">
                 {current.description}
               </p>
             </div>
@@ -289,11 +289,11 @@ export const LearningLoopSection: React.FC = () => {
             {/* Dataflow — clean vertical list with dot markers */}
             <div className="bl-dataflow-connector space-y-5">
               {/* Input */}
-              <div className="bl-dataflow-dot text-[#A8B3BA]">
-                <div className="text-[11px] font-sans font-medium text-[#68747D] uppercase tracking-wide">
+              <div className="bl-dataflow-dot text-fg-soft">
+                <div className="text-[11px] font-sans font-medium text-fg-muted uppercase tracking-wide">
                   Input
                 </div>
-                <div className="text-sm font-sans text-[#F3F6F7] mt-0.5 leading-snug">
+                <div className="text-sm font-sans text-fg mt-0.5 leading-snug">
                   {current.input}
                 </div>
               </div>
@@ -313,7 +313,7 @@ export const LearningLoopSection: React.FC = () => {
                 <div className="text-[11px] font-sans font-medium text-[#C4703F]/70 uppercase tracking-wide">
                   Output
                 </div>
-                <div className="text-sm font-sans text-[#F3F6F7] mt-0.5 leading-snug">
+                <div className="text-sm font-sans text-fg mt-0.5 leading-snug">
                   {current.output}
                 </div>
               </div>
@@ -332,7 +332,7 @@ export const LearningLoopSection: React.FC = () => {
                   <div className="space-y-6">
                     {/* Main equation — clean, centered, prominent */}
                     <div className="py-6 sm:py-8">
-                      <div className="text-[11px] font-sans text-[#68747D] mb-3 uppercase tracking-wide">
+                      <div className="text-[11px] font-sans text-fg-muted mb-3 uppercase tracking-wide">
                         Objective Function — WCSS
                       </div>
                       <EquationBlock
@@ -343,35 +343,35 @@ export const LearningLoopSection: React.FC = () => {
 
                     {/* Parameter definitions — minimal, two-column, no boxes */}
                     <div className="space-y-3">
-                      <div className="text-[11px] font-sans text-[#68747D] uppercase tracking-wide">
+                      <div className="text-[11px] font-sans text-fg-muted uppercase tracking-wide">
                         Parameters
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">
                         <div>
-                          <span className="font-mono text-[#019AA2]">x_i ∈ ℝ^D</span>
-                          <span className="text-[#68747D] mx-2">—</span>
-                          <span className="text-[#A8B3BA] font-sans text-[13px]">
+                          <span className="font-mono text-accent">x_i ∈ ℝ^D</span>
+                          <span className="text-fg-muted mx-2">—</span>
+                          <span className="text-fg-soft font-sans text-[13px]">
                             Feature vector in D-dimensional space
                           </span>
                         </div>
                         <div>
-                          <span className="font-mono text-[#019AA2]">μ_k ∈ ℝ^D</span>
-                          <span className="text-[#68747D] mx-2">—</span>
-                          <span className="text-[#A8B3BA] font-sans text-[13px]">
+                          <span className="font-mono text-accent">μ_k ∈ ℝ^D</span>
+                          <span className="text-fg-muted mx-2">—</span>
+                          <span className="text-fg-soft font-sans text-[13px]">
                             Centroid for cluster partition k
                           </span>
                         </div>
                         <div>
                           <span className="font-mono text-[#C4703F]">S_k ⊂ X</span>
-                          <span className="text-[#68747D] mx-2">—</span>
-                          <span className="text-[#A8B3BA] font-sans text-[13px]">
+                          <span className="text-fg-muted mx-2">—</span>
+                          <span className="text-fg-soft font-sans text-[13px]">
                             Points assigned to centroid k
                           </span>
                         </div>
                         <div>
-                          <span className="font-mono text-[#F3F6F7]">||·||²</span>
-                          <span className="text-[#68747D] mx-2">—</span>
-                          <span className="text-[#A8B3BA] font-sans text-[13px]">
+                          <span className="font-mono text-fg">||·||²</span>
+                          <span className="text-fg-muted mx-2">—</span>
+                          <span className="text-fg-soft font-sans text-[13px]">
                             Squared L2 norm (dispersion)
                           </span>
                         </div>
@@ -379,7 +379,7 @@ export const LearningLoopSection: React.FC = () => {
                     </div>
 
                     {/* Convergence note — inline, not a separate bar */}
-                    <p className="text-[13px] font-sans text-[#A8B3BA]/60 italic border-l-2 border-[#019AA2]/30 pl-3">
+                    <p className="text-[13px] font-sans text-fg-soft/60 italic border-l-2 border-[#019AA2]/30 pl-3">
                       The objective is monotonically non-increasing: J^(t+1) ≤ J^(t), guaranteeing convergence.
                     </p>
                   </div>
@@ -458,7 +458,7 @@ export const LearningLoopSection: React.FC = () => {
                       </svg>
                     </div>
 
-                    <p className="text-[13px] font-sans text-[#A8B3BA]/60 italic border-l-2 border-[#019AA2]/30 pl-3">
+                    <p className="text-[13px] font-sans text-fg-soft/60 italic border-l-2 border-[#019AA2]/30 pl-3">
                       Voronoi cells partition the space around each centroid. As centroids drift,
                       boundaries warp and points reassign — the geometric heartbeat of Lloyd&apos;s algorithm.
                     </p>
@@ -469,12 +469,12 @@ export const LearningLoopSection: React.FC = () => {
                 {activeStage === 2 && (
                   <div className="space-y-4">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[11px] font-sans text-[#68747D] uppercase tracking-wide">
+                      <span className="text-[11px] font-sans text-fg-muted uppercase tracking-wide">
                         Pure NumPy — no frameworks
                       </span>
                       <button
                         onClick={() => handleCopyCode(codeString)}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[#A8B3BA] hover:text-[#C4703F] transition-colors cursor-pointer text-[11px] font-sans"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-fg-soft hover:text-[#C4703F] transition-colors cursor-pointer text-[11px] font-sans"
                       >
                         {copied ? (
                           <>
@@ -490,23 +490,23 @@ export const LearningLoopSection: React.FC = () => {
                       </button>
                     </div>
 
-                    <div className="p-4 sm:p-5 rounded-lg bg-[#05070A] font-mono text-xs sm:text-[13px] text-[#A8B3BA] overflow-x-auto bl-scrollbar leading-relaxed">
+                    <div className="p-4 sm:p-5 rounded-lg bg-[#05070A] font-mono text-xs sm:text-[13px] text-fg-soft overflow-x-auto bl-scrollbar leading-relaxed">
                       <pre>
                         <code>
-                          <span className="text-[#68747D]"># 1. Pairwise squared Euclidean broadcast: (N, 1, D) - (1, K, D)</span>{'\n'}
-                          <span className="text-[#019AA2]">dists</span> = np.sum((X[:, <span className="text-[#C4703F]">None</span>, :] - centroids[<span className="text-[#C4703F]">None</span>, :, :]) ** <span className="text-[#C4703F]">2</span>, axis=-<span className="text-[#C4703F]">1</span>){'\n'}
-                          <span className="text-[#019AA2]">labels</span> = np.argmin(dists, axis=-<span className="text-[#C4703F]">1</span>)  <span className="text-[#68747D]"># Voronoi assignment</span>{'\n\n'}
-                          <span className="text-[#68747D]"># 2. Vectorized center-of-mass recomputation</span>{'\n'}
-                          <span className="text-[#019AA2]">new_centroids</span> = np.array([X[labels == k].mean(axis=<span className="text-[#C4703F]">0</span>) for k in range(K)]){'\n'}
+                          <span className="text-fg-muted"># 1. Pairwise squared Euclidean broadcast: (N, 1, D) - (1, K, D)</span>{'\n'}
+                          <span className="text-accent">dists</span> = np.sum((X[:, <span className="text-[#C4703F]">None</span>, :] - centroids[<span className="text-[#C4703F]">None</span>, :, :]) ** <span className="text-[#C4703F]">2</span>, axis=-<span className="text-[#C4703F]">1</span>){'\n'}
+                          <span className="text-accent">labels</span> = np.argmin(dists, axis=-<span className="text-[#C4703F]">1</span>)  <span className="text-fg-muted"># Voronoi assignment</span>{'\n\n'}
+                          <span className="text-fg-muted"># 2. Vectorized center-of-mass recomputation</span>{'\n'}
+                          <span className="text-accent">new_centroids</span> = np.array([X[labels == k].mean(axis=<span className="text-[#C4703F]">0</span>) for k in range(K)]){'\n'}
                           <span className="text-[#C4703F]">return</span> labels, new_centroids
                         </code>
                       </pre>
                     </div>
 
                     {/* Simple inline stats, not a 3-column grid of boxed cards */}
-                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] font-sans text-[#68747D]">
-                      <span>Complexity: <span className="text-[#F3F6F7] font-medium">O(N·K·D)</span></span>
-                      <span>Dependencies: <span className="text-[#019AA2] font-medium">None</span></span>
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] font-sans text-fg-muted">
+                      <span>Complexity: <span className="text-fg font-medium">O(N·K·D)</span></span>
+                      <span>Dependencies: <span className="text-accent font-medium">None</span></span>
                       <span>Speedup: <span className="text-[#C4703F] font-medium">42× vs loops</span></span>
                     </div>
                   </div>
@@ -520,7 +520,7 @@ export const LearningLoopSection: React.FC = () => {
                       <div className="space-y-3">
                         <div className="flex items-center justify-between text-sm font-sans">
                           <span className="text-[#C4703F] font-semibold">Concentric Rings</span>
-                          <span className="text-[#68747D] text-xs">fails</span>
+                          <span className="text-fg-muted text-xs">fails</span>
                         </div>
                         <div className="h-20 flex items-center justify-center">
                           <svg viewBox="0 0 100 60" className="h-full">
@@ -528,7 +528,7 @@ export const LearningLoopSection: React.FC = () => {
                             <circle cx="50" cy="30" r="26" fill="none" stroke="#C4703F" strokeWidth="1.5" opacity="0.7" />
                           </svg>
                         </div>
-                        <p className="text-[12px] text-[#A8B3BA]/60 font-sans leading-relaxed">
+                        <p className="text-[12px] text-fg-soft/60 font-sans leading-relaxed">
                           Linear hyperplanes can&apos;t separate non-convex nested ring manifolds.
                         </p>
                       </div>
@@ -536,8 +536,8 @@ export const LearningLoopSection: React.FC = () => {
                       {/* Test 2: K-Means++ success */}
                       <div className="space-y-3">
                         <div className="flex items-center justify-between text-sm font-sans">
-                          <span className="text-[#019AA2] font-semibold">K-Means++ Init</span>
-                          <span className="text-[#019AA2] text-xs font-medium">99.4% optimal</span>
+                          <span className="text-accent font-semibold">K-Means++ Init</span>
+                          <span className="text-accent text-xs font-medium">99.4% optimal</span>
                         </div>
                         <div className="h-20 flex items-center justify-center">
                           <svg viewBox="0 0 120 50" className="w-full h-full">
@@ -547,13 +547,13 @@ export const LearningLoopSection: React.FC = () => {
                             <text x="113" y="27" fill="#68747D" fontSize="7" fontFamily="var(--font-inter)">rand</text>
                           </svg>
                         </div>
-                        <p className="text-[12px] text-[#A8B3BA]/60 font-sans leading-relaxed">
+                        <p className="text-[12px] text-fg-soft/60 font-sans leading-relaxed">
                           D(x)² probability spreading prevents degenerate centroid collisions.
                         </p>
                       </div>
                     </div>
 
-                    <p className="text-[13px] font-sans text-[#A8B3BA]/60 italic border-l-2 border-[#C4703F]/30 pl-3">
+                    <p className="text-[13px] font-sans text-fg-soft/60 italic border-l-2 border-[#C4703F]/30 pl-3">
                       Variance reduction follows an O(log K) competitive bound with proper initialization.
                     </p>
                   </div>
@@ -603,7 +603,7 @@ export const LearningLoopSection: React.FC = () => {
                       </svg>
                     </div>
 
-                    <p className="text-[13px] sm:text-sm font-sans text-[#A8B3BA]/80 leading-relaxed">
+                    <p className="text-[13px] sm:text-sm font-sans text-fg-soft/80 leading-relaxed">
                       K-Means is the exact asymptotic limit of Expectation-Maximization on Gaussian
                       Mixture Models as covariance approaches zero isotropic variance — not an
                       ad-hoc clustering heuristic, but a principled special case.
@@ -618,7 +618,7 @@ export const LearningLoopSection: React.FC = () => {
               <button
                 disabled={activeStage === 0}
                 onClick={() => setActiveStage((p) => Math.max(0, p - 1))}
-                className="px-3 py-2 text-sm font-sans text-[#68747D] hover:text-[#F3F6F7] disabled:opacity-25 disabled:cursor-not-allowed transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="px-3 py-2 text-sm font-sans text-fg-muted hover:text-fg disabled:opacity-25 disabled:cursor-not-allowed transition-colors flex items-center gap-1.5 cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4" />
                 <span className="hidden sm:inline">Previous</span>
@@ -644,7 +644,7 @@ export const LearningLoopSection: React.FC = () => {
               <button
                 disabled={activeStage === stages.length - 1}
                 onClick={() => setActiveStage((p) => Math.min(stages.length - 1, p + 1))}
-                className="px-3 py-2 text-sm font-sans font-medium hover:text-[#F3F6F7] disabled:opacity-25 disabled:cursor-not-allowed transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="px-3 py-2 text-sm font-sans font-medium hover:text-fg disabled:opacity-25 disabled:cursor-not-allowed transition-colors flex items-center gap-1.5 cursor-pointer"
                 style={{ color: current.color }}
               >
                 <span className="hidden sm:inline">Next</span>

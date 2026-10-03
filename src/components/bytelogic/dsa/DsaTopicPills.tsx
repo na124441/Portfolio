@@ -60,7 +60,7 @@ export function DsaTopicPills({ selectedTopic, onSelectTopic }: DsaTopicPillsPro
       <button
         type="button"
         onClick={() => scroll('left')}
-        className="hidden sm:flex items-center justify-center w-7 h-7 rounded-full bg-[#1e1e1e] hover:bg-[#2c2c2c] text-[#a1a1aa] hover:text-white border border-[#333] shadow-md z-10 shrink-0 mr-1.5 transition-colors cursor-pointer"
+        className="hidden sm:flex items-center justify-center w-7 h-7 rounded-full bg-surface hover:bg-surface-2 text-fg-soft hover:text-fg border border-line shadow-md z-10 shrink-0 mr-1.5 transition-colors cursor-pointer"
         aria-label="Scroll topics left"
       >
         <ChevronLeft className="w-4 h-4" />
@@ -85,8 +85,8 @@ export function DsaTopicPills({ selectedTopic, onSelectTopic }: DsaTopicPillsPro
               className={cn(
                 'whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer shrink-0',
                 isSelected
-                  ? 'bg-white text-black font-semibold shadow-sm'
-                  : 'bg-[#262626] text-[#d4d4d8] hover:bg-[#333333] hover:text-white'
+                  ? 'bg-fg text-bg font-semibold shadow-sm'
+                  : 'bg-surface-2 text-fg-soft hover:bg-surface hover:text-fg'
               )}
             >
               {pill.label}
@@ -99,7 +99,7 @@ export function DsaTopicPills({ selectedTopic, onSelectTopic }: DsaTopicPillsPro
       <button
         type="button"
         onClick={() => scroll('right')}
-        className="hidden sm:flex items-center justify-center w-7 h-7 rounded-full bg-[#1e1e1e] hover:bg-[#2c2c2c] text-[#a1a1aa] hover:text-white border border-[#333] shadow-md z-10 shrink-0 ml-1.5 transition-colors cursor-pointer"
+        className="hidden sm:flex items-center justify-center w-7 h-7 rounded-full bg-surface hover:bg-surface-2 text-fg-soft hover:text-fg border border-line shadow-md z-10 shrink-0 ml-1.5 transition-colors cursor-pointer"
         aria-label="Scroll topics right"
       >
         <ChevronRight className="w-4 h-4" />

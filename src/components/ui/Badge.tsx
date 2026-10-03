@@ -22,10 +22,10 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   const variants = {
-    default: 'bg-white/[0.04] text-white/80 border border-white/10',
-    gold: 'bg-gold/10 text-gold border border-gold/40',
-    outline: 'bg-transparent text-white/60 border border-white/15',
-    muted: 'bg-white/[0.02] text-white/40 border border-white/5',
+    default: 'bg-surface-soft text-fg-soft border border-line',
+    gold: 'bg-accent-soft text-accent border border-accent/40',
+    outline: 'bg-transparent text-fg-soft border border-line',
+    muted: 'bg-surface-soft text-fg-muted border border-line',
   };
 
   return (

@@ -351,7 +351,7 @@ export const EnergyField: React.FC<EnergyFieldProps> = ({
     <div className={`relative flex items-center justify-center pointer-events-none select-none ${className}`}>
       {/* 1. Atmospheric Ambient Radial Glow */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[125%] h-[125%] rounded-full bg-[radial-gradient(circle,rgba(246,208,9,0.06)_0%,rgba(246,208,9,0.015)_45%,transparent_70%)] blur-3xl pointer-events-none z-0"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[125%] h-[125%] rounded-full bg-[radial-gradient(circle,var(--accent-glow)_0%,transparent_70%)] blur-3xl pointer-events-none z-0"
         aria-hidden="true"
       />
 

@@ -116,9 +116,9 @@ export function SubmissionHistory({
 
   if (loading) {
     return (
-      <div className="flex flex-col gap-2 p-4 text-xs font-mono text-[#68747D]">
+      <div className="flex flex-col gap-2 p-4 text-xs font-mono text-fg-muted">
         <div className="flex items-center gap-2">
-          <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#019AA2]" />
+          <RefreshCw className="w-3.5 h-3.5 animate-spin text-accent" />
           <span>Retrieving submission records...</span>
         </div>
       </div>
@@ -127,9 +127,9 @@ export function SubmissionHistory({
 
   if (submissions.length === 0) {
     return (
-      <div className="p-6 text-center border border-[#1C2830] rounded-lg bg-[#070B0E] font-mono text-xs text-[#68747D]">
+      <div className="p-6 text-center border border-line rounded-lg bg-[#070B0E] font-mono text-xs text-fg-muted">
         <p>No submitted solutions recorded yet for this problem.</p>
-        <p className="text-[11px] text-[#A8B3BA] mt-1">
+        <p className="text-[11px] text-fg-soft mt-1">
           Submit your C++ implementation to evaluate against the hidden test suite.
         </p>
       </div>
@@ -139,20 +139,20 @@ export function SubmissionHistory({
   return (
     <div className="flex flex-col gap-3 font-mono text-xs">
       <div className="flex items-center justify-between px-1">
-        <span className="text-[11px] uppercase tracking-wider text-[#A8B3BA] font-semibold">
+        <span className="text-[11px] uppercase tracking-wider text-fg-soft font-semibold">
           Submission History ({submissions.length})
         </span>
         <button
           type="button"
           onClick={fetchHistory}
-          className="text-[#68747D] hover:text-[#019AA2] p-1 transition-colors"
+          className="text-fg-muted hover:text-accent p-1 transition-colors"
           title="Refresh history"
         >
           <RefreshCw className="w-3.5 h-3.5" />
         </button>
       </div>
 
-      <div className="flex flex-col divide-y divide-[#1C2830] border border-[#1C2830] rounded-lg bg-[#070B0E] overflow-hidden">
+      <div className="flex flex-col divide-y divide-line border border-line rounded-lg bg-bg-2 overflow-hidden">
         {submissions.map((sub) => {
           const config = VERDICT_STYLES[sub.verdict] || VERDICT_STYLES.SYSTEM_ERROR;
           const Icon = config.icon;
@@ -166,7 +166,7 @@ export function SubmissionHistory({
           });
 
           return (
-            <div key={sub.id} className="flex flex-col p-3 hover:bg-[#0E151B]/60 transition-colors">
+            <div key={sub.id} className="flex flex-col p-3 hover:bg-surface/60 transition-colors">
               <div className="flex items-center justify-between gap-2">
                 {/* Left: Verdict and badge */}
                 <div className="flex items-center gap-2 min-w-0">
@@ -180,13 +180,13 @@ export function SubmissionHistory({
                     <Icon className="w-3.5 h-3.5" />
                     <span>{config.label}</span>
                   </div>
-                  <span className="text-[11px] text-[#68747D] hidden sm:inline">
+                  <span className="text-[11px] text-fg-muted hidden sm:inline">
                     {sub.passedTests}/{sub.totalTests} tests
                   </span>
                 </div>
 
                 {/* Right: Telemetry metrics & expand toggle */}
-                <div className="flex items-center gap-3 shrink-0 text-[11px] text-[#A8B3BA]">
+                <div className="flex items-center gap-3 shrink-0 text-[11px] text-fg-soft">
                   {sub.runtime !== null && (
                     <span className="tabular-nums">{sub.runtime} ms</span>
                   )}
@@ -195,11 +195,11 @@ export function SubmissionHistory({
                       {Math.round(sub.memory / 1024)} MB
                     </span>
                   )}
-                  <span className="text-[#68747D]">{dateStr}</span>
+                  <span className="text-fg-muted">{dateStr}</span>
                   <button
                     type="button"
                     onClick={() => setExpandedId(isExpanded ? null : sub.id)}
-                    className="p-1 text-[#68747D] hover:text-[#F3F6F7] transition-colors"
+                    className="p-1 text-fg-muted hover:text-fg transition-colors"
                     title={isExpanded ? 'Hide code' : 'View submitted code'}
                   >
                     {isExpanded ? (
@@ -213,7 +213,7 @@ export function SubmissionHistory({
 
               {/* Expanded: Code and error output */}
               {isExpanded && (
-                <div className="mt-3 pt-3 border-t border-[#1C2830] flex flex-col gap-2">
+                <div className="mt-3 pt-3 border-t border-line flex flex-col gap-2">
                   {sub.compileError && (
                     <div className="p-2.5 rounded bg-rose-950/30 border border-rose-900/50 text-rose-300 text-[11px] whitespace-pre-wrap font-mono overflow-x-auto">
                       {sub.compileError}
@@ -227,7 +227,7 @@ export function SubmissionHistory({
                   )}
 
                   <div className="relative">
-                    <pre className="p-3 bg-[#05070A] border border-[#1C2830] rounded text-[11px] text-[#F3F6F7] overflow-x-auto bl-scrollbar max-h-60 leading-relaxed font-mono whitespace-pre">
+                    <pre className="p-3 bg-bg border border-line rounded text-[11px] text-fg overflow-x-auto bl-scrollbar max-h-60 leading-relaxed font-mono whitespace-pre">
                       {sub.sourceCode}
                     </pre>
 
@@ -235,7 +235,7 @@ export function SubmissionHistory({
                       <button
                         type="button"
                         onClick={() => onLoadCode(sub.sourceCode)}
-                        className="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-[#0E151B] border border-[#1C2830] hover:border-[#019AA2] text-[#A8B3BA] hover:text-[#019AA2] rounded text-[10px] transition-colors"
+                        className="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-surface border border-line hover:border-accent text-fg-soft hover:text-accent rounded text-[10px] transition-colors"
                         title="Load this code into the active editor"
                       >
                         <Code2 className="w-3 h-3" />
